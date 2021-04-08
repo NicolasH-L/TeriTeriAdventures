@@ -19,19 +19,22 @@ public class PlayerMovement : MonoBehaviour
         _isPlayerGrounded = true;
     }
 
-    void Update()
+    private void FixedUpdate()
     {
-        var movementPlayerX = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedPlayer;
-
-        if (movementPlayerX != 0)
-            transform.Translate(movementPlayerX, 0f, 0f);
-
         if (Input.GetKey("space") && _isPlayerGrounded)
         {
             _rigidbody2D.AddForce(_jumping * SpeedPlayerJump, ForceMode2D.Impulse);
             _audioSource.Play();
             _isPlayerGrounded = false;
         }
+    }
+
+    void Update()
+    {
+        var movementPlayerX = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedPlayer;
+
+        if (movementPlayerX != 0)
+            transform.Translate(movementPlayerX, 0f, 0f);
     }
 
     private void OnCollisionStay2D(Collision2D other)
@@ -46,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
+            _isPlayerGrounded = true;
         }
     }
 }
