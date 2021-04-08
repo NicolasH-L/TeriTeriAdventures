@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody2D;
+    private AudioSource _audioSource;
     private const float SpeedPlayer = 7f;
     private const float SpeedPlayerJump = 2f;
     private bool _isPlayerGrounded;
@@ -13,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _jumping = new Vector2(0.0f, 2f);
         _isPlayerGrounded = true;
     }
@@ -27,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey("space") && _isPlayerGrounded)
         {
             _rigidbody2D.AddForce(_jumping * SpeedPlayerJump, ForceMode2D.Impulse);
+            _audioSource.Play();
             _isPlayerGrounded = false;
         }
     }
@@ -36,6 +39,13 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Plateform"))
         {
             _isPlayerGrounded = true;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Obstacle"))
+        {
         }
     }
 }
