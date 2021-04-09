@@ -141,6 +141,12 @@
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Users/Beanz/Documents/ProjetUnityEcole/TPCertificatif/TeriTeriAdventures/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
+ <Reference Include="Cinemachine">
+ <HintPath>C:/Users/Beanz/Documents/ProjetUnityEcole/TPCertificatif/TeriTeriAdventures/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+ </Reference>
+ <Reference Include="com.unity.cinemachine.editor">
+ <HintPath>C:/Users/Beanz/Documents/ProjetUnityEcole/TPCertificatif/TeriTeriAdventures/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.18f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
  </Reference>
