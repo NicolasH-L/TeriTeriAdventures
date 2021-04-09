@@ -8,14 +8,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidbody2D;
     private AudioSource _audioSource;
     private const float SpeedPlayer = 7f;
-    private const float SpeedPlayerJump = 2f;
+    private const float JumpHeight = 8f;
     private bool _isPlayerGrounded;
-    private Vector2 _jumping;
 
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-        _jumping = new Vector2(0.0f, 2f);
         _isPlayerGrounded = true;
     }
 
@@ -23,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey("space") && _isPlayerGrounded)
         {
-            _rigidbody2D.AddForce(_jumping * SpeedPlayerJump, ForceMode2D.Impulse);
+            _rigidbody2D.velocity = new Vector2(0f, JumpHeight);
             _audioSource.Play();
             _isPlayerGrounded = false;
         }
