@@ -201,9 +201,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1271556687
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 9950f801887e0d1469046c6d5eff3ed7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 980986504}
   m_Layer: 0
   m_Name: Player (1)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1076,7 +1076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1564572905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1597,6 +1597,7 @@ GameObject:
   - component: {fileID: 1654865936}
   - component: {fileID: 1654865935}
   - component: {fileID: 1654865934}
+  - component: {fileID: 1654865937}
   m_Layer: 0
   m_Name: IslandTribalMan-v03
   m_TagString: Untagged
@@ -1634,15 +1635,6 @@ PolygonCollider2D:
       - {x: 0.73499995, y: -0.82}
       - {x: 0.91499996, y: -0.71}
       - {x: 0.955, y: -0.62}
-      - {x: 1.285, y: -0.48}
-      - {x: 1.915, y: -0.22999999}
-      - {x: 2.325, y: -0.089999996}
-      - {x: 2.415, y: -0.03}
-      - {x: 2.415, y: 0.02}
-      - {x: 2.2949998, y: 0.11}
-      - {x: 2.225, y: 0.089999996}
-      - {x: 1.885, y: -0.03}
-      - {x: 0.97499996, y: -0.41}
       - {x: 1.025, y: -0.25}
       - {x: 1.135, y: -0.099999994}
       - {x: 1.155, y: -0.02}
@@ -1712,26 +1704,6 @@ PolygonCollider2D:
       - {x: -0.13499999, y: -0.44}
       - {x: -0.145, y: -0.59}
       - {x: -0.114999995, y: -0.81}
-      - {x: -0.16499999, y: -0.85999995}
-      - {x: -0.315, y: -0.91999996}
-      - {x: -0.745, y: -1.0799999}
-      - {x: -0.815, y: -1.11}
-      - {x: -0.97499996, y: -1.05}
-      - {x: -1.0649999, y: -1.04}
-      - {x: -1.175, y: -1.13}
-      - {x: -1.345, y: -1.27}
-      - {x: -1.495, y: -1.42}
-      - {x: -1.495, y: -1.51}
-      - {x: -1.355, y: -1.54}
-      - {x: -1.145, y: -1.52}
-      - {x: -1.055, y: -1.51}
-      - {x: -0.895, y: -1.49}
-      - {x: -0.835, y: -1.51}
-      - {x: -0.685, y: -1.27}
-      - {x: -0.585, y: -1.24}
-      - {x: -0.42499998, y: -1.16}
-      - {x: -0.114999995, y: -1.04}
-      - {x: -0.065, y: -1.11}
       - {x: -0.095, y: -1.22}
       - {x: -0.205, y: -1.38}
       - {x: -0.185, y: -1.5899999}
@@ -1830,8 +1802,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1271556687
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 17368fede325fae4280343e4f8bbdbcf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1858,6 +1830,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1654865937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654865933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab36b1ba389b74b4397794938d871a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1896636726
 PrefabInstance:
   m_ObjectHideFlags: 0
