@@ -1399,6 +1399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody2D: {fileID: 980986507}
+  judahCross: {fileID: 903256581}
 --- !u!50 &980986507
 Rigidbody2D:
   serializedVersion: 4
