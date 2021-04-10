@@ -5,21 +5,30 @@ using UnityEngine;
 
 public class TribalManScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private const float SpeedMovement = 0.4f;
+    private Vector2 _npcMovement;
+
     void Start()
     {
+        _npcMovement = Vector2.left * SpeedMovement * Time.deltaTime;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        transform.Translate(_npcMovement);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        switch (other.gameObject.tag)
         {
-            Destroy(transform.gameObject);
+            case "Player":
+                Destroy(transform.gameObject);
+                break;
+
+            case "Obstacle":
+                _npcMovement = -_npcMovement;
+                break;
         }
     }
 }
