@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-        _isPlayerGrounded = true;
     }
 
     void Update()
@@ -34,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Plateform") || other.gameObject.CompareTag("Plateform2"))
+        if (other.gameObject.CompareTag("Plateform"))
         {
             _isPlayerGrounded = true;
         }
@@ -45,14 +44,6 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Obstacle"))
         {
             _isPlayerGrounded = true;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Plateform2"))
-        {
-            _isPlayerGrounded = false;
         }
     }
 }
