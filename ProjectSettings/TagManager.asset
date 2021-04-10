@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Enemy
   - Plateform2
+  - Judah
   layers:
   - Default
   - TransparentFX

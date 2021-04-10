@@ -23,11 +23,23 @@ public class TribalManScript : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Player":
-                Destroy(transform.gameObject);
+                // Destroy(transform.gameObject);
+                print("Player touched enemy");
                 break;
 
             case "Obstacle":
+            case "Enemy":
                 _npcMovement = -_npcMovement;
+                break;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case "Judah":
+                Destroy(transform.gameObject);
                 break;
         }
     }
