@@ -17,9 +17,14 @@ public class PlayerMovement : MonoBehaviour
         _isPlayerGrounded = true;
     }
 
-    private void FixedUpdate()
+    void Update()
     {
-        if (Input.GetKey("space") && _isPlayerGrounded)
+        var movementPlayerX = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedPlayer;
+
+        if (movementPlayerX != 0)
+            transform.Translate(movementPlayerX, 0f, 0f);
+
+        if (Input.GetKeyDown("space") && _isPlayerGrounded)
         {
             _rigidbody2D.velocity = new Vector2(0f, JumpHeight);
             _audioSource.Play();
@@ -27,17 +32,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        var movementPlayerX = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedPlayer;
-
-        if (movementPlayerX != 0)
-            transform.Translate(movementPlayerX, 0f, 0f);
-    }
-
     private void OnCollisionStay2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Plateform"))
+        if (other.gameObject.CompareTag("Plateform") || other.gameObject.CompareTag("Plateform2"))
         {
             _isPlayerGrounded = true;
         }
@@ -48,6 +45,14 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Obstacle"))
         {
             _isPlayerGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Plateform2"))
+        {
+            _isPlayerGrounded = false;
         }
     }
 }

@@ -7,6 +7,7 @@ TagManager:
   - Plateform
   - Obstacle
   - Enemy
+  - Plateform2
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - TeriTeriAdventures
   - 
   - 
   - 
@@ -43,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: TeriTeriAdventures
+    uniqueID: 1271556687
     locked: 0
