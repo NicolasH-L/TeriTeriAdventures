@@ -27,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
         {
             _rigidbody2D.velocity = new Vector2(0f, JumpHeight);
             _audioSource.Play();
-            _isPlayerGrounded = false;
         }
     }
 
@@ -39,11 +38,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Obstacle"))
+        if (other.gameObject.CompareTag("Plateform"))
         {
-            _isPlayerGrounded = true;
+            _isPlayerGrounded = false;
         }
     }
 }
