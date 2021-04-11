@@ -2,7 +2,7 @@
 
 public class TribalManScript : MonoBehaviour
 {
-    private const float SpeedMovement = 0.4f;
+    private const float SpeedMovement = 1f;
     private Vector2 _npcMovement;
 
     void Start()
@@ -12,8 +12,7 @@ public class TribalManScript : MonoBehaviour
 
     void Update()
     {
-        _npcMovement *= Time.deltaTime;
-        transform.Translate(_npcMovement);
+        transform.Translate(_npcMovement * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
