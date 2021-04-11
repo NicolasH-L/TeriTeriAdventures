@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\Magnet.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\TribalManScript.cs" />
+     <Compile Include="Assets\Scripts\WelcomeScreen.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/Beanz/Documents/ProjetUnityEcole/TPCertificatif/TeriTeriAdventures/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
