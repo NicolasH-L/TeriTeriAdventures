@@ -7,11 +7,12 @@ public class TribalManScript : MonoBehaviour
 
     void Start()
     {
+        _npcMovement = Vector2.left * SpeedMovement;
     }
 
     void Update()
     {
-        _npcMovement = Vector2.left * (SpeedMovement * Time.deltaTime);
+        _npcMovement *= Time.deltaTime;
         transform.Translate(_npcMovement);
     }
 
