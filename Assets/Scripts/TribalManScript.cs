@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TribalManScript : MonoBehaviour
 {
@@ -10,11 +7,12 @@ public class TribalManScript : MonoBehaviour
 
     void Start()
     {
-        _npcMovement = Vector2.left * SpeedMovement * Time.deltaTime;
+        _npcMovement = Vector2.left * SpeedMovement;
     }
 
     void Update()
     {
+        _npcMovement *= Time.deltaTime;
         transform.Translate(_npcMovement);
     }
 
@@ -23,7 +21,6 @@ public class TribalManScript : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Player":
-                // Destroy(transform.gameObject);
                 print("Player touched enemy");
                 break;
 
