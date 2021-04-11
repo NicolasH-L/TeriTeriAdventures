@@ -1206,10 +1206,10 @@ GameObject:
   - component: {fileID: 980986509}
   - component: {fileID: 980986508}
   - component: {fileID: 980986507}
-  - component: {fileID: 980986506}
   - component: {fileID: 980986505}
   - component: {fileID: 980986504}
   - component: {fileID: 980986510}
+  - component: {fileID: 980986506}
   m_Layer: 0
   m_Name: TeriTeri
   m_TagString: Player
@@ -1398,7 +1398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aadfcec594af9e642bf6db8e2d48549f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody2D: {fileID: 980986507}
+  playerRigidBody2D: {fileID: 980986507}
   judahCross: {fileID: 903256581}
 --- !u!50 &980986507
 Rigidbody2D:
