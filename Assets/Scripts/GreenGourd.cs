@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GreenGourd : MonoBehaviour
+public class GreenGourd : MonoBehaviour, ItemInterface
 {
     // Start is called before the first frame update
     void Start()
@@ -14,5 +14,17 @@ public class GreenGourd : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void UseItem()
+    {
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

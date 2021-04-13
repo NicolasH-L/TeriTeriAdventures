@@ -24,7 +24,6 @@ public class PinkGourd : MonoBehaviour, ItemInterface
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
-            print("sdfsdf");
         }
     }
 }
