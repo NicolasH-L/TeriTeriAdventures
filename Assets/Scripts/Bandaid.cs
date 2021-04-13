@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bandaid : MonoBehaviour
+public class Bandaid : MonoBehaviour, ItemInterface
 {
     // Start is called before the first frame update
     void Start()
@@ -14,5 +14,18 @@ public class Bandaid : MonoBehaviour
     void Update()
     {
         
+    }
+    
+    public void UseItem()
+    {
+        throw new System.NotImplementedException();
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
