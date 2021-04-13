@@ -347,7 +347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &411843387
 Transform:
   m_ObjectHideFlags: 0
@@ -899,8 +899,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1271556687
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c47e75ae095b49b4c8abed8e5260922a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2607,8 +2607,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633177943}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 97.229996, y: -16.52, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: -15.64, y: -17.42, z: 0}
+  m_LocalScale: {x: 0.45793, y: 0.45793, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -2767,12 +2767,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2261299075362254517}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1771267916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1759919213685272300, guid: 145a684e4bd5e9142985f50f9e864f50,
+    type: 3}
+  m_PrefabInstance: {fileID: 1759919213004917152}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1771267917 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1759919213685272301, guid: 145a684e4bd5e9142985f50f9e864f50,
     type: 3}
   m_PrefabInstance: {fileID: 1759919213004917152}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1771267921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771267916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151420e11c60f7a4ca3344a4e3ab9e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1865835574 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5065637770836803040, guid: ce3c8ce4b2581f549910d2fa313b579c,
@@ -3353,7 +3371,7 @@ PrefabInstance:
     - target: {fileID: 7607526443653402713, guid: 4e0ae725626ad2242804485deeb89214,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7607526443653402713, guid: 4e0ae725626ad2242804485deeb89214,
         type: 3}
