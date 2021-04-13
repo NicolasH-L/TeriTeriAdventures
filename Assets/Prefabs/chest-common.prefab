@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2261299075839043656}
   - component: {fileID: 2261299075839043657}
-  - component: {fileID: 761261401868184781}
+  - component: {fileID: 916456565}
+  - component: {fileID: 916456567}
   m_Layer: 0
   m_Name: chest-common
   m_TagString: Untagged
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1271556687
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d1c738844fc8b064dae2edf8553e7cd7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -82,8 +83,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &761261401868184781
-PolygonCollider2D:
+--- !u!61 &916456565
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -95,7 +96,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.12, y: -0.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -105,25 +106,19 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.69, y: 0.22}
-      - {x: 0.68, y: 0.32}
-      - {x: 0.64, y: 0.45}
-      - {x: 0.57, y: 0.48}
-      - {x: 0.16, y: 0.48}
-      - {x: 0.06, y: 0.47}
-      - {x: -0.19, y: 0.47}
-      - {x: -0.65999997, y: 0.44}
-      - {x: -0.7, y: 0.48}
-      - {x: -0.82, y: 0.48}
-      - {x: -0.84999996, y: 0.44}
-      - {x: -0.90999997, y: 0.29999998}
-      - {x: -0.94, y: 0.12}
-      - {x: -0.94, y: -0.29}
-      - {x: -0.79999995, y: -0.83}
-      - {x: -0.76, y: -0.88}
-      - {x: 0.56, y: -0.88}
-      - {x: 0.61, y: -0.83}
-      - {x: 0.71, y: -0.29}
-      - {x: 0.71, y: 0.089999996}
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!114 &916456567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2261299075839043662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4ae2f75a295724984a78d7f8f0bb39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chests: {fileID: 21300000, guid: 7c82848e445cbd34dbd69cce2e6d52a6, type: 3}
