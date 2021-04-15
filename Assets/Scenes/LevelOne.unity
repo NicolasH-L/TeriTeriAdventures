@@ -2206,6 +2206,7 @@ GameObject:
   - component: {fileID: 1343805501}
   - component: {fileID: 1343805500}
   - component: {fileID: 1343805502}
+  - component: {fileID: 1343805503}
   m_Layer: 0
   m_Name: potion
   m_TagString: Untagged
@@ -2271,7 +2272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1343805499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.891, y: -16.91, z: 0}
+  m_LocalPosition: {x: -46.7, y: -20.57, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2296,6 +2297,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &1343805503
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343805499}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.016608357, y: 0.26550615}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 14.93, y: 14.21}
+    newSize: {x: 14.93, y: 14.21}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.214245, y: 5.049801}
+  m_EdgeRadius: 0
 --- !u!1 &1401323134
 GameObject:
   m_ObjectHideFlags: 0
@@ -3384,30 +3411,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2261299075362254517}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1771267916 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1759919213685272300, guid: 145a684e4bd5e9142985f50f9e864f50,
-    type: 3}
-  m_PrefabInstance: {fileID: 1759919213004917152}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1771267917 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1759919213685272301, guid: 145a684e4bd5e9142985f50f9e864f50,
     type: 3}
   m_PrefabInstance: {fileID: 1759919213004917152}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1771267921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1771267916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 151420e11c60f7a4ca3344a4e3ab9e07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1882072595 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3989829138855224049, guid: 316a44e73714de14fa37b9de611905c9,
