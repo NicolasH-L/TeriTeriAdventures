@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1865835577}
   m_Layer: 0
   m_Name: chest-super-rare
-  m_TagString: Untagged
+  m_TagString: ChestSuperRare
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

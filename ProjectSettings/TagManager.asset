@@ -10,6 +10,13 @@ TagManager:
   - Plateform2
   - Judah
   - Wall
+  - ChestCommon
+  - ChestRare
+  - ChestSuperRare
+  - GreenGourd
+  - PinkGourd
+  - TeriTicket
+  - Bandaid
   layers:
   - Default
   - TransparentFX
