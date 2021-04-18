@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ParallaxBackground : MonoBehaviour
 {
+    private const float ParallaxEffectMultiplier = 0.5f;
     private Transform _cameraTransform;
     private Vector3 _lastCameraPos;
     private Sprite _sprite;
@@ -23,14 +24,11 @@ public class ParallaxBackground : MonoBehaviour
     void Update()
     {
         Vector3 deltaMovement = _cameraTransform.position - _lastCameraPos;
-        float parallaxMultiplier = 0.5f;
-        transform.position += deltaMovement * parallaxMultiplier;
+        transform.position += deltaMovement * ParallaxEffectMultiplier;
         _lastCameraPos = _cameraTransform.position;
 
-        if (Math.Abs(_cameraTransform.position.x - transform.position.x) >= _textureUniteSizeX)
-        {
-            float offsetPosX = (_cameraTransform.position.x - transform.position.x) % _textureUniteSizeX;
-            transform.position = new Vector3(_cameraTransform.position.x + offsetPosX, transform.position.y);
-        }
+        if (!(Math.Abs(_cameraTransform.position.x - transform.position.x) >= _textureUniteSizeX)) return;
+        var offsetPosX = (_cameraTransform.position.x - transform.position.x) % _textureUniteSizeX;
+        transform.position = new Vector3(_cameraTransform.position.x + offsetPosX, transform.position.y);
     }
 }
