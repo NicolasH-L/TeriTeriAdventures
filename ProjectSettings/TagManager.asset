@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Plateform2
   - Judah
+  - Wall
   layers:
   - Default
   - TransparentFX
