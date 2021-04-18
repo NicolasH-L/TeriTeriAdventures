@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class TribalManScript : MonoBehaviour
+public class IslandNativeSavageScript : MonoBehaviour
 {
     private const float SpeedMovement = 1f;
     private const int MaxHitPoint = 3;

@@ -62,12 +62,12 @@
      <Compile Include="Assets\Scripts\Chests.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\GreenGourd.cs" />
+     <Compile Include="Assets\Scripts\IslandNativeSavageScript.cs" />
      <Compile Include="Assets\Scripts\ItemInterface.cs" />
      <Compile Include="Assets\Scripts\Magnet.cs" />
      <Compile Include="Assets\Scripts\ParallaxBackground.cs" />
      <Compile Include="Assets\Scripts\PinkGourd.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\TribalManScript.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
