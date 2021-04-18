@@ -3,7 +3,9 @@
 public class TribalManScript : MonoBehaviour
 {
     private const float SpeedMovement = 1f;
+    private const int MaxHitPoint = 3;
     private Vector2 _npcMovement;
+    private int _compteurHit;
 
     void Start()
     {
@@ -32,11 +34,14 @@ public class TribalManScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        switch (other.gameObject.tag)
+        if (other.gameObject.tag.Equals("Judah"))
         {
-            case "Judah":
-                Destroy(transform.gameObject);
-                break;
+            _compteurHit++;
+        }
+
+        if (_compteurHit == MaxHitPoint)
+        {
+            Destroy(transform.gameObject);
         }
     }
 }
