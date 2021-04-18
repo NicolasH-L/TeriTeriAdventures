@@ -10,7 +10,7 @@ public class ParallaxBackground : MonoBehaviour
     private Sprite _sprite;
     private Texture2D _texture;
     private float _textureUniteSizeX;
-    
+
     void Start()
     {
         _cameraTransform = Camera.main.transform;
