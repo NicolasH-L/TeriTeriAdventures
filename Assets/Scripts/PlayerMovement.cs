@@ -11,9 +11,9 @@ public class PlayerMovement : MonoBehaviour
     private const float ForceAppliedRetracting = 950f;
     private const float DelayTime = 0.4f;
     private const int MaxJump = 2;
-    private const int soundEffect1 = 0;
-    private const int soundEffect2 = 1;
-    private const int soundEffect3 = 2;
+    private const int SoundEffect1 = 0;
+    private const int SoundEffect2 = 1;
+    private const int SoundEffect3 = 2;
     [SerializeField] private Rigidbody2D playerRigidBody2D;
     [SerializeField] private GameObject judahCross;
     private Animator _animatorPlayer;
@@ -59,13 +59,13 @@ public class PlayerMovement : MonoBehaviour
         {
             playerRigidBody2D.velocity = new Vector2(0f, JumpHeight);
             _jumpCounter++;
-            _audioSource[soundEffect1].Play();
+            _audioSource[SoundEffect1].Play();
         }
 
         //TODO : Fix attacking
         if (Input.GetKey("j") && !_hasAttacked)
         {
-            _audioSource[soundEffect2].Play();
+            _audioSource[SoundEffect2].Play();
             _jointMotor2D.motorSpeed = ForceAppliedAttacking;
             _hingeJoint2D.motor = _jointMotor2D;
             _judahCollider.enabled = true;
@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
 
             case "Enemy":
-                _audioSource[soundEffect3].Play();
+                _audioSource[SoundEffect3].Play();
                 break;
         }
     }
@@ -111,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //TODO : Callback
-    public void resetJump()
+    public void ResetJump()
     {
         _jumpCounter = 0;
     }
