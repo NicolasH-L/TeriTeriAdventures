@@ -45,15 +45,11 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.Translate(movementPlayerX, 0f, 0f);
             if (Input.GetKey("d"))
-            {
                 _animatorPlayer.SetBool("isMovingToTheRight", true);
-            }
         }
 
         if (Input.GetKeyUp("d"))
-        {
             _animatorPlayer.SetBool("isMovingToTheRight", false);
-        }
 
         if (Input.GetKeyDown("space") && _jumpCounter < MaxJump)
         {
