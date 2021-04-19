@@ -11,11 +11,14 @@ public class PlayerMovement : MonoBehaviour
     private const float ForceAppliedRetracting = 950f;
     private const float DelayTime = 0.4f;
     private const int MaxJump = 2;
+    private const int soundEffect1 = 0;
+    private const int soundEffect2 = 1;
+    private const int soundEffect3 = 2;
     [SerializeField] private Rigidbody2D playerRigidBody2D;
     [SerializeField] private GameObject judahCross;
     private Animator _animatorPlayer;
     private PolygonCollider2D _polygonCollider2D;
-    private AudioSource _audioSource;
+    private AudioSource[] _audioSource;
     private HingeJoint2D _hingeJoint2D;
     private JointMotor2D _jointMotor2D;
     private Collider2D _judahCollider;
@@ -26,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _animatorPlayer = GetComponent<Animator>();
         _hingeJoint2D = GetComponent<HingeJoint2D>();
-        _audioSource = GetComponent<AudioSource>();
+        _audioSource = GetComponents<AudioSource>();
         _judahCollider = judahCross.GetComponent<Collider2D>();
         _polygonCollider2D = GetComponent<PolygonCollider2D>();
         _jointMotor2D = _hingeJoint2D.motor;
@@ -51,17 +54,18 @@ public class PlayerMovement : MonoBehaviour
         {
             _animatorPlayer.SetBool("isMovingToTheRight", false);
         }
-        
+
         if (Input.GetKeyDown("space") && _jumpCounter < MaxJump)
         {
             playerRigidBody2D.velocity = new Vector2(0f, JumpHeight);
             _jumpCounter++;
-            _audioSource.Play();
+            _audioSource[soundEffect1].Play();
         }
 
         //TODO : Fix attacking
         if (Input.GetKey("j") && !_hasAttacked)
         {
+            _audioSource[soundEffect2].Play();
             _jointMotor2D.motorSpeed = ForceAppliedAttacking;
             _hingeJoint2D.motor = _jointMotor2D;
             _judahCollider.enabled = true;
@@ -88,6 +92,10 @@ public class PlayerMovement : MonoBehaviour
             case "Plateform2":
             case "Obstacle":
                 _jumpCounter = 0;
+                break;
+
+            case "Enemy":
+                _audioSource[soundEffect3].Play();
                 break;
         }
     }
