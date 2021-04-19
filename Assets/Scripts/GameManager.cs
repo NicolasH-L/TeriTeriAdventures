@@ -9,15 +9,17 @@ public class GameManager : MonoBehaviour
     private AudioSource _audioSource;
 
     void Start()
-
     {
         _audioSource = GetComponent<AudioSource>();
-        _audioSource.clip = listWelcomeBgm[Random.Range(0, listWelcomeBgm.Count)];
-        _audioSource.Play();
+        QueueSong();
     }
 
     void Update()
     {
+        if (!_audioSource.isPlaying)
+        {
+            QueueSong();
+        }
     }
 
     public void StartGame()
@@ -30,5 +32,11 @@ public class GameManager : MonoBehaviour
     {
         _audioSource.Stop();
         Application.Quit();
+    }
+
+    private void QueueSong()
+    {
+        _audioSource.clip = listWelcomeBgm[Random.Range(0, listWelcomeBgm.Count)];
+        _audioSource.Play();
     }
 }
