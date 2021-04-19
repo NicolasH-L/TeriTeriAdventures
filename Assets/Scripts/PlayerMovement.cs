@@ -57,7 +57,6 @@ public class PlayerMovement : MonoBehaviour
             _jumpCounter++;
             _audioSource[SoundEffect1].Play();
         }
-
         //TODO : Fix attacking
         if (Input.GetKey("j") && !_hasAttacked)
         {
