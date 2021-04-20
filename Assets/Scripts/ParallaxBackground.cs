@@ -21,14 +21,16 @@ public class ParallaxBackground : MonoBehaviour
         _textureUniteSizeX = _texture.width / _sprite.pixelsPerUnit;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Vector3 deltaMovement = _cameraTransform.position - _lastCameraPos;
-        transform.position += deltaMovement * ParallaxEffectMultiplier;
+        transform.position -= deltaMovement * ParallaxEffectMultiplier;
         _lastCameraPos = _cameraTransform.position;
 
-        if (!(Math.Abs(_cameraTransform.position.x - transform.position.x) >= _textureUniteSizeX)) return;
-        // var offsetPosX = (_cameraTransform.position.x - transform.position.x) % _textureUniteSizeX;
-        transform.position = new Vector3(_cameraTransform.position.x, transform.position.y);
+        if (Math.Abs(_cameraTransform.position.x - transform.position.x) >= _textureUniteSizeX)
+        {
+            var offsetPosX = (_cameraTransform.position.x - transform.position.x) % _textureUniteSizeX;
+            transform.position = new Vector2(_cameraTransform.position.x + offsetPosX, transform.position.y);
+        }
     }
 }
