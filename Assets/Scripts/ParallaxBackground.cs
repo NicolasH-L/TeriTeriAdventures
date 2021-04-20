@@ -28,7 +28,7 @@ public class ParallaxBackground : MonoBehaviour
         _lastCameraPos = _cameraTransform.position;
 
         if (!(Math.Abs(_cameraTransform.position.x - transform.position.x) >= _textureUniteSizeX)) return;
-        var offsetPosX = (_cameraTransform.position.x - transform.position.x) % _textureUniteSizeX;
-        transform.position = new Vector3(_cameraTransform.position.x + offsetPosX, transform.position.y);
+        // var offsetPosX = (_cameraTransform.position.x - transform.position.x) % _textureUniteSizeX;
+        transform.position = new Vector3(_cameraTransform.position.x, transform.position.y);
     }
 }
