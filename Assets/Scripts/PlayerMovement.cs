@@ -90,9 +90,11 @@ public class PlayerMovement : MonoBehaviour
                 break;
 
             case "Enemy":
-                _audioSource[SoundEffect3].Play();
+                // _audioSource[SoundEffect3].Play();
+                print("Enemy touched me");
                 break;
         }
+        print(other.gameObject.name);
     }
 
     private void OnCollisionExit2D(Collision2D other)
