@@ -69,6 +69,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        throw new NotImplementedException();
+    }
+
     //TODO : Fix the coroutine when the player is attacking
     private IEnumerator Delay()
     {
