@@ -111,11 +111,8 @@ public class PlayerMovement : MonoBehaviour
             case "Enemy":
                 // _audioSource[SoundEffect3].Play();
                 TakeDamage(Damage);
-                print(_currentHealth);
                 break;
         }
-
-        print(other.gameObject.name);
     }
 
     private void OnCollisionExit2D(Collision2D other)
