@@ -17,6 +17,7 @@ TagManager:
   - PinkGourd
   - TeriTicket
   - Bandaid
+  - Ground
   layers:
   - Default
   - TransparentFX

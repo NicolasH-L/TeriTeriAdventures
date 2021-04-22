@@ -103,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Plateform":
-            case "Plateform2":
+            case "Ground":
             case "Obstacle":
                 _jumpCounter = 0;
                 break;
