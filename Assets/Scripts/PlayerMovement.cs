@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private const int SoundEffect1 = 0;
     private const int SoundEffect2 = 1;
     private const int SoundEffect3 = 2;
+    private const int MaxHealth = 100;
+    private const int Damage = 10;
     [SerializeField] private Rigidbody2D playerRigidBody2D;
     [SerializeField] private GameObject judahCross;
     private Animator _animatorPlayer;
@@ -24,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     private Collider2D _judahCollider;
     private bool _hasAttacked;
     private int _jumpCounter;
+    private int _currentHealth;
+
+    [SerializeField] private HealthBar healthBar;
 
     void Start()
     {
@@ -35,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
         _jointMotor2D = _hingeJoint2D.motor;
         _judahCollider.enabled = false;
         _jumpCounter = 0;
+        _currentHealth = MaxHealth;
+        healthBar.SetMaxLife(MaxHealth);
     }
 
     void Update()
@@ -57,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
             _jumpCounter++;
             _audioSource[SoundEffect1].Play();
         }
+
         //TODO : Fix attacking
         if (Input.GetKey("j") && !_hasAttacked)
         {
@@ -71,7 +80,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-       
+    }
+
+    private void TakeDamage(int damage)
+    {
+        _currentHealth -= damage;
+        healthBar.SetHealth(_currentHealth);
     }
 
     //TODO : Fix the coroutine when the player is attacking
@@ -96,9 +110,11 @@ public class PlayerMovement : MonoBehaviour
 
             case "Enemy":
                 // _audioSource[SoundEffect3].Play();
-                print("Enemy touched me");
+                TakeDamage(Damage);
+                print(_currentHealth);
                 break;
         }
+
         print(other.gameObject.name);
     }
 
