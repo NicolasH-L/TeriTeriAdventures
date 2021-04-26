@@ -39,4 +39,12 @@ public class GameManager : MonoBehaviour
         _audioSource.clip = listWelcomeBgm[Random.Range(0, listWelcomeBgm.Count)];
         _audioSource.Play();
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+    }
 }
