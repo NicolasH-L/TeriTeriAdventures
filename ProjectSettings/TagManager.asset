@@ -18,6 +18,7 @@ TagManager:
   - TeriTicket
   - Bandaid
   - Ground
+  - Potion
   layers:
   - Default
   - TransparentFX
