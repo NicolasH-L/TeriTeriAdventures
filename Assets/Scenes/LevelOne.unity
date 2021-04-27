@@ -1107,7 +1107,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 712268102}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f60c4351ec874ed46b604234b8b499a1, type: 3}
   m_Name: 
@@ -1175,8 +1175,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1271556687
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9dee07d130c422440813db4994a5aea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1843,6 +1843,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRigidBody2D: {fileID: 980986507}
   judahCross: {fileID: 903256581}
+  listSprite:
+  - {fileID: 21300000, guid: cab8c77210ec2b8439901276e5a95d36, type: 3}
+  - {fileID: 21300000, guid: 94faae324975a63499e4acaa7bbf3f7c, type: 3}
   healthBar: {fileID: 663854006}
 --- !u!50 &980986507
 Rigidbody2D:

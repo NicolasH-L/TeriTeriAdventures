@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     private const string KeyMoveRight = "d";
     private const string KeyMoveLeft = "a";
     private const string KeyJump = "space";
+    private const string BooleanDirectionRight = "isMovingToTheRight";
+    private const string BooleanDirectionLeft = "isMovingToTheLeft";
     private const float SpeedPlayer = 7f;
     private const float JumpHeight = 8f;
     private const float ForceAppliedAttacking = -1000f;
@@ -24,11 +26,6 @@ public class PlayerMovement : MonoBehaviour
     private const int TeriPlayerLeftIndex = 0;
     [SerializeField] private Rigidbody2D playerRigidBody2D;
     [SerializeField] private GameObject judahCross;
-
-    //TODO get rid of it
-    [SerializeField] private List<Sprite> listSprite;
-    private SpriteRenderer _spriteRenderer;
-
     private Animator _animatorPlayer;
     private PolygonCollider2D _polygonCollider2D;
     private AudioSource[] _audioSource;
@@ -36,16 +33,12 @@ public class PlayerMovement : MonoBehaviour
     private JointMotor2D _jointMotor2D;
     private Collider2D _judahCollider;
     private bool _hasAttacked;
-    private bool _isPlayerFacingTheRight;
     private int _jumpCounter;
     private int _currentHealth;
-
     [SerializeField] private HealthBar healthBar;
 
     void Start()
     {
-        //TODO get rid of it
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         _animatorPlayer = GetComponent<Animator>();
         _hingeJoint2D = GetComponent<HingeJoint2D>();
         _audioSource = GetComponents<AudioSource>();
@@ -60,27 +53,29 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        _spriteRenderer.sprite =  listSprite[TeriPlayerLeftIndex];
         var movementPlayerX = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedPlayer;
-
         if (movementPlayerX != 0)
         {
+            print("entered");
             transform.Translate(movementPlayerX, 0f, 0f);
             if (Input.GetKey(KeyMoveRight))
-                _animatorPlayer.SetBool("isMovingToTheRight", true);
+            {
+                SetMovingAnimationBooleans(true, false);
+            }
             else if (Input.GetKey(KeyMoveLeft))
-                _animatorPlayer.SetBool("isMovingToTheLeft", true);
+            {
+                SetMovingAnimationBooleans(false, true);
+            }
         }
 
         if (Input.GetKeyUp(KeyMoveRight))
         {
-            _animatorPlayer.SetBool("isMovingToTheRight", false);
-            _isPlayerFacingTheRight = true;
+            
+            SetIdleAnimationBooleans(BooleanDirectionRight, true);
         }
         else if (Input.GetKeyUp(KeyMoveLeft))
         {
-            _animatorPlayer.SetBool("isMovingToTheLeft", false);
-            _isPlayerFacingTheRight = false;
+            SetIdleAnimationBooleans(BooleanDirectionLeft, false);
         }
 
         if (Input.GetKeyDown(KeyJump) && _jumpCounter < MaxJump)
@@ -106,12 +101,19 @@ public class PlayerMovement : MonoBehaviour
     {
     }
 
-    private void ChangeIdleSprite()
+    private void SetMovingAnimationBooleans(bool isMoveRight, bool isMoveLeft)
     {
-        _spriteRenderer.sprite =  listSprite[TeriPlayerLeftIndex];
-        print("hello");
+        _animatorPlayer.SetBool("isMovingToTheRight", isMoveRight);
+        _animatorPlayer.SetBool("isMovingToTheLeft", isMoveLeft);
+        _animatorPlayer.SetBool("isIdle", false);
     }
-    
+
+    private void SetIdleAnimationBooleans(string booleanDirection, bool isIdleRight)
+    {
+        _animatorPlayer.SetBool(booleanDirection, false);
+        _animatorPlayer.SetBool("isIdleRight", isIdleRight);
+        _animatorPlayer.SetBool("isIdle", true);
+    }
     private void TakeDamage(int damage)
     {
         _currentHealth -= damage;
