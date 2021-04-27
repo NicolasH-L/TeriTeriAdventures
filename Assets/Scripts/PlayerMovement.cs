@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private const string KeyMoveRight = "d";
+    private const string KeyMoveLeft = "a";
+    private const string KeyJump = "space";
     private const float SpeedPlayer = 7f;
     private const float JumpHeight = 8f;
     private const float ForceAppliedAttacking = -1000f;
@@ -17,8 +20,15 @@ public class PlayerMovement : MonoBehaviour
     private const int SoundEffect3 = 2;
     private const int MaxHealth = 100;
     private const int Damage = 10;
+    private const int TeriPlayerRightIndex = 1;
+    private const int TeriPlayerLeftIndex = 0;
     [SerializeField] private Rigidbody2D playerRigidBody2D;
     [SerializeField] private GameObject judahCross;
+
+    //TODO get rid of it
+    [SerializeField] private List<Sprite> listSprite;
+    private SpriteRenderer _spriteRenderer;
+
     private Animator _animatorPlayer;
     private PolygonCollider2D _polygonCollider2D;
     private AudioSource[] _audioSource;
@@ -26,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     private JointMotor2D _jointMotor2D;
     private Collider2D _judahCollider;
     private bool _hasAttacked;
+    private bool _isPlayerFacingTheRight;
     private int _jumpCounter;
     private int _currentHealth;
 
@@ -33,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        //TODO get rid of it
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _animatorPlayer = GetComponent<Animator>();
         _hingeJoint2D = GetComponent<HingeJoint2D>();
         _audioSource = GetComponents<AudioSource>();
@@ -47,19 +60,30 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        _spriteRenderer.sprite =  listSprite[TeriPlayerLeftIndex];
         var movementPlayerX = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedPlayer;
 
         if (movementPlayerX != 0)
         {
             transform.Translate(movementPlayerX, 0f, 0f);
-            if (Input.GetKey("d"))
+            if (Input.GetKey(KeyMoveRight))
                 _animatorPlayer.SetBool("isMovingToTheRight", true);
+            else if (Input.GetKey(KeyMoveLeft))
+                _animatorPlayer.SetBool("isMovingToTheLeft", true);
         }
 
-        if (Input.GetKeyUp("d"))
+        if (Input.GetKeyUp(KeyMoveRight))
+        {
             _animatorPlayer.SetBool("isMovingToTheRight", false);
+            _isPlayerFacingTheRight = true;
+        }
+        else if (Input.GetKeyUp(KeyMoveLeft))
+        {
+            _animatorPlayer.SetBool("isMovingToTheLeft", false);
+            _isPlayerFacingTheRight = false;
+        }
 
-        if (Input.GetKeyDown("space") && _jumpCounter < MaxJump)
+        if (Input.GetKeyDown(KeyJump) && _jumpCounter < MaxJump)
         {
             playerRigidBody2D.velocity = new Vector2(0f, JumpHeight);
             _jumpCounter++;
@@ -82,6 +106,12 @@ public class PlayerMovement : MonoBehaviour
     {
     }
 
+    private void ChangeIdleSprite()
+    {
+        _spriteRenderer.sprite =  listSprite[TeriPlayerLeftIndex];
+        print("hello");
+    }
+    
     private void TakeDamage(int damage)
     {
         _currentHealth -= damage;
