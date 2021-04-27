@@ -22,8 +22,6 @@ public class PlayerMovement : MonoBehaviour
     private const int SoundEffect3 = 2;
     private const int MaxHealth = 100;
     private const int Damage = 10;
-    private const int TeriPlayerRightIndex = 1;
-    private const int TeriPlayerLeftIndex = 0;
     [SerializeField] private Rigidbody2D playerRigidBody2D;
     [SerializeField] private GameObject judahCross;
     private Animator _animatorPlayer;
@@ -53,35 +51,50 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        var movementPlayerX = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedPlayer;
-        if (movementPlayerX != 0)
-        {
-            print("entered");
-            transform.Translate(movementPlayerX, 0f, 0f);
-            if (Input.GetKey(KeyMoveRight))
-            {
-                SetMovingAnimationBooleans(true, false);
-            }
-            else if (Input.GetKey(KeyMoveLeft))
-            {
-                SetMovingAnimationBooleans(false, true);
-            }
-        }
-
+        // var movementPlayerX = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedPlayer;
+        // if (movementPlayerX != 0)
+        // {
+        //     print("entered");
+        //     transform.Translate(movementPlayerX, 0f, 0f);
+        //     if (Input.GetKey(KeyMoveRight))
+        //     {
+        //         SetMovingAnimationBooleans(true, false);
+        //     }
+        //     else if (Input.GetKey(KeyMoveLeft))
+        //     {
+        //         SetMovingAnimationBooleans(false, true);
+        //     }
+        // }
+        //
+        // if (Input.GetKeyUp(KeyMoveRight))
+        // {
+        //     SetIdleAnimationBooleans(BooleanDirectionRight, true);
+        // }
+        // else if (Input.GetKeyUp(KeyMoveLeft))
+        // {
+        //     SetIdleAnimationBooleans(BooleanDirectionLeft, false);
+        // }
+        //
+        // if (Input.GetKeyDown(KeyJump) && _jumpCounter < MaxJump)
+        // {
+        //     playerRigidBody2D.velocity = new Vector2(0f, JumpHeight);
+        //     _jumpCounter++;
+        //     _audioSource[SoundEffect1].Play();
+        // }
         if (Input.GetKeyUp(KeyMoveRight))
         {
-            
             SetIdleAnimationBooleans(BooleanDirectionRight, true);
         }
         else if (Input.GetKeyUp(KeyMoveLeft))
         {
             SetIdleAnimationBooleans(BooleanDirectionLeft, false);
         }
-
+        
         if (Input.GetKeyDown(KeyJump) && _jumpCounter < MaxJump)
         {
             playerRigidBody2D.velocity = new Vector2(0f, JumpHeight);
             _jumpCounter++;
+            print(_jumpCounter.ToString());
             _audioSource[SoundEffect1].Play();
         }
 
@@ -99,6 +112,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        var movementPlayerX = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedPlayer;
+        if (movementPlayerX != 0)
+        {
+            print("entered");
+            transform.Translate(movementPlayerX, 0f, 0f);
+            if (Input.GetKey(KeyMoveRight))
+            {
+                SetMovingAnimationBooleans(true, false);
+            }
+            else if (Input.GetKey(KeyMoveLeft))
+            {
+                SetMovingAnimationBooleans(false, true);
+            }
+        }
+
+        
+
+        
     }
 
     private void SetMovingAnimationBooleans(bool isMoveRight, bool isMoveLeft)
