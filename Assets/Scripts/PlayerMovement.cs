@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -24,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private const int Damage = 10;
     [SerializeField] private Rigidbody2D playerRigidBody2D;
     [SerializeField] private GameObject judahCross;
+    [SerializeField] private HealthBar healthBar;
     private Animator _animatorPlayer;
     private PolygonCollider2D _polygonCollider2D;
     private AudioSource[] _audioSource;
@@ -33,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
     private bool _hasAttacked;
     private int _jumpCounter;
     private int _currentHealth;
-    [SerializeField] private HealthBar healthBar;
 
     void Start()
     {
@@ -172,17 +171,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
     }
-
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        switch (other.gameObject.tag)
-        {
-            case "Plateform":
-            case "Obstacle":
-                break;
-        }
-    }
-
+    
     //TODO : Callback
     public void ResetJump()
     {
