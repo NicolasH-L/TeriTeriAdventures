@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 893055358069795624}
   - component: {fileID: 893055358069795625}
   - component: {fileID: 893055358069795626}
+  - component: {fileID: 6874581883412485705}
   m_Layer: 0
   m_Name: TeriTicket
   m_TagString: TeriTicket
@@ -108,3 +109,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.1489434, y: 1.8188999}
   m_EdgeRadius: 0
+--- !u!114 &6874581883412485705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893055358069795627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10f7ec0ce860c4e47b9465603b83bc2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
