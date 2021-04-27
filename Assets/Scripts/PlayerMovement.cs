@@ -115,7 +115,6 @@ public class PlayerMovement : MonoBehaviour
         var movementPlayerX = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedPlayer;
         if (movementPlayerX != 0)
         {
-            print("entered");
             transform.Translate(movementPlayerX, 0f, 0f);
             if (Input.GetKey(KeyMoveRight))
             {
@@ -126,10 +125,6 @@ public class PlayerMovement : MonoBehaviour
                 SetMovingAnimationBooleans(false, true);
             }
         }
-
-        
-
-        
     }
 
     private void SetMovingAnimationBooleans(bool isMoveRight, bool isMoveLeft)
