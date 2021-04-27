@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\HealthBar.cs" />
      <Compile Include="Assets\Scripts\IslandNativeSavageScript.cs" />
      <Compile Include="Assets\Scripts\ItemInterface.cs" />
+     <Compile Include="Assets\Scripts\KianaBoss.cs" />
      <Compile Include="Assets\Scripts\Magnet.cs" />
      <Compile Include="Assets\Scripts\ParallaxBackground.cs" />
      <Compile Include="Assets\Scripts\PinkGourd.cs" />
