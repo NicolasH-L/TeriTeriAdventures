@@ -19,6 +19,8 @@ TagManager:
   - Bandaid
   - Ground
   - Potion
+  - Boss
+  - Cookie
   layers:
   - Default
   - TransparentFX

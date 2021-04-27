@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\GreenGourd.cs" />
      <Compile Include="Assets\Scripts\HealthBar.cs" />
+     <Compile Include="Assets\Scripts\HomingCookie.cs" />
      <Compile Include="Assets\Scripts\IslandNativeSavageScript.cs" />
      <Compile Include="Assets\Scripts\ItemInterface.cs" />
      <Compile Include="Assets\Scripts\KianaBoss.cs" />

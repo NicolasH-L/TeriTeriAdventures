@@ -22,7 +22,7 @@ public class KianaBoss : MonoBehaviour
 
     private void SpawnBullets()
     {
-        var pos = new Vector2(_kianaBoss.position.x - 5, _kianaBoss.position.y);
+        var pos = new Vector2(_kianaBoss.position.x - 5, _kianaBoss.position.y + 3);
         Instantiate(cookieBullets, pos, _kianaBoss.rotation);
     }
 }
