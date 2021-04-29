@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 133320783}
   - component: {fileID: 133320782}
   m_Layer: 0
-  m_Name: beach-02-v5
+  m_Name: forest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -352,7 +352,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 78054cde94ad1c048a7374df028cc524, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 30be5f60035f9034a887ae7f8ef59358, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
