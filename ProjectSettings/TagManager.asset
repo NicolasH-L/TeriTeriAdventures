@@ -21,6 +21,7 @@ TagManager:
   - Potion
   - Boss
   - Cookie
+  - InvincibleGourd
   layers:
   - Default
   - TransparentFX
