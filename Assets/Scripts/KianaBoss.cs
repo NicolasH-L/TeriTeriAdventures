@@ -15,11 +15,6 @@ public class KianaBoss : MonoBehaviour
         InvokeRepeating("SpawnBullets", 2f, 3f);
     }
     
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     private void SpawnBullets()
     {
         var pos = new Vector2(_kianaBoss.position.x - 5, _kianaBoss.position.y + 3);
