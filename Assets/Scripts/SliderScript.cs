@@ -8,15 +8,13 @@ public class SliderScript : MonoBehaviour
 {
     private Slider _slider;
 
-    private void Start()
+    private void Awake()
     {
         _slider = GetComponent<Slider>();
-        print(_slider == null);
     }
 
     public void SetMaxValue(int maxValue)
     {
-        print(_slider.maxValue.ToString());
         _slider.maxValue = maxValue;
     }
 
