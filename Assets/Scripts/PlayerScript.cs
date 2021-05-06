@@ -144,6 +144,8 @@ public class PlayerScript : MonoBehaviour
 
     private void TakeDamage(int damage)
     {
+        if (_isInvincible)
+            return;
         print("ive taken damage");
         _currentHealth -= damage;
         sliderScript.SetValue(_currentHealth);
@@ -171,8 +173,7 @@ public class PlayerScript : MonoBehaviour
 
             case "Enemy":
                 // _audioSource[SoundEffect3].Play();
-                if (!_isInvincible)
-                    TakeDamage(Damage);
+                TakeDamage(Damage);
                 break;
         }
     }
