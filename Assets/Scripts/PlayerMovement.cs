@@ -141,6 +141,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void TakeDamage(int damage)
     {
+        print("ive taken damage");
         _currentHealth -= damage;
         healthBar.SetHealth(_currentHealth);
     }
