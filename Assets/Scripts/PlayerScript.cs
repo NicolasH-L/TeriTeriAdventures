@@ -23,13 +23,14 @@ public class PlayerScript : MonoBehaviour
     private const int Damage = 10;
     [SerializeField] private Rigidbody2D playerRigidBody2D;
     [SerializeField] private GameObject judahCross;
-    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private SliderScript sliderScript;
     private Animator _animatorPlayer;
     private PolygonCollider2D _polygonCollider2D;
     private AudioSource[] _audioSource;
     private HingeJoint2D _hingeJoint2D;
     private JointMotor2D _jointMotor2D;
     private Collider2D _judahCollider;
+    private bool _isInvincible;
     private bool _hasAttacked;
     private int _jumpCounter;
     private int _currentHealth;
@@ -45,7 +46,8 @@ public class PlayerScript : MonoBehaviour
         _judahCollider.enabled = false;
         _jumpCounter = 0;
         _currentHealth = MaxHealth;
-        healthBar.SetMaxLife(MaxHealth);
+        sliderScript.SetMaxValue(MaxHealth);
+        sliderScript.SetValue(MaxHealth);
     }
 
     void Update()
@@ -88,7 +90,7 @@ public class PlayerScript : MonoBehaviour
         {
             SetIdleAnimationBooleans(BooleanDirectionLeft, false);
         }
-        
+
         if (Input.GetKeyDown(KeyJump) && _jumpCounter < MaxJump)
         {
             playerRigidBody2D.velocity = new Vector2(0f, JumpHeight);
@@ -139,11 +141,12 @@ public class PlayerScript : MonoBehaviour
         _animatorPlayer.SetBool("isIdleRight", isIdleRight);
         _animatorPlayer.SetBool("isIdle", true);
     }
+
     private void TakeDamage(int damage)
     {
         print("ive taken damage");
         _currentHealth -= damage;
-        healthBar.SetHealth(_currentHealth);
+        sliderScript.SetValue(_currentHealth);
     }
 
     //TODO : Fix the coroutine when the player is attacking
@@ -168,11 +171,12 @@ public class PlayerScript : MonoBehaviour
 
             case "Enemy":
                 // _audioSource[SoundEffect3].Play();
-                TakeDamage(Damage);
+                if (!_isInvincible)
+                    TakeDamage(Damage);
                 break;
         }
     }
-    
+
     //TODO : Callback
     public void ResetJump()
     {

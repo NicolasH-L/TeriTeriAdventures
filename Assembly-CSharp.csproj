@@ -63,7 +63,6 @@
      <Compile Include="Assets\Scripts\Chests.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\GreenGourd.cs" />
-     <Compile Include="Assets\Scripts\HealthBar.cs" />
      <Compile Include="Assets\Scripts\HomingCookie.cs" />
      <Compile Include="Assets\Scripts\IslandNativeSavageScript.cs" />
      <Compile Include="Assets\Scripts\ItemInterface.cs" />
@@ -72,6 +71,8 @@
      <Compile Include="Assets\Scripts\ParallaxBackground.cs" />
      <Compile Include="Assets\Scripts\PinkGourd.cs" />
      <Compile Include="Assets\Scripts\PlayerScript.cs" />
+     <Compile Include="Assets\Scripts\PlayerUiScript.cs" />
+     <Compile Include="Assets\Scripts\SliderScript.cs" />
      <Compile Include="Assets\Scripts\TeriTickets.cs" />
      <Compile Include="Assets\Scripts\plateScript.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
