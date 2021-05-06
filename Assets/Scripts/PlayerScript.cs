@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class PlayerScript : MonoBehaviour
     private const float ForceAppliedAttacking = -1000f;
     private const float ForceAppliedRetracting = 950f;
     private const float DelayTime = 0.4f;
+    private const int ExpGain = 5;
     private const int MaxJump = 2;
     private const int SoundEffect1 = 0;
     private const int SoundEffect2 = 1;
@@ -24,6 +27,10 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Rigidbody2D playerRigidBody2D;
     [SerializeField] private GameObject judahCross;
     [SerializeField] private SliderScript healthBar;
+    [SerializeField] private SliderScript expBar;
+    [SerializeField] private SliderScript wepExpBar;
+    [SerializeField] private TextMeshProUGUI playerLevel;
+    
     private Animator _animatorPlayer;
     private PolygonCollider2D _polygonCollider2D;
     private AudioSource[] _audioSource;
@@ -178,6 +185,51 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case "InvincibleGourd":
+                SetInvincibility();
+                break;
+            case "GreenGourd":
+                GainExp(expBar);
+                break;
+
+            case "Potion":
+                GainExp(wepExpBar);
+                break;
+            
+            case "PinkGourd":
+                break;
+        }
+    }
+
+    //TODO fix asap
+    private void SetInvincibility()
+    {
+        _isInvincible = true;
+        StartCoroutine(ExpireInvincibility());
+    }
+
+    private IEnumerator ExpireInvincibility()
+    {
+        yield return new WaitForSeconds(8);
+        _isInvincible = false;
+    }
+
+    private void GainExp(SliderScript bar)
+    {
+        var tmp = bar.GetCurrentValue();
+        bar.SetValue(tmp+5);
+    }
+    
+    //TODO in class/ meeting
+    private void GainHp()
+    {
+        // healthBar.
+    }
+    
     //TODO : Callback
     public void ResetJump()
     {
