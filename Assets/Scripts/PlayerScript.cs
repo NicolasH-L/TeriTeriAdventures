@@ -23,7 +23,7 @@ public class PlayerScript : MonoBehaviour
     private const int Damage = 10;
     [SerializeField] private Rigidbody2D playerRigidBody2D;
     [SerializeField] private GameObject judahCross;
-    [SerializeField] private SliderScript sliderScript;
+    [SerializeField] private SliderScript healthBar;
     private Animator _animatorPlayer;
     private PolygonCollider2D _polygonCollider2D;
     private AudioSource[] _audioSource;
@@ -46,8 +46,8 @@ public class PlayerScript : MonoBehaviour
         _judahCollider.enabled = false;
         _jumpCounter = 0;
         _currentHealth = MaxHealth;
-        sliderScript.SetMaxValue(MaxHealth);
-        sliderScript.SetValue(MaxHealth);
+        healthBar.SetMaxValue(_currentHealth);
+        healthBar.SetValue(_currentHealth);
     }
 
     void Update()
@@ -148,7 +148,7 @@ public class PlayerScript : MonoBehaviour
             return;
         print("ive taken damage");
         _currentHealth -= damage;
-        sliderScript.SetValue(_currentHealth);
+        healthBar.SetValue(_currentHealth);
     }
 
     //TODO : Fix the coroutine when the player is attacking

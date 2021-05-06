@@ -6,20 +6,22 @@ using UnityEngine.UI;
 
 public class SliderScript : MonoBehaviour
 {
-    private Slider slider;
+    private Slider _slider;
 
     private void Start()
     {
-        slider = GetComponent<Slider>();
+        _slider = GetComponent<Slider>();
+        print(_slider == null);
     }
 
     public void SetMaxValue(int maxValue)
     {
-        slider.maxValue = maxValue;
+        print(_slider.maxValue.ToString());
+        _slider.maxValue = maxValue;
     }
 
     public void SetValue(int value)
     {
-        slider.value = value;
+        _slider.value = value;
     }
 }

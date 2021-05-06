@@ -1432,8 +1432,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
-  - component: {fileID: 519420034}
-  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1541,34 +1539,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60c4351ec874ed46b604234b8b499a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listWelcomeBgm: []
-  teriTeri: {fileID: 0}
---- !u!114 &519420034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60c4351ec874ed46b604234b8b499a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listWelcomeBgm: []
-  teriTeri: {fileID: 0}
 --- !u!1001 &576215011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3340,7 +3310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1016595485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3353,7 +3323,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60c4351ec874ed46b604234b8b499a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listWelcomeBgm: []
+  listWelcomeBgm:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   teriTeri: {fileID: 980986503}
 --- !u!4 &1016595486
 Transform:
@@ -8770,6 +8743,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 663854006}
+    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
+      propertyPath: sliderScript
+      value: 
+      objectReference: {fileID: 663854006}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 605864e53ed497b45840bb44b23dd2aa, type: 3}
 --- !u!1001 &6123069813409949073
