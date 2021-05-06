@@ -71,7 +71,7 @@
      <Compile Include="Assets\Scripts\Magnet.cs" />
      <Compile Include="Assets\Scripts\ParallaxBackground.cs" />
      <Compile Include="Assets\Scripts\PinkGourd.cs" />
-     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\PlayerScript.cs" />
      <Compile Include="Assets\Scripts\TeriTickets.cs" />
      <Compile Include="Assets\Scripts\plateScript.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

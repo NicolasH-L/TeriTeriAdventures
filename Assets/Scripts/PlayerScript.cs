@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
     private const string KeyMoveRight = "d";
     private const string KeyMoveLeft = "a";
