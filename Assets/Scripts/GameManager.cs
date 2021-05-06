@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private List<AudioClip> listWelcomeBgm;
+    [SerializeField] private GameObject teriTeri;
     private AudioSource _audioSource;
 
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
         QueueSong();
+        DontDestroyOnLoad(teriTeri);
     }
 
     void Update()
