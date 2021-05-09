@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    private const string PlayerTag = "Player";
     [SerializeField] private List<AudioClip> listWelcomeBgm;
     [SerializeField] private GameObject essexSwitchScene;
     private AudioSource _audioSource;
+    private GameObject _player;
     
     void Start()
     {
@@ -28,6 +30,8 @@ public class GameManager : MonoBehaviour
         _audioSource.Stop();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         print(SceneManager.GetActiveScene().buildIndex);
+        _player = GameObject.FindGameObjectWithTag(PlayerTag);
+        print(_player.tag);
     }
 
     public void QuitGame()

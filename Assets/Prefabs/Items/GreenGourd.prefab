@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1759919213685272303}
   - component: {fileID: 1759919213685272302}
   - component: {fileID: 1759919213685272304}
-  - component: {fileID: 6288904809736596707}
   - component: {fileID: 9185123489396732536}
   m_Layer: 0
   m_Name: GreenGourd
@@ -130,18 +129,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6288904809736596707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1759919213685272300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 151420e11c60f7a4ca3344a4e3ab9e07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &9185123489396732536
 MonoBehaviour:
   m_ObjectHideFlags: 0

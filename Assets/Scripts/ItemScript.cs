@@ -1,13 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemScript : MonoBehaviour
 {
+    private string itemTag;
+
+    private void Awake()
+    {
+        itemTag = gameObject.tag;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
