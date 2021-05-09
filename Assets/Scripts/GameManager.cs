@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     private const string PlayerTag = "Player";
     [SerializeField] private List<AudioClip> listWelcomeBgm;
+    [SerializeField] private List<AudioClip> listLevelBgm;
     [SerializeField] private GameObject essexSwitchScene;
     private AudioSource _audioSource;
     private GameObject _player;
@@ -14,20 +15,18 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-        QueueSong();
+        QueueSong(listWelcomeBgm);
     }
 
     void Update()
     {
-        if (!_audioSource.isPlaying)
-        {
-            QueueSong();
-        }
+       
     }
 
     public void StartGame()
     {
         _audioSource.Stop();
+        StopCoroutine(RenameItAfter(listWelcomeBgm));
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         print(SceneManager.GetActiveScene().buildIndex);
         _player = GameObject.FindGameObjectWithTag(PlayerTag);
@@ -40,10 +39,17 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    private void QueueSong()
+    private void QueueSong(List<AudioClip> musicList)
     {
-        _audioSource.clip = listWelcomeBgm[Random.Range(0, listWelcomeBgm.Count)];
+        _audioSource.clip = musicList[Random.Range(0, listWelcomeBgm.Count)];
         _audioSource.Play();
+        StartCoroutine(RenameItAfter(musicList));
+    }
+
+    private IEnumerator RenameItAfter(List<AudioClip> musicList)
+    {
+        yield return new WaitForSeconds(_audioSource.clip.length);
+        QueueSong(musicList);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -53,4 +59,5 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
+    
 }
