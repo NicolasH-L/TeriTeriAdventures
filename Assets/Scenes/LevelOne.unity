@@ -2332,7 +2332,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1297921249}
     m_Modifications:
     - target: {fileID: 7792149869518211268, guid: ddc977d361637fc4dabd9af8d7328db1,
         type: 3}
@@ -2373,7 +2373,7 @@ PrefabInstance:
     - target: {fileID: 7792149869518211288, guid: ddc977d361637fc4dabd9af8d7328db1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7792149869518211288, guid: ddc977d361637fc4dabd9af8d7328db1,
         type: 3}
@@ -2393,17 +2393,17 @@ PrefabInstance:
     - target: {fileID: 7792149869518211288, guid: ddc977d361637fc4dabd9af8d7328db1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.004654
+      value: 26.274654
       objectReference: {fileID: 0}
     - target: {fileID: 7792149869518211288, guid: ddc977d361637fc4dabd9af8d7328db1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.5199995
+      value: 13.3
       objectReference: {fileID: 0}
     - target: {fileID: 7792149869518211288, guid: ddc977d361637fc4dabd9af8d7328db1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 4.1396484
       objectReference: {fileID: 0}
     - target: {fileID: 7792149869518211288, guid: ddc977d361637fc4dabd9af8d7328db1,
         type: 3}
@@ -2443,6 +2443,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7792149869518211269, guid: ddc977d361637fc4dabd9af8d7328db1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ddc977d361637fc4dabd9af8d7328db1, type: 3}
+--- !u!4 &708350405 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7792149869518211288, guid: ddc977d361637fc4dabd9af8d7328db1,
+    type: 3}
+  m_PrefabInstance: {fileID: 708350404}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &708350406 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7792149869518211268, guid: ddc977d361637fc4dabd9af8d7328db1,
@@ -4277,6 +4283,7 @@ Transform:
   - {fileID: 1896636727}
   - {fileID: 3736437477664378728}
   - {fileID: 1599189504}
+  - {fileID: 708350405}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
