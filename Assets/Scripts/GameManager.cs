@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
         print(SceneManager.GetActiveScene().buildIndex);
         _player = GameObject.FindGameObjectWithTag(PlayerTag);
         print(_player.tag);
+        QueueSong(listLevelBgm);
     }
 
     public void QuitGame()
