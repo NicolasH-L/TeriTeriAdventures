@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8161101288487869435}
   m_Layer: 0
   m_Name: MetallicBridge
-  m_TagString: Untagged
+  m_TagString: Plateform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
