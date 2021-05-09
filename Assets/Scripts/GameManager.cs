@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         _audioSource.Stop();
-        StopCoroutine(RenameItAfter(listWelcomeBgm));
+        StopCoroutine(PlayAnotherAudioClip(listWelcomeBgm));
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         print(SceneManager.GetActiveScene().buildIndex);
         _player = GameObject.FindGameObjectWithTag(PlayerTag);
@@ -41,12 +41,12 @@ public class GameManager : MonoBehaviour
 
     private void QueueSong(List<AudioClip> musicList)
     {
-        _audioSource.clip = musicList[Random.Range(0, listWelcomeBgm.Count)];
+        _audioSource.clip = musicList[Random.Range(0, musicList.Count)];
         _audioSource.Play();
-        StartCoroutine(RenameItAfter(musicList));
+        StartCoroutine(PlayAnotherAudioClip(musicList));
     }
 
-    private IEnumerator RenameItAfter(List<AudioClip> musicList)
+    private IEnumerator PlayAnotherAudioClip(List<AudioClip> musicList)
     {
         yield return new WaitForSeconds(_audioSource.clip.length);
         QueueSong(musicList);
