@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject essexSwitchScene;
     private AudioSource _audioSource;
     private GameObject _player;
-    
+
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-       
     }
 
     public void StartGame()
@@ -29,8 +28,8 @@ public class GameManager : MonoBehaviour
         StopCoroutine(PlayAnotherAudioClip(listWelcomeBgm));
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         print(SceneManager.GetActiveScene().buildIndex);
-        _player = GameObject.FindGameObjectWithTag(PlayerTag);
-        print(_player.tag);
+        DontDestroyOnLoad(this);
+        SceneManager.sceneLoaded += GetPlayer;
         QueueSong(listLevelBgm);
     }
 
@@ -60,5 +59,10 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
-    
+
+    private void GetPlayer(Scene scene, LoadSceneMode mode)
+    {
+        _player = GameObject.FindGameObjectWithTag(PlayerTag);
+        print(_player.tag);
+    }
 }
