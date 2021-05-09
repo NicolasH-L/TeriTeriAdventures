@@ -2812,28 +2812,13 @@ GameObject:
   - component: {fileID: 712268106}
   - component: {fileID: 712268105}
   - component: {fileID: 712268104}
-  - component: {fileID: 712268103}
   m_Layer: 0
   m_Name: SwitchScene
-  m_TagString: Untagged
+  m_TagString: NextLevel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &712268103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 712268102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60c4351ec874ed46b604234b8b499a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listWelcomeBgm: []
-  essexSwitchScene: {fileID: 0}
 --- !u!61 &712268104
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6375,7 +6360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listWelcomeBgm: []
-  essexSwitchScene: {fileID: 0}
+  listLevelBgm: []
 --- !u!4 &1660852526
 Transform:
   m_ObjectHideFlags: 0

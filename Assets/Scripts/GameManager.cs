@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private const string PlayerTag = "Player";
+    private const string NextLevelTag = "NextLevel";
     [SerializeField] private List<AudioClip> listWelcomeBgm;
     [SerializeField] private List<AudioClip> listLevelBgm;
-    [SerializeField] private GameObject essexSwitchScene;
+    private GameObject _essexSwitchScene;
     private AudioSource _audioSource;
     private GameObject _player;
 
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         print(SceneManager.GetActiveScene().buildIndex);
         DontDestroyOnLoad(this);
-        SceneManager.sceneLoaded += GetPlayer;
+        SceneManager.sceneLoaded += GetGameObjects;
         QueueSong(listLevelBgm);
     }
 
@@ -60,9 +61,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void GetPlayer(Scene scene, LoadSceneMode mode)
+    private void GetGameObjects(Scene scene, LoadSceneMode mode)
     {
         _player = GameObject.FindGameObjectWithTag(PlayerTag);
+        _essexSwitchScene = GameObject.FindGameObjectWithTag(NextLevelTag);
         print(_player.tag);
     }
 }
