@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4015135212957888463}
   - component: {fileID: 4015135212957888448}
   - component: {fileID: 4015135212957888449}
+  - component: {fileID: -6370483773768492356}
   - component: {fileID: 4015135212957888450}
   m_Layer: 0
   m_Name: plate-step
@@ -109,6 +110,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.41, y: 0.8}
   m_EdgeRadius: 0
+--- !u!50 &-6370483773768492356
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4015135212957888451}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &4015135212957888450
 MonoBehaviour:
   m_ObjectHideFlags: 0
