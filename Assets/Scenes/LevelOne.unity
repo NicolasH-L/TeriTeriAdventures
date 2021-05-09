@@ -2216,7 +2216,6 @@ GameObject:
   - component: {fileID: 712268106}
   - component: {fileID: 712268105}
   - component: {fileID: 712268104}
-  - component: {fileID: 712268103}
   m_Layer: 0
   m_Name: SwitchScene
   m_TagString: Untagged
@@ -2224,19 +2223,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &712268103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 712268102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60c4351ec874ed46b604234b8b499a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listWelcomeBgm: []
 --- !u!61 &712268104
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3303,7 +3289,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1016595485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3311,7 +3297,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1016595484}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f60c4351ec874ed46b604234b8b499a1, type: 3}
   m_Name: 
@@ -3320,6 +3306,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  essexSwitchScene: {fileID: 0}
 --- !u!4 &1016595486
 Transform:
   m_ObjectHideFlags: 0
