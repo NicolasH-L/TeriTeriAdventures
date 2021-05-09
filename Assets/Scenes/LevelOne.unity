@@ -8844,6 +8844,11 @@ PrefabInstance:
       objectReference: {fileID: 179837548}
     - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
         type: 3}
+      propertyPath: playerLevel
+      value: 
+      objectReference: {fileID: 1041246095}
+    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
       propertyPath: sliderScript
       value: 
       objectReference: {fileID: 663854006}
