@@ -361,6 +361,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7559508392054582235, guid: d82cc292de912954dbeeb2253edcc2df,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559508392054582235, guid: d82cc292de912954dbeeb2253edcc2df,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1271556687
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d82cc292de912954dbeeb2253edcc2df, type: 3}
 --- !u!4 &183051330 stripped
@@ -1441,6 +1451,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559508392054582235, guid: d82cc292de912954dbeeb2253edcc2df,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559508392054582235, guid: d82cc292de912954dbeeb2253edcc2df,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1271556687
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d82cc292de912954dbeeb2253edcc2df, type: 3}
@@ -5437,6 +5457,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7559508392054582235, guid: d82cc292de912954dbeeb2253edcc2df,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559508392054582235, guid: d82cc292de912954dbeeb2253edcc2df,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1271556687
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d82cc292de912954dbeeb2253edcc2df, type: 3}
 --- !u!4 &1527900675 stripped
@@ -6088,6 +6118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listWelcomeBgm: []
+  listLevelBgm: []
   essexSwitchScene: {fileID: 0}
 --- !u!4 &1794559135
 Transform:
@@ -6753,6 +6784,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559508392054582235, guid: d82cc292de912954dbeeb2253edcc2df,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559508392054582235, guid: d82cc292de912954dbeeb2253edcc2df,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1271556687
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d82cc292de912954dbeeb2253edcc2df, type: 3}
