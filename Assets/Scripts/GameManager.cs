@@ -6,14 +6,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private List<AudioClip> listWelcomeBgm;
-    [SerializeField] private GameObject teriTeri;
+    [SerializeField] private GameObject essexSwitchScene;
     private AudioSource _audioSource;
-
+    
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
         QueueSong();
-        DontDestroyOnLoad(teriTeri);
     }
 
     void Update()
@@ -28,6 +27,7 @@ public class GameManager : MonoBehaviour
     {
         _audioSource.Stop();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        print(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void QuitGame()

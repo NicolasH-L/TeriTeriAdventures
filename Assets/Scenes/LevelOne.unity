@@ -2231,13 +2231,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 712268102}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f60c4351ec874ed46b604234b8b499a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   listWelcomeBgm: []
-  teriTeri: {fileID: 0}
 --- !u!61 &712268104
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3276,12 +3275,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 943197066}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &980986503 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5657802358292049840, guid: 605864e53ed497b45840bb44b23dd2aa,
-    type: 3}
-  m_PrefabInstance: {fileID: 5657802357315323191}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &980986509 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5657802358292049850, guid: 605864e53ed497b45840bb44b23dd2aa,
@@ -3318,7 +3311,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1016595484}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f60c4351ec874ed46b604234b8b499a1, type: 3}
   m_Name: 
@@ -3327,7 +3320,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  teriTeri: {fileID: 980986503}
 --- !u!4 &1016595486
 Transform:
   m_ObjectHideFlags: 0

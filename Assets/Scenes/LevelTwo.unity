@@ -2746,7 +2746,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listWelcomeBgm: []
-  teriTeri: {fileID: 0}
 --- !u!61 &712268104
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4217,7 +4216,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRigidBody2D: {fileID: 980986507}
   judahCross: {fileID: 903256581}
-  sliderScript: {fileID: 0}
+  healthBar: {fileID: 0}
+  expBar: {fileID: 0}
+  wepExpBar: {fileID: 0}
+  playerLevel: {fileID: 0}
 --- !u!50 &980986507
 Rigidbody2D:
   serializedVersion: 4
@@ -6491,8 +6493,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listWelcomeBgm: []
-  teriTeri: {fileID: 5657802358292049840, guid: 605864e53ed497b45840bb44b23dd2aa,
-    type: 3}
 --- !u!4 &1660852526
 Transform:
   m_ObjectHideFlags: 0

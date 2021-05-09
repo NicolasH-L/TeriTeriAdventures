@@ -42,6 +42,12 @@ public class PlayerScript : MonoBehaviour
     private int _jumpCounter;
     private int _currentHealth;
 
+    //TODO Make this method a callback from the game manager
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     void Start()
     {
         _animatorPlayer = GetComponent<Animator>();
