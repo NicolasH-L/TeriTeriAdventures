@@ -66,6 +66,7 @@
      <Compile Include="Assets\Scripts\HomingCookie.cs" />
      <Compile Include="Assets\Scripts\IslandNativeSavageScript.cs" />
      <Compile Include="Assets\Scripts\ItemInterface.cs" />
+     <Compile Include="Assets\Scripts\ItemScript.cs" />
      <Compile Include="Assets\Scripts\KianaBoss.cs" />
      <Compile Include="Assets\Scripts\Magnet.cs" />
      <Compile Include="Assets\Scripts\ParallaxBackground.cs" />

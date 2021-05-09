@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5156622020741146498}
   - component: {fileID: 5156622020741146511}
   - component: {fileID: 5156622020741146496}
+  - component: {fileID: -724851332878426942}
   m_Layer: 0
   m_Name: Bandaid
   m_TagString: Bandaid
@@ -128,3 +129,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-724851332878426942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5156622020741146499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c968bec53f229e44f800d2cdbd9bbe53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
