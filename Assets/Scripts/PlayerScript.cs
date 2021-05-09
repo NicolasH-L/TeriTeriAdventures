@@ -30,7 +30,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private SliderScript expBar;
     [SerializeField] private SliderScript wepExpBar;
     [SerializeField] private TextMeshProUGUI playerLevel;
-    
+
     private Animator _animatorPlayer;
     private PolygonCollider2D _polygonCollider2D;
     private AudioSource[] _audioSource;
@@ -184,6 +184,7 @@ public class PlayerScript : MonoBehaviour
                 _jumpCounter = 0;
                 break;
 
+            case "Cookie":
             case "Enemy":
                 // _audioSource[SoundEffect3].Play();
                 TakeDamage(Damage);
@@ -201,11 +202,9 @@ public class PlayerScript : MonoBehaviour
             case "GreenGourd":
                 GainExp(expBar);
                 break;
-
             case "Potion":
                 GainExp(wepExpBar);
                 break;
-            
             case "PinkGourd":
                 break;
         }
@@ -227,15 +226,15 @@ public class PlayerScript : MonoBehaviour
     private void GainExp(SliderScript bar)
     {
         var tmp = bar.GetCurrentValue();
-        bar.SetValue(tmp+5);
+        bar.SetValue(tmp + 5);
     }
-    
+
     //TODO in class/ meeting
     private void GainHp()
     {
         // healthBar.
     }
-    
+
     //TODO : Callback
     public void ResetJump()
     {
