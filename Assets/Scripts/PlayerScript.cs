@@ -41,7 +41,13 @@ public class PlayerScript : MonoBehaviour
     private bool _hasAttacked;
     private int _jumpCounter;
     private int _currentHealth;
-
+    private const int ExpValue = 10;
+    private const int BaseLevelRequirement = 100;
+    private const int NextLevelExpReqOffset = 50;
+    private const int StartingPlayerLives = 1;
+    private int _playerLives;
+    private int _playerLevel;
+    private int _weaponLevel;
   void Start()
     {
         _animatorPlayer = GetComponent<Animator>();
@@ -193,10 +199,10 @@ public class PlayerScript : MonoBehaviour
                 SetInvincibility();
                 break;
             case "GreenGourd":
-                GainExp(expBar);
+                // GainExp(expBar);
                 break;
             case "Potion":
-                GainExp(wepExpBar);
+                // GainExp(wepExpBar);
                 break;
             case "PinkGourd":
                 break;
@@ -220,7 +226,7 @@ public class PlayerScript : MonoBehaviour
         _isInvincible = false;
     }
 
-    private void GainExp(SliderScript bar)
+    private void GainExp(SliderScript bar, int expValue, int nextLevelExpReq, int currentBarLevel)
     {
         var tmp = bar.GetCurrentValue();
         bar.SetValue(tmp + 5);
