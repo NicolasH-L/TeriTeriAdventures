@@ -45,10 +45,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (OnLevelEndReached != null)
-        {
-            OnLevelEndReached();
-        }
+        
+        // if (OnLevelEndReached != null)
+        // {
+        //     OnLevelEndReached();
+        // }
     }
 
     public void StartGame()
@@ -56,7 +57,6 @@ public class GameManager : MonoBehaviour
         _audioSource.Stop();
         StopCoroutine(PlayAnotherAudioClip(listWelcomeBgm));
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        print(SceneManager.GetActiveScene().buildIndex);
         DontDestroyOnLoad(this);
         SceneManager.sceneLoaded += GetPlayer;
         QueueSong(listLevelBgm);
@@ -84,7 +84,8 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        OnLevelEndReached -= NextLevel;
+        print(SceneManager.GetActiveScene().buildIndex);
+        // OnLevelEndReached -= NextLevel;
     }
 
     private void GetPlayer(Scene scene, LoadSceneMode mode)

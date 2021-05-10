@@ -39,6 +39,7 @@ public class PlayerScript : MonoBehaviour
     private Collider2D _judahCollider;
     private bool _isInvincible;
     private bool _hasAttacked;
+    private bool _isEndReached;
     private int _jumpCounter;
     private int _currentHealth;
 
@@ -108,7 +109,6 @@ public class PlayerScript : MonoBehaviour
         {
             playerRigidBody2D.velocity = new Vector2(0f, JumpHeight);
             _jumpCounter++;
-            print(_jumpCounter.ToString());
             _audioSource[SoundEffect1].Play();
         }
 
@@ -207,7 +207,21 @@ public class PlayerScript : MonoBehaviour
                 break;
             case "PinkGourd":
                 break;
+            case "NextLevel":
+                if (_isEndReached)
+                    break;
+                _isEndReached = true;
+                var manager = GameManager.GameManagerInstance;
+                // manager.OnLevelEndReached += manager.NextLevel;
+                manager.NextLevel();
+                break;
         }
+    }
+
+    private IEnumerator DelayEndReachedReset()
+    {
+        yield return new WaitForSeconds(2);
+        _isEndReached = false;
     }
 
     //TODO fix asap
