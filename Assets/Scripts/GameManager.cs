@@ -1,17 +1,41 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager _gameManager;
+
+    public static GameManager GameManagerInstance
+    {
+        get { return _gameManager; }
+    }
+
     private const string PlayerTag = "Player";
     private const string NextLevelTag = "NextLevel";
     [SerializeField] private List<AudioClip> listWelcomeBgm;
     [SerializeField] private List<AudioClip> listLevelBgm;
-    private GameObject _essexSwitchScene;
     private AudioSource _audioSource;
     private GameObject _player;
+
+    public delegate void LoadNextLevel();
+
+    public event LoadNextLevel OnLevelEndReached;
+
+    private void Awake()
+    {
+        if (_gameManager != null && _gameManager != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _gameManager = this;
+        }
+    }
 
     void Start()
     {
@@ -21,6 +45,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (OnLevelEndReached != null)
+        {
+            OnLevelEndReached();
+        }
     }
 
     public void StartGame()
@@ -30,7 +58,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         print(SceneManager.GetActiveScene().buildIndex);
         DontDestroyOnLoad(this);
-        SceneManager.sceneLoaded += GetGameObjects;
+        SceneManager.sceneLoaded += GetPlayer;
         QueueSong(listLevelBgm);
     }
 
@@ -53,18 +81,15 @@ public class GameManager : MonoBehaviour
         QueueSong(musicList);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void NextLevel()
     {
-        if (other.CompareTag("Player"))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        OnLevelEndReached -= NextLevel;
     }
 
-    private void GetGameObjects(Scene scene, LoadSceneMode mode)
+    private void GetPlayer(Scene scene, LoadSceneMode mode)
     {
         _player = GameObject.FindGameObjectWithTag(PlayerTag);
-        _essexSwitchScene = GameObject.FindGameObjectWithTag(NextLevelTag);
         print(_player.tag);
     }
 }
