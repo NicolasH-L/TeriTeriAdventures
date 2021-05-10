@@ -17,7 +17,7 @@ public class IslandNativeSavageScript : MonoBehaviour
     void Update()
     {
         transform.Translate(_npcMovement * Time.deltaTime);
-        RaycastHit2D groundInfo = Physics2D.Raycast(_groundDetection.position, Vector2.down, );
+        RaycastHit2D groundInfo = Physics2D.Raycast(_groundDetection.position, Vector2.down, 1f);
         if (groundInfo.collider == false)
         {
             if (_isMovingLeft)
