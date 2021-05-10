@@ -48,7 +48,8 @@ public class PlayerScript : MonoBehaviour
     private int _playerLives;
     private int _playerLevel;
     private int _weaponLevel;
-  void Start()
+
+    void Start()
     {
         _animatorPlayer = GetComponent<Animator>();
         _hingeJoint2D = GetComponent<HingeJoint2D>();
@@ -61,6 +62,7 @@ public class PlayerScript : MonoBehaviour
         _currentHealth = MaxHealth;
         healthBar.SetMaxValue(_currentHealth);
         healthBar.SetValue(_currentHealth);
+        SetIdleAnimationBooleans(BooleanDirectionRight, true);
     }
 
     void Update()
@@ -126,6 +128,7 @@ public class PlayerScript : MonoBehaviour
     private void FixedUpdate()
     {
         var movementPlayerX = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedPlayer;
+        print(movementPlayerX.ToString());
         if (movementPlayerX != 0)
         {
             transform.Translate(movementPlayerX, 0f, 0f);
@@ -137,6 +140,10 @@ public class PlayerScript : MonoBehaviour
             {
                 SetMovingAnimationBooleans(false, true);
             }
+        }
+        else
+        {
+            _animatorPlayer.SetBool("isIdle", true);
         }
     }
 
@@ -151,14 +158,13 @@ public class PlayerScript : MonoBehaviour
     {
         _animatorPlayer.SetBool(booleanDirection, false);
         _animatorPlayer.SetBool("isIdleRight", isIdleRight);
-        _animatorPlayer.SetBool("isIdle", true);
     }
 
     private void TakeDamage(int damage)
     {
         if (_isInvincible)
             return;
-        print("ive taken damage");
+        // print("ive taken damage");
         _currentHealth -= damage;
         healthBar.SetValue(_currentHealth);
     }

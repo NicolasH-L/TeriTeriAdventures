@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
         _playerSpawnLocation = GameObject.FindGameObjectWithTag(PlayerSpawnLocationTag);
         _playerCamera = Camera.main;
         _canvas = GameObject.FindGameObjectWithTag(PlayerUiTag).GetComponent<Canvas>();
-        print(_player.tag);
+        // print(_player.tag);
     }
 
 
