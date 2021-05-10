@@ -41,16 +41,27 @@ public class PlayerScript : MonoBehaviour
     private bool _hasAttacked;
     private int _jumpCounter;
     private int _currentHealth;
-    private const int ExpValue = 10;
+    private const int ExpValue = 100;
+    private const int MaxLevel = 3;
     private const int BaseLevelRequirement = 100;
     private const int NextLevelExpReqOffset = 50;
+    private const int MaxLevelExpReq = BaseLevelRequirement + (MaxLevel - 1) * NextLevelExpReqOffset;
+
     private const int StartingPlayerLives = 1;
-    private int _playerLives;
+
+    // private int _playerLives;
     private int _playerLevel;
+    private int _playerLevelUpReq;
     private int _weaponLevel;
+    private int _weaponLevelUpReq;
 
     void Start()
     {
+        // _playerLives = StartingPlayerLives;
+        _playerLevel = 1;
+        _weaponLevel = 1;
+        _playerLevelUpReq = BaseLevelRequirement;
+        _weaponLevelUpReq = BaseLevelRequirement;
         _animatorPlayer = GetComponent<Animator>();
         _hingeJoint2D = GetComponent<HingeJoint2D>();
         _audioSource = GetComponents<AudioSource>();
@@ -62,6 +73,12 @@ public class PlayerScript : MonoBehaviour
         _currentHealth = MaxHealth;
         healthBar.SetMaxValue(_currentHealth);
         healthBar.SetValue(_currentHealth);
+        expBar.SetMaxValue(BaseLevelRequirement);
+        expBar.SetValue(0);
+        wepExpBar.SetMaxValue(BaseLevelRequirement);
+        wepExpBar.SetValue(0);
+        _playerLevelUpReq = BaseLevelRequirement;
+        _weaponLevelUpReq = BaseLevelRequirement;
         SetIdleAnimationBooleans(BooleanDirectionRight, true);
     }
 
@@ -128,7 +145,6 @@ public class PlayerScript : MonoBehaviour
     private void FixedUpdate()
     {
         var movementPlayerX = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedPlayer;
-        print(movementPlayerX.ToString());
         if (movementPlayerX != 0)
         {
             transform.Translate(movementPlayerX, 0f, 0f);
@@ -140,10 +156,6 @@ public class PlayerScript : MonoBehaviour
             {
                 SetMovingAnimationBooleans(false, true);
             }
-        }
-        else
-        {
-            _animatorPlayer.SetBool("isIdle", true);
         }
     }
 
@@ -158,6 +170,7 @@ public class PlayerScript : MonoBehaviour
     {
         _animatorPlayer.SetBool(booleanDirection, false);
         _animatorPlayer.SetBool("isIdleRight", isIdleRight);
+        _animatorPlayer.SetBool("isIdle", true);
     }
 
     private void TakeDamage(int damage)
@@ -205,10 +218,10 @@ public class PlayerScript : MonoBehaviour
                 SetInvincibility();
                 break;
             case "GreenGourd":
-                // GainExp(expBar);
+                GainExp(expBar, ExpValue, ref _playerLevelUpReq, ref _playerLevel);
                 break;
             case "Potion":
-                // GainExp(wepExpBar);
+                GainExp(wepExpBar, ExpValue, ref _weaponLevelUpReq, ref _weaponLevel);
                 break;
             case "PinkGourd":
                 break;
@@ -232,10 +245,30 @@ public class PlayerScript : MonoBehaviour
         _isInvincible = false;
     }
 
-    private void GainExp(SliderScript bar, int expValue, int nextLevelExpReq, int currentBarLevel)
+    private void GainExp(SliderScript bar, int expValue, ref int nextLevelExpReq, ref int currentBarLevel)
     {
-        var tmp = bar.GetCurrentValue();
-        bar.SetValue(tmp + 5);
+        if (currentBarLevel > MaxLevel)
+            return;
+        var tmp = bar.GetCurrentValue() + expValue;
+        print(tmp.ToString());
+        if (tmp >= bar.GetCurrentMaxValue())
+        {
+            bar.SetValue(tmp - nextLevelExpReq);
+            nextLevelExpReq += NextLevelExpReqOffset;
+            bar.SetMaxValue(nextLevelExpReq);
+            ++currentBarLevel;
+            // ++_playerLevel;
+            if (bar.CompareTag("PlayerExpUI"))
+            {
+                print(_playerLevel.ToString() + "current level " + currentBarLevel.ToString());
+                print("current max value " + nextLevelExpReq);
+                playerLevel.text = currentBarLevel.ToString();
+            }
+        }
+        else
+        {
+            bar.SetValue(tmp);
+        }
     }
 
     //TODO in class/ meeting
