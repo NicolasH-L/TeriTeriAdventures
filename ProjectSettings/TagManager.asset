@@ -23,6 +23,7 @@ TagManager:
   - Cookie
   - InvincibleGourd
   - NextLevel
+  - PlayerSpawn
   layers:
   - Default
   - TransparentFX

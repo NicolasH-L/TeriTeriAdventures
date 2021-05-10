@@ -42,13 +42,7 @@ public class PlayerScript : MonoBehaviour
     private int _jumpCounter;
     private int _currentHealth;
 
-    //TODO Make this method a callback from the game manager
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
-    void Start()
+  void Start()
     {
         _animatorPlayer = GetComponent<Animator>();
         _hingeJoint2D = GetComponent<HingeJoint2D>();
@@ -212,8 +206,6 @@ public class PlayerScript : MonoBehaviour
                 break;
         }
     }
-
-  
 
     //TODO fix asap
     private void SetInvincibility()
