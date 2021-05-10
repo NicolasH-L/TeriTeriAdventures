@@ -39,7 +39,6 @@ public class PlayerScript : MonoBehaviour
     private Collider2D _judahCollider;
     private bool _isInvincible;
     private bool _hasAttacked;
-    private bool _isEndReached;
     private int _jumpCounter;
     private int _currentHealth;
 
@@ -208,21 +207,13 @@ public class PlayerScript : MonoBehaviour
             case "PinkGourd":
                 break;
             case "NextLevel":
-                if (_isEndReached)
-                    break;
-                _isEndReached = true;
                 var manager = GameManager.GameManagerInstance;
-                // manager.OnLevelEndReached += manager.NextLevel;
-                manager.NextLevel();
+                manager.OnLevelEndReached += manager.NextLevel;
                 break;
         }
     }
 
-    private IEnumerator DelayEndReachedReset()
-    {
-        yield return new WaitForSeconds(2);
-        _isEndReached = false;
-    }
+  
 
     //TODO fix asap
     private void SetInvincibility()

@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<AudioClip> listLevelBgm;
     private AudioSource _audioSource;
     private GameObject _player;
+    private bool _isEndReached;
 
     public delegate void LoadNextLevel();
 
@@ -45,11 +46,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        
-        // if (OnLevelEndReached != null)
-        // {
-        //     OnLevelEndReached();
-        // }
+        if (OnLevelEndReached != null)
+        {
+            OnLevelEndReached();
+        }
     }
 
     public void StartGame()
@@ -83,8 +83,12 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
+        if (_isEndReached)
+            return;
+        _isEndReached = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         print(SceneManager.GetActiveScene().buildIndex);
+        StartCoroutine(DelayEndReachedReset());
         // OnLevelEndReached -= NextLevel;
     }
 
@@ -92,5 +96,12 @@ public class GameManager : MonoBehaviour
     {
         _player = GameObject.FindGameObjectWithTag(PlayerTag);
         print(_player.tag);
+    }
+
+
+    private IEnumerator DelayEndReachedReset()
+    {
+        yield return new WaitForSeconds(5);
+        _isEndReached = false;
     }
 }
