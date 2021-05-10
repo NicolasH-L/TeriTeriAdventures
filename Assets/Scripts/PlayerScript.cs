@@ -33,7 +33,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI playerExpUiValue;
     [SerializeField] private TextMeshProUGUI wepExpUiValue;
     [SerializeField] private List<Image> playerLives;
-
+    
     private Animator _animatorPlayer;
     private PolygonCollider2D _polygonCollider2D;
     private AudioSource[] _audioSource;
@@ -285,7 +285,6 @@ public class PlayerScript : MonoBehaviour
         {
             GainHp(healthBar.GetCurrentMaxValue());
         }
-
         print(_extraPlayerLives.ToString());
         var tmp = playerLives[_extraPlayerLives].color;
         tmp.a = 1f;
@@ -302,12 +301,11 @@ public class PlayerScript : MonoBehaviour
         healthBar.SetValue(_currentHealth);
     }
 
-    private void SetBarTextValue(ref TextMeshProUGUI textMeshProUGUI, string value, string maxValue)
+    private void SetBarValue()
     {
-        var barValues = value + "/" + maxValue;
-        textMeshProUGUI.text = barValues;
+        
     }
-
+    
     //TODO : Callback
     public void ResetJump()
     {
