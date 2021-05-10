@@ -108,7 +108,6 @@ public class PlayerScript : MonoBehaviour
         {
             playerRigidBody2D.velocity = new Vector2(0f, JumpHeight);
             _jumpCounter++;
-            print(_jumpCounter.ToString());
             _audioSource[SoundEffect1].Play();
         }
 
@@ -207,8 +206,14 @@ public class PlayerScript : MonoBehaviour
                 break;
             case "PinkGourd":
                 break;
+            case "NextLevel":
+                var manager = GameManager.GameManagerInstance;
+                manager.OnLevelEndReached += manager.NextLevel;
+                break;
         }
     }
+
+  
 
     //TODO fix asap
     private void SetInvincibility()
