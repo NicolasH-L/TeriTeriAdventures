@@ -25,6 +25,12 @@ TagManager:
   - NextLevel
   - PlayerSpawn
   - PlayerUI
+  - WepExpUI
+  - PlayerExpUI
+  - PlayerHpUI
+  - HpValue
+  - PlayerExpValue
+  - WepExpValue
   layers:
   - Default
   - TransparentFX
