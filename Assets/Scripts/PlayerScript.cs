@@ -301,6 +301,7 @@ public class PlayerScript : MonoBehaviour
             ? healthBar.GetCurrentMaxValue()
             : healthBar.GetCurrentValue() + value;
         healthBar.SetValue(_currentHealth);
+        SetBarTextValue(ref playerHpUiValue, _currentHealth.ToString(), healthBar.GetCurrentMaxValue().ToString());
     }
 
     private void SetBarTextValue(ref TextMeshProUGUI textMeshProUGUI, string value, string maxValue)
