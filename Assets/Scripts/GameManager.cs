@@ -8,16 +8,14 @@ using Random = UnityEngine.Random;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _gameManager;
-
-    public static GameManager GameManagerInstance
-    {
-        get { return _gameManager; }
-    }
+    public static GameManager GameManagerInstance => _gameManager;
 
     private const string PlayerTag = "Player";
     private const string PlayerSpawnLocationTag = "PlayerSpawn";
+    private const string PlayerUiTag = "PlayerUI";
     [SerializeField] private List<AudioClip> listWelcomeBgm;
     [SerializeField] private List<AudioClip> listLevelBgm;
+    private Canvas _canvas;
     private Camera _playerCamera;
     private AudioSource _audioSource;
     private GameObject _player;
@@ -91,9 +89,9 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(_player);
         DontDestroyOnLoad(_playerSpawnLocation);
         DontDestroyOnLoad(_playerCamera);
+        DontDestroyOnLoad(_canvas);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         _player.transform.position = _playerSpawnLocation.transform.position;
-        print(SceneManager.GetActiveScene().buildIndex);
         StartCoroutine(DelayEndReachedReset());
         OnLevelEndReached -= NextLevel;
     }
@@ -103,6 +101,7 @@ public class GameManager : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag(PlayerTag);
         _playerSpawnLocation = GameObject.FindGameObjectWithTag(PlayerSpawnLocationTag);
         _playerCamera = Camera.main;
+        _canvas = GameObject.FindGameObjectWithTag(PlayerUiTag).GetComponent<Canvas>();
         print(_player.tag);
     }
 
