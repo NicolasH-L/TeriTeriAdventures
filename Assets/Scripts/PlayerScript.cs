@@ -29,11 +29,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private SliderScript expBar;
     [SerializeField] private SliderScript wepExpBar;
     [SerializeField] private TextMeshProUGUI playerLevel;
-    [SerializeField] private TextMeshProUGUI playerHpUiValue;
-    [SerializeField] private TextMeshProUGUI playerExpUiValue;
-    [SerializeField] private TextMeshProUGUI wepExpUiValue;
     [SerializeField] private List<Image> playerLives;
-    
     private Animator _animatorPlayer;
     private PolygonCollider2D _polygonCollider2D;
     private AudioSource[] _audioSource;
@@ -62,7 +58,6 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         // _playerLives = StartingPlayerLives;
-        _extraPlayerLives = 0;
         _playerLevel = 1;
         _weaponLevel = 1;
         _playerLevelUpReq = BaseLevelRequirement;
@@ -285,10 +280,10 @@ public class PlayerScript : MonoBehaviour
         {
             GainHp(healthBar.GetCurrentMaxValue());
         }
-        print(_extraPlayerLives.ToString());
+
         var tmp = playerLives[_extraPlayerLives].color;
         tmp.a = 1f;
-        playerLives[_extraPlayerLives].color = tmp;
+        playerLives[_extraPlayerLives - 1].color = tmp;
         ++_extraPlayerLives;
     }
 
@@ -301,11 +296,6 @@ public class PlayerScript : MonoBehaviour
         healthBar.SetValue(_currentHealth);
     }
 
-    private void SetBarValue()
-    {
-        
-    }
-    
     //TODO : Callback
     public void ResetJump()
     {

@@ -1245,7 +1245,7 @@ GameObject:
   - component: {fileID: 278075718}
   - component: {fileID: 278075717}
   m_Layer: 5
-  m_Name: ExtraLife02
+  m_Name: ExtraLife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2319,7 +2319,7 @@ GameObject:
   - component: {fileID: 629891440}
   - component: {fileID: 629891439}
   m_Layer: 5
-  m_Name: ExtraLife01
+  m_Name: ExtraLife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7200,7 +7200,7 @@ GameObject:
   - component: {fileID: 1851645096}
   - component: {fileID: 1851645095}
   m_Layer: 5
-  m_Name: ExtraLife03
+  m_Name: ExtraLife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9766,41 +9766,6 @@ PrefabInstance:
       propertyPath: playerLevel
       value: 
       objectReference: {fileID: 1041246095}
-    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
-        type: 3}
-      propertyPath: wepExpUiValue
-      value: 
-      objectReference: {fileID: 558621504}
-    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
-        type: 3}
-      propertyPath: playerHpUiValue
-      value: 
-      objectReference: {fileID: 1395481845}
-    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
-        type: 3}
-      propertyPath: playerExpUiValue
-      value: 
-      objectReference: {fileID: 54185399}
-    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
-        type: 3}
-      propertyPath: playerLives.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
-        type: 3}
-      propertyPath: playerLives.Array.data[0]
-      value: 
-      objectReference: {fileID: 629891439}
-    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
-        type: 3}
-      propertyPath: playerLives.Array.data[1]
-      value: 
-      objectReference: {fileID: 278075717}
-    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
-        type: 3}
-      propertyPath: playerLives.Array.data[2]
-      value: 
-      objectReference: {fileID: 1851645095}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 605864e53ed497b45840bb44b23dd2aa, type: 3}
 --- !u!1001 &6123069813409949073
