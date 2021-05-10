@@ -30,6 +30,10 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private SliderScript wepExpBar;
     [SerializeField] private TextMeshProUGUI playerLevel;
     [SerializeField] private List<Image> playerLives;
+<<<<<<< HEAD
+=======
+    
+>>>>>>> parent of 3c35a82... more progress on the text mesh pro
     private Animator _animatorPlayer;
     private PolygonCollider2D _polygonCollider2D;
     private AudioSource[] _audioSource;
@@ -280,7 +284,11 @@ public class PlayerScript : MonoBehaviour
         {
             GainHp(healthBar.GetCurrentMaxValue());
         }
+<<<<<<< HEAD
 
+=======
+        print(_extraPlayerLives.ToString());
+>>>>>>> parent of 3c35a82... more progress on the text mesh pro
         var tmp = playerLives[_extraPlayerLives].color;
         tmp.a = 1f;
         playerLives[_extraPlayerLives - 1].color = tmp;
@@ -296,6 +304,14 @@ public class PlayerScript : MonoBehaviour
         healthBar.SetValue(_currentHealth);
     }
 
+<<<<<<< HEAD
+=======
+    private void SetBarValue()
+    {
+        
+    }
+    
+>>>>>>> parent of 3c35a82... more progress on the text mesh pro
     //TODO : Callback
     public void ResetJump()
     {
