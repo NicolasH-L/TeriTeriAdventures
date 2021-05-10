@@ -1180,7 +1180,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRigidBody2D: {fileID: 5657802358292049852}
   judahCross: {fileID: 5657802358050217778}
-  sliderScript: {fileID: 0}
+  healthBar: {fileID: 0}
+  expBar: {fileID: 0}
+  wepExpBar: {fileID: 0}
+  playerLevel: {fileID: 0}
 --- !u!1 &5657802358682532681
 GameObject:
   m_ObjectHideFlags: 0

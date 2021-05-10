@@ -15,11 +15,13 @@ public class GameManager : MonoBehaviour
     }
 
     private const string PlayerTag = "Player";
-    private const string NextLevelTag = "NextLevel";
+    private const string PlayerSpawnLocationTag = "PlayerSpawn";
     [SerializeField] private List<AudioClip> listWelcomeBgm;
     [SerializeField] private List<AudioClip> listLevelBgm;
+    private Camera _playerCamera;
     private AudioSource _audioSource;
     private GameObject _player;
+    private GameObject _playerSpawnLocation;
     private bool _isEndReached;
 
     public delegate void LoadNextLevel();
@@ -86,15 +88,21 @@ public class GameManager : MonoBehaviour
         if (_isEndReached)
             return;
         _isEndReached = true;
+        DontDestroyOnLoad(_player);
+        DontDestroyOnLoad(_playerSpawnLocation);
+        DontDestroyOnLoad(_playerCamera);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        _player.transform.position = _playerSpawnLocation.transform.position;
         print(SceneManager.GetActiveScene().buildIndex);
         StartCoroutine(DelayEndReachedReset());
-        // OnLevelEndReached -= NextLevel;
+        OnLevelEndReached -= NextLevel;
     }
 
     private void GetPlayer(Scene scene, LoadSceneMode mode)
     {
         _player = GameObject.FindGameObjectWithTag(PlayerTag);
+        _playerSpawnLocation = GameObject.FindGameObjectWithTag(PlayerSpawnLocationTag);
+        _playerCamera = Camera.main;
         print(_player.tag);
     }
 
