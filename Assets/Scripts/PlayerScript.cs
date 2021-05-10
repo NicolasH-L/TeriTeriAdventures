@@ -284,6 +284,7 @@ public class PlayerScript : MonoBehaviour
         if (_extraPlayerLives.Equals(playerLives.Count))
         {
             GainHp(healthBar.GetCurrentMaxValue());
+            return;
         }
 
         print(_extraPlayerLives.ToString());
