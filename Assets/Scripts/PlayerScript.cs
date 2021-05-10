@@ -17,7 +17,6 @@ public class PlayerScript : MonoBehaviour
     private const float ForceAppliedAttacking = -1000f;
     private const float ForceAppliedRetracting = 950f;
     private const float DelayTime = 0.4f;
-    private const int ExpGain = 5;
     private const int MaxJump = 2;
     private const int SoundEffect1 = 0;
     private const int SoundEffect2 = 1;
@@ -30,7 +29,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private SliderScript expBar;
     [SerializeField] private SliderScript wepExpBar;
     [SerializeField] private TextMeshProUGUI playerLevel;
-
+    [SerializeField] private List<Image> playerLives;
     private Animator _animatorPlayer;
     private PolygonCollider2D _polygonCollider2D;
     private AudioSource[] _audioSource;
@@ -41,13 +40,14 @@ public class PlayerScript : MonoBehaviour
     private bool _hasAttacked;
     private int _jumpCounter;
     private int _currentHealth;
+    private const int HpGainValue = 10;
     private const int ExpValue = 100;
     private const int MaxLevel = 3;
     private const int BaseLevelRequirement = 100;
     private const int NextLevelExpReqOffset = 50;
     private const int MaxLevelExpReq = BaseLevelRequirement + (MaxLevel - 1) * NextLevelExpReqOffset;
 
-    private const int StartingPlayerLives = 1;
+    private int _extraPlayerLives;
 
     // private int _playerLives;
     private int _playerLevel;
@@ -224,6 +224,10 @@ public class PlayerScript : MonoBehaviour
                 GainExp(wepExpBar, ExpValue, ref _weaponLevelUpReq, ref _weaponLevel);
                 break;
             case "PinkGourd":
+                GainExtraLife();
+                break;
+            case "Bandaid":
+                GainHp(HpGainValue);
                 break;
             case "NextLevel":
                 var manager = GameManager.GameManagerInstance;
@@ -257,7 +261,6 @@ public class PlayerScript : MonoBehaviour
             nextLevelExpReq += NextLevelExpReqOffset;
             bar.SetMaxValue(nextLevelExpReq);
             ++currentBarLevel;
-            // ++_playerLevel;
             if (bar.CompareTag("PlayerExpUI"))
             {
                 print(_playerLevel.ToString() + "current level " + currentBarLevel.ToString());
@@ -271,10 +274,26 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    //TODO in class/ meeting
-    private void GainHp()
+    private void GainExtraLife()
     {
-        // healthBar.
+        if (_extraPlayerLives.Equals(playerLives.Count))
+        {
+            GainHp(healthBar.GetCurrentMaxValue());
+        }
+
+        var tmp = playerLives[_extraPlayerLives].color;
+        tmp.a = 1f;
+        playerLives[_extraPlayerLives - 1].color = tmp;
+        ++_extraPlayerLives;
+    }
+
+    //TODO in class/ meeting
+    private void GainHp(int value)
+    {
+        _currentHealth = healthBar.GetCurrentValue() + value >= healthBar.GetCurrentMaxValue()
+            ? healthBar.GetCurrentMaxValue()
+            : healthBar.GetCurrentValue() + value;
+        healthBar.SetValue(_currentHealth);
     }
 
     //TODO : Callback
