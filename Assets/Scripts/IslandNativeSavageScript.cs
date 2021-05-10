@@ -17,19 +17,17 @@ public class IslandNativeSavageScript : MonoBehaviour
     void Update()
     {
         transform.Translate(_npcMovement * Time.deltaTime);
-        RaycastHit2D groundInfo = Physics2D.Raycast(_groundDetection.position, Vector2.down, 1f);
+        RaycastHit2D groundInfo = Physics2D.Raycast(_groundDetection.position, Vector2.down, 0.5f);
         if (groundInfo.collider == false)
         {
             if (_isMovingLeft)
             {
-                transform.Translate(-_npcMovement * Time.deltaTime);
-                _groundDetection.eulerAngles = new Vector3(0, 180, 0);
+                transform.eulerAngles = new Vector3(0, 180, 0);
                 _isMovingLeft = false;
             }
             else
             {
-                transform.Translate(_npcMovement * Time.deltaTime);
-                _groundDetection.eulerAngles = new Vector3(0, -180, 0);
+                transform.eulerAngles = new Vector3(0, -180, 0);
                 _isMovingLeft = true;
             }
         }
@@ -45,7 +43,7 @@ public class IslandNativeSavageScript : MonoBehaviour
 
             case "Obstacle":
             case "Enemy":
-                _npcMovement = -_npcMovement;
+                transform.eulerAngles = new Vector3(0, -180, 0);
                 break;
         }
     }
