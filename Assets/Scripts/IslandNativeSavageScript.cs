@@ -4,13 +4,16 @@ public class IslandNativeSavageScript : MonoBehaviour
 {
     private const float SpeedMovement = 1f;
     private const int MaxHitPoint = 3;
+    private const int axisAngle = 180;
     [SerializeField] private Transform _groundDetection;
     private Vector2 _npcMovement;
     private int _compteurHit;
-    private bool _isMovingLeft = true;
+    private bool _isMovingLeft;
+    private int axisTemp;
 
     void Start()
     {
+        _isMovingLeft = true;
         _npcMovement = Vector2.left * SpeedMovement;
     }
 
@@ -22,12 +25,12 @@ public class IslandNativeSavageScript : MonoBehaviour
         {
             if (_isMovingLeft)
             {
-                transform.eulerAngles = new Vector3(0, 180, 0);
+                transform.eulerAngles = new Vector3(0, axisAngle, 0);
                 _isMovingLeft = false;
             }
             else
             {
-                transform.eulerAngles = new Vector3(0, -180, 0);
+                transform.eulerAngles = new Vector3(0, -axisAngle, 0);
                 _isMovingLeft = true;
             }
         }
@@ -38,12 +41,12 @@ public class IslandNativeSavageScript : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Player":
-                print("Player touched enemy");
                 break;
 
             case "Obstacle":
             case "Enemy":
-                transform.eulerAngles = new Vector3(0, -180, 0);
+                // _npcMovement = -_npcMovement;
+                transform.eulerAngles = new Vector3(0, -axisTemp, 0);
                 break;
         }
     }
