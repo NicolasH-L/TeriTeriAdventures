@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -191,6 +190,7 @@ public class PlayerScript : MonoBehaviour
             if (_extraPlayerLives > 0)
             {
                 ModifyExtraLife(false, 0.5f);
+                _currentHealth = healthBar.GetCurrentMaxValue();
             }
 
             //TODO gameOVer
@@ -320,9 +320,10 @@ public class PlayerScript : MonoBehaviour
 
     private void ModifyExtraLife(bool isAddLife, float alphaValue)
     {
-        var tmp = isAddLife ? playerLives[_extraPlayerLives].color : playerLives[_extraPlayerLives - 1].color;
+        var index = isAddLife ? _extraPlayerLives : _extraPlayerLives - 1;
+        var tmp = playerLives[index].color;
         tmp.a = alphaValue;
-        playerLives[_extraPlayerLives].color = tmp;
+        playerLives[index].color = tmp;
         _extraPlayerLives = isAddLife ? ++_extraPlayerLives : --_extraPlayerLives;
     }
 
