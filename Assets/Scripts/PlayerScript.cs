@@ -71,7 +71,8 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         // _playerLives = StartingPlayerLives;
-        OnChangeSpecialBgm += GameManager.GameManagerInstance.ChangeToSpecialBgm;
+        if (GameManager.GameManagerInstance != null)
+            OnChangeSpecialBgm += GameManager.GameManagerInstance.ChangeToSpecialBgm;
         _invincibilityAnimator = GameObject.FindGameObjectWithTag("InvincibleStatus").GetComponent<Animator>();
         _extraPlayerLives = 0;
         _playerLevel = 1;
