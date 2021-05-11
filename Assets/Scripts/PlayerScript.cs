@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
+    public delegate void ChangeSpecialBgm(int bgmOption);
+    public event ChangeSpecialBgm OnChangeSpecialBgm;    
+    
     private const string MaxExpText = "MAX";
     private const string KeyMoveRight = "d";
     private const string KeyMoveLeft = "a";
@@ -200,6 +203,8 @@ public class PlayerScript : MonoBehaviour
             else
             {
                 //TODO gameover
+                var manager = GameManager.GameManagerInstance;
+                OnChangeSpecialBgm -= manager.ChangeToSpecialBgm;
                 print("Game Over");
             }
         }
@@ -265,6 +270,9 @@ public class PlayerScript : MonoBehaviour
     //TODO fix asap
     private void SetInvincibility()
     {
+        var manager = GameManager.GameManagerInstance;
+        OnChangeSpecialBgm += manager.ChangeToSpecialBgm;
+        OnChangeSpecialBgm(1);
         _isInvincible = true;
         _invincibilityCountdown = InvincibilityDuration;
         var tmp = invincibleStatus.color;

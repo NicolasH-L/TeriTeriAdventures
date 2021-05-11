@@ -13,10 +13,13 @@ public class GameManager : MonoBehaviour
     private const string PlayerTag = "Player";
     private const string PlayerSpawnLocationTag = "PlayerSpawn";
     private const string PlayerUiTag = "PlayerUI";
+    private const int InvincibilityDuration = 8;
     [SerializeField] private List<AudioClip> listWelcomeBgm;
     [SerializeField] private List<AudioClip> listLevelBgm;
+    [SerializeField] private AudioClip invincibleBgm;
     private Canvas _canvas;
     private Camera _playerCamera;
+    private List<AudioSource> _listAudioSources;
     private AudioSource _audioSource;
     private GameObject _player;
     private GameObject _playerSpawnLocation;
@@ -25,6 +28,7 @@ public class GameManager : MonoBehaviour
     public delegate void LoadNextLevel();
 
     public event LoadNextLevel OnLevelEndReached;
+
 
     private void Awake()
     {
@@ -41,6 +45,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
+        _listAudioSources = new List<AudioSource>();
+        _listAudioSources.AddRange(GetComponents<AudioSource>());
         QueueSong(listWelcomeBgm);
     }
 
@@ -105,6 +111,27 @@ public class GameManager : MonoBehaviour
         // print(_player.tag);
     }
 
+    public void ChangeToSpecialBgm(int option)
+    {
+        var duration = 0;
+        switch (option)
+        {
+            case 1:
+                _audioSource.clip = invincibleBgm;
+                duration = InvincibilityDuration;
+                break;
+        }
+
+        _audioSource.Play();
+        StartCoroutine(QueueInvincibleBgm(InvincibilityDuration));
+    }
+
+    private IEnumerator QueueInvincibleBgm(int duration)
+    {
+        yield return new WaitForSeconds(duration);
+        _audioSource.Stop();
+        QueueSong(listLevelBgm);
+    }
 
     private IEnumerator DelayEndReachedReset()
     {
