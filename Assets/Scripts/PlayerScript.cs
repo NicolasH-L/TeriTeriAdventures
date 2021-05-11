@@ -8,8 +8,9 @@ using UnityEngine.UI;
 public class PlayerScript : MonoBehaviour
 {
     public delegate void ChangeSpecialBgm(int bgmOption);
-    public event ChangeSpecialBgm OnChangeSpecialBgm;    
-    
+
+    public event ChangeSpecialBgm OnChangeSpecialBgm;
+
     private const string MaxExpText = "MAX";
     private const string KeyMoveRight = "d";
     private const string KeyMoveLeft = "a";
@@ -272,7 +273,7 @@ public class PlayerScript : MonoBehaviour
     {
         var manager = GameManager.GameManagerInstance;
         OnChangeSpecialBgm += manager.ChangeToSpecialBgm;
-        OnChangeSpecialBgm(1);
+        OnChangeSpecialBgm?.Invoke(1);
         _isInvincible = true;
         _invincibilityCountdown = InvincibilityDuration;
         var tmp = invincibleStatus.color;
@@ -285,7 +286,6 @@ public class PlayerScript : MonoBehaviour
 
     private void ReduceInvincibilityDuration()
     {
-       
         var tmp = invincibleStatus.color;
         if (_invincibilityCountdown.Equals(0))
         {
@@ -304,7 +304,7 @@ public class PlayerScript : MonoBehaviour
               _isInvincible.ToString());
         Invoke(nameof(ReduceInvincibilityDuration), 1f);
     }
-    
+
     private void GainExp(SliderScript bar, int expValue, ref int nextLevelExpReq, ref int currentBarLevel,
         ref TextMeshProUGUI textMeshProUGUI)
     {
