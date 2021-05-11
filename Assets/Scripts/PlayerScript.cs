@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
+    private const string MaxExpText = "MAX";
     private const string KeyMoveRight = "d";
     private const string KeyMoveLeft = "a";
     private const string KeyJump = "space";
@@ -45,7 +46,7 @@ public class PlayerScript : MonoBehaviour
     private int _jumpCounter;
     private int _currentHealth;
     private const int HpGainValue = 10;
-    private const int ExpValue = 100;
+    private const int ExpValue = 60;
     private const int MaxLevel = 3;
     private const int BaseLevelRequirement = 100;
     private const int NextLevelExpReqOffset = 50;
@@ -185,6 +186,7 @@ public class PlayerScript : MonoBehaviour
         // print("ive taken damage");
         _currentHealth -= damage;
         healthBar.SetValue(_currentHealth);
+        SetBarTextValue(ref playerHpUiValue, _currentHealth.ToString(), healthBar.GetCurrentMaxValue().ToString());
     }
 
     //TODO : Fix the coroutine when the player is attacking
@@ -223,10 +225,10 @@ public class PlayerScript : MonoBehaviour
                 SetInvincibility();
                 break;
             case "GreenGourd":
-                GainExp(expBar, ExpValue, ref _playerLevelUpReq, ref _playerLevel);
+                GainExp(expBar, ExpValue, ref _playerLevelUpReq, ref _playerLevel, ref playerExpUiValue);
                 break;
             case "Potion":
-                GainExp(wepExpBar, ExpValue, ref _weaponLevelUpReq, ref _weaponLevel);
+                GainExp(wepExpBar, ExpValue, ref _weaponLevelUpReq, ref _weaponLevel, ref wepExpUiValue);
                 break;
             case "PinkGourd":
                 GainExtraLife();
@@ -254,10 +256,12 @@ public class PlayerScript : MonoBehaviour
         _isInvincible = false;
     }
 
-    private void GainExp(SliderScript bar, int expValue, ref int nextLevelExpReq, ref int currentBarLevel)
+    private void GainExp(SliderScript bar, int expValue, ref int nextLevelExpReq, ref int currentBarLevel,
+        ref TextMeshProUGUI textMeshProUGUI)
     {
-        if (currentBarLevel > MaxLevel)
+        if (currentBarLevel >= MaxLevel)
             return;
+
         var tmp = bar.GetCurrentValue() + expValue;
         print(tmp.ToString());
         if (tmp >= bar.GetCurrentMaxValue())
@@ -266,17 +270,25 @@ public class PlayerScript : MonoBehaviour
             nextLevelExpReq += NextLevelExpReqOffset;
             bar.SetMaxValue(nextLevelExpReq);
             ++currentBarLevel;
+            tmp = 0;
             if (bar.CompareTag("PlayerExpUI"))
             {
-                print(_playerLevel.ToString() + "current level " + currentBarLevel.ToString());
-                print("current max value " + nextLevelExpReq);
                 playerLevel.text = currentBarLevel.ToString();
+            }
+
+            if (currentBarLevel >= MaxLevel)
+            {
+                print("entered max:" +  currentBarLevel);
+                SetBarTextValue(ref textMeshProUGUI, MaxExpText, MaxExpText);
+                return;
             }
         }
         else
         {
             bar.SetValue(tmp);
         }
+
+        SetBarTextValue(ref textMeshProUGUI, tmp.ToString(), bar.GetCurrentMaxValue().ToString());
     }
 
     private void GainExtraLife()
