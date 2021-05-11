@@ -93,18 +93,9 @@ public class GameManager : MonoBehaviour
 
     private void QueueSong(List<AudioClip> musicList)
     {
-        //TODO
-        if (!_listAudioSources[IndexAudioSourceLevelBgm].isPlaying &&
-            _listAudioSources[IndexAudioSourceSpecialBgm].isPlaying)
-        {
-            _listAudioSources[IndexAudioSourceLevelBgm].UnPause();
-        }
-        else
-        {
-            _listAudioSources[IndexAudioSourceLevelBgm].clip = musicList[Random.Range(0, musicList.Count)];
-            _listAudioSources[IndexAudioSourceLevelBgm].Play();
-            StartCoroutine(PlayAnotherAudioClip(musicList));
-        }
+        _listAudioSources[IndexAudioSourceLevelBgm].clip = musicList[Random.Range(0, musicList.Count)];
+        _listAudioSources[IndexAudioSourceLevelBgm].Play();
+        StartCoroutine(PlayAnotherAudioClip(musicList));
     }
 
     private IEnumerator PlayAnotherAudioClip(List<AudioClip> musicList)
@@ -172,8 +163,9 @@ public class GameManager : MonoBehaviour
         --_invincibilityDuration;
         if (_invincibilityDuration <= 0)
         {
+            //TODO 
             _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
-            QueueSong(listLevelBgm);
+            _listAudioSources[IndexAudioSourceLevelBgm].UnPause();
             return;
         }
 
