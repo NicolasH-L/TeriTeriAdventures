@@ -1814,7 +1814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &519420029
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3087,7 +3087,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!60 &980986504
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -6763,6 +6763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listWelcomeBgm: []
   listLevelBgm: []
+  invincibleBgm: {fileID: 0}
 --- !u!4 &1794559135
 Transform:
   m_ObjectHideFlags: 0
@@ -8157,6 +8158,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Laser
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707597504405294844, guid: 2fc8302c9ff9e5f4796596ceecb03c8d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5707597504405294847, guid: 2fc8302c9ff9e5f4796596ceecb03c8d,
         type: 3}

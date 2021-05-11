@@ -211,8 +211,8 @@ public class PlayerScript : MonoBehaviour
     private IEnumerator Delay()
     {
         yield return new WaitForSeconds(DelayTime);
-        _judahCollider.enabled = false;
-        _hasAttacked = false;
+        // _judahCollider.enabled = false;
+        // _hasAttacked = false;
     }
 
     private void OnCollisionEnter2D(Collision2D other)

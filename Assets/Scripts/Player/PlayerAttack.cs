@@ -25,7 +25,7 @@ public class PlayerAttack : MonoBehaviour
             _audioSource[SoundEffect2].Play();
             _judahCollider.enabled = true;
             _hasAttacked = true;
-            StartCoroutine(Delay());
+            // StartCoroutine(Delay());
         }
     }
 }

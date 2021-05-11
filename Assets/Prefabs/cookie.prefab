@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3645582391651997891}
   - component: {fileID: 3645582391651997888}
-  - component: {fileID: 3645582391651997889}
   - component: {fileID: -3234964107780475012}
+  - component: {fileID: 2807939426437959106}
   - component: {fileID: 7728274042297541467}
   m_Layer: 8
   m_Name: cookie
@@ -84,32 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &3645582391651997889
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3645582391651997890}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 1
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.94, y: 3.58}
-    newSize: {x: 3.94, y: 3.58}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.94, y: 3.58}
-  m_EdgeRadius: 0
 --- !u!50 &-3234964107780475012
 Rigidbody2D:
   serializedVersion: 4
@@ -131,6 +105,79 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!60 &2807939426437959106
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3645582391651997890}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.94, y: 3.58}
+    newSize: {x: 3.94, y: 3.58}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.1, y: -0.85999995}
+      - {x: 1.1899999, y: -0.78999996}
+      - {x: 1.3825531, y: -0.46402168}
+      - {x: 1.4309082, y: -0.118621826}
+      - {x: 1.4400635, y: 0.24417877}
+      - {x: 1.4101715, y: 0.3125782}
+      - {x: 1.3399999, y: 0.32999998}
+      - {x: 1.24, y: 0.19999999}
+      - {x: 1.01, y: 0.37}
+      - {x: 0.89, y: 0.21}
+      - {x: 0.78999996, y: 0.16}
+      - {x: 0.68, y: 0.24}
+      - {x: 0.68, y: 0.35999998}
+      - {x: 0.65999997, y: 0.38}
+      - {x: 0.51, y: 0.41}
+      - {x: 0.48, y: 0.58}
+      - {x: 0.56, y: 0.76}
+      - {x: 0.56, y: 0.78999996}
+      - {x: 0.55, y: 0.98999995}
+      - {x: 0.69, y: 1.0799999}
+      - {x: 0.65, y: 1.17}
+      - {x: 0.51, y: 1.31}
+      - {x: 0.35999998, y: 1.4}
+      - {x: 0.02, y: 1.4}
+      - {x: -0.24, y: 1.36}
+      - {x: -0.42, y: 1.27}
+      - {x: -0.57, y: 1.14}
+      - {x: -0.63, y: 1.16}
+      - {x: -0.84, y: 1.15}
+      - {x: -1.05, y: 1.05}
+      - {x: -1.23, y: 0.84999996}
+      - {x: -1.3399999, y: 0.7}
+      - {x: -1.51, y: 0.35}
+      - {x: -1.54, y: 0.19999999}
+      - {x: -1.54, y: -0.099999994}
+      - {x: -1.5, y: -0.26999998}
+      - {x: -1.48, y: -0.35999998}
+      - {x: -1.3399999, y: -0.62}
+      - {x: -1.22, y: -0.75}
+      - {x: -0.97999996, y: -0.89}
+      - {x: -0.78999996, y: -0.98999995}
+      - {x: -0.63, y: -1.16}
+      - {x: -0.42, y: -1.28}
+      - {x: -0.26, y: -1.3299999}
+      - {x: 0.11, y: -1.3299999}
+      - {x: 0.26, y: -1.29}
+      - {x: 0.61, y: -1.16}
+      - {x: 0.84999996, y: -1.02}
 --- !u!114 &7728274042297541467
 MonoBehaviour:
   m_ObjectHideFlags: 0

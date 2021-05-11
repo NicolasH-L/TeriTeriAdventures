@@ -9,7 +9,6 @@ public class HonkaiBeasts : MonoBehaviour
     private const int axisAngle = 180;
     [SerializeField] private Transform lineOfSight;
     private Vector2 _npcMovement;
-    private int _direction;
     private Transform playerCollider;
     private int _compteurHit;
     private bool _isMovingLeft;
@@ -19,7 +18,6 @@ public class HonkaiBeasts : MonoBehaviour
     {
         _isMovingLeft = true;
         _npcMovement = Vector2.left * SpeedMovement;
-        _direction = -axisAngle;
     }
 
     void Update()
@@ -28,7 +26,6 @@ public class HonkaiBeasts : MonoBehaviour
         RaycastHit2D playerDetected = Physics2D.Raycast(lineOfSight.position, Vector2.left, 1f);
         if (playerDetected != null)
         {
-            print("touched player");
         }
 
         Debug.DrawLine(transform.position, Vector3.left, Color.magenta);

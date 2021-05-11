@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ public class HomingCookie : MonoBehaviour
     private const float RotateSpeed = 200f;
     private GameObject _target;
     private Rigidbody2D _rigidbody2D;
-    
+
     void Start()
     {
         _target = GameObject.FindGameObjectWithTag("Player");
@@ -23,5 +24,18 @@ public class HomingCookie : MonoBehaviour
         float rotateAmount = Vector3.Cross(direction, transform.right).z;
         _rigidbody2D.angularVelocity = rotateAmount * RotateSpeed;
         _rigidbody2D.velocity = -transform.right * Speed;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case "Ground":
+            case "Top":
+            case "Wall":
+            case "Plateform":
+                Destroy(this.gameObject);
+                break;
+        }
     }
 }
