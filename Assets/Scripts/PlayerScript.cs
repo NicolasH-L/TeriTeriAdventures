@@ -346,6 +346,8 @@ public class PlayerScript : MonoBehaviour
         tmp.a = alphaValue;
         playerLives[_extraPlayerLives].color = tmp;
         playerLives[index].color = tmp;
+        if (_extraPlayerLives > playerLives.Count)
+            return;
         _extraPlayerLives = isAddLife ? ++_extraPlayerLives : --_extraPlayerLives;
     }
 
