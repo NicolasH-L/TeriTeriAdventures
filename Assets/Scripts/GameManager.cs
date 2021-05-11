@@ -13,17 +13,23 @@ public class GameManager : MonoBehaviour
     private const string PlayerTag = "Player";
     private const string PlayerSpawnLocationTag = "PlayerSpawn";
     private const string PlayerUiTag = "PlayerUI";
-    private const int InvincibilityDuration = 8;
+    private const int BaseInvincibilityDuration = 8;
+    private const int IndexAudioSourceLevelBgm = 0;
+    private const int IndexAudioSourceSpecialBgm = 1;
     [SerializeField] private List<AudioClip> listWelcomeBgm;
     [SerializeField] private List<AudioClip> listLevelBgm;
     [SerializeField] private AudioClip invincibleBgm;
     private Canvas _canvas;
     private Camera _playerCamera;
+    private int _invincibilityDuration;
+
     private List<AudioSource> _listAudioSources;
-    private AudioSource _audioSource;
+
+    // private AudioSource _audioSource;
     private GameObject _player;
     private GameObject _playerSpawnLocation;
     private bool _isEndReached;
+    private bool _isInvincible;
 
     public delegate void LoadNextLevel();
 
@@ -44,9 +50,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
+        // _audioSource = GetComponent<AudioSource>();
         _listAudioSources = new List<AudioSource>();
         _listAudioSources.AddRange(GetComponents<AudioSource>());
+        _invincibilityDuration = 0;
         QueueSong(listWelcomeBgm);
     }
 
@@ -56,11 +63,12 @@ public class GameManager : MonoBehaviour
         {
             OnLevelEndReached();
         }
+      
     }
 
     public void StartGame()
     {
-        _audioSource.Stop();
+        _listAudioSources[IndexAudioSourceLevelBgm].Stop();
         StopCoroutine(PlayAnotherAudioClip(listWelcomeBgm));
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         DontDestroyOnLoad(this);
@@ -70,20 +78,29 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame()
     {
-        _audioSource.Stop();
+        _listAudioSources[IndexAudioSourceLevelBgm].Stop();
         Application.Quit();
     }
 
     private void QueueSong(List<AudioClip> musicList)
     {
-        _audioSource.clip = musicList[Random.Range(0, musicList.Count)];
-        _audioSource.Play();
-        StartCoroutine(PlayAnotherAudioClip(musicList));
+        //TODO
+        if (!_listAudioSources[IndexAudioSourceLevelBgm].isPlaying &&
+            _listAudioSources[IndexAudioSourceSpecialBgm].isPlaying)
+        {
+            _listAudioSources[IndexAudioSourceLevelBgm].UnPause();
+        }
+        else
+        {
+            _listAudioSources[IndexAudioSourceLevelBgm].clip = musicList[Random.Range(0, musicList.Count)];
+            _listAudioSources[IndexAudioSourceLevelBgm].Play();
+            StartCoroutine(PlayAnotherAudioClip(musicList));
+        }
     }
 
     private IEnumerator PlayAnotherAudioClip(List<AudioClip> musicList)
     {
-        yield return new WaitForSeconds(_audioSource.clip.length);
+        yield return new WaitForSeconds(_listAudioSources[IndexAudioSourceLevelBgm].clip.length);
         QueueSong(musicList);
     }
 
@@ -113,26 +130,46 @@ public class GameManager : MonoBehaviour
 
     public void ChangeToSpecialBgm(int option)
     {
-        var duration = 0;
         switch (option)
         {
             case 1:
-                _audioSource.clip = invincibleBgm;
-                duration = InvincibilityDuration;
+                _isInvincible = true;
+                if (_listAudioSources[IndexAudioSourceLevelBgm].isPlaying &&
+                    !_listAudioSources[IndexAudioSourceSpecialBgm].isPlaying)
+                {
+                    _listAudioSources[IndexAudioSourceLevelBgm].Pause();
+                    _listAudioSources[IndexAudioSourceSpecialBgm].clip = invincibleBgm;
+                }
+
+                _invincibilityDuration = BaseInvincibilityDuration;
                 break;
         }
 
-        _audioSource.Play();
-        StartCoroutine(QueueInvincibleBgm(InvincibilityDuration));
+        if (!_listAudioSources[IndexAudioSourceSpecialBgm].isPlaying)
+            _listAudioSources[IndexAudioSourceSpecialBgm].Play();
+        Invoke(nameof(CountdownChangeMusic), 1f);
+        // StartCoroutine(QueueInvincibleBgm(_invincibilityDuration));
     }
 
     private IEnumerator QueueInvincibleBgm(int duration)
     {
         yield return new WaitForSeconds(duration);
-        _audioSource.Stop();
+        _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
         QueueSong(listLevelBgm);
     }
 
+    private void CountdownChangeMusic()
+    {
+        --_invincibilityDuration;
+        if (_invincibilityDuration <= 0)
+        {
+            _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
+            QueueSong(listLevelBgm);
+            return;
+        }
+        Invoke(nameof(CountdownChangeMusic), 1f);
+    }
+    
     private IEnumerator DelayEndReachedReset()
     {
         yield return new WaitForSeconds(5);

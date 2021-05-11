@@ -71,6 +71,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         // _playerLives = StartingPlayerLives;
+        OnChangeSpecialBgm += GameManager.GameManagerInstance.ChangeToSpecialBgm;
         _invincibilityAnimator = GameObject.FindGameObjectWithTag("InvincibleStatus").GetComponent<Animator>();
         _extraPlayerLives = 0;
         _playerLevel = 1;
@@ -271,8 +272,6 @@ public class PlayerScript : MonoBehaviour
     //TODO fix asap
     private void SetInvincibility()
     {
-        var manager = GameManager.GameManagerInstance;
-        OnChangeSpecialBgm += manager.ChangeToSpecialBgm;
         OnChangeSpecialBgm?.Invoke(1);
         _isInvincible = true;
         _invincibilityCountdown = InvincibilityDuration;
