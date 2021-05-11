@@ -40,9 +40,6 @@ public class IslandNativeSavageScript : MonoBehaviour
     {
         switch (other.gameObject.tag)
         {
-            case "Player":
-                break;
-
             case "Obstacle":
             case "Enemy":
                 // _npcMovement = -_npcMovement;
@@ -54,13 +51,9 @@ public class IslandNativeSavageScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag.Equals("Judah"))
-        {
             _compteurHit++;
-        }
 
         if (_compteurHit == MaxHitPoint)
-        {
             Destroy(transform.gameObject);
-        }
     }
 }
