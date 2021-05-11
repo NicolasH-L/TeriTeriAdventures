@@ -17,10 +17,4 @@ public class ActivateKianaBoss : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
             kianaBoss.enabled = true;
     }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-            kianaBoss.enabled = false;
-    }
 }
