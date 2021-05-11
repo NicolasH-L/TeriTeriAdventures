@@ -314,11 +314,12 @@ public class PlayerScript : MonoBehaviour
         // print(tmp.ToString());
         if (tmp >= bar.GetCurrentMaxValue())
         {
-            bar.SetValue(tmp - nextLevelExpReq);
+            tmp -= nextLevelExpReq;
+            bar.SetValue(tmp);
             nextLevelExpReq += NextLevelExpReqOffset;
             bar.SetMaxValue(nextLevelExpReq);
             ++currentBarLevel;
-            tmp = 0;
+            // tmp = 0;
             if (bar.CompareTag("PlayerExpUI"))
             {
                 playerLevel.text = currentBarLevel.ToString();
@@ -327,6 +328,7 @@ public class PlayerScript : MonoBehaviour
             if (currentBarLevel >= MaxLevel)
             {
                 print("entered max:" + currentBarLevel);
+                bar.SetValue(bar.GetCurrentMaxValue());
                 SetBarTextValue(ref textMeshProUGUI, MaxExpText, MaxExpText);
                 return;
             }

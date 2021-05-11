@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         _listAudioSources[IndexAudioSourceLevelBgm].Stop();
-        StopCoroutine(PlayAnotherAudioClip(listWelcomeBgm));
+        // StopCoroutine(PlayAnotherAudioClip(listWelcomeBgm));
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         DontDestroyOnLoad(this);
         SceneManager.sceneLoaded += GetPlayer;
