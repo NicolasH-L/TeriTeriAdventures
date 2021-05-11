@@ -186,6 +186,16 @@ public class PlayerScript : MonoBehaviour
             return;
         // print("ive taken damage");
         _currentHealth -= damage;
+        if (_currentHealth <= 0)
+        {
+            if (_extraPlayerLives > 0)
+            {
+                ModifyExtraLife(false, 0.5f);
+            }
+
+            //TODO gameOVer
+        }
+
         healthBar.SetValue(_currentHealth);
         SetBarTextValue(ref playerHpUiValue, _currentHealth.ToString(), healthBar.GetCurrentMaxValue().ToString());
     }
@@ -279,7 +289,7 @@ public class PlayerScript : MonoBehaviour
 
             if (currentBarLevel >= MaxLevel)
             {
-                print("entered max:" +  currentBarLevel);
+                print("entered max:" + currentBarLevel);
                 SetBarTextValue(ref textMeshProUGUI, MaxExpText, MaxExpText);
                 return;
             }
@@ -301,10 +311,19 @@ public class PlayerScript : MonoBehaviour
         }
 
         print(_extraPlayerLives.ToString());
-        var tmp = playerLives[_extraPlayerLives].color;
-        tmp.a = 1f;
+        // var tmp = playerLives[_extraPlayerLives].color;
+        // tmp.a = 1f;
+        // playerLives[_extraPlayerLives].color = tmp;
+        // ++_extraPlayerLives;
+        ModifyExtraLife(true, 1f);
+    }
+
+    private void ModifyExtraLife(bool isAddLife, float alphaValue)
+    {
+        var tmp = isAddLife ? playerLives[_extraPlayerLives].color : playerLives[_extraPlayerLives - 1].color;
+        tmp.a = alphaValue;
         playerLives[_extraPlayerLives].color = tmp;
-        ++_extraPlayerLives;
+        _extraPlayerLives = isAddLife ? ++_extraPlayerLives : --_extraPlayerLives;
     }
 
     //TODO in class/ meeting
