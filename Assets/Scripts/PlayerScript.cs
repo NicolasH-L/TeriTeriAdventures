@@ -36,6 +36,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private List<Image> playerLives;
 
     private Animator _animatorPlayer;
+    [SerializeField] private Image invincibleStatus;
+
     private PolygonCollider2D _polygonCollider2D;
     private AudioSource[] _audioSource;
     private HingeJoint2D _hingeJoint2D;
@@ -247,14 +249,32 @@ public class PlayerScript : MonoBehaviour
     private void SetInvincibility()
     {
         _isInvincible = true;
-        StartCoroutine(ExpireInvincibility());
+        var tmp = invincibleStatus.color;
+        tmp.a = 1f;
+        invincibleStatus.color = tmp;
+        Invoke(nameof(ReduceInvincibilityDuration), 1f);
+        // StartCoroutine(ExpireInvincibility());
     }
 
-    private IEnumerator ExpireInvincibility()
+    private void ReduceInvincibilityDuration()
     {
-        yield return new WaitForSeconds(8);
-        _isInvincible = false;
+        var offset = 0.5f / 8f;
+        var tmp = invincibleStatus.color;
+        if (tmp.a.Equals(0.5f))
+        {
+            _isInvincible = false;
+            return;
+        }
+
+        tmp.a -= offset;
+        invincibleStatus.color = tmp;
+        Invoke(nameof(ReduceInvincibilityDuration), 1f);
     }
+
+    // private IEnumerator ExpireInvincibility()
+    // {
+    //     yield return new WaitForSeconds(8);
+    // }
 
     private void GainExp(SliderScript bar, int expValue, ref int nextLevelExpReq, ref int currentBarLevel,
         ref TextMeshProUGUI textMeshProUGUI)
@@ -278,7 +298,7 @@ public class PlayerScript : MonoBehaviour
 
             if (currentBarLevel >= MaxLevel)
             {
-                print("entered max:" +  currentBarLevel);
+                print("entered max:" + currentBarLevel);
                 SetBarTextValue(ref textMeshProUGUI, MaxExpText, MaxExpText);
                 return;
             }
