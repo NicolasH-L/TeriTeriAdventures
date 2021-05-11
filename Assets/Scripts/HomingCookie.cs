@@ -21,7 +21,7 @@ public class HomingCookie : MonoBehaviour
         direction.Normalize();
 
         float rotateAmount = Vector3.Cross(direction, transform.right).z;
-        _rigidbody2D.angularVelocity = -rotateAmount * RotateSpeed;
-        _rigidbody2D.velocity = transform.right * Speed;
+        _rigidbody2D.angularVelocity = rotateAmount * RotateSpeed;
+        _rigidbody2D.velocity = -transform.right * Speed;
     }
 }

@@ -4317,6 +4317,10 @@ MonoBehaviour:
   expBar: {fileID: 0}
   wepExpBar: {fileID: 0}
   playerLevel: {fileID: 0}
+  playerHpUiValue: {fileID: 0}
+  playerExpUiValue: {fileID: 0}
+  wepExpUiValue: {fileID: 0}
+  playerLives: []
 --- !u!50 &980986507
 Rigidbody2D:
   serializedVersion: 4
