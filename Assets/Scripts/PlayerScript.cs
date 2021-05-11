@@ -296,7 +296,7 @@ public class PlayerScript : MonoBehaviour
             return;
 
         var tmp = bar.GetCurrentValue() + expValue;
-        print(tmp.ToString());
+        // print(tmp.ToString());
         if (tmp >= bar.GetCurrentMaxValue())
         {
             bar.SetValue(tmp - nextLevelExpReq);
@@ -332,19 +332,16 @@ public class PlayerScript : MonoBehaviour
             return;
         }
 
-        print(_extraPlayerLives.ToString());
-        var tmp = playerLives[_extraPlayerLives].color;
-        tmp.a = 1f;
-        playerLives[_extraPlayerLives].color = tmp;
-        ++_extraPlayerLives;
+        // print(_extraPlayerLives.ToString());
+        ModifyExtraLife(true, 1f);
     }
 
     private void ModifyExtraLife(bool isAddLife, float alphaValue)
     {
         var index = isAddLife ? _extraPlayerLives : _extraPlayerLives - 1;
+        print(index.ToString());
         var tmp = playerLives[index].color;
         tmp.a = alphaValue;
-        playerLives[_extraPlayerLives].color = tmp;
         playerLives[index].color = tmp;
         if (_extraPlayerLives > playerLives.Count)
             return;
