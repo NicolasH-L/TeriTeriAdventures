@@ -13,17 +13,19 @@ public class PlayerScript : MonoBehaviour
     private const string KeyJump = "space";
     private const string BooleanDirectionRight = "isMovingToTheRight";
     private const string BooleanDirectionLeft = "isMovingToTheLeft";
-    private const float SpeedPlayer = 7f;
-    private const float JumpHeight = 8f;
-    private const float ForceAppliedAttacking = -1000f;
-    private const float ForceAppliedRetracting = 950f;
-    private const float DelayTime = 0.4f;
     private const int MaxJump = 2;
     private const int SoundEffect1 = 0;
     private const int SoundEffect2 = 1;
     private const int SoundEffect3 = 2;
     private const int MaxHealth = 100;
     private const int Damage = 10;
+    private const int InvincibilityDuration = 8;
+    private const float SpeedPlayer = 7f;
+    private const float JumpHeight = 8f;
+    private const float ForceAppliedAttacking = -1000f;
+    private const float ForceAppliedRetracting = 950f;
+    private const float DelayTime = 0.4f;
+    private const float Offset = 1f / InvincibilityDuration;
     [SerializeField] private Rigidbody2D playerRigidBody2D;
     [SerializeField] private GameObject judahCross;
     [SerializeField] private SliderScript healthBar;
@@ -37,7 +39,7 @@ public class PlayerScript : MonoBehaviour
 
     private Animator _animatorPlayer;
     [SerializeField] private Image invincibleStatus;
-
+    private Animator _invincibilityAnimator;
     private PolygonCollider2D _polygonCollider2D;
     private AudioSource[] _audioSource;
     private HingeJoint2D _hingeJoint2D;
@@ -53,7 +55,7 @@ public class PlayerScript : MonoBehaviour
     private const int BaseLevelRequirement = 100;
     private const int NextLevelExpReqOffset = 50;
     private const int MaxLevelExpReq = BaseLevelRequirement + (MaxLevel - 1) * NextLevelExpReqOffset;
-
+    private int _invincibilityCountdown;
     private int _extraPlayerLives;
 
     // private int _playerLives;
@@ -65,6 +67,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         // _playerLives = StartingPlayerLives;
+        _invincibilityAnimator = GameObject.FindGameObjectWithTag("InvincibleStatus").GetComponent<Animator>();
         _extraPlayerLives = 0;
         _playerLevel = 1;
         _weaponLevel = 1;
@@ -263,33 +266,37 @@ public class PlayerScript : MonoBehaviour
     private void SetInvincibility()
     {
         _isInvincible = true;
+        _invincibilityCountdown = InvincibilityDuration;
         var tmp = invincibleStatus.color;
         tmp.a = 1f;
         invincibleStatus.color = tmp;
-        Invoke(nameof(ReduceInvincibilityDuration), 1f);
+        _invincibilityAnimator.SetBool("isInvincible", true);
+        Invoke(nameof(ReduceInvincibilityDuration), 0f);
         // StartCoroutine(ExpireInvincibility());
     }
 
     private void ReduceInvincibilityDuration()
     {
-        var offset = 0.5f / 8f;
+       
         var tmp = invincibleStatus.color;
-        if (tmp.a.Equals(0.5f))
+        if (_invincibilityCountdown.Equals(0))
         {
+            _invincibilityAnimator.SetBool("isInvincible", false);
+            tmp.a = 0f;
+            invincibleStatus.color = tmp;
             _isInvincible = false;
+            print("ended");
             return;
         }
 
-        tmp.a -= offset;
+        --_invincibilityCountdown;
+        tmp.a -= Offset;
         invincibleStatus.color = tmp;
+        print("countdown " + _invincibilityCountdown.ToString() + " alpha " + tmp.a.ToString() + " invincibility: " +
+              _isInvincible.ToString());
         Invoke(nameof(ReduceInvincibilityDuration), 1f);
     }
-
-    // private IEnumerator ExpireInvincibility()
-    // {
-    //     yield return new WaitForSeconds(8);
-    // }
-
+    
     private void GainExp(SliderScript bar, int expValue, ref int nextLevelExpReq, ref int currentBarLevel,
         ref TextMeshProUGUI textMeshProUGUI)
     {
