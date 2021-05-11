@@ -183,7 +183,7 @@ public class PlayerScript : MonoBehaviour
 
     private void TakeDamage(int damage)
     {
-        if (_isInvincible)
+        if (_isInvincible || _currentHealth <= 0 && _extraPlayerLives == 0)
             return;
         // print("ive taken damage");
         _currentHealth -= damage;
@@ -197,6 +197,7 @@ public class PlayerScript : MonoBehaviour
             else
             {
                 //TODO gameover
+                print("Game Over");
             }
         }
 
