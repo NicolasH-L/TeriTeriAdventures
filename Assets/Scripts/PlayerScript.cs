@@ -187,6 +187,19 @@ public class PlayerScript : MonoBehaviour
             return;
         // print("ive taken damage");
         _currentHealth -= damage;
+        if (_currentHealth <= 0)
+        {
+            if (_extraPlayerLives > 0)
+            {
+                ModifyExtraLife(false, 0.5f);
+                _currentHealth = healthBar.GetCurrentMaxValue();
+            }
+            else
+            {
+                //TODO gameover
+            }
+        }
+
         healthBar.SetValue(_currentHealth);
         SetBarTextValue(ref playerHpUiValue, _currentHealth.ToString(), healthBar.GetCurrentMaxValue().ToString());
     }
@@ -324,6 +337,16 @@ public class PlayerScript : MonoBehaviour
         tmp.a = 1f;
         playerLives[_extraPlayerLives].color = tmp;
         ++_extraPlayerLives;
+    }
+
+    private void ModifyExtraLife(bool isAddLife, float alphaValue)
+    {
+        var index = isAddLife ? _extraPlayerLives : _extraPlayerLives - 1;
+        var tmp = playerLives[index].color;
+        tmp.a = alphaValue;
+        playerLives[_extraPlayerLives].color = tmp;
+        playerLives[index].color = tmp;
+        _extraPlayerLives = isAddLife ? ++_extraPlayerLives : --_extraPlayerLives;
     }
 
     //TODO in class/ meeting
