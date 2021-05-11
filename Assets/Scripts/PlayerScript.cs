@@ -280,7 +280,7 @@ public class PlayerScript : MonoBehaviour
         tmp.a = 1f;
         invincibleStatus.color = tmp;
         _invincibilityAnimator.SetBool("isInvincible", true);
-        Invoke(nameof(ReduceInvincibilityDuration), 0f);
+        Invoke(nameof(ReduceInvincibilityDuration), 1f);
         // StartCoroutine(ExpireInvincibility());
     }
 
