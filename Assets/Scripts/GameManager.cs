@@ -63,7 +63,6 @@ public class GameManager : MonoBehaviour
         {
             OnLevelEndReached();
         }
-      
     }
 
     public void StartGame()
@@ -80,6 +79,16 @@ public class GameManager : MonoBehaviour
     {
         _listAudioSources[IndexAudioSourceLevelBgm].Stop();
         Application.Quit();
+    }
+
+    public void ReplayGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void ReturnMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     private void QueueSong(List<AudioClip> musicList)
@@ -167,9 +176,10 @@ public class GameManager : MonoBehaviour
             QueueSong(listLevelBgm);
             return;
         }
+
         Invoke(nameof(CountdownChangeMusic), 1f);
     }
-    
+
     private IEnumerator DelayEndReachedReset()
     {
         yield return new WaitForSeconds(5);
