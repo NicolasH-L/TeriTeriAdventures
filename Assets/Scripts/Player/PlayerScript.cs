@@ -19,7 +19,6 @@ public class PlayerScript : MonoBehaviour
     private const string BooleanDirectionLeft = "isMovingToTheLeft";
     private const int MaxJump = 2;
     private const int SoundEffect1 = 0;
-    private const int SoundEffect2 = 1;
     private const int SoundEffect3 = 2;
     private const int MaxHealth = 100;
     private const int Damage = 10;
@@ -46,11 +45,7 @@ public class PlayerScript : MonoBehaviour
     private Animator _invincibilityAnimator;
     private PolygonCollider2D _polygonCollider2D;
     private AudioSource[] _audioSource;
-    private HingeJoint2D _hingeJoint2D;
-    private JointMotor2D _jointMotor2D;
-    private Collider2D _judahCollider;
     private bool _isInvincible;
-    private bool _hasAttacked;
     private int _jumpCounter;
     private int _currentHealth;
     private const int HpGainValue = 10;
@@ -80,12 +75,8 @@ public class PlayerScript : MonoBehaviour
         _playerLevelUpReq = BaseLevelRequirement;
         _weaponLevelUpReq = BaseLevelRequirement;
         _animatorPlayer = GetComponent<Animator>();
-        _hingeJoint2D = GetComponent<HingeJoint2D>();
         _audioSource = GetComponents<AudioSource>();
-        _judahCollider = judahCross.GetComponent<Collider2D>();
         _polygonCollider2D = GetComponent<PolygonCollider2D>();
-        _jointMotor2D = _hingeJoint2D.motor;
-        _judahCollider.enabled = false;
         _jumpCounter = 0;
         _currentHealth = MaxHealth;
         healthBar.SetMaxValue(_currentHealth);
@@ -148,15 +139,15 @@ public class PlayerScript : MonoBehaviour
         }
 
         //TODO : Fix attacking
-        if (Input.GetKey("j") && !_hasAttacked)
-        {
-            _audioSource[SoundEffect2].Play();
-            _jointMotor2D.motorSpeed = ForceAppliedAttacking;
-            _hingeJoint2D.motor = _jointMotor2D;
-            _judahCollider.enabled = true;
-            _hasAttacked = true;
-            StartCoroutine(Delay());
-        }
+        // if (Input.GetKey("j") && !_hasAttacked)
+        // {
+        //     _audioSource[SoundEffect2].Play();
+        //     _jointMotor2D.motorSpeed = ForceAppliedAttacking;
+        //     _hingeJoint2D.motor = _jointMotor2D;
+        //     _judahCollider.enabled = true;
+        //     _hasAttacked = true;
+        //     StartCoroutine(Delay());
+        // }
     }
 
     private void FixedUpdate()
@@ -220,8 +211,6 @@ public class PlayerScript : MonoBehaviour
     private IEnumerator Delay()
     {
         yield return new WaitForSeconds(DelayTime);
-        _jointMotor2D.motorSpeed = ForceAppliedRetracting;
-        _hingeJoint2D.motor = _jointMotor2D;
         _judahCollider.enabled = false;
         _hasAttacked = false;
     }
