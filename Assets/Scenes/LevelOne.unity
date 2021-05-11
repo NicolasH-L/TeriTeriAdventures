@@ -10329,6 +10329,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
+      propertyPath: expBar
+      value: 
+      objectReference: {fileID: 2074011337}
+    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 663854006}
+    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
+      propertyPath: wepExpBar
+      value: 
+      objectReference: {fileID: 179837548}
+    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
+      propertyPath: playerLevel
+      value: 
+      objectReference: {fileID: 1041246095}
+    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
+      propertyPath: wepExpUiValue
+      value: 
+      objectReference: {fileID: 558621504}
+    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
+      propertyPath: playerHpUiValue
+      value: 
+      objectReference: {fileID: 1395481845}
+    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
+      propertyPath: invincibleStatus
+      value: 
+      objectReference: {fileID: 876282606}
+    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
+      propertyPath: playerExpUiValue
+      value: 
+      objectReference: {fileID: 54185399}
+    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
+      propertyPath: playerLives.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
+      propertyPath: playerLives.Array.data[0]
+      value: 
+      objectReference: {fileID: 1590995413}
+    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
+      propertyPath: playerLives.Array.data[1]
+      value: 
+      objectReference: {fileID: 738477967}
+    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
+      propertyPath: playerLives.Array.data[2]
+      value: 
+      objectReference: {fileID: 1737909728}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 605864e53ed497b45840bb44b23dd2aa, type: 3}
 --- !u!1001 &6123069813409949073
