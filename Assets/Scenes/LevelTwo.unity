@@ -4970,6 +4970,7 @@ MonoBehaviour:
   playerExpUiValue: {fileID: 0}
   wepExpUiValue: {fileID: 0}
   playerLives: []
+  _judahBack: {fileID: 0}
   invincibleStatus: {fileID: 0}
 --- !u!50 &980986507
 Rigidbody2D:
