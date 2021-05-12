@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7633717931645015610}
   - component: {fileID: 7633717931645015589}
   - component: {fileID: 7633717931645015588}
+  - component: {fileID: 4103354251001962919}
+  - component: {fileID: 8638611583765608792}
   m_Layer: 0
   m_Name: SavageProjectile
   m_TagString: Untagged
@@ -202,3 +204,36 @@ PolygonCollider2D:
       - {x: -0.6544678, y: -5.0453515}
       - {x: -0.54737306, y: -5.0334525}
       - {x: -0.39268067, y: -5.0096536}
+--- !u!50 &4103354251001962919
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7633717931645015591}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 6
+--- !u!114 &8638611583765608792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7633717931645015591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3618146d7e1f7364aa13d9bde5756bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
