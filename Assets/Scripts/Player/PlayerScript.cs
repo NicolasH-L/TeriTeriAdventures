@@ -40,7 +40,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI wepExpUiValue;
     [SerializeField] private List<Image> playerLives;
     [SerializeField] private SpriteRenderer _judahBack;
-
+    private bool _isJudahAquired;
     private Animator _animatorPlayer;
     [SerializeField] private Image invincibleStatus;
     private Animator _invincibilityAnimator;
@@ -239,6 +239,10 @@ public class PlayerScript : MonoBehaviour
     {
         switch (other.gameObject.tag)
         {
+            case "Judah":
+                _isJudahAquired = true;
+                _judahBack.enabled = true;
+                break;
             case "InvincibleGourd":
                 SetInvincibility();
                 break;
