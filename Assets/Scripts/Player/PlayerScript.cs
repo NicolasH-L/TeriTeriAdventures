@@ -260,7 +260,8 @@ public class PlayerScript : MonoBehaviour
                 break;
             case "NextLevel":
                 var manager = GameManager.GameManagerInstance;
-                manager.OnLevelEndReached += manager.NextLevel;
+                if (GameManager.GameManagerInstance != null)
+                    manager.OnLevelEndReached += manager.NextLevel;
                 break;
         }
     }
