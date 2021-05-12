@@ -8,6 +8,8 @@ public class PlayerAttack : MonoBehaviour
     private const int SoundEffect2 = 1;
     private AudioSource[] _audioSource;
     private Collider2D _judahCollider;
+    [SerializeField] private SpriteRenderer _judahBack;
+
     
     // Start is called before the first frame update
     void Start()
@@ -28,9 +30,8 @@ public class PlayerAttack : MonoBehaviour
             // StartCoroutine(Delay());
         }
         else if (Input.GetKeyUp("j"))
-
         {
-            
+            _judahBack.enabled = true;
         }
     }
 }
