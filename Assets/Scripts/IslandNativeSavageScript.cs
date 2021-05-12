@@ -37,6 +37,11 @@ public class IslandNativeSavageScript : MonoBehaviour
                 _isMovingLeft = true;
             }
         }
+        RaycastHit2D playerDetected = Physics2D.Raycast(transform.position, Vector2.left, 3f);
+        if(playerDetected.collider)
+        {
+            
+        }
     }
 
     private void FiringBullet()
