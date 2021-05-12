@@ -9,18 +9,18 @@ public class PlayerAttack : MonoBehaviour
     private AudioSource[] _audioSource;
     private Collider2D _judahCollider;
     [SerializeField] private SpriteRenderer _judahBack;
+    private Animator _animatorPlayer;
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        _animatorPlayer = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
         //TODO : Fix attacking
         if (Input.GetKey("j") && !_hasAttacked)
         {
