@@ -40,7 +40,7 @@ public class IslandNativeSavageScript : MonoBehaviour
         RaycastHit2D playerDetected = Physics2D.Raycast(transform.position, Vector2.left, 3f);
         if (playerDetected.collider)
         {
-            _bullet.FiringBullet(_spawnBullet);
+            // _bullet.FiringBullet(_spawnBullet);
         }
     }
 

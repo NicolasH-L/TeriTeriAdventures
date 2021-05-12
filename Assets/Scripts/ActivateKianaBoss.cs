@@ -20,6 +20,7 @@ public class ActivateKianaBoss : MonoBehaviour
         {
             kianaBoss.enabled = true;
             blockingWall.SetActive(true);
+            Destroy(gameObject);
         }
     }
 }

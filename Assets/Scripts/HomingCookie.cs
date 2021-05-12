@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HomingCookie : MonoBehaviour
 {
-    private const float Speed = 5f;
+    private const float Speed = 15f;
     private const float RotateSpeed = 200f;
     private GameObject _target;
     private Rigidbody2D _rigidbody2D;
@@ -29,6 +29,13 @@ public class HomingCookie : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Cookie"))
+            return;
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Cookie") || other.gameObject.CompareTag("Boss"))
             return;
         Destroy(gameObject);
     }
