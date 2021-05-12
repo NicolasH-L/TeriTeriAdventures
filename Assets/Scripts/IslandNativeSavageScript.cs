@@ -6,6 +6,8 @@ public class IslandNativeSavageScript : MonoBehaviour
     private const int MaxHitPoint = 3;
     private const int axisAngle = 180;
     [SerializeField] private Transform _groundDetection;
+    [SerializeField] private Transform _spawnBullet;
+    [SerializeField] private GameObject bullet;
     private Vector2 _npcMovement;
     private int _compteurHit;
     private bool _isMovingLeft;
@@ -15,6 +17,7 @@ public class IslandNativeSavageScript : MonoBehaviour
     {
         _isMovingLeft = true;
         _npcMovement = Vector2.left * SpeedMovement;
+        InvokeRepeating("FiringBullet", 1f, 1f);
     }
 
     void Update()
@@ -34,8 +37,11 @@ public class IslandNativeSavageScript : MonoBehaviour
                 _isMovingLeft = true;
             }
         }
-        
-        //todo : instantiet bullets
+    }
+
+    private void FiringBullet()
+    {
+        Instantiate(bullet, _spawnBullet.position, _spawnBullet.rotation);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
