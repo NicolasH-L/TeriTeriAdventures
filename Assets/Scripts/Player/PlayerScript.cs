@@ -57,6 +57,8 @@ public class PlayerScript : MonoBehaviour
     private const int MaxLevelExpReq = BaseLevelRequirement + (MaxLevel - 1) * NextLevelExpReqOffset;
     private int _invincibilityCountdown;
     private int _extraPlayerLives;
+    private float _judahRightRotationZ;
+    private float _judahLeftRotationZ;
 
     // private int _playerLives;
     private int _playerLevel;
@@ -68,6 +70,7 @@ public class PlayerScript : MonoBehaviour
     {
         // _playerLives = StartingPlayerLives;
         _judahBack.enabled = false;
+
         if (GameManager.GameManagerInstance != null)
             OnChangeSpecialBgm += GameManager.GameManagerInstance.ChangeToSpecialBgm;
         _invincibilityAnimator = GameObject.FindGameObjectWithTag("InvincibleStatus").GetComponent<Animator>();
@@ -157,16 +160,32 @@ public class PlayerScript : MonoBehaviour
         var movementPlayerX = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedPlayer;
         if (movementPlayerX != 0)
         {
+            var rotation = _judahBack.transform.localRotation;
             transform.Translate(movementPlayerX, 0f, 0f);
+            Debug.Log((rotation.z/1).ToString());
             if (Input.GetKey(KeyMoveRight))
             {
                 SetMovingAnimationBooleans(true, false);
+                if (!_judahBack.enabled || rotation.z / 1 < 0)
+                    return;
+                RotateJudah(rotation);
             }
             else if (Input.GetKey(KeyMoveLeft))
             {
                 SetMovingAnimationBooleans(false, true);
+                // if (_judahBack.enabled)
+                //     return;
+                if (!_judahBack.enabled || rotation.z / 1 > 0)
+                    return;
+                RotateJudah(rotation);
             }
         }
+    }
+
+    private void RotateJudah(Quaternion rotation)
+    {
+        rotation.z *= -1;
+        _judahBack.transform.rotation = rotation;
     }
 
     private void SetMovingAnimationBooleans(bool isMoveRight, bool isMoveLeft)
@@ -242,6 +261,8 @@ public class PlayerScript : MonoBehaviour
             case "Judah":
                 _isJudahAquired = true;
                 _judahBack.enabled = true;
+                // _judahRightRotationZ = _judahBack.transform.position.z;
+                // _judahLeftRotationZ = -_judahRightRotationZ;
                 break;
             case "InvincibleGourd":
                 SetInvincibility();
