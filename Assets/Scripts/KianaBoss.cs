@@ -19,7 +19,6 @@ public class KianaBoss : MonoBehaviour
     private void SpawnBullets()
     {
         var index = Random.Range(0, cookiePortals.Count);
-        Debug.Log(index);
         var pos = new Vector2(cookiePortals[index].transform.position.x, cookiePortals[index].transform.position.y);
         Instantiate(cookieBullets, pos, new Quaternion());
     }
