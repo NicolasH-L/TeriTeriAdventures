@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2807939426437959106}
   - component: {fileID: 7728274042297541467}
   m_Layer: 8
-  m_Name: cookie
+  m_Name: Cookie
   m_TagString: Cookie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1271556687
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 1d10794bf63ba6b418c56625a07d3f99, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

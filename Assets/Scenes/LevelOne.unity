@@ -10401,50 +10401,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5657802358050217790, guid: 605864e53ed497b45840bb44b23dd2aa,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.227
-      objectReference: {fileID: 0}
-    - target: {fileID: 5657802358050217790, guid: 605864e53ed497b45840bb44b23dd2aa,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.365
-      objectReference: {fileID: 0}
-    - target: {fileID: 5657802358050217790, guid: 605864e53ed497b45840bb44b23dd2aa,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5657802358050217790, guid: 605864e53ed497b45840bb44b23dd2aa,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5657802358050217790, guid: 605864e53ed497b45840bb44b23dd2aa,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5657802358050217790, guid: 605864e53ed497b45840bb44b23dd2aa,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5657802358050217790, guid: 605864e53ed497b45840bb44b23dd2aa,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -180
-      objectReference: {fileID: 0}
     - target: {fileID: 5657802358292049840, guid: 605864e53ed497b45840bb44b23dd2aa,
         type: 3}
       propertyPath: m_Name
       value: TeriTeri
-      objectReference: {fileID: 0}
-    - target: {fileID: 5657802358292049849, guid: 605864e53ed497b45840bb44b23dd2aa,
-        type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: -4.3965178
       objectReference: {fileID: 0}
     - target: {fileID: 5657802358292049850, guid: 605864e53ed497b45840bb44b23dd2aa,
         type: 3}
@@ -10541,11 +10501,6 @@ PrefabInstance:
       propertyPath: playerExpUiValue
       value: 
       objectReference: {fileID: 54185399}
-    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
-        type: 3}
-      propertyPath: playerLives.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
         type: 3}
       propertyPath: playerLives.Array.data[0]
