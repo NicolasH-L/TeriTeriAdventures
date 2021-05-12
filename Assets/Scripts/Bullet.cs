@@ -2,22 +2,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Bullet : MonoBehaviour
 {
-
     private Rigidbody2D _rigidbody2D;
-    
-    // Start is called before the first frame update
+    private bool _isDirectionLeft;
+
     void Start()
     {
+        _isDirectionLeft = true;
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        _rigidbody2D.velocity = new Vector2(-2, 0);
+        if (_isDirectionLeft)
+        {
+            _rigidbody2D.velocity = new Vector2(-2, 0);
+        }
+        else
+        {
+            _rigidbody2D.velocity = new Vector2(2, 0);
+        }
+    }
+
+    public void FiringBullet(Transform spawnBullet)
+    {
+        Instantiate(transform, spawnBullet.position, spawnBullet.rotation);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
