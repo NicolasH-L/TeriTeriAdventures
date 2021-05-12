@@ -20,7 +20,7 @@ public class PlayerAttack : MonoBehaviour
         _audioSource = GetComponents<AudioSource>();
         _liste = new List<Animator>();
         _liste.AddRange(GetComponentsInChildren<Animator>());
-        _animatorPlayer = gameObject.GetComponentInChildren<Animator>();
+        _animatorPlayer = _liste[1];
         Debug.Log(_animatorPlayer.name + " " + _liste.Count.ToString());
         _judahCollider = _judahWeapons[0].GetComponent<PolygonCollider2D>();
     }
@@ -54,7 +54,7 @@ public class PlayerAttack : MonoBehaviour
     private void Attack()
     {
         _animatorPlayer.SetTrigger("Attack");
-        _animatorPlayer.SetBool("isMeleeHit", true);
+        _animatorPlayer.SetBool("IsMeleeHit", true);
         _audioSource[SoundEffect2].Play();
         _judahWeapons[0].SetActive(true);
         _judahCollider.enabled = true;
