@@ -13,6 +13,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField]private List<GameObject> _judahWeapons;
     private Animator _animatorPlayer;
     private List<Animator> _liste;
+    private float _appearTime;
 
     // Start is called before the first frame update
     void Start()
@@ -34,14 +35,15 @@ public class PlayerAttack : MonoBehaviour
         {
             Attack();
         }
-        // else if (Input.GetKeyUp("j"))
-        // {
-        //     _judahBack.enabled = true;
-        //     _judahWeapons[0].SetActive(false);
-        //     _judahCollider.enabled = false;
-        //     _animatorPlayer.SetTrigger("");
-        //     _animatorPlayer.SetBool("isMelee", false);
-        // }
+        else if (Input.GetKeyUp("j"))
+        {
+            Invoke(nameof(AppearBack), _appearTime);
+            _judahWeapons[0].SetActive(false);
+            _judahCollider.enabled = false;
+            _animatorPlayer.SetTrigger("");
+            _animatorPlayer.SetBool("isMelee", false);
+            _appearTime = 0;
+        }
     }
 
     private IEnumerator Delay()
@@ -51,13 +53,22 @@ public class PlayerAttack : MonoBehaviour
         _hasAttacked = false;
     }
 
+    private void AppearBack()
+    {
+        _judahBack.enabled = true;
+    }
+
     private void Attack()
     {
+        if (_hasAttacked)
+            return;
+        _appearTime = _animatorPlayer.runtimeAnimatorController.animationClips.Length;
         _animatorPlayer.SetTrigger("Attack");
         _animatorPlayer.SetBool("IsMeleeHit", true);
         _audioSource[SoundEffect2].Play();
         _judahWeapons[0].SetActive(true);
         _judahCollider.enabled = true;
+        _judahBack.enabled = false;
         _hasAttacked = true;
         StartCoroutine(Delay());
     }

@@ -4377,7 +4377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &876479225
 Transform:
   m_ObjectHideFlags: 0
@@ -7713,7 +7713,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5657802357315323191}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1730139902
+--- !u!95 &1730139903
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
