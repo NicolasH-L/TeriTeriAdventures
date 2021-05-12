@@ -1454,6 +1454,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: platform02-00 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 186392086316865321, guid: 559298a44b164fb43bec205a4fa7e3ce,
+        type: 3}
+      propertyPath: m_TagString
+      value: Plateform
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559298a44b164fb43bec205a4fa7e3ce, type: 3}
 --- !u!4 &391136757 stripped
@@ -1648,6 +1653,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: platform01-00 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4189097103319885387, guid: 75db1def2cf300d4bbe383260210f41a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Plateform
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75db1def2cf300d4bbe383260210f41a, type: 3}
 --- !u!4 &449034775 stripped
@@ -1841,7 +1851,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471881598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.68, y: 2.54, z: 0}
+  m_LocalPosition: {x: -1.65, y: 2.72, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1095765793}
@@ -1886,87 +1896,6 @@ SpriteRenderer:
   m_SortingLayerID: 1271556687
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 0bf5eb70ac3599047a26360584f5a125, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 4.5, y: 9.12}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!1 &502397721
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 502397722}
-  - component: {fileID: 502397723}
-  m_Layer: 0
-  m_Name: portal (5)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &502397722
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502397721}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.18, y: -1.33, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1095765793}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &502397723
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502397721}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1271556687
-  m_SortingLayer: 1
-  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 0bf5eb70ac3599047a26360584f5a125, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2174,6 +2103,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: platform01-00 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4189097103319885387, guid: 75db1def2cf300d4bbe383260210f41a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Plateform
+      objectReference: {fileID: 0}
     - target: {fileID: 4189097103319885398, guid: 75db1def2cf300d4bbe383260210f41a,
         type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
@@ -2354,7 +2288,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613477401}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.2, y: 1.83, z: 0}
+  m_LocalPosition: {x: 0.83, y: 3.31, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1095765793}
@@ -2510,7 +2444,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684715820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.66, y: 3.63, z: 0}
+  m_LocalPosition: {x: -2.96, y: -0.62, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1095765793}
@@ -2886,6 +2820,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: platform02-00 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 186392086316865321, guid: 559298a44b164fb43bec205a4fa7e3ce,
+        type: 3}
+      propertyPath: m_TagString
+      value: Plateform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559298a44b164fb43bec205a4fa7e3ce, type: 3}
@@ -3979,6 +3918,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: platform01-00 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4189097103319885387, guid: 75db1def2cf300d4bbe383260210f41a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Plateform
+      objectReference: {fileID: 0}
     - target: {fileID: 4189097103319885398, guid: 75db1def2cf300d4bbe383260210f41a,
         type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
@@ -4564,7 +4508,6 @@ Transform:
   - {fileID: 471881599}
   - {fileID: 684715821}
   - {fileID: 1487826058}
-  - {fileID: 502397722}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5415,6 +5358,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: platform01-00 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4189097103319885387, guid: 75db1def2cf300d4bbe383260210f41a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Plateform
+      objectReference: {fileID: 0}
     - target: {fileID: 4189097103319885398, guid: 75db1def2cf300d4bbe383260210f41a,
         type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
@@ -6172,7 +6120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1487826057}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.28, y: -0.21, z: 0}
+  m_LocalPosition: {x: 3.23, y: -1.73, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1095765793}
@@ -6216,7 +6164,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1271556687
   m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0bf5eb70ac3599047a26360584f5a125, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6545,6 +6493,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: platform02-00 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 186392086316865321, guid: 559298a44b164fb43bec205a4fa7e3ce,
+        type: 3}
+      propertyPath: m_TagString
+      value: Plateform
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559298a44b164fb43bec205a4fa7e3ce, type: 3}
 --- !u!4 &1561098493 stripped
@@ -6858,7 +6811,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1773350345}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.2, y: 1.83, z: 0}
+  m_LocalPosition: {x: 3.53, y: 1.97, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1095765793}
@@ -7668,6 +7621,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: platform02-00
       objectReference: {fileID: 0}
+    - target: {fileID: 186392086316865321, guid: 559298a44b164fb43bec205a4fa7e3ce,
+        type: 3}
+      propertyPath: m_TagString
+      value: Plateform
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559298a44b164fb43bec205a4fa7e3ce, type: 3}
 --- !u!1001 &430233403731063418
@@ -8280,6 +8238,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: platform01-00
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189097103319885387, guid: 75db1def2cf300d4bbe383260210f41a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Plateform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75db1def2cf300d4bbe383260210f41a, type: 3}
