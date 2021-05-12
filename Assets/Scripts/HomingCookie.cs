@@ -34,7 +34,8 @@ public class HomingCookie : MonoBehaviour
             case "Top":
             case "Wall":
             case "Plateform":
-                Destroy(this.gameObject);
+            case "Player":
+                Destroy(gameObject);
                 break;
         }
     }
