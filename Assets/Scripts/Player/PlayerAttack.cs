@@ -7,17 +7,22 @@ public class PlayerAttack : MonoBehaviour
     private bool _hasAttacked;
     private const int SoundEffect2 = 1;
     private AudioSource[] _audioSource;
-    private Collider2D _judahCollider;
+    private PolygonCollider2D _judahCollider;
     [SerializeField] private SpriteRenderer _judahBack;
     private const float DelayTime = 0.4f;
-
+    [SerializeField]private List<GameObject> _judahWeapons;
     private Animator _animatorPlayer;
-
+    private List<Animator> _liste;
 
     // Start is called before the first frame update
     void Start()
     {
-        _animatorPlayer = GetComponent<Animator>();
+        _audioSource = GetComponents<AudioSource>();
+        _liste = new List<Animator>();
+        _liste.AddRange(GetComponentsInChildren<Animator>());
+        _animatorPlayer = gameObject.GetComponentInChildren<Animator>();
+        Debug.Log(_animatorPlayer.name + " " + _liste.Count.ToString());
+        _judahCollider = _judahWeapons[0].GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame
@@ -29,24 +34,29 @@ public class PlayerAttack : MonoBehaviour
         {
             Attack();
         }
-        else if (Input.GetKeyUp("j"))
-        {
-            _judahBack.enabled = true;
-        }
+        // else if (Input.GetKeyUp("j"))
+        // {
+        //     _judahBack.enabled = true;
+        //     _judahWeapons[0].SetActive(false);
+        //     _judahCollider.enabled = false;
+        //     _animatorPlayer.SetTrigger("");
+        //     _animatorPlayer.SetBool("isMelee", false);
+        // }
     }
 
     private IEnumerator Delay()
     {
         yield return new WaitForSeconds(DelayTime);
-        // _judahCollider.enabled = false;
-        // _hasAttacked = false;
+        _judahCollider.enabled = false;
+        _hasAttacked = false;
     }
 
     private void Attack()
     {
         _animatorPlayer.SetTrigger("Attack");
-        _animatorPlayer.SetBool("isMelee", true);
+        _animatorPlayer.SetBool("isMeleeHit", true);
         _audioSource[SoundEffect2].Play();
+        _judahWeapons[0].SetActive(true);
         _judahCollider.enabled = true;
         _hasAttacked = true;
         StartCoroutine(Delay());

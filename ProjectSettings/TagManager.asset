@@ -35,6 +35,7 @@ TagManager:
   - InvincibleStatus
   - WoodStake
   - WoodTrap
+  - JudahWeapon
   layers:
   - Default
   - TransparentFX
