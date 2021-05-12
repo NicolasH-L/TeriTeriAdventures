@@ -34,6 +34,8 @@ public class IslandNativeSavageScript : MonoBehaviour
                 _isMovingLeft = true;
             }
         }
+        
+        //todo : instantiet bullets
     }
 
     private void OnCollisionEnter2D(Collision2D other)

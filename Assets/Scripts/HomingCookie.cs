@@ -28,15 +28,8 @@ public class HomingCookie : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        switch (other.gameObject.tag)
-        {
-            case "Ground":
-            case "Top":
-            case "Wall":
-            case "Plateform":
-            case "Player":
-                Destroy(gameObject);
-                break;
-        }
+        if (other.gameObject.CompareTag("Cookie"))
+            return;
+        Destroy(gameObject);
     }
 }
