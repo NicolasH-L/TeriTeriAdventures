@@ -39,6 +39,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI playerExpUiValue;
     [SerializeField] private TextMeshProUGUI wepExpUiValue;
     [SerializeField] private List<Image> playerLives;
+    [SerializeField] private SpriteRenderer _judahBack;
 
     private Animator _animatorPlayer;
     [SerializeField] private Image invincibleStatus;
@@ -66,6 +67,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         // _playerLives = StartingPlayerLives;
+        _judahBack.enabled = false;
         if (GameManager.GameManagerInstance != null)
             OnChangeSpecialBgm += GameManager.GameManagerInstance.ChangeToSpecialBgm;
         _invincibilityAnimator = GameObject.FindGameObjectWithTag("InvincibleStatus").GetComponent<Animator>();

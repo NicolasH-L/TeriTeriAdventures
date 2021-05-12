@@ -8,7 +8,6 @@ public class PlayerAttack : MonoBehaviour
     private const int SoundEffect2 = 1;
     private AudioSource[] _audioSource;
     private Collider2D _judahCollider;
-
     // Start is called before the first frame update
     void Start()
     {
