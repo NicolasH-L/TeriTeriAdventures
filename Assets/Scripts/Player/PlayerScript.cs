@@ -156,7 +156,7 @@ public class PlayerScript : MonoBehaviour
         {
             var rotation = _judahBack.transform.localRotation;
             transform.Translate(movementPlayerX, 0f, 0f);
-            Debug.Log((rotation.z / 1).ToString());
+            // Debug.Log((rotation.z / 1).ToString());
             if (Input.GetKey(KeyMoveRight))
             {
                 SetMovingAnimationBooleans(true, false);
