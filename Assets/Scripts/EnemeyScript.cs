@@ -12,7 +12,7 @@ public class EnemeyScript : MonoBehaviour
     private const float RunSpeed = 2.5f;
     private const float ChargeAttackSpeed = 5f;
     private const float MeleeAttackDelay = 5f;
-    private const float RangeAttackDelay = 2f;
+    private const float RangeAttackDelay = 1f;
     private const int MaxHealthPoint = 150;
     private const string AnimatorMoveLeftBoolean = "isMoveLeft";
     private const string AnimatorMeleeAttackBoolean = "isMeleeAttacking";
@@ -41,7 +41,6 @@ public class EnemeyScript : MonoBehaviour
         _movementSpeed = WalkSpeed;
         _healthPoint = MaxHealthPoint;
         _isMovingLeft = true;
-
     }
 
     void Update()
@@ -49,14 +48,16 @@ public class EnemeyScript : MonoBehaviour
         _npcMovement = Vector2.left * _movementSpeed;
         transform.Translate(_npcMovement * Time.deltaTime);
         var groundInfo = Physics2D.Raycast(groundDetection.position,
-            Vector2.down, 1f);
+            Vector2.down, 0.6f, 1 << LayerMask.NameToLayer(DefaultLayerMask));
         var obstacleInfo = Physics2D.Raycast(obstacleDetection.position, _npcDirection, 0f,
             1 << LayerMask.NameToLayer(DefaultLayerMask));
         var obstacleInfo02 = Physics2D.Raycast(obstacleDetection02.position, _npcDirection, 1.5f,
             1 << LayerMask.NameToLayer(DefaultLayerMask));
-        Debug.DrawRay(groundDetection.position, _npcDirection , Color.magenta);
+
+        Debug.DrawRay(groundDetection.position, Vector2.down, Color.magenta);
         Debug.DrawRay(obstacleDetection02.position, _npcDirection, Color.magenta);
-        Debug.DrawRay(obstacleDetection.position, _npcDirection , Color.magenta);
+        Debug.DrawRay(obstacleDetection.position, _npcDirection, Color.magenta);
+
         if (groundInfo.collider != false && obstacleInfo.collider == false && obstacleInfo02.collider == false) return;
         ChangeDirection();
     }

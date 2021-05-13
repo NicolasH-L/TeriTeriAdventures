@@ -2385,7 +2385,7 @@ GameObject:
   - component: {fileID: 449691200}
   - component: {fileID: 449691199}
   - component: {fileID: 449691198}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SwitchScene (1)
   m_TagString: NextLevel
   m_Icon: {fileID: 0}
@@ -2761,7 +2761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &519420029
 AudioListener:
   m_ObjectHideFlags: 0
@@ -8701,7 +8701,7 @@ PrefabInstance:
     - target: {fileID: 5657802358292049840, guid: 605864e53ed497b45840bb44b23dd2aa,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5657802358292049850, guid: 605864e53ed497b45840bb44b23dd2aa,
         type: 3}
