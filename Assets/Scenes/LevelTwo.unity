@@ -725,7 +725,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 263414566}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Items
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1559,6 +1559,7 @@ Transform:
   - {fileID: 379801082}
   - {fileID: 754226041}
   - {fileID: 2780488818763386300}
+  - {fileID: 441878630}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2377,6 +2378,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 411571531}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &441878630 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
+    type: 3}
+  m_PrefabInstance: {fileID: 1589332504}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &449691197
 GameObject:
   m_ObjectHideFlags: 0
@@ -2675,7 +2682,7 @@ GameObject:
   m_Component:
   - component: {fileID: 507283084}
   - component: {fileID: 507283083}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: palm03-01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3055,7 +3062,7 @@ GameObject:
   m_Component:
   - component: {fileID: 600793972}
   - component: {fileID: 600793971}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EasterEgg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3843,7 +3850,7 @@ GameObject:
   - component: {fileID: 712268106}
   - component: {fileID: 712268105}
   - component: {fileID: 712268104}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SwitchScene
   m_TagString: NextLevel
   m_Icon: {fileID: 0}
@@ -6781,7 +6788,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1492483138}
   - component: {fileID: 1492483137}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: entrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6932,6 +6939,80 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1554574896}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1589332504
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 345567603}
+    m_Modifications:
+    - target: {fileID: 5351486368822771891, guid: 8bf96020ea020604b998293139f1ee41,
+        type: 3}
+      propertyPath: m_Name
+      value: IslandTribalManNoFurAndCloth (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351486368822771891, guid: 8bf96020ea020604b998293139f1ee41,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.3729744
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8bf96020ea020604b998293139f1ee41, type: 3}
 --- !u!1001 &1599189503
 PrefabInstance:
   m_ObjectHideFlags: 0

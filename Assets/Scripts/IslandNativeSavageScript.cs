@@ -28,7 +28,6 @@ public class IslandNativeSavageScript : MonoBehaviour
 
     void Start()
     {
-        // _groundDetection = FindGameObjectInChildrenWithTag("GroundDetection");
         _npcDirection = Vector2.left;
         _movementSpeed = WalkSpeed;
         _healthPoint = MaxHealthPoint;
@@ -47,18 +46,7 @@ public class IslandNativeSavageScript : MonoBehaviour
         if (groundInfo.collider != false && obstacleInfo.collider == false && obstacleInfo02.collider == false) return;
         ChangeDirection();
     }
-
-    // private Transform FindGameObjectInChildrenWithTag(string targetTag)
-    // {
-    //     var parentTransform = transform;
-    //     foreach (Transform transformChild in parentTransform)
-    //     {
-    //         if (!transformChild.CompareTag(targetTag)) continue;
-    //         return transformChild.GetComponent<Transform>();
-    //     }
-    //
-    //     return null;
-    // }
+    
 
     private void ChangeDirection()
     {
@@ -96,11 +84,6 @@ public class IslandNativeSavageScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag(PlayerTag))
             return;
-        // ChangeDirection();
-
-        // var temp = transform.rotation;
-        // temp.z = -temp.z;
-        // transform.rotation = temp;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

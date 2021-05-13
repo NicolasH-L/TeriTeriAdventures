@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5156622020741146511}
   - component: {fileID: 5156622020741146496}
   - component: {fileID: -724851332878426942}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bandaid
   m_TagString: Bandaid
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 893055358069795625}
   - component: {fileID: 893055358069795626}
   - component: {fileID: -5811827857743135849}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TeriTicket
   m_TagString: TeriTicket
   m_Icon: {fileID: 0}
