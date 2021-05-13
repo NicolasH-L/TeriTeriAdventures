@@ -5,37 +5,34 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-public class IslandNativeSavageScript : MonoBehaviour
+public class EnemeyScript : MonoBehaviour
 {
     private const string PlayerTag = "Player";
     private const float WalkSpeed = 1f;
     private const float RunSpeed = 2.5f;
-    private const float FireDelay = 2f;
+    private const float ChargeAttackSpeed = 5f;
+    private const float MeleeAttackDelay = 5f;
+    private const float RangeAttackDelay = 2f;
     private const int MaxHealthPoint = 150;
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform obstacleDetection;
     [SerializeField] private Transform obstacleDetection02;
     [SerializeField] private Transform groundDetection;
+    [SerializeField] private bool _hasRangedAttack;
+    private Rigidbody2D _rigidbody2D;
     private const string DefaultLayerMask = "Default";
     private const string PlayerLayerMask = "Player";
     private Vector2 _npcMovement;
     private Vector2 _npcDirection;
-    private bool _hasFired;
+    private bool _hasAttacked;
     private bool _isMovingLeft;
     private int _healthPoint;
     private float _movementSpeed;
 
-    public delegate void ChangeDirectionBullet();
-
-    public ChangeDirectionBullet OnDirectionChange;
-
-    public delegate void ShootProjectile();
-
-    public ShootProjectile OnEnemyDetected;
-
     void Start()
     {
+        _rigidbody2D = GetComponent<Rigidbody2D>();
         _npcDirection = Vector2.left;
         _movementSpeed = WalkSpeed;
         _healthPoint = MaxHealthPoint;
@@ -50,7 +47,7 @@ public class IslandNativeSavageScript : MonoBehaviour
             Vector2.down, 0.4f);
         var obstacleInfo = Physics2D.Raycast(obstacleDetection.position, _npcDirection, 0f,
             1 << LayerMask.NameToLayer(DefaultLayerMask));
-        var obstacleInfo02 = Physics2D.Raycast(obstacleDetection02.position, _npcDirection, 1f,
+        var obstacleInfo02 = Physics2D.Raycast(obstacleDetection02.position, _npcDirection, 2f,
             1 << LayerMask.NameToLayer(DefaultLayerMask));
         Debug.DrawRay(obstacleDetection02.position, _npcDirection, Color.magenta);
         if (groundInfo.collider != false && obstacleInfo.collider == false && obstacleInfo02.collider == false) return;
@@ -75,25 +72,32 @@ public class IslandNativeSavageScript : MonoBehaviour
 
     private void Attack()
     {
-        if (_hasFired)
+        if (_hasAttacked)
             return;
-
-        Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-        _hasFired = true;
-        StartCoroutine(DelayFiring(FireDelay));
+        if (_hasRangedAttack)
+            Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        else
+        {
+            Debug.Log((_npcDirection * ChargeAttackSpeed).ToString());
+            _rigidbody2D.velocity = _npcDirection * ChargeAttackSpeed;
+            // (_npcDirection * ChargeAttackSpeed, ForceMode2D.Impulse);
+        }
+        _hasAttacked = true;
+        StartCoroutine(DelayAttack());
     }
 
-    private IEnumerator DelayFiring(float waitSecond)
+    private IEnumerator DelayAttack()
     {
+        float waitSecond = _hasRangedAttack ? RangeAttackDelay : MeleeAttackDelay;
         yield return new WaitForSeconds(waitSecond);
-        _hasFired = false;
+        _hasAttacked = false;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag(PlayerTag))
-            return;
+        _movementSpeed = WalkSpeed;
     }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -106,16 +110,14 @@ public class IslandNativeSavageScript : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag(PlayerTag))
             _movementSpeed = WalkSpeed;
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            _movementSpeed = RunSpeed;
-            Attack();
-        }
+        if (!other.gameObject.CompareTag(PlayerTag) || _hasAttacked) return;
+        _movementSpeed = RunSpeed;
+        Attack();
     }
 }

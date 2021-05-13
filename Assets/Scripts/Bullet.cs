@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     private const string PlayerTag = "Player";
     private Rigidbody2D _rigidbody2D;
     private bool _isDirectionLeft;
-    private const float BulletSpeed = 3f;
+    private const float BulletSpeed = 5f;
     private const float BulletDestructionDelay = 2f;
 
     void Start()
@@ -21,14 +21,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        if (_isDirectionLeft)
-        {
-            _rigidbody2D.velocity = new Vector2(-BulletSpeed, 0);
-        }
-        else
-        {
-            _rigidbody2D.velocity = new Vector2(BulletSpeed, 0);
-        }
+        _rigidbody2D.velocity = -transform.right * BulletSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -37,16 +30,14 @@ public class Bullet : MonoBehaviour
         {
             Invoke(nameof(DestroyBullet), BulletDestructionDelay);
         }
-        DestroyBullet();
+        else
+        {
+            DestroyBullet();
+        }
     }
 
     private void DestroyBullet()
     {
         Destroy(gameObject);
-    }
-
-    public void ChangeBulletDirection(bool isLeft)
-    {
-        _isDirectionLeft = isLeft;
     }
 }
