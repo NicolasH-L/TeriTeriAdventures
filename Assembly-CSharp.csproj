@@ -61,6 +61,9 @@
      <Compile Include="Assets\Scripts\ActivateKianaBoss.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\Chests.cs" />
+     <Compile Include="Assets\Scripts\Dialogue.cs" />
+     <Compile Include="Assets\Scripts\DialogueManager.cs" />
+     <Compile Include="Assets\Scripts\DialogueTrigger.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\HomingCookie.cs" />
      <Compile Include="Assets\Scripts\HonkaiBeasts.cs" />
