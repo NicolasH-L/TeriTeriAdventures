@@ -6,8 +6,12 @@ using UnityEngine.UIElements;
 
 public class Bullet : MonoBehaviour
 {
+    private const string EnemyTag = "Enemy";
+    private const string PlayerTag = "Player";
     private Rigidbody2D _rigidbody2D;
     private bool _isDirectionLeft;
+    private const float BulletSpeed = 5f;
+    private const float BulletDestructionDelay = 2f;
 
     void Start()
     {
@@ -17,22 +21,23 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        if (_isDirectionLeft)
+        _rigidbody2D.velocity = -transform.right * BulletSpeed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.gameObject.CompareTag(PlayerTag))
         {
-            _rigidbody2D.velocity = new Vector2(-2, 0);
+            Invoke(nameof(DestroyBullet), BulletDestructionDelay);
         }
         else
         {
-            _rigidbody2D.velocity = new Vector2(2, 0);
+            DestroyBullet();
         }
     }
-    
-    private void OnTriggerEnter2D(Collider2D other)
+
+    private void DestroyBullet()
     {
-        // if (other.gameObject.CompareTag(""))
-        // {
-        //     
-        // }
-        // Destroy(gameObject);
+        Destroy(gameObject);
     }
 }

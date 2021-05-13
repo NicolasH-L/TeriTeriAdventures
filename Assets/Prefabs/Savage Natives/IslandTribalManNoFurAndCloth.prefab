@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5079180668934467907}
   m_Layer: 0
-  m_Name: ObstacleDetection (1)
+  m_Name: ObstacleDetection02
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1949264854653253530}
   m_Layer: 0
-  m_Name: BulletSpawn
+  m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2286441747254136295}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.782, y: 0.13, z: -0}
   m_LocalScale: {x: 1, y: 1.8181819, z: 0}
   m_Children: []
@@ -350,11 +350,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab36b1ba389b74b4397794938d871a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnBullet: {fileID: 1949264854653253530}
-  bullet: {fileID: 7633717931645015591, guid: c63d249c38d1fab4980860909317af65, type: 3}
-  _obstacleDetection: {fileID: 8523195615782924780}
-  _obstacleDetection02: {fileID: 5079180668934467907}
-  _groundDetection: {fileID: 103442140641093728}
+  bulletSpawnPoint: {fileID: 1949264854653253530}
+  bulletPrefab: {fileID: 7633717931645015591, guid: c63d249c38d1fab4980860909317af65,
+    type: 3}
+  obstacleDetection: {fileID: 8523195615782924780}
+  obstacleDetection02: {fileID: 5079180668934467907}
+  groundDetection: {fileID: 103442140641093728}
+  _hasRangedAttack: 1
 --- !u!61 &7757739071804516531
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -368,7 +370,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.7, y: 0.15}
+  m_Offset: {x: -3, y: 0.15}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -379,7 +381,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 1.5}
+  m_Size: {x: 5, y: 1.5}
   m_EdgeRadius: 0
 --- !u!1 &6998395730637914775
 GameObject:
