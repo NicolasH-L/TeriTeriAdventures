@@ -8,8 +8,7 @@ public class KianaBoss : MonoBehaviour
     [SerializeField] private List<GameObject> cookiePortals;
     private Transform _kianaBoss;
     private Random _random;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         _kianaBoss = GetComponent<Transform>();
