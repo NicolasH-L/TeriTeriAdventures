@@ -57,9 +57,13 @@ public class EnemeyScript : MonoBehaviour
         Debug.DrawRay(groundDetection.position, Vector2.down, Color.magenta);
         Debug.DrawRay(obstacleDetection02.position, _npcDirection, Color.magenta);
         Debug.DrawRay(obstacleDetection.position, _npcDirection, Color.magenta);
-        
-        // if(obstacleInfo.collider)
-        //     Debug.Log("01 " + obstacleInfo.collider.name);
+
+        if (obstacleInfo.collider)
+        {
+            Debug.Log(gameObject.name);
+            Debug.Log("01 " + obstacleInfo.collider.name);
+            Debug.Log("01 " + obstacleInfo.collider.tag);
+        }
         // if(obstacleInfo02.collider)
         //     Debug.Log("02 " + obstacleInfo02.collider.name);
 
