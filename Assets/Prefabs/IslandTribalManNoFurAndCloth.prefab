@@ -42,8 +42,8 @@ GameObject:
   - component: {fileID: 6254877379021932772}
   - component: {fileID: 7605091172633735801}
   - component: {fileID: 9039024067104656029}
-  - component: {fileID: 3998447103162889176}
   - component: {fileID: 4306053257305894654}
+  - component: {fileID: 3998447103162889176}
   m_Layer: 0
   m_Name: IslandTribalManNoFurAndCloth
   m_TagString: Enemy
@@ -306,20 +306,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3998447103162889176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5351486368822771891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab36b1ba389b74b4397794938d871a4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _groundDetection: {fileID: 103442140641093728}
-  _spawnBullet: {fileID: 1949264854653253530}
 --- !u!61 &4306053257305894654
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -346,6 +332,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.827732, y: 3.54}
   m_EdgeRadius: 0
+--- !u!114 &3998447103162889176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5351486368822771891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab36b1ba389b74b4397794938d871a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groundDetection: {fileID: 103442140641093728}
+  _spawnBullet: {fileID: 1949264854653253530}
+  bullet: {fileID: 7633717931645015591, guid: c63d249c38d1fab4980860909317af65, type: 3}
 --- !u!1 &8660167478846321368
 GameObject:
   m_ObjectHideFlags: 0

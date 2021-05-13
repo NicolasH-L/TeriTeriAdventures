@@ -26,14 +26,13 @@ public class Bullet : MonoBehaviour
             _rigidbody2D.velocity = new Vector2(2, 0);
         }
     }
-
-    public void FiringBullet(Transform spawnBullet)
-    {
-        Instantiate(gameObject, spawnBullet.position, spawnBullet.rotation);
-    }
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(gameObject);
+        // if (other.gameObject.CompareTag(""))
+        // {
+        //     
+        // }
+        // Destroy(gameObject);
     }
 }
