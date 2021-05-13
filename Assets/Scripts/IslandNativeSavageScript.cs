@@ -2,11 +2,12 @@
 
 public class IslandNativeSavageScript : MonoBehaviour
 {
-    private const float SpeedMovement = 1f;
+    private const float SpeedMovement = 0f;
     private const int MaxHitPoint = 3;
     private const int axisAngle = 180;
     [SerializeField] private Transform _groundDetection;
     [SerializeField] private Transform _spawnBullet;
+    private bool hasSpotted;
     private Vector2 _npcMovement;
     private int _compteurHit;
     private bool _isMovingLeft;
@@ -15,6 +16,7 @@ public class IslandNativeSavageScript : MonoBehaviour
 
     void Start()
     {
+        hasSpotted = false;
         _isMovingLeft = true;
         _npcMovement = Vector2.left * SpeedMovement;
     }
@@ -37,11 +39,7 @@ public class IslandNativeSavageScript : MonoBehaviour
             }
         }
 
-        RaycastHit2D playerDetected = Physics2D.Raycast(transform.position, Vector2.left, 3f);
-        if (playerDetected.collider)
-        {
-            // _bullet.FiringBullet(_spawnBullet);
-        }
+        // _bullet.FiringBullet(_spawnBullet);
     }
 
     private void OnCollisionEnter2D(Collision2D other)

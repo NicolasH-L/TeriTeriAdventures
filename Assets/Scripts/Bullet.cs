@@ -15,7 +15,6 @@ public class Bullet : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_isDirectionLeft)
@@ -30,7 +29,7 @@ public class Bullet : MonoBehaviour
 
     public void FiringBullet(Transform spawnBullet)
     {
-        Instantiate(transform, spawnBullet.position, spawnBullet.rotation);
+        Instantiate(gameObject, spawnBullet.position, spawnBullet.rotation);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
