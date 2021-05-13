@@ -38,10 +38,13 @@ TagManager:
   - JudahWeapon
   - GroundDetection
   - LaserTrap
+<<<<<<< HEAD
   - DialogueManager
   - Dialogue
   - CanvasDialogue
   - NpcName
+=======
+>>>>>>> c170c19faa9d89a8cce656270c3f81cd347c478e
   layers:
   - Default
   - TransparentFX
