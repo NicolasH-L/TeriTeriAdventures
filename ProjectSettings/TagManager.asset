@@ -37,6 +37,7 @@ TagManager:
   - WoodTrap
   - JudahWeapon
   - GroundDetection
+  - LaserTrap
   layers:
   - Default
   - TransparentFX
