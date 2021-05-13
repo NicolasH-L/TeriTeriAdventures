@@ -11,6 +11,10 @@ public class PlayerScript : MonoBehaviour
 
     public event ChangeSpecialBgm OnChangeSpecialBgm;
 
+    public delegate void WeaponEvent();
+
+    public event WeaponEvent OnWeaponCollected;
+
     private const string MaxExpText = "MAX";
     private const string KeyMoveRight = "d";
     private const string KeyMoveLeft = "a";
@@ -57,6 +61,7 @@ public class PlayerScript : MonoBehaviour
     private int _extraPlayerLives;
     private float _judahRightRotationZ;
     private float _judahLeftRotationZ;
+    private bool _hasAttacked;
 
     // private int _playerLives;
     private int _playerLevel;
@@ -71,6 +76,8 @@ public class PlayerScript : MonoBehaviour
 
         if (GameManager.GameManagerInstance != null)
             OnChangeSpecialBgm += GameManager.GameManagerInstance.ChangeToSpecialBgm;
+        if (PlayerAttack.PlayerAttackInstance != null)
+            OnWeaponCollected += PlayerAttack.PlayerAttackInstance.ObtainWeapon;
         _invincibilityAnimator = GameObject.FindGameObjectWithTag("InvincibleStatus").GetComponent<Animator>();
         _extraPlayerLives = 0;
         _playerLevel = 1;
@@ -140,17 +147,6 @@ public class PlayerScript : MonoBehaviour
             _jumpCounter++;
             _audioSource[SoundEffect1].Play();
         }
-
-        //TODO : Fix attacking
-        // if (Input.GetKey("j") && !_hasAttacked)
-        // {
-        //     _audioSource[SoundEffect2].Play();
-        //     _jointMotor2D.motorSpeed = ForceAppliedAttacking;
-        //     _hingeJoint2D.motor = _jointMotor2D;
-        //     _judahCollider.enabled = true;
-        //     _hasAttacked = true;
-        //     StartCoroutine(Delay());
-        // }
     }
 
     private void FixedUpdate()
@@ -160,7 +156,7 @@ public class PlayerScript : MonoBehaviour
         {
             var rotation = _judahBack.transform.localRotation;
             transform.Translate(movementPlayerX, 0f, 0f);
-            Debug.Log((rotation.z/1).ToString());
+            Debug.Log((rotation.z / 1).ToString());
             if (Input.GetKey(KeyMoveRight))
             {
                 SetMovingAnimationBooleans(true, false);
@@ -218,6 +214,7 @@ public class PlayerScript : MonoBehaviour
                 //TODO gameover
                 var manager = GameManager.GameManagerInstance;
                 OnChangeSpecialBgm -= manager.ChangeToSpecialBgm;
+                
                 print("Game Over");
             }
         }
@@ -258,6 +255,8 @@ public class PlayerScript : MonoBehaviour
         {
             case "Judah":
                 _isJudahAquired = true;
+                if (OnWeaponCollected != null)
+                    OnWeaponCollected();
                 _judahBack.enabled = true;
                 // _judahRightRotationZ = _judahBack.transform.position.z;
                 // _judahLeftRotationZ = -_judahRightRotationZ;

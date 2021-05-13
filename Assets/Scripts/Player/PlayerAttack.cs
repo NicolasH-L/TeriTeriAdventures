@@ -1,19 +1,25 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    private static PlayerAttack _playerAttack;
+    public static PlayerAttack PlayerAttackInstance => _playerAttack;
+
     private bool _hasAttacked;
     private const int SoundEffect2 = 1;
     private AudioSource[] _audioSource;
     private PolygonCollider2D _judahCollider;
     [SerializeField] private SpriteRenderer _judahBack;
     private const float DelayTime = 0.4f;
-    [SerializeField]private List<GameObject> _judahWeapons;
+    [SerializeField] private List<GameObject> _judahWeapons;
     private Animator _animatorPlayer;
     private List<Animator> _liste;
     private float _appearTime;
+    private bool _hasWeapon;
+
 
     // Start is called before the first frame update
     void Start()
@@ -59,8 +65,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
-        if (_hasAttacked)
-            return;
+        // if (_hasAttacked)
+        //     return;
         _appearTime = _animatorPlayer.runtimeAnimatorController.animationClips.Length;
         _animatorPlayer.SetTrigger("Attack");
         _audioSource[SoundEffect2].Play();
@@ -69,5 +75,10 @@ public class PlayerAttack : MonoBehaviour
         _judahBack.enabled = false;
         _hasAttacked = true;
         StartCoroutine(Delay());
+    }
+
+    public void ObtainWeapon()
+    {
+        _hasWeapon = true;
     }
 }
