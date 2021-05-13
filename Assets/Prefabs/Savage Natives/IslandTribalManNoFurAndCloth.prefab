@@ -64,6 +64,7 @@ Transform:
   m_Children:
   - {fileID: 103442140641093728}
   - {fileID: 1949264854653253530}
+  - {fileID: 8523195615782924780}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -319,7 +320,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.640316, y: 0}
+  m_Offset: {x: -2.640316, y: 0.18757874}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -330,7 +331,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.827732, y: 3.54}
+  m_Size: {x: 5.827732, y: 1.8194546}
   m_EdgeRadius: 0
 --- !u!114 &3998447103162889176
 MonoBehaviour:
@@ -346,7 +347,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnBullet: {fileID: 1949264854653253530}
   bullet: {fileID: 7633717931645015591, guid: c63d249c38d1fab4980860909317af65, type: 3}
-  groundDetection: {fileID: 103442140641093728}
+  _obstacleDetection: {fileID: 8523195615782924780}
+--- !u!1 &6998395730637914775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8523195615782924780}
+  m_Layer: 0
+  m_Name: ObstacleDetection
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8523195615782924780
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998395730637914775}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.2, y: 1.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_Children: []
+  m_Father: {fileID: 7058637885678968285}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8660167478846321368
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,7 +389,7 @@ GameObject:
   - component: {fileID: 103442140641093728}
   m_Layer: 0
   m_Name: GroundDetection
-  m_TagString: Untagged
+  m_TagString: GroundDetection
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -371,7 +402,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8660167478846321368}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.46, y: -2.13, z: -0}
+  m_LocalPosition: {x: -1.425, y: -1.44, z: -0}
   m_LocalScale: {x: 1, y: 1.8181819, z: 0}
   m_Children: []
   m_Father: {fileID: 7058637885678968285}

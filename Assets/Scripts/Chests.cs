@@ -5,6 +5,7 @@ using UnityEngine;
 public class Chests : MonoBehaviour
 {
     [SerializeField] private Sprite chests;
+    [SerializeField] private List<GameObject> _listItems;
     private SpriteRenderer _chestsRenderer;
 
     void Start()
