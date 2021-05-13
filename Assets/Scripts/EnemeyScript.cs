@@ -8,6 +8,7 @@ using Debug = UnityEngine.Debug;
 public class EnemeyScript : MonoBehaviour
 {
     private const string PlayerTag = "Player";
+    private const string EnemyTag = "Enemy";
     private const float WalkSpeed = 1f;
     private const float RunSpeed = 2.5f;
     private const float ChargeAttackSpeed = 5f;
@@ -63,11 +64,15 @@ public class EnemeyScript : MonoBehaviour
             Debug.Log(gameObject.name);
             Debug.Log("01 " + obstacleInfo.collider.name);
             Debug.Log("01 " + obstacleInfo.collider.tag);
+            Debug.Log("02" + obstacleInfo02.collider.name);
+            Debug.Log("02 " + obstacleInfo02.collider.tag);
         }
         // if(obstacleInfo02.collider)
         //     Debug.Log("02 " + obstacleInfo02.collider.name);
-
-        if (groundInfo.collider != false && obstacleInfo.collider == false && obstacleInfo02.collider == false) return;
+        // Debug.Log(!obstacleInfo.collider.CompareTag(null) && obstacleInfo.collider.CompareTag(EnemyTag)
+        //     !obstacleInfo02.collider.CompareTag(null) && obstacleInfo02.collider.tag.Equals(EnemyTag));
+        if (groundInfo.collider != false && obstacleInfo.collider == false
+                                         && obstacleInfo02.collider == false) return;
         ChangeDirection();
     }
 
@@ -113,6 +118,8 @@ public class EnemeyScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         _movementSpeed = WalkSpeed;
+        // if (other.gameObject.CompareTag(EnemyTag))
+        //     ChangeDirection();
     }
 
 
