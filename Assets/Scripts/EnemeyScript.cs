@@ -14,12 +14,15 @@ public class EnemeyScript : MonoBehaviour
     private const float MeleeAttackDelay = 5f;
     private const float RangeAttackDelay = 2f;
     private const int MaxHealthPoint = 150;
+    private const string AnimatorMoveLeftBoolean = "isMoveLeft";
+    private const string AnimatorMeleeAttackBoolean = "isMeleeAttacking";
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform obstacleDetection;
     [SerializeField] private Transform obstacleDetection02;
     [SerializeField] private Transform groundDetection;
     [SerializeField] private bool _hasRangedAttack;
+    private Animator _animator;
     private Rigidbody2D _rigidbody2D;
     private const string DefaultLayerMask = "Default";
     private const string PlayerLayerMask = "Player";
@@ -33,6 +36,7 @@ public class EnemeyScript : MonoBehaviour
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
         _npcDirection = Vector2.left;
         _movementSpeed = WalkSpeed;
         _healthPoint = MaxHealthPoint;
@@ -68,6 +72,8 @@ public class EnemeyScript : MonoBehaviour
             _isMovingLeft = true;
             _npcDirection = Vector2.left;
         }
+        _animator.SetBool(AnimatorMoveLeftBoolean, _isMovingLeft);
+
     }
 
     private void Attack()
@@ -78,16 +84,19 @@ public class EnemeyScript : MonoBehaviour
             Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         else
         {
-            Debug.Log((_npcDirection * ChargeAttackSpeed).ToString());
+            // Debug.Log((_npcDirection * ChargeAttackSpeed).ToString());
             _rigidbody2D.velocity = _npcDirection * ChargeAttackSpeed;
-            // (_npcDirection * ChargeAttackSpeed, ForceMode2D.Impulse);
+            _animator.SetBool(AnimatorMeleeAttackBoolean, true);
         }
+
         _hasAttacked = true;
         StartCoroutine(DelayAttack());
     }
 
     private IEnumerator DelayAttack()
     {
+        _animator.SetBool(AnimatorMeleeAttackBoolean, false);
+
         float waitSecond = _hasRangedAttack ? RangeAttackDelay : MeleeAttackDelay;
         yield return new WaitForSeconds(waitSecond);
         _hasAttacked = false;
