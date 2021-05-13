@@ -276,11 +276,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: IslandSavageNative (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 3797078760906129447, guid: 24cb74cb4a96dd24d9ddb30ba02ce3bd,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3797078760906129466, guid: 24cb74cb4a96dd24d9ddb30ba02ce3bd,
         type: 3}
       propertyPath: m_RootOrder
@@ -1574,11 +1569,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: IslandTribalManNoFurAndCloth (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5351486368822771891, guid: 8bf96020ea020604b998293139f1ee41,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
         type: 3}
@@ -4080,11 +4070,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: IslandSavageNative
       objectReference: {fileID: 0}
-    - target: {fileID: 3797078760906129447, guid: 24cb74cb4a96dd24d9ddb30ba02ce3bd,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3797078760906129466, guid: 24cb74cb4a96dd24d9ddb30ba02ce3bd,
         type: 3}
       propertyPath: m_RootOrder
@@ -4138,6 +4123,11 @@ PrefabInstance:
     - target: {fileID: 3797078760906129466, guid: 24cb74cb4a96dd24d9ddb30ba02ce3bd,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797078760906129467, guid: 24cb74cb4a96dd24d9ddb30ba02ce3bd,
+        type: 3}
+      propertyPath: _hasRangedAttack
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6871,11 +6861,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: IslandTribalManNoFurAndCloth (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 5351486368822771891, guid: 8bf96020ea020604b998293139f1ee41,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
         type: 3}
       propertyPath: m_RootOrder
@@ -6950,11 +6935,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: IslandTribalManNoFurAndCloth (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5351486368822771891, guid: 8bf96020ea020604b998293139f1ee41,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
         type: 3}
@@ -7779,11 +7759,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: IslandTribalManNoFurAndCloth (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 5351486368822771891, guid: 8bf96020ea020604b998293139f1ee41,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
         type: 3}
       propertyPath: m_RootOrder
@@ -8149,11 +8124,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: IslandSavageNative (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797078760906129447, guid: 24cb74cb4a96dd24d9ddb30ba02ce3bd,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3797078760906129466, guid: 24cb74cb4a96dd24d9ddb30ba02ce3bd,
         type: 3}
@@ -8782,6 +8752,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5657802358292049852, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
+      propertyPath: m_Mass
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5657802358292049852, guid: 605864e53ed497b45840bb44b23dd2aa,
         type: 3}
