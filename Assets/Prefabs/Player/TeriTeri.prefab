@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1200761503816434583}
   - component: {fileID: 2819699367836534587}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Judah
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4570912365469842405}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 5657802357534708487}
   - component: {fileID: 5657802357534708484}
   - component: {fileID: 5657802357534708486}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: judah-medium-range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 5657802357726641676}
   - component: {fileID: 5657802357726641675}
   - component: {fileID: 5657802357726641674}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: judah-riding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 5657802358050217791}
   - component: {fileID: 5657802358050217776}
   - component: {fileID: 5657802358050217777}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: judah-melee
   m_TagString: Judah
   m_Icon: {fileID: 0}
@@ -801,7 +801,7 @@ GameObject:
   - component: {fileID: 5657802358292049830}
   - component: {fileID: 5657802358292049848}
   - component: {fileID: 5657802358292049853}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TeriTeri
   m_TagString: Player
   m_Icon: {fileID: 0}

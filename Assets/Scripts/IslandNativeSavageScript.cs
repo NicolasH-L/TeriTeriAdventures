@@ -14,6 +14,7 @@ public class IslandNativeSavageScript : MonoBehaviour
     [SerializeField] private Transform _spawnBullet;
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform _obstacleDetection;
+    private int _defaultLayerMask = 0;
     private Transform _groundDetection;
     private Vector2 _npcMovement;
     private Vector2 _npcDirection;
@@ -40,7 +41,6 @@ public class IslandNativeSavageScript : MonoBehaviour
         var obstacleInfo = Physics2D.Raycast(_obstacleDetection.position, _npcDirection, 0f);
         if (groundInfo.collider != false && obstacleInfo.collider == false) return;
         ChangeDirection();
-
     }
 
     private Transform FindGameObjectInChildrenWithTag(string targetTag)
@@ -68,9 +68,9 @@ public class IslandNativeSavageScript : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, 0);
             _isMovingLeft = true;
             _npcDirection = Vector2.left;
-            
         }
     }
+
     private void Attack()
     {
         if (_hasFired)
