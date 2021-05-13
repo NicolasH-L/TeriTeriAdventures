@@ -310,6 +310,7 @@ MonoBehaviour:
   _groundDetection: {fileID: 7787368004931511336}
   _spawnBullet: {fileID: 7917580688958377296}
   bullet: {fileID: 7633717931645015591, guid: c63d249c38d1fab4980860909317af65, type: 3}
+  groundDetection: {fileID: 7787368004931511336}
 --- !u!1 &5369717127169777610
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +335,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5369717127169777610}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.25, y: -1.28, z: 0}
+  m_LocalPosition: {x: -1.683, y: -1.85, z: 0}
   m_LocalScale: {x: 1, y: 1.8181819, z: 0}
   m_Children: []
   m_Father: {fileID: 3797078760906129466}

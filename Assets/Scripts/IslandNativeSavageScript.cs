@@ -14,15 +14,17 @@ public class IslandNativeSavageScript : MonoBehaviour
     [SerializeField] private Transform _groundDetection;
     [SerializeField] private Transform _spawnBullet;
     [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform groundDetection;
     private Vector2 _npcMovement;
+    private Vector2 _npcDirection;
     private bool _hasFired;
     private bool _isMovingLeft;
-    private int axisTemp;
     private int _healthPoint;
     private float _movementSpeed;
 
     void Start()
     {
+        _npcDirection = Vector2.left;
         _movementSpeed = WalkSpeed;
         _healthPoint = MaxHealthPoint;
         _isMovingLeft = true;
@@ -30,9 +32,9 @@ public class IslandNativeSavageScript : MonoBehaviour
 
     void Update()
     {
-        _npcMovement = Vector2.left * _movementSpeed;
+        _npcMovement = _npcDirection * _movementSpeed;
         transform.Translate(_npcMovement * Time.deltaTime);
-        RaycastHit2D groundInfo = Physics2D.Raycast(_groundDetection.position, Vector2.down, 0.5f);
+        RaycastHit2D groundInfo = Physics2D.Raycast(transform.position, transform.position + Vector3.down, 0f);
         if (groundInfo.collider == false)
         {
             if (_isMovingLeft)
@@ -46,6 +48,9 @@ public class IslandNativeSavageScript : MonoBehaviour
                 _isMovingLeft = true;
             }
         }
+        
+        Debug.DrawLine(transform.position, transform.position + Vector3.down, Color.magenta);
+        
     }
 
     private void Attack()
@@ -70,8 +75,12 @@ public class IslandNativeSavageScript : MonoBehaviour
         {
             case "Obstacle":
             case "Enemy":
-                // _npcMovement = -_npcMovement;
-                transform.eulerAngles = new Vector3(0, -axisTemp, 0);
+            case "WoodStake":
+            case "Wall":
+                _npcDirection = -_npcDirection;
+                // var temp = transform.rotation;
+                // temp.z = -temp.z;
+                // transform.rotation = temp;
                 break;
         }
     }
