@@ -37,6 +37,11 @@ TagManager:
   - WoodTrap
   - JudahWeapon
   - GroundDetection
+  - LaserTrap
+  - DialogueManager
+  - Dialogue
+  - CanvasDialogue
+  - NpcName
   layers:
   - Default
   - TransparentFX

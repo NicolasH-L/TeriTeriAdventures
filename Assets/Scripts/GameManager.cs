@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private const string PlayerTag = "Player";
     private const string PlayerSpawnLocationTag = "PlayerSpawn";
     private const string PlayerUiTag = "PlayerUI";
+    private const string DialogueManage = "DialogueManager";
     private const int BaseInvincibilityDuration = 8;
     private const int IndexAudioSourceLevelBgm = 0;
     private const int IndexAudioSourceSpecialBgm = 1;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip invincibleBgm;
     private Canvas _canvas;
     private Camera _playerCamera;
+    private GameObject _dialogueManager;
     private int _invincibilityDuration;
 
     private List<AudioSource> _listAudioSources;
@@ -113,6 +115,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(_playerSpawnLocation);
         DontDestroyOnLoad(_playerCamera);
         DontDestroyOnLoad(_canvas);
+        DontDestroyOnLoad(_dialogueManager);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         _player.transform.position = _playerSpawnLocation.transform.position;
         StartCoroutine(DelayEndReachedReset());
@@ -125,6 +128,7 @@ public class GameManager : MonoBehaviour
         _playerSpawnLocation = GameObject.FindGameObjectWithTag(PlayerSpawnLocationTag);
         _playerCamera = Camera.main;
         _canvas = GameObject.FindGameObjectWithTag(PlayerUiTag).GetComponent<Canvas>();
+        _dialogueManager = GameObject.FindGameObjectWithTag(DialogueManage);
         // print(_player.tag);
     }
 

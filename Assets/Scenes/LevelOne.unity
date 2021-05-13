@@ -1315,7 +1315,7 @@ GameObject:
   - component: {fileID: 286225953}
   m_Layer: 0
   m_Name: DialogueManager
-  m_TagString: Untagged
+  m_TagString: DialogueManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1346,10 +1346,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f720240a6a6548a44a9f5721ebc09cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 1358389888}
-  dialogueText: {fileID: 1562334059}
-  canvasDialogue: {fileID: 1743952766}
-  playerUI: {fileID: 1660542936}
 --- !u!1001 &335577023
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6698,7 +6694,7 @@ GameObject:
   - component: {fileID: 1358389888}
   m_Layer: 5
   m_Name: Name
-  m_TagString: Untagged
+  m_TagString: NpcName
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8029,7 +8025,7 @@ GameObject:
   - component: {fileID: 1562334059}
   m_Layer: 5
   m_Name: Dialogue
-  m_TagString: Untagged
+  m_TagString: Dialogue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9023,7 +9019,7 @@ GameObject:
   - component: {fileID: 1743952764}
   m_Layer: 5
   m_Name: CanvasDialogue
-  m_TagString: Untagged
+  m_TagString: CanvasDialogue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
