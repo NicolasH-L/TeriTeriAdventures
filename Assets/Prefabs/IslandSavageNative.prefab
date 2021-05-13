@@ -309,6 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groundDetection: {fileID: 7787368004931511336}
   _spawnBullet: {fileID: 7917580688958377296}
+  bullet: {fileID: 7633717931645015591, guid: c63d249c38d1fab4980860909317af65, type: 3}
 --- !u!1 &5369717127169777610
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,28 +1,36 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Diagnostics;
+using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class IslandNativeSavageScript : MonoBehaviour
 {
-    private const float SpeedMovement = 0f;
-    private const int MaxHitPoint = 3;
+    private const float WalkSpeed = 1f;
+    private const float RunSpeed = 2.5f;
+    private const float FireDelay = 2f;
+    private const int MaxHealthPoint = 150;
     private const int axisAngle = 180;
     [SerializeField] private Transform _groundDetection;
     [SerializeField] private Transform _spawnBullet;
-    private bool hasSpotted;
+    [SerializeField] private GameObject bullet;
     private Vector2 _npcMovement;
-    private int _compteurHit;
+    private bool _hasFired;
     private bool _isMovingLeft;
     private int axisTemp;
-    private Bullet _bullet;
+    private int _healthPoint;
+    private float _movementSpeed;
 
     void Start()
     {
-        hasSpotted = false;
+        _movementSpeed = WalkSpeed;
+        _healthPoint = MaxHealthPoint;
         _isMovingLeft = true;
-        _npcMovement = Vector2.left * SpeedMovement;
     }
 
     void Update()
     {
+        _npcMovement = Vector2.left * _movementSpeed;
         transform.Translate(_npcMovement * Time.deltaTime);
         RaycastHit2D groundInfo = Physics2D.Raycast(_groundDetection.position, Vector2.down, 0.5f);
         if (groundInfo.collider == false)
@@ -38,8 +46,22 @@ public class IslandNativeSavageScript : MonoBehaviour
                 _isMovingLeft = true;
             }
         }
+    }
 
-        // _bullet.FiringBullet(_spawnBullet);
+    private void Attack()
+    {
+        if (_hasFired)
+            return;
+
+        Instantiate(bullet, _spawnBullet.position, _spawnBullet.rotation);
+        _hasFired = true;
+        StartCoroutine(DelayFiring(FireDelay));
+    }
+
+    private IEnumerator DelayFiring(float waitSecond)
+    {
+        yield return new WaitForSeconds(waitSecond);
+        _hasFired = false;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -56,10 +78,26 @@ public class IslandNativeSavageScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag.Equals("Judah"))
-            _compteurHit++;
+        //todo taking damage
 
-        if (_compteurHit == MaxHitPoint)
+
+        if (_healthPoint <= 0)
             Destroy(transform.gameObject);
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+            _movementSpeed = WalkSpeed;
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            _movementSpeed = RunSpeed;
+            Debug.Log(_movementSpeed);
+            Attack();
+        }
     }
 }
