@@ -5,7 +5,7 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-public class EnemeyScript : MonoBehaviour
+public class EnemyScript : MonoBehaviour
 {
     private const string PlayerTag = "Player";
     private const string EnemyTag = "Enemy";
@@ -15,18 +15,14 @@ public class EnemeyScript : MonoBehaviour
     private const float MeleeAttackDelay = 5f;
     private const float RangeAttackDelay = 1f;
     private const int MaxHealthPoint = 150;
-    private const string AnimatorMoveLeftBoolean = "isMoveLeft";
-    private const string AnimatorMeleeAttackBoolean = "isMeleeAttacking";
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform obstacleDetection;
     [SerializeField] private Transform obstacleDetection02;
     [SerializeField] private Transform groundDetection;
     [SerializeField] private bool _hasRangedAttack;
-    private Animator _animator;
     private Rigidbody2D _rigidbody2D;
     private const string DefaultLayerMask = "Default";
-    private const string PlayerLayerMask = "Player";
     private Vector2 _npcMovement;
     private Vector2 _npcDirection;
     private bool _hasAttacked;
@@ -37,7 +33,6 @@ public class EnemeyScript : MonoBehaviour
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
         _npcDirection = Vector2.left;
         _movementSpeed = WalkSpeed;
         _healthPoint = MaxHealthPoint;
