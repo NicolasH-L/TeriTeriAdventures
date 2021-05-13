@@ -214,7 +214,7 @@ public class PlayerScript : MonoBehaviour
                 //TODO gameover
                 var manager = GameManager.GameManagerInstance;
                 OnChangeSpecialBgm -= manager.ChangeToSpecialBgm;
-                
+                OnWeaponCollected -= PlayerAttack.PlayerAttackInstance.ObtainWeapon;
                 print("Game Over");
             }
         }
@@ -255,8 +255,13 @@ public class PlayerScript : MonoBehaviour
         {
             case "Judah":
                 _isJudahAquired = true;
+                Debug.Log("collected");
                 if (OnWeaponCollected != null)
+                {
+                    Debug.Log("entering method");
                     OnWeaponCollected();
+                }
+
                 _judahBack.enabled = true;
                 // _judahRightRotationZ = _judahBack.transform.position.z;
                 // _judahLeftRotationZ = -_judahRightRotationZ;

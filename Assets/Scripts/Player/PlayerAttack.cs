@@ -20,6 +20,17 @@ public class PlayerAttack : MonoBehaviour
     private float _appearTime;
     private bool _hasWeapon;
 
+    private void Awake()
+    {
+        if (_playerAttack != null && _playerAttack != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _playerAttack = this;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -41,8 +52,9 @@ public class PlayerAttack : MonoBehaviour
         {
             Attack();
         }
-        else if (Input.GetKeyUp("j"))
+        else if (Input.GetKeyUp("j") && _hasWeapon)
         {
+            
             Invoke(nameof(AppearBack), _appearTime);
             _judahWeapons[0].SetActive(false);
             _judahCollider.enabled = false;
@@ -65,8 +77,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
-        // if (_hasAttacked)
-        //     return;
+        if (_hasAttacked || !_hasWeapon)
+            return;
         _appearTime = _animatorPlayer.runtimeAnimatorController.animationClips.Length;
         _animatorPlayer.SetTrigger("Attack");
         _audioSource[SoundEffect2].Play();
