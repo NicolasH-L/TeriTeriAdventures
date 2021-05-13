@@ -25,8 +25,6 @@ public class PlayerScript : MonoBehaviour
     private const int InvincibilityDuration = 8;
     private const float SpeedPlayer = 7f;
     private const float JumpHeight = 8f;
-    private const float ForceAppliedAttacking = -1000f;
-    private const float ForceAppliedRetracting = 950f;
     private const float DelayTime = 0.4f;
     private const float Offset = 1f / InvincibilityDuration;
     [SerializeField] private Rigidbody2D playerRigidBody2D;
