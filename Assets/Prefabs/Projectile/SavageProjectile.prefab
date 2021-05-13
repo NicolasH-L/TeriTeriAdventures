@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7633717931645015588}
   - component: {fileID: 4103354251001962919}
   - component: {fileID: 8638611583765608792}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SavageProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1271556687
   m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 9b156f11afe51254dbc26b6625e0ac17, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -223,7 +223,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 6
 --- !u!114 &8638611583765608792
 MonoBehaviour:

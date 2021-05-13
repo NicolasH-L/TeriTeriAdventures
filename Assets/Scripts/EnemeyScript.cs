@@ -51,12 +51,17 @@ public class EnemeyScript : MonoBehaviour
             Vector2.down, 0.6f, 1 << LayerMask.NameToLayer(DefaultLayerMask));
         var obstacleInfo = Physics2D.Raycast(obstacleDetection.position, _npcDirection, 0f,
             1 << LayerMask.NameToLayer(DefaultLayerMask));
-        var obstacleInfo02 = Physics2D.Raycast(obstacleDetection02.position, _npcDirection, 1.5f,
+        var obstacleInfo02 = Physics2D.Raycast(obstacleDetection02.position, _npcDirection, 1f,
             1 << LayerMask.NameToLayer(DefaultLayerMask));
 
         Debug.DrawRay(groundDetection.position, Vector2.down, Color.magenta);
         Debug.DrawRay(obstacleDetection02.position, _npcDirection, Color.magenta);
         Debug.DrawRay(obstacleDetection.position, _npcDirection, Color.magenta);
+        
+        if(obstacleInfo.collider)
+            Debug.Log("01 " + obstacleInfo.collider.name);
+        if(obstacleInfo02.collider)
+            Debug.Log("02 " + obstacleInfo02.collider.name);
 
         if (groundInfo.collider != false && obstacleInfo.collider == false && obstacleInfo02.collider == false) return;
         ChangeDirection();
