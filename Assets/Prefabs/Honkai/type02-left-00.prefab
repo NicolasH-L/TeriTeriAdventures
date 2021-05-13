@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3003536336745125363}
   - component: {fileID: 392445987021392178}
   - component: {fileID: 1571863757295558388}
-  - component: {fileID: 4105261920825421982}
+  - component: {fileID: -9209553775325085784}
   m_Layer: 0
   m_Name: type02-left-00
   m_TagString: Enemy
@@ -287,7 +287,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.5860043, y: 2.531639}
   m_EdgeRadius: 0
---- !u!114 &4105261920825421982
+--- !u!114 &-9209553775325085784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -296,7 +296,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7559508392054582180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6c05cb5f626ab84d81344e7a5e3ae74, type: 3}
+  m_Script: {fileID: 11500000, guid: ab36b1ba389b74b4397794938d871a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _groundDetection: {fileID: 2327246534813464735}
+  bulletSpawnPoint: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  obstacleDetection: {fileID: 0}
+  obstacleDetection02: {fileID: 0}
+  groundDetection: {fileID: 0}
+  _hasRangedAttack: 0
