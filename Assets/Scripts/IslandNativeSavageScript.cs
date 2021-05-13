@@ -13,7 +13,7 @@ public class IslandNativeSavageScript : MonoBehaviour
     private const int axisAngle = 180;
     [SerializeField] private Transform _spawnBullet;
     [SerializeField] private GameObject bullet;
-    [SerializeField] private Transform groundDetection;
+    private Transform _groundDetection;
     private Vector2 _npcMovement;
     private Vector2 _npcDirection;
     private bool _hasFired;
@@ -23,6 +23,7 @@ public class IslandNativeSavageScript : MonoBehaviour
 
     void Start()
     {
+        _groundDetection = FindGameObjectInChildrenWithTag("GroundDetection");
         _npcDirection = Vector2.left;
         _movementSpeed = WalkSpeed;
         _healthPoint = MaxHealthPoint;
@@ -32,27 +33,35 @@ public class IslandNativeSavageScript : MonoBehaviour
     void Update()
     {
         _npcMovement = _npcDirection * _movementSpeed;
-        transform.Translate(_npcMovement * Time.deltaTime);
-        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, groundDetection.position + Vector3.down, 0.01f);
-        if (groundInfo.collider == false)
-        {
-            if (_isMovingLeft)
-            {
-                transform.eulerAngles = new Vector3(0, 180, 0);
-                _isMovingLeft = false;
-            }
-            else
-            {
-                transform.eulerAngles = new Vector3(0, -180, 0);
-                _isMovingLeft = true;
-            }
-        }
-        
-        Debug.DrawLine(groundDetection.position, groundDetection.position  + Vector3.down, Color.magenta);
-        Debug.Log(_isMovingLeft);
+        transform.Translate(_npcMovement* Time.deltaTime);
+        var groundInfo = Physics2D.Raycast(_groundDetection.position,
+            Vector2.down, 0f);
 
+        if (groundInfo.collider != false) return;
+        if (_isMovingLeft)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+            _isMovingLeft = false;
+        }
+        else
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            _isMovingLeft = true;
+        }
     }
 
+    private Transform FindGameObjectInChildrenWithTag(string targetTag)
+    {
+        var parentTransform = transform;
+        foreach(Transform transformChild in parentTransform)
+        {
+            if (!transformChild.CompareTag(targetTag)) continue;
+            Debug.Log("found it");
+            return transformChild.GetComponent<Transform>();
+        }
+        return null;
+    }
+    
     private void Attack()
     {
         if (_hasFired)
