@@ -7,7 +7,7 @@ public class HonkaiBeasts : MonoBehaviour
     private const float WalkSpeed = 1f;
     private const float RunSpeed = 3f;
     private const int MaxHealthPoint = 200;
-    [SerializeField] private Transform lineOfSight;
+    [SerializeField] private Transform _groundDetection;
     private Vector2 _npcMovement;
     private Vector2 _npcDirection;
     private bool _isMovingLeft;
@@ -24,10 +24,27 @@ public class HonkaiBeasts : MonoBehaviour
 
     void Update()
     {
+        _npcMovement = Vector2.left * _movementSpeed;
         transform.Translate(_npcMovement * Time.deltaTime);
-        RaycastHit2D playerDetected = Physics2D.Raycast(lineOfSight.position, Vector2.left, 1f);
-        if (playerDetected != null)
+        var groundInfo = Physics2D.Raycast(_groundDetection.position,
+            Vector2.down, 0.2f);
+        if (groundInfo.collider != false) return;
+        ChangeDirection();
+    }
+
+    private void ChangeDirection()
+    {
+        if (_isMovingLeft)
         {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+            _isMovingLeft = false;
+            _npcDirection = Vector2.right;
+        }
+        else
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            _isMovingLeft = true;
+            _npcDirection = Vector2.left;
         }
     }
 
