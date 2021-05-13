@@ -41,6 +41,7 @@ public class EnemeyScript : MonoBehaviour
         _movementSpeed = WalkSpeed;
         _healthPoint = MaxHealthPoint;
         _isMovingLeft = true;
+
     }
 
     void Update()
@@ -48,12 +49,14 @@ public class EnemeyScript : MonoBehaviour
         _npcMovement = Vector2.left * _movementSpeed;
         transform.Translate(_npcMovement * Time.deltaTime);
         var groundInfo = Physics2D.Raycast(groundDetection.position,
-            Vector2.down, 0.4f);
+            Vector2.down, 1f);
         var obstacleInfo = Physics2D.Raycast(obstacleDetection.position, _npcDirection, 0f,
             1 << LayerMask.NameToLayer(DefaultLayerMask));
-        var obstacleInfo02 = Physics2D.Raycast(obstacleDetection02.position, _npcDirection, 2f,
+        var obstacleInfo02 = Physics2D.Raycast(obstacleDetection02.position, _npcDirection, 1.5f,
             1 << LayerMask.NameToLayer(DefaultLayerMask));
+        Debug.DrawRay(groundDetection.position, _npcDirection , Color.magenta);
         Debug.DrawRay(obstacleDetection02.position, _npcDirection, Color.magenta);
+        Debug.DrawRay(obstacleDetection.position, _npcDirection , Color.magenta);
         if (groundInfo.collider != false && obstacleInfo.collider == false && obstacleInfo02.collider == false) return;
         ChangeDirection();
     }
@@ -72,8 +75,6 @@ public class EnemeyScript : MonoBehaviour
             _isMovingLeft = true;
             _npcDirection = Vector2.left;
         }
-        _animator.SetBool(AnimatorMoveLeftBoolean, _isMovingLeft);
-
     }
 
     private void Attack()
@@ -86,7 +87,6 @@ public class EnemeyScript : MonoBehaviour
         {
             // Debug.Log((_npcDirection * ChargeAttackSpeed).ToString());
             _rigidbody2D.velocity = _npcDirection * ChargeAttackSpeed;
-            _animator.SetBool(AnimatorMeleeAttackBoolean, true);
         }
 
         _hasAttacked = true;
@@ -95,8 +95,6 @@ public class EnemeyScript : MonoBehaviour
 
     private IEnumerator DelayAttack()
     {
-        _animator.SetBool(AnimatorMeleeAttackBoolean, false);
-
         float waitSecond = _hasRangedAttack ? RangeAttackDelay : MeleeAttackDelay;
         yield return new WaitForSeconds(waitSecond);
         _hasAttacked = false;

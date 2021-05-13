@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HonkaiType01Animation-Right
+  m_Name: HonkaiType01Animation
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,11 +20,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 7aed042a56387e244a9a187dc9bf315d, type: 3}
+      value: {fileID: 21300000, guid: c3897182a48beef48bee7d91ba9708c7, type: 3}
     - time: 0.2
-      value: {fileID: 21300000, guid: 2ef82369387896a42a4db6ce01db3f4a, type: 3}
+      value: {fileID: 21300000, guid: f33bf212f2a0884438b4d103a8bf46a9, type: 3}
     - time: 0.4
-      value: {fileID: 21300000, guid: 7aed042a56387e244a9a187dc9bf315d, type: 3}
+      value: {fileID: 21300000, guid: c3897182a48beef48bee7d91ba9708c7, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,9 +44,9 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 7aed042a56387e244a9a187dc9bf315d, type: 3}
-    - {fileID: 21300000, guid: 2ef82369387896a42a4db6ce01db3f4a, type: 3}
-    - {fileID: 21300000, guid: 7aed042a56387e244a9a187dc9bf315d, type: 3}
+    - {fileID: 21300000, guid: c3897182a48beef48bee7d91ba9708c7, type: 3}
+    - {fileID: 21300000, guid: f33bf212f2a0884438b4d103a8bf46a9, type: 3}
+    - {fileID: 21300000, guid: c3897182a48beef48bee7d91ba9708c7, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
