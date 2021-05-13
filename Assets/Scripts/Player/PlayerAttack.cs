@@ -41,7 +41,6 @@ public class PlayerAttack : MonoBehaviour
             _judahWeapons[0].SetActive(false);
             _judahCollider.enabled = false;
             _animatorPlayer.SetTrigger("");
-            _animatorPlayer.SetBool("isMelee", false);
             _appearTime = 0;
         }
     }
@@ -64,7 +63,6 @@ public class PlayerAttack : MonoBehaviour
             return;
         _appearTime = _animatorPlayer.runtimeAnimatorController.animationClips.Length;
         _animatorPlayer.SetTrigger("Attack");
-        _animatorPlayer.SetBool("IsMeleeHit", true);
         _audioSource[SoundEffect2].Play();
         _judahWeapons[0].SetActive(true);
         _judahCollider.enabled = true;
