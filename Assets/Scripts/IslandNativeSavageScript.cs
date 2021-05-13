@@ -12,13 +12,13 @@ public class IslandNativeSavageScript : MonoBehaviour
     private const float RunSpeed = 2.5f;
     private const float FireDelay = 2f;
     private const int MaxHealthPoint = 150;
-    [SerializeField] private Transform _spawnBullet;
-    [SerializeField] private GameObject bullet;
-    [SerializeField] private Transform _obstacleDetection;
-    [SerializeField] private Transform _obstacleDetection02;
-    [SerializeField] private Transform _groundDetection;
-    private const int DefaultLayerMask = 0;
-    private const int PlayerLayerMask = 9;
+    [SerializeField] private Transform bulletSpawnPoint;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform obstacleDetection;
+    [SerializeField] private Transform obstacleDetection02;
+    [SerializeField] private Transform groundDetection;
+    private const string DefaultLayerMask = "Default";
+    private const string PlayerLayerMask = "Player";
     private Vector2 _npcMovement;
     private Vector2 _npcDirection;
     private bool _hasFired;
@@ -30,6 +30,9 @@ public class IslandNativeSavageScript : MonoBehaviour
 
     public ChangeDirectionBullet OnDirectionChange;
 
+    public delegate void ShootProjectile();
+
+    public ShootProjectile OnEnemyDetected;
 
     void Start()
     {
@@ -43,13 +46,13 @@ public class IslandNativeSavageScript : MonoBehaviour
     {
         _npcMovement = Vector2.left * _movementSpeed;
         transform.Translate(_npcMovement * Time.deltaTime);
-        var groundInfo = Physics2D.Raycast(_groundDetection.position,
+        var groundInfo = Physics2D.Raycast(groundDetection.position,
             Vector2.down, 0.4f);
-        var obstacleInfo = Physics2D.Raycast(_obstacleDetection.position, _npcDirection, 0f,
-            1 << LayerMask.NameToLayer("Default"));
-        var obstacleInfo02 = Physics2D.Raycast(_obstacleDetection02.position, _npcDirection, 1f,
-            1 << LayerMask.NameToLayer("Default"));
-        Debug.DrawRay(_obstacleDetection02.position, _npcDirection, Color.magenta);
+        var obstacleInfo = Physics2D.Raycast(obstacleDetection.position, _npcDirection, 0f,
+            1 << LayerMask.NameToLayer(DefaultLayerMask));
+        var obstacleInfo02 = Physics2D.Raycast(obstacleDetection02.position, _npcDirection, 1f,
+            1 << LayerMask.NameToLayer(DefaultLayerMask));
+        Debug.DrawRay(obstacleDetection02.position, _npcDirection, Color.magenta);
         if (groundInfo.collider != false && obstacleInfo.collider == false && obstacleInfo02.collider == false) return;
         ChangeDirection();
     }
@@ -75,7 +78,7 @@ public class IslandNativeSavageScript : MonoBehaviour
         if (_hasFired)
             return;
 
-        Instantiate(bullet, _spawnBullet.position, _spawnBullet.rotation);
+        Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         _hasFired = true;
         StartCoroutine(DelayFiring(FireDelay));
     }

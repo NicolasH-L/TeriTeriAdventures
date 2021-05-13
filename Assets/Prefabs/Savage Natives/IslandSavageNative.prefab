@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3797078760906129464}
   - component: {fileID: 3797078760906129467}
   - component: {fileID: 6088870825241054262}
-  - component: {fileID: 6154792073798507061}
   m_Layer: 0
   m_Name: IslandSavageNative
   m_TagString: Enemy
@@ -284,11 +283,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab36b1ba389b74b4397794938d871a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnBullet: {fileID: 7917580688958377296}
-  bullet: {fileID: 7633717931645015591, guid: c63d249c38d1fab4980860909317af65, type: 3}
-  _obstacleDetection: {fileID: 1734535160941386280}
-  _obstacleDetection02: {fileID: 3378212580155536655}
-  _groundDetection: {fileID: 7787368004931511336}
+  bulletSpawnPoint: {fileID: 7917580688958377296}
+  bulletPrefab: {fileID: 7633717931645015591, guid: c63d249c38d1fab4980860909317af65,
+    type: 3}
+  obstacleDetection: {fileID: 1734535160941386280}
+  obstacleDetection02: {fileID: 3378212580155536655}
+  groundDetection: {fileID: 7787368004931511336}
 --- !u!61 &6088870825241054262
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -315,18 +315,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4, y: 1.5}
   m_EdgeRadius: 0
---- !u!114 &6154792073798507061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3797078760906129447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec00efa6e4075b40aefc9496c7df2f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5369717127169777610
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7917580688958377296}
   m_Layer: 0
-  m_Name: SpawnBullet
+  m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -411,7 +399,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7871868539855783533}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.90044785, y: 0.23185557, z: -0}
+  m_LocalPosition: {x: -0.90044785, y: 0.23185557, z: 0}
   m_LocalScale: {x: 1, y: 1.8181819, z: 0}
   m_Children: []
   m_Father: {fileID: 3797078760906129466}
@@ -427,7 +415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3378212580155536655}
   m_Layer: 0
-  m_Name: ObstacleDetection (1)
+  m_Name: ObstacleDetection02
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
