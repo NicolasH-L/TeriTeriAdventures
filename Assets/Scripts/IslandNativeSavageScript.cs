@@ -26,6 +26,11 @@ public class IslandNativeSavageScript : MonoBehaviour
     private int _healthPoint;
     private float _movementSpeed;
 
+    public delegate void ChangeDirectionBullet();
+
+    public ChangeDirectionBullet OnDirectionChange;
+    
+
     void Start()
     {
         _npcDirection = Vector2.left;
