@@ -276,6 +276,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IslandSavageNative (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3797078760906129447, guid: 24cb74cb4a96dd24d9ddb30ba02ce3bd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3797078760906129466, guid: 24cb74cb4a96dd24d9ddb30ba02ce3bd,
         type: 3}
       propertyPath: m_RootOrder
@@ -1570,6 +1575,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IslandTribalManNoFurAndCloth (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5351486368822771891, guid: 8bf96020ea020604b998293139f1ee41,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
         type: 3}
       propertyPath: m_RootOrder
@@ -2755,7 +2765,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -2855,7 +2865,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0.0000009313226, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -47.803047, y: -18.857714, z: -10}
+  m_LocalPosition: {x: -46.49, y: -18.19002, z: -10}
   m_LocalScale: {x: 2.3933, y: 2.3933, z: 2.3933}
   m_Children:
   - {fileID: 602614511}
@@ -3133,7 +3143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 602614511}
   - component: {fileID: 602614512}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CM vcam1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4069,6 +4079,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: IslandSavageNative
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797078760906129447, guid: 24cb74cb4a96dd24d9ddb30ba02ce3bd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3797078760906129466, guid: 24cb74cb4a96dd24d9ddb30ba02ce3bd,
         type: 3}
@@ -5609,7 +5624,7 @@ GameObject:
   - component: {fileID: 1197975793}
   - component: {fileID: 1197975795}
   - component: {fileID: 1197975794}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6525,6 +6540,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IslandTribalManNoFurAndCloth (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5351486368822771891, guid: 8bf96020ea020604b998293139f1ee41,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
         type: 3}
       propertyPath: m_RootOrder
@@ -6861,6 +6881,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IslandTribalManNoFurAndCloth (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5351486368822771891, guid: 8bf96020ea020604b998293139f1ee41,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
         type: 3}
       propertyPath: m_RootOrder
@@ -6935,6 +6960,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: IslandTribalManNoFurAndCloth (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351486368822771891, guid: 8bf96020ea020604b998293139f1ee41,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
         type: 3}
@@ -7015,6 +7045,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3736437477592679178, guid: 63bcb1496d2a7ec4885db648e609aa01,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3736437477592679190, guid: 63bcb1496d2a7ec4885db648e609aa01,
         type: 3}
@@ -7105,7 +7140,7 @@ PrefabInstance:
     - target: {fileID: 7792149869518211268, guid: ddc977d361637fc4dabd9af8d7328db1,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7792149869518211268, guid: ddc977d361637fc4dabd9af8d7328db1,
         type: 3}
@@ -7115,7 +7150,7 @@ PrefabInstance:
     - target: {fileID: 7792149869518211268, guid: ddc977d361637fc4dabd9af8d7328db1,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7792149869518211270, guid: ddc977d361637fc4dabd9af8d7328db1,
         type: 3}
@@ -7928,7 +7963,7 @@ PrefabInstance:
     - target: {fileID: 7792149869518211268, guid: ddc977d361637fc4dabd9af8d7328db1,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7792149869518211268, guid: ddc977d361637fc4dabd9af8d7328db1,
         type: 3}
@@ -7938,7 +7973,7 @@ PrefabInstance:
     - target: {fileID: 7792149869518211268, guid: ddc977d361637fc4dabd9af8d7328db1,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7792149869518211270, guid: ddc977d361637fc4dabd9af8d7328db1,
         type: 3}
@@ -8124,6 +8159,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: IslandSavageNative (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797078760906129447, guid: 24cb74cb4a96dd24d9ddb30ba02ce3bd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3797078760906129466, guid: 24cb74cb4a96dd24d9ddb30ba02ce3bd,
         type: 3}
@@ -8711,12 +8751,12 @@ PrefabInstance:
     - target: {fileID: 5657802358292049850, guid: 605864e53ed497b45840bb44b23dd2aa,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -47.803047
+      value: -46.49
       objectReference: {fileID: 0}
     - target: {fileID: 5657802358292049850, guid: 605864e53ed497b45840bb44b23dd2aa,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -18.857695
+      value: -18.19
       objectReference: {fileID: 0}
     - target: {fileID: 5657802358292049850, guid: 605864e53ed497b45840bb44b23dd2aa,
         type: 3}
@@ -9603,6 +9643,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IslandTribalManNoFurAndCloth
       objectReference: {fileID: 0}
+    - target: {fileID: 5351486368822771891, guid: 8bf96020ea020604b998293139f1ee41,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7058637885678968285, guid: 8bf96020ea020604b998293139f1ee41,
         type: 3}
       propertyPath: m_RootOrder
@@ -9839,6 +9884,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LeftWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 3736437477592679178, guid: 63bcb1496d2a7ec4885db648e609aa01,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3736437477592679190, guid: 63bcb1496d2a7ec4885db648e609aa01,
         type: 3}
