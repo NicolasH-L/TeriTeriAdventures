@@ -33,7 +33,8 @@ public class IslandNativeSavageScript : MonoBehaviour
     {
         _npcMovement = _npcDirection * _movementSpeed;
         transform.Translate(_npcMovement * Time.deltaTime);
-        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, groundDetection.position + Vector3.down, 0.01f);
+        RaycastHit2D groundInfo =
+            Physics2D.Raycast(groundDetection.position, groundDetection.position + Vector3.down, 0.01f);
         if (groundInfo.collider == false)
         {
             if (_isMovingLeft)
@@ -47,10 +48,9 @@ public class IslandNativeSavageScript : MonoBehaviour
                 _isMovingLeft = true;
             }
         }
-        
-        Debug.DrawLine(groundDetection.position, groundDetection.position  + Vector3.down, Color.magenta);
-        Debug.Log(_isMovingLeft);
 
+        Debug.DrawLine(groundDetection.position, groundDetection.position + Vector3.down, Color.magenta);
+        Debug.Log(_isMovingLeft);
     }
 
     private void Attack()
@@ -105,7 +105,6 @@ public class IslandNativeSavageScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             _movementSpeed = RunSpeed;
-            Debug.Log(_movementSpeed);
             Attack();
         }
     }
