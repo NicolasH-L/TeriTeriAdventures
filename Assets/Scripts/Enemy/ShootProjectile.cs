@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ShootProjectile : MonoBehaviour
 {
+
+    [SerializeField] private Transform bulletSpawnPoint;
+    
     // Start is called before the first frame update
     void Start()
     {

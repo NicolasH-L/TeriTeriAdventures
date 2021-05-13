@@ -16,7 +16,7 @@ public class IslandNativeSavageScript : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform _obstacleDetection;
     [SerializeField] private Transform _obstacleDetection02;
-    [SerializeField]private Transform _groundDetection;
+    [SerializeField] private Transform _groundDetection;
     private const int DefaultLayerMask = 0;
     private const int PlayerLayerMask = 9;
     private Vector2 _npcMovement;
@@ -29,7 +29,7 @@ public class IslandNativeSavageScript : MonoBehaviour
     public delegate void ChangeDirectionBullet();
 
     public ChangeDirectionBullet OnDirectionChange;
-    
+
 
     void Start()
     {
@@ -45,25 +45,26 @@ public class IslandNativeSavageScript : MonoBehaviour
         transform.Translate(_npcMovement * Time.deltaTime);
         var groundInfo = Physics2D.Raycast(_groundDetection.position,
             Vector2.down, 0.4f);
-        var obstacleInfo = Physics2D.Raycast(_obstacleDetection.position, _npcDirection, 0f, 1 << LayerMask.NameToLayer("Default"));
-        var obstacleInfo02 = Physics2D.Raycast(_obstacleDetection02.position, _npcDirection, 1f, 1 << LayerMask.NameToLayer("Default"));
-        Debug.DrawRay(_obstacleDetection02.position, _npcDirection,Color.magenta);
+        var obstacleInfo = Physics2D.Raycast(_obstacleDetection.position, _npcDirection, 0f,
+            1 << LayerMask.NameToLayer("Default"));
+        var obstacleInfo02 = Physics2D.Raycast(_obstacleDetection02.position, _npcDirection, 1f,
+            1 << LayerMask.NameToLayer("Default"));
+        Debug.DrawRay(_obstacleDetection02.position, _npcDirection, Color.magenta);
         if (groundInfo.collider != false && obstacleInfo.collider == false && obstacleInfo02.collider == false) return;
         ChangeDirection();
     }
-    
+
 
     private void ChangeDirection()
     {
+        transform.Rotate(0, 180, 0);
         if (_isMovingLeft)
         {
-            transform.eulerAngles = new Vector3(0, 180, 0);
             _isMovingLeft = false;
             _npcDirection = Vector2.right;
         }
         else
         {
-            transform.eulerAngles = new Vector3(0, 0, 0);
             _isMovingLeft = true;
             _npcDirection = Vector2.left;
         }
