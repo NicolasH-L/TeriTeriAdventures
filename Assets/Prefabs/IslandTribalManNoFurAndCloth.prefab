@@ -344,7 +344,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab36b1ba389b74b4397794938d871a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _groundDetection: {fileID: 103442140641093728}
   _spawnBullet: {fileID: 1949264854653253530}
   bullet: {fileID: 7633717931645015591, guid: c63d249c38d1fab4980860909317af65, type: 3}
   groundDetection: {fileID: 103442140641093728}
@@ -372,7 +371,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8660167478846321368}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.42, y: -2.22, z: -0}
+  m_LocalPosition: {x: -1.46, y: -2.13, z: -0}
   m_LocalScale: {x: 1, y: 1.8181819, z: 0}
   m_Children: []
   m_Father: {fileID: 7058637885678968285}

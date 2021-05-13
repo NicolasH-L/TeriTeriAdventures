@@ -11,7 +11,6 @@ public class IslandNativeSavageScript : MonoBehaviour
     private const float FireDelay = 2f;
     private const int MaxHealthPoint = 150;
     private const int axisAngle = 180;
-    [SerializeField] private Transform _groundDetection;
     [SerializeField] private Transform _spawnBullet;
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform groundDetection;
@@ -34,23 +33,24 @@ public class IslandNativeSavageScript : MonoBehaviour
     {
         _npcMovement = _npcDirection * _movementSpeed;
         transform.Translate(_npcMovement * Time.deltaTime);
-        RaycastHit2D groundInfo = Physics2D.Raycast(transform.position, transform.position + Vector3.down, 0f);
+        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, groundDetection.position + Vector3.down, 0.01f);
         if (groundInfo.collider == false)
         {
             if (_isMovingLeft)
             {
-                transform.eulerAngles = new Vector3(0, axisAngle, 0);
+                transform.eulerAngles = new Vector3(0, 180, 0);
                 _isMovingLeft = false;
             }
             else
             {
-                transform.eulerAngles = new Vector3(0, -axisAngle, 0);
+                transform.eulerAngles = new Vector3(0, -180, 0);
                 _isMovingLeft = true;
             }
         }
         
-        Debug.DrawLine(transform.position, transform.position + Vector3.down, Color.magenta);
-        
+        Debug.DrawLine(groundDetection.position, groundDetection.position  + Vector3.down, Color.magenta);
+        Debug.Log(_isMovingLeft);
+
     }
 
     private void Attack()
