@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class HonkaiBeasts : MonoBehaviour
 {
-    private const float SpeedMovement = 1f;
-    private const int MaxHitPoint = 5;
-    private const int axisAngle = 180;
+    private const float WalkSpeed = 1f;
+    private const float RunSpeed = 3f;
+    private const int MaxHealthPoint = 200;
     [SerializeField] private Transform lineOfSight;
     private Vector2 _npcMovement;
-    private Transform playerCollider;
-    private int _compteurHit;
+    private Vector2 _npcDirection;
     private bool _isMovingLeft;
-    private int axisTemp;
+    private int _healthPoint;
+    private float _movementSpeed;
 
     void Start()
     {
+        _npcDirection = Vector2.left;
+        _movementSpeed = WalkSpeed;
+        _healthPoint = MaxHealthPoint;
         _isMovingLeft = true;
-        _npcMovement = Vector2.left * SpeedMovement;
     }
 
     void Update()
@@ -27,22 +29,17 @@ public class HonkaiBeasts : MonoBehaviour
         if (playerDetected != null)
         {
         }
-
-        Debug.DrawLine(transform.position, Vector3.left, Color.magenta);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         switch (other.gameObject.tag)
         {
-            case "Player":
-                break;
-
             case "Obstacle":
             case "Plateform":
             case "Wall":
             case "Enemy":
-                _npcMovement = -_npcMovement;
+                _npcDirection = -_npcDirection;
                 // _direction = -_direction;
                 break;
         }
@@ -50,14 +47,22 @@ public class HonkaiBeasts : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag.Equals("Judah"))
-        {
-            _compteurHit++;
-        }
+        //todo taking damage
 
-        if (_compteurHit == MaxHitPoint)
-        {
+
+        if (_healthPoint <= 0)
             Destroy(transform.gameObject);
-        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+            _movementSpeed = WalkSpeed;
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+            _movementSpeed = RunSpeed;
     }
 }

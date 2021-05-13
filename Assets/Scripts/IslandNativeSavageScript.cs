@@ -114,7 +114,6 @@ public class IslandNativeSavageScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             _movementSpeed = RunSpeed;
-            Debug.Log(_movementSpeed);
             Attack();
         }
     }
