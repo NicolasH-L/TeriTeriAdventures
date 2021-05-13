@@ -64,8 +64,8 @@
      <Compile Include="Assets\Scripts\Dialogue.cs" />
      <Compile Include="Assets\Scripts\DialogueManager.cs" />
      <Compile Include="Assets\Scripts\DialogueTrigger.cs" />
-     <Compile Include="Assets\Scripts\EnemeyScript.cs" />
      <Compile Include="Assets\Scripts\Enemy\ShootProjectile.cs" />
+     <Compile Include="Assets\Scripts\EnemyScript.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\HomingCookie.cs" />
      <Compile Include="Assets\Scripts\HonkaiBeasts.cs" />
