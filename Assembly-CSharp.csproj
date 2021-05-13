@@ -61,8 +61,14 @@
      <Compile Include="Assets\Scripts\ActivateKianaBoss.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\Chests.cs" />
+<<<<<<< HEAD
+     <Compile Include="Assets\Scripts\Dialogue.cs" />
+     <Compile Include="Assets\Scripts\DialogueManager.cs" />
+     <Compile Include="Assets\Scripts\DialogueTrigger.cs" />
+=======
      <Compile Include="Assets\Scripts\EnemeyScript.cs" />
      <Compile Include="Assets\Scripts\Enemy\ShootProjectile.cs" />
+>>>>>>> d987aa2ec80dcd7e221c9cea8a703655e2de9749
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\HomingCookie.cs" />
      <Compile Include="Assets\Scripts\HonkaiBeasts.cs" />
