@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3797078760906129445}
   - component: {fileID: 3797078760906129444}
   - component: {fileID: 3797078760906129464}
-  - component: {fileID: 5845100107050371982}
   - component: {fileID: 3797078760906129467}
+  - component: {fileID: 6088870825241054262}
   m_Layer: 0
   m_Name: IslandSavageNative
   m_TagString: Enemy
@@ -35,6 +35,7 @@ Transform:
   - {fileID: 7787368004931511336}
   - {fileID: 7917580688958377296}
   - {fileID: 1734535160941386280}
+  - {fileID: 3378212580155536655}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -270,32 +271,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &5845100107050371982
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3797078760906129447}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -2.584816, y: 0.1983558}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.83, y: 3.54}
-    newSize: {x: 4.83, y: 3.54}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5.7360153, y: 1.7785988}
-  m_EdgeRadius: 0
 --- !u!114 &3797078760906129467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +286,34 @@ MonoBehaviour:
   _spawnBullet: {fileID: 7917580688958377296}
   bullet: {fileID: 7633717931645015591, guid: c63d249c38d1fab4980860909317af65, type: 3}
   _obstacleDetection: {fileID: 1734535160941386280}
+  _obstacleDetection02: {fileID: 3378212580155536655}
+  _groundDetection: {fileID: 7787368004931511336}
+--- !u!61 &6088870825241054262
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3797078760906129447}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.7, y: 0.15}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.83, y: 3.54}
+    newSize: {x: 4.83, y: 3.54}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4, y: 1.5}
+  m_EdgeRadius: 0
 --- !u!1 &5369717127169777610
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,8 +368,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6658396712952132300}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 1.6, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalPosition: {x: -1.8, y: 1.6, z: 0}
+  m_LocalScale: {x: 1, y: 2, z: 0}
   m_Children: []
   m_Father: {fileID: 3797078760906129466}
   m_RootOrder: 2
@@ -400,4 +403,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3797078760906129466}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7960884541223824257
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3378212580155536655}
+  m_Layer: 0
+  m_Name: ObstacleDetection (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3378212580155536655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7960884541223824257}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.8, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 2, z: 0}
+  m_Children: []
+  m_Father: {fileID: 3797078760906129466}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

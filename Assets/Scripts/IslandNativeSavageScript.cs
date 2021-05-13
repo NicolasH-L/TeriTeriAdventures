@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Diagnostics;
+using UnityEditor.UIElements;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -14,8 +15,10 @@ public class IslandNativeSavageScript : MonoBehaviour
     [SerializeField] private Transform _spawnBullet;
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform _obstacleDetection;
-    private int _defaultLayerMask = 0;
-    private Transform _groundDetection;
+    [SerializeField] private Transform _obstacleDetection02;
+    [SerializeField]private Transform _groundDetection;
+    private const int DefaultLayerMask = 0;
+    private const int PlayerLayerMask = 9;
     private Vector2 _npcMovement;
     private Vector2 _npcDirection;
     private bool _hasFired;
@@ -25,7 +28,7 @@ public class IslandNativeSavageScript : MonoBehaviour
 
     void Start()
     {
-        _groundDetection = FindGameObjectInChildrenWithTag("GroundDetection");
+        // _groundDetection = FindGameObjectInChildrenWithTag("GroundDetection");
         _npcDirection = Vector2.left;
         _movementSpeed = WalkSpeed;
         _healthPoint = MaxHealthPoint;
@@ -38,22 +41,24 @@ public class IslandNativeSavageScript : MonoBehaviour
         transform.Translate(_npcMovement * Time.deltaTime);
         var groundInfo = Physics2D.Raycast(_groundDetection.position,
             Vector2.down, 0.4f);
-        var obstacleInfo = Physics2D.Raycast(_obstacleDetection.position, _npcDirection, 0f);
-        if (groundInfo.collider != false && obstacleInfo.collider == false) return;
+        var obstacleInfo = Physics2D.Raycast(_obstacleDetection.position, _npcDirection, 0f, 1 << LayerMask.NameToLayer("Default"));
+        var obstacleInfo02 = Physics2D.Raycast(_obstacleDetection02.position, _npcDirection, 1f, 1 << LayerMask.NameToLayer("Default"));
+        Debug.DrawRay(_obstacleDetection02.position, _npcDirection,Color.magenta);
+        if (groundInfo.collider != false && obstacleInfo.collider == false && obstacleInfo02.collider == false) return;
         ChangeDirection();
     }
 
-    private Transform FindGameObjectInChildrenWithTag(string targetTag)
-    {
-        var parentTransform = transform;
-        foreach (Transform transformChild in parentTransform)
-        {
-            if (!transformChild.CompareTag(targetTag)) continue;
-            return transformChild.GetComponent<Transform>();
-        }
-
-        return null;
-    }
+    // private Transform FindGameObjectInChildrenWithTag(string targetTag)
+    // {
+    //     var parentTransform = transform;
+    //     foreach (Transform transformChild in parentTransform)
+    //     {
+    //         if (!transformChild.CompareTag(targetTag)) continue;
+    //         return transformChild.GetComponent<Transform>();
+    //     }
+    //
+    //     return null;
+    // }
 
     private void ChangeDirection()
     {
