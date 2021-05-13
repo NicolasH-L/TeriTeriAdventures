@@ -59,23 +59,34 @@ public class EnemeyScript : MonoBehaviour
         Debug.DrawRay(obstacleDetection02.position, _npcDirection, Color.magenta);
         Debug.DrawRay(obstacleDetection.position, _npcDirection, Color.magenta);
 
-        if (obstacleInfo.collider)
-        {
-            Debug.Log(gameObject.name);
-            Debug.Log("01 " + obstacleInfo.collider.name);
-            Debug.Log("01 " + obstacleInfo.collider.tag);
-            Debug.Log("02" + obstacleInfo02.collider.name);
-            Debug.Log("02 " + obstacleInfo02.collider.tag);
-        }
+        // if (obstacleInfo.collider)
+        // {
+        //     Debug.Log(gameObject.name);
+            // Debug.Log("01 " + obstacleInfo.collider.name);
+            // Debug.Log("01 " + obstacleInfo.collider.tag);
+        // }
+
+        // if (obstacleInfo02.collider)
+        // {
+            // Debug.Log("02" + obstacleInfo02.collider.name);
+            // Debug.Log("02 " + obstacleInfo02.collider.tag);
+            // }
         // if(obstacleInfo02.collider)
         //     Debug.Log("02 " + obstacleInfo02.collider.name);
         // Debug.Log(!obstacleInfo.collider.CompareTag(null) && obstacleInfo.collider.CompareTag(EnemyTag)
         //     !obstacleInfo02.collider.CompareTag(null) && obstacleInfo02.collider.tag.Equals(EnemyTag));
         if (groundInfo.collider != false && obstacleInfo.collider == false
-                                         && obstacleInfo02.collider == false) return;
+                                         && obstacleInfo02.collider == false || IsRaycastCollidedWithSameTag(obstacleInfo) ||
+            IsRaycastCollidedWithSameTag(obstacleInfo02)) return;
         ChangeDirection();
     }
 
+    private bool IsRaycastCollidedWithSameTag(RaycastHit2D raycastHit2D)
+    {
+        if (!raycastHit2D.collider)
+            return false;
+        return raycastHit2D.collider.CompareTag(EnemyTag);
+    }
 
     private void ChangeDirection()
     {
@@ -118,8 +129,8 @@ public class EnemeyScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         _movementSpeed = WalkSpeed;
-        // if (other.gameObject.CompareTag(EnemyTag))
-        //     ChangeDirection();
+        if (other.gameObject.CompareTag(EnemyTag))
+            ChangeDirection();
     }
 
 
