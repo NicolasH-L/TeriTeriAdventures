@@ -22,10 +22,8 @@ public class PlayerScript : MonoBehaviour
 
     private static PlayerScript _player;
 
-    public static PlayerScript GetPlayerInstance()
-    {
-        return _player;
-    }
+    public static PlayerScript GetPlayerInstance => _player;
+
 
     private const string MaxExpText = "MAX";
     private const string KeyMoveRight = "d";
@@ -65,6 +63,8 @@ public class PlayerScript : MonoBehaviour
     private const string Bandaid = "Bandaid";
     private const string NextLevel = "NextLevel";
     private const string InvincibilityAnimatorBool = "isInvincible";
+    private const string PlayerExpUiTag = "PlayerExpUI";
+    private const string WepExpUiTag = "WepExpUI";
     private const int FinalLevelScene = 3;
 
     private Animator _animatorPlayer;
@@ -350,17 +350,21 @@ public class PlayerScript : MonoBehaviour
             bar.SetMaxValue(nextLevelExpReq);
             ++currentBarLevel;
             // tmp = 0;
-            if (bar.CompareTag("PlayerExpUI"))
+            if (bar.CompareTag(PlayerExpUiTag))
             {
                 playerLevel.text = currentBarLevel.ToString();
             }
-
-            if (currentBarLevel >= MaxLevel)
+            else if(bar.CompareTag(WepExpUiTag))
             {
-                bar.SetValue(bar.GetCurrentMaxValue());
-                SetBarTextValue(ref textMeshProUGUI, MaxExpText, MaxExpText);
-                return;
+                _weaponDamage += WeaponBaseDamage;
             }
+
+            // if (currentBarLevel >= MaxLevel)
+            // {
+            bar.SetValue(bar.GetCurrentMaxValue());
+            SetBarTextValue(ref textMeshProUGUI, MaxExpText, MaxExpText);
+            return;
+            // }
         }
         else
         {

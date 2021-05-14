@@ -369,6 +369,7 @@ MonoBehaviour:
   groundDetection: {fileID: 5662476552202414526}
   hasRangedAttack: 0
   healthPoint: 600
+  damagePoint: 25
 --- !u!95 &1667775562220132057
 Animator:
   serializedVersion: 3

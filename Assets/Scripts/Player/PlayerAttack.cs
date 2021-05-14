@@ -63,7 +63,6 @@ public class PlayerAttack : MonoBehaviour
         {
             Invoke(nameof(AppearBack), _appearTime);
             _judahWeapons[0].SetActive(false);
-            // _animatorPlayer.SetTrigger("");
             _appearTime = 0;
         }
     }

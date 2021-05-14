@@ -7,6 +7,9 @@ public class EnemyScript : MonoBehaviour
 
     public event GetPlayerDamage OnPlayerWeaponDamageLoaded;
 
+    public delegate void DamagePlayer(int damage);
+    public event DamagePlayer OnPlayerHit;
+
     private const string PlayerTag = "Player";
     private const string JudahWeaponTag = "JudahWeapon";
     private const string EnemyTag = "Enemy";
@@ -22,6 +25,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private Transform groundDetection;
     [SerializeField] private bool hasRangedAttack;
     [SerializeField] private int healthPoint;
+    [SerializeField] private int damagePoint;
     private Rigidbody2D _rigidbody2D;
     private const string DefaultLayerMask = "Default";
     private Vector2 _npcMovement;
@@ -32,8 +36,11 @@ public class EnemyScript : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.GameManagerInstance != null)
+        if (GameManager.GameManagerInstance != null && PlayerScript.GetPlayerInstance != null)
+        {
             OnPlayerWeaponDamageLoaded += GameManager.GameManagerInstance.GetPlayerDamage;
+            OnPlayerHit += PlayerScript.GetPlayerInstance.TakeDamage;
+        }
 
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _npcDirection = Vector2.left;
@@ -118,11 +125,13 @@ public class EnemyScript : MonoBehaviour
         healthPoint -= damage;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionStay2D(Collision2D other)
     {
         _movementSpeed = WalkSpeed;
         if (other.gameObject.CompareTag(EnemyTag))
             ChangeDirection();
+        else if (other.gameObject.CompareTag(PlayerTag))
+            OnPlayerHit?.Invoke(damagePoint);
     }
 
 

@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex > FinalLevelScene ||
             SceneManager.GetActiveScene().buildIndex == 0) return;
-        _player = PlayerScript.GetPlayerInstance();
+        _player = PlayerScript.GetPlayerInstance;
         _playerSpawnLocation = GameObject.FindGameObjectWithTag(PlayerSpawnLocationTag);
         _playerCamera = Camera.main;
         _canvas = GameObject.FindGameObjectWithTag(PlayerUiTag).GetComponent<Canvas>();

@@ -6,18 +6,15 @@ using UnityEngine.UIElements;
 
 public class Bullet : MonoBehaviour
 {
-    private const string EnemyTag = "Enemy";
     private const string PlayerTag = "Player";
     private const string JudahWeaponTag = "JudahWeapon";
-
-    private Rigidbody2D _rigidbody2D;
-    private bool _isDirectionLeft;
     private const float BulletSpeed = 5f;
     private const float BulletDestructionDelay = 2f;
+    [SerializeField] private float bulletDamage;
+    private Rigidbody2D _rigidbody2D;
 
     void Start()
     {
-        _isDirectionLeft = true;
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
@@ -32,6 +29,7 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.CompareTag(PlayerTag) || other.gameObject.CompareTag(JudahWeaponTag))
         {
+            
             DestroyBullet();
             return;
         }
