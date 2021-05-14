@@ -130,6 +130,7 @@ public class EnemyScript : MonoBehaviour
         _movementSpeed = WalkSpeed;
         if (other.gameObject.CompareTag(EnemyTag))
             ChangeDirection();
+        OnPlayerHit?.Invoke(damagePoint);
     }
 
 

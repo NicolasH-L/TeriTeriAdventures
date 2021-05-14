@@ -97,15 +97,14 @@ public class GameManager : MonoBehaviour
         var source = _listAudioSources[IndexAudioSourceLevelBgm];
         if (musicList == null)
             return;
-
-
+        
         var index = Random.Range(0, musicList.Count);
-        if (_currentLevel > _playingClipIndex && !_isMusicPaused)
+        if (_currentLevel > _playingClipIndex + 1 && !_isMusicPaused)
         {
-            Debug.Log("i changed index");
             index = _currentLevel - 1;
             ++_playingClipIndex;
-        }
+        }else if (_currentLevel == _playingClipIndex + 1)
+            index = _currentLevel - 1;
 
         source.clip = musicList[index];
         source.Stop();
@@ -147,47 +146,18 @@ public class GameManager : MonoBehaviour
             sourceSpecialBgm.Stop();
             _isMusicPaused = false;
             if (_currentLevel - 1 > _playingClipIndex)
+            {
+                Debug.Log("not unpause");
                 PlayMusic(listLevelBgm);
+            }
             else
                 _listAudioSources[IndexAudioSourceLevelBgm].UnPause();
+
             return;
         }
 
         Invoke(nameof(CountdownChangeMusic), 1f);
     }
-
-    private void QueueSong(List<AudioClip> musicList)
-    {
-        if (musicList == null || _listAudioSources[IndexAudioSourceSpecialBgm].isPlaying)
-            return;
-
-        if (_currentLevel - 1 != _playingClipIndex)
-        {
-            _playingClipIndex = _currentLevel - 1;
-            _listAudioSources[IndexAudioSourceLevelBgm].clip = listLevelBgm[_playingClipIndex];
-            _listAudioSources[IndexAudioSourceLevelBgm].Play();
-        }
-
-        AudioClip clip;
-        if (!_isBossFight && _currentLevel - 1 != _playingClipIndex)
-        {
-            var tmpIndex = Random.Range(0, musicList.Count);
-            _playingClipIndex = _currentLevel > 0 ? _currentLevel - 1 : tmpIndex;
-            clip = _currentLevel > 0 ? musicList[_currentLevel - 1] : musicList[tmpIndex];
-        }
-        else
-        {
-            clip = bossMusic;
-        }
-
-        _listAudioSources[IndexAudioSourceLevelBgm].Stop();
-        _listAudioSources[IndexAudioSourceLevelBgm].clip = clip;
-
-
-        _listAudioSources[IndexAudioSourceLevelBgm].Play();
-        StartCoroutine(PlayAnotherAudioClip(musicList));
-    }
-
 
     public void NextLevel()
     {
@@ -209,13 +179,7 @@ public class GameManager : MonoBehaviour
         if (!_isMusicPaused)
             PlayMusic(listLevelBgm);
     }
-
-    private void RequeueMusic()
-    {
-        _listAudioSources[IndexAudioSourceLevelBgm].Stop();
-        QueueSong(listLevelBgm);
-    }
-
+    
     private void GetPlayer(Scene scene, LoadSceneMode mode)
     {
         if (SceneManager.GetActiveScene().buildIndex > FinalLevelScene ||
@@ -243,7 +207,11 @@ public class GameManager : MonoBehaviour
     public void EnableBossFight()
     {
         _isBossFight = true;
-        RequeueMusic();
+        _listAudioSources[IndexAudioSourceLevelBgm].Stop();
+        _listAudioSources[IndexAudioSourceLevelBgm].clip = bossMusic;
+        _listAudioSources[IndexAudioSourceLevelBgm].loop = true;
+        _listAudioSources[IndexAudioSourceLevelBgm].Play();
+        
     }
 
     public void GameOver(bool isDead)
