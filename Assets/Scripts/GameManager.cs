@@ -167,6 +167,7 @@ public class GameManager : MonoBehaviour
         _player.transform.position = _playerSpawnLocation.transform.position;
         StartCoroutine(DelayEndReachedReset());
         // RequeueMusic();
+        PlayMusic(listLevelBgm);
     }
 
     private void RequeueMusic()
