@@ -7,26 +7,23 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     private const string DestroyGameManager = "Game Manager";
-    [SerializeField] private GameObject pauseMenuUI;
     private const int FinalLevelScene = 3;
+    [SerializeField] private GameObject pauseMenuUI;
     private bool _gameIsPaused;
 
     private void Start()
     {
         _gameIsPaused = false;
-        Time.timeScale = 1f;
         pauseMenuUI.SetActive(false);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (_gameIsPaused)
-                Resume();
-            else
-                Pause();
-        }
+        if (!Input.GetKeyDown(KeyCode.Escape)) return;
+        if (_gameIsPaused)
+            Resume();
+        else
+            Pause();
     }
 
     public void Resume()
@@ -45,8 +42,8 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene(0);
         Destroy(GameObject.Find(DestroyGameManager));
+        SceneManager.LoadScene(0);
     }
 
     public void QuitGame()
@@ -69,6 +66,5 @@ public class PauseMenu : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene) return;
         Destroy(gameObject);
-        Destroy(this);
     }
 }
