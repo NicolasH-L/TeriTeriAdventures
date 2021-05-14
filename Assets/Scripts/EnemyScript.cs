@@ -8,6 +8,7 @@ public class EnemyScript : MonoBehaviour
     public event GetPlayerDamage OnPlayerWeaponDamageLoaded;
 
     public delegate void DamagePlayer(int damage);
+
     public event DamagePlayer OnPlayerHit;
 
     private const string PlayerTag = "Player";
@@ -61,11 +62,11 @@ public class EnemyScript : MonoBehaviour
 
 
         if (groundInfo.collider != false && obstacleInfo.collider == false
-                                         && obstacleInfo02.collider == false 
-                                         // || 
+                                         && obstacleInfo02.collider == false
+            // || 
             // IsRaycastCollidedWithSameTag(obstacleInfo) ||
             // IsRaycastCollidedWithSameTag(obstacleInfo02)
-            ) return;
+        ) return;
         ChangeDirection();
     }
 
@@ -130,7 +131,8 @@ public class EnemyScript : MonoBehaviour
         _movementSpeed = WalkSpeed;
         if (other.gameObject.CompareTag(EnemyTag))
             ChangeDirection();
-        OnPlayerHit?.Invoke(damagePoint);
+        if (other.gameObject.CompareTag(PlayerTag))
+            OnPlayerHit?.Invoke(damagePoint);
     }
 
 
