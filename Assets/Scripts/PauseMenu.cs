@@ -10,7 +10,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pauseMenuUI;
     private const int FinalLevelScene = 3;
     private bool _gameIsPaused;
-    private Canvas _pauseMenu;
 
     private void Start()
     {
