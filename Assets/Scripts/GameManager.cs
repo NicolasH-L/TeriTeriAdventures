@@ -201,7 +201,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(_playerSpawnLocation);
         DontDestroyOnLoad(_playerCamera);
         DontDestroyOnLoad(_canvas);
-        DontDestroyOnLoad(_dialogueManager);
+        // DontDestroyOnLoad(_dialogueManager);
         DontDestroyOnLoad(_pauseMenu);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         _player.transform.position = _playerSpawnLocation.transform.position;

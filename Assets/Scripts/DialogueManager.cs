@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -38,13 +39,16 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        Debug.Log("number of sentence : " + _sentences.Count);
         if (_sentences.Count == 0)
         {
+            Debug.Log("Im outtsiede");
             EndDialogue();
             return;
         }
 
         var sentence = _sentences.Dequeue();
+        Debug.Log(sentence.Count());
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
     }
