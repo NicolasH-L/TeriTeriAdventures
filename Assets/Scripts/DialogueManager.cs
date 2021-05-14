@@ -29,7 +29,6 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        Debug.Log(GameObject.FindGameObjectWithTag(DialogueBoxTag).GetComponent<TextMeshProUGUI>());
         _dialogueBox = GameObject.FindGameObjectWithTag(DialogueBoxTag);
         _fuHua = GameObject.FindGameObjectWithTag(FuHuaTag).GetComponent<Image>();
         
@@ -47,10 +46,10 @@ public class DialogueManager : MonoBehaviour
     {
         _playerUI.enabled = false;
         _nameText.text = dialogue.name;
-        Debug.Log(_nameText);
+        // Debug.Log(_nameText);
 
         //Value exists but the object is undefined?
-        Debug.Log(dialogue.name);
+        // Debug.Log(dialogue.name);
 
         sentences.Clear();
 

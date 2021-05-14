@@ -24,16 +24,18 @@ public class Bullet : MonoBehaviour
         _rigidbody2D.velocity = -transform.right * BulletSpeed;
     }
 
+  
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.gameObject.CompareTag(PlayerTag))
+        if (other.gameObject.CompareTag(PlayerTag))
         {
-            Invoke(nameof(DestroyBullet), BulletDestructionDelay);
-        }
-        else
-        {
+            // Debug.Log(other.gameObject.name);
             DestroyBullet();
+            return;
         }
+
+        Invoke(nameof(DestroyBullet), BulletDestructionDelay);
     }
 
     private void DestroyBullet()

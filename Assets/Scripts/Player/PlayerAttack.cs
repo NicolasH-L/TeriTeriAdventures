@@ -39,8 +39,7 @@ public class PlayerAttack : MonoBehaviour
         _liste = new List<Animator>();
         _liste.AddRange(GetComponentsInChildren<Animator>());
         _animatorPlayer = _liste[1];
-        Debug.Log(_animatorPlayer.name + " " + _liste.Count.ToString());
-        _judahCollider = _judahWeapons[0].GetComponent<PolygonCollider2D>();
+        // Debug.Log(_animatorPlayer.name + " " + _liste.Count.ToString());
     }
 
     // Update is called once per frame
@@ -57,8 +56,7 @@ public class PlayerAttack : MonoBehaviour
             
             Invoke(nameof(AppearBack), _appearTime);
             _judahWeapons[0].SetActive(false);
-            _judahCollider.enabled = false;
-            _animatorPlayer.SetTrigger("");
+            // _animatorPlayer.SetTrigger("");
             _appearTime = 0;
         }
     }
@@ -66,7 +64,6 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator Delay()
     {
         yield return new WaitForSeconds(DelayTime);
-        _judahCollider.enabled = false;
         _hasAttacked = false;
     }
 
@@ -83,7 +80,6 @@ public class PlayerAttack : MonoBehaviour
         _animatorPlayer.SetTrigger("Attack");
         _audioSource[SoundEffect2].Play();
         _judahWeapons[0].SetActive(true);
-        _judahCollider.enabled = true;
         _judahBack.enabled = false;
         _hasAttacked = true;
         StartCoroutine(Delay());
