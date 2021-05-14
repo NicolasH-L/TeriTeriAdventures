@@ -78,7 +78,6 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         _listAudioSources[IndexAudioSourceLevelBgm].Stop();
-        // StopCoroutine(PlayAnotherAudioClip(listWelcomeBgm));
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         DontDestroyOnLoad(this);
         SceneManager.sceneLoaded += GetPlayer;
@@ -95,11 +94,18 @@ public class GameManager : MonoBehaviour
     
     private void QueueSong(List<AudioClip> musicList)
     {
-        if (musicList == null)
+        if (musicList == null || _listAudioSources[IndexAudioSourceSpecialBgm].isPlaying)
             return;
 
+        if (_currentLevel - 1 != _playingClipIndex)
+        {
+            _playingClipIndex = _currentLevel - 1;
+            _listAudioSources[IndexAudioSourceLevelBgm].clip = listLevelBgm[_playingClipIndex];
+            _listAudioSources[IndexAudioSourceLevelBgm].Play();
+        }
+        
         AudioClip clip;
-        if (!_isBossFight)
+        if (!_isBossFight && _currentLevel - 1 != _playingClipIndex)
         {
             var tmpIndex = Random.Range(0, musicList.Count);
             _playingClipIndex = _currentLevel > 0 ? _currentLevel - 1 : tmpIndex;
@@ -110,6 +116,7 @@ public class GameManager : MonoBehaviour
             clip = bossMusic;
         }
 
+        _listAudioSources[IndexAudioSourceLevelBgm].Stop();
         _listAudioSources[IndexAudioSourceLevelBgm].clip = clip;
 
 
@@ -140,6 +147,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         _player.transform.position = _playerSpawnLocation.transform.position;
         StartCoroutine(DelayEndReachedReset());
+        RequeueMusic();
     }
 
     private void GetPlayer(Scene scene, LoadSceneMode mode)
