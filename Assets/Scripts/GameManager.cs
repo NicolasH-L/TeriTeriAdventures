@@ -20,12 +20,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<AudioClip> listWelcomeBgm;
     [SerializeField] private List<AudioClip> listLevelBgm;
     [SerializeField] private AudioClip invincibleBgm;
+    [SerializeField] private AudioClip bossMusic;
     private Canvas _canvas;
     private Camera _playerCamera;
     private GameObject _dialogueManager;
     private int _invincibilityDuration;
     private int _playerDamage;
-
+    private int _currentLevel;
+    private bool _isBossFight;
     private List<AudioSource> _listAudioSources;
 
     // private AudioSource _audioSource;
@@ -75,6 +77,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         DontDestroyOnLoad(this);
         SceneManager.sceneLoaded += GetPlayer;
+        ++_currentLevel;
         QueueSong(listLevelBgm);
     }
 
@@ -96,7 +99,18 @@ public class GameManager : MonoBehaviour
 
     private void QueueSong(List<AudioClip> musicList)
     {
-        _listAudioSources[IndexAudioSourceLevelBgm].clip = musicList[Random.Range(0, musicList.Count)];
+        if (musicList == null)
+            return;
+        AudioClip clip;
+        if (!_isBossFight)
+        {
+            clip = _currentLevel > 0 ? musicList[_currentLevel - 1] : musicList[Random.Range(0, musicList.Count)];
+        }
+        else
+        {
+            clip = bossMusic;
+        }
+        _listAudioSources[IndexAudioSourceLevelBgm].clip = clip;
         _listAudioSources[IndexAudioSourceLevelBgm].Play();
         StartCoroutine(PlayAnotherAudioClip(musicList));
     }
@@ -112,6 +126,7 @@ public class GameManager : MonoBehaviour
         if (_isEndReached)
             return;
         _isEndReached = true;
+        ++_currentLevel;
         DontDestroyOnLoad(_player);
         DontDestroyOnLoad(_playerSpawnLocation);
         DontDestroyOnLoad(_playerCamera);
@@ -121,6 +136,7 @@ public class GameManager : MonoBehaviour
         _player.transform.position = _playerSpawnLocation.transform.position;
         StartCoroutine(DelayEndReachedReset());
         OnLevelEndReached -= NextLevel;
+        RequeueMusic();
     }
 
     private void GetPlayer(Scene scene, LoadSceneMode mode)
@@ -137,7 +153,7 @@ public class GameManager : MonoBehaviour
     {
         return _playerDamage;
     }
-    
+
     public void ChangeToSpecialBgm(int option)
     {
         switch (option)
@@ -153,18 +169,20 @@ public class GameManager : MonoBehaviour
 
                 _invincibilityDuration = BaseInvincibilityDuration;
                 break;
+
+            default:
+                Debug.Log("Erreur cette option de chanson n'existe pas! " + option.ToString());
+                break;
         }
 
         if (!_listAudioSources[IndexAudioSourceSpecialBgm].isPlaying)
             _listAudioSources[IndexAudioSourceSpecialBgm].Play();
         Invoke(nameof(CountdownChangeMusic), 1f);
-        // StartCoroutine(QueueInvincibleBgm(_invincibilityDuration));
     }
 
-    private IEnumerator QueueInvincibleBgm(int duration)
+    private void RequeueMusic()
     {
-        yield return new WaitForSeconds(duration);
-        _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
+        _listAudioSources[IndexAudioSourceLevelBgm].Stop();
         QueueSong(listLevelBgm);
     }
 
@@ -186,5 +204,11 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         _isEndReached = false;
+    }
+
+    public void EnableBossFight()
+    {
+        _isBossFight = true;
+        RequeueMusic();
     }
 }
