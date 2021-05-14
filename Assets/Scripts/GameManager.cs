@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     private const int IndexAudioSourceSpecialBgm = 1;
     private const int GameEndSceneIndex = 4;
     private const int GameOverSceneIndex = 5;
+    private const int FinalLevelScene = 3;
     [SerializeField] private List<AudioClip> listWelcomeBgm;
     [SerializeField] private List<AudioClip> listLevelBgm;
     [SerializeField] private AudioClip invincibleBgm;
@@ -221,8 +223,27 @@ public class GameManager : MonoBehaviour
         // Destroy(gameObject);
     }
 
-    private void OnSceneLoaded()
+    private void OnEnable()
     {
-        
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene) return;
+        _listAudioSources[IndexAudioSourceLevelBgm].Stop();
+        _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
+        Destroy(_playerCamera);
+        Destroy(_playerSpawnLocation);
+        Destroy(_player);
+        Destroy(_canvas);
+        Destroy(_dialogueManager);
+        Destroy(gameObject);
+        Destroy(this);
     }
 }

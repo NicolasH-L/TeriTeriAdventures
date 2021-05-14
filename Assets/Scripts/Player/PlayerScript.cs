@@ -388,4 +388,5 @@ public class PlayerScript : MonoBehaviour
     {
         return _weaponDamage;
     }
+    
 }
