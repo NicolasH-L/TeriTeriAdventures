@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -14,11 +13,11 @@ public class DialogueManager : MonoBehaviour
     private TextMeshProUGUI _dialogueText;
     private Canvas _canvasDialogue;
     private Canvas _playerUI;
-    private Queue<string> sentences = new Queue<string>();
+    private Queue<string> _sentences;
 
-    // Start is called before the first frame update
     private void Start()
     {
+        _sentences = new Queue<string>();
         _playerUI = GameObject.FindGameObjectWithTag(PlayerUiTag).GetComponent<Canvas>();
         _nameText = GameObject.FindGameObjectWithTag(NameTag).GetComponent<TextMeshProUGUI>();
         _dialogueText = GameObject.FindGameObjectWithTag(DialogTag).GetComponent<TextMeshProUGUI>();
@@ -29,23 +28,23 @@ public class DialogueManager : MonoBehaviour
     {
         _playerUI.enabled = false;
         _nameText.text = dialogue.name;
-        sentences.Clear();
+        _sentences.Clear();
 
-        foreach (string sentence in dialogue.sentences)
-            sentences.Enqueue(sentence);
+        foreach (var sentence in dialogue.sentences)
+            _sentences.Enqueue(sentence);
 
         DisplayNextSentence();
     }
 
     public void DisplayNextSentence()
     {
-        if (sentences.Count == 0)
+        if (_sentences.Count == 0)
         {
             EndDialogue();
             return;
         }
 
-        string sentence = sentences.Dequeue();
+        var sentence = _sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
     }
@@ -59,9 +58,9 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator TypeSentence(string sentence)
     {
         _dialogueText.text = "";
-        foreach (char letter in sentence)
+        foreach (var letter in sentence)
         {
-            _dialogueText.text += letter;
+            _dialogueText.text += letter.ToString();
             yield return null;
         }
     }

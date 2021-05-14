@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -41,10 +40,6 @@ public class GameManager : MonoBehaviour
     public delegate void LoadNextLevel();
 
     public event LoadNextLevel OnLevelEndReached;
-
-    public delegate void GameFinished();
-
-    public event GameFinished OnGameEnded;
     
     private void Awake()
     {

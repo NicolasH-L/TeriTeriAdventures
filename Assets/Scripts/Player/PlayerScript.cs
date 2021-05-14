@@ -15,6 +15,10 @@ public class PlayerScript : MonoBehaviour
 
     public event WeaponEvent OnWeaponCollected;
 
+    public delegate void GameFinished(bool isDead);
+
+    public event GameFinished OnGameEnded;
+
     private static PlayerScript _player;
 
     public static PlayerScript GetPlayerInstance()
@@ -54,6 +58,7 @@ public class PlayerScript : MonoBehaviour
     private const string Potion = "Potion";
     private const string Bandaid = "Bandaid";
     private const string NextLevel = "NextLevel";
+    private const string InvincibilityAnimatorBool = "isInvincible";
     private Animator _animatorPlayer;
     [SerializeField] private Image invincibleStatus;
     private Animator _invincibilityAnimator;
@@ -78,6 +83,8 @@ public class PlayerScript : MonoBehaviour
     private int _playerLevelUpReq;
     private int _weaponLevel;
     private int _weaponLevelUpReq;
+    private static readonly int IsInvincible = Animator.StringToHash(InvincibilityAnimatorBool);
+    private static readonly int IsIdle = Animator.StringToHash("isIdle");
 
     private void Awake()
     {
@@ -97,7 +104,11 @@ public class PlayerScript : MonoBehaviour
         _judahBack.enabled = false;
 
         if (GameManager.GameManagerInstance != null)
+        {
             OnChangeSpecialBgm += GameManager.GameManagerInstance.ChangeToSpecialBgm;
+            OnGameEnded += GameManager.GameManagerInstance.GameOver;
+        }
+
         if (PlayerAttack.PlayerAttackInstance != null)
             OnWeaponCollected += PlayerAttack.PlayerAttackInstance.ObtainWeapon;
         _invincibilityAnimator = GameObject.FindGameObjectWithTag("InvincibleStatus").GetComponent<Animator>();
@@ -137,6 +148,8 @@ public class PlayerScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!Input.GetKey(KeyMoveLeft) && !Input.GetKey(KeyMoveRight))
+            return;
         var movementPlayerX = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedPlayer;
         if (movementPlayerX == 0) return;
         SetIdle(false);
@@ -159,7 +172,7 @@ public class PlayerScript : MonoBehaviour
 
     private void SetIdle(bool isIdle)
     {
-        _animatorPlayer.SetBool("isIdle", isIdle);
+        _animatorPlayer.SetBool(IsIdle, isIdle);
     }
 
 
@@ -197,13 +210,12 @@ public class PlayerScript : MonoBehaviour
             }
             else
             {
-                //TODO gameover
                 var manager = GameManager.GameManagerInstance;
                 if (manager == null)
                     return;
                 OnChangeSpecialBgm -= manager.ChangeToSpecialBgm;
                 OnWeaponCollected -= PlayerAttack.PlayerAttackInstance.ObtainWeapon;
-                print("Game Over");
+                OnGameEnded?.Invoke(true);
             }
         }
 
@@ -237,11 +249,7 @@ public class PlayerScript : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case Judah:
-                if (OnWeaponCollected != null)
-                {
-                    OnWeaponCollected();
-                }
-
+                OnWeaponCollected?.Invoke();
                 _judahBack.enabled = true;
                 break;
             case InvincibleGourd:
@@ -275,7 +283,7 @@ public class PlayerScript : MonoBehaviour
         var tmp = invincibleStatus.color;
         tmp.a = 1f;
         invincibleStatus.color = tmp;
-        _invincibilityAnimator.SetBool("isInvincible", true);
+        _invincibilityAnimator.SetBool(IsInvincible, true);
         Invoke(nameof(ReduceInvincibilityDuration), 1f);
     }
 
@@ -284,19 +292,16 @@ public class PlayerScript : MonoBehaviour
         var tmp = invincibleStatus.color;
         if (_invincibilityCountdown.Equals(0))
         {
-            _invincibilityAnimator.SetBool("isInvincible", false);
+            _invincibilityAnimator.SetBool(IsInvincible, false);
             tmp.a = 0f;
             invincibleStatus.color = tmp;
             _isInvincible = false;
-            print("ended");
             return;
         }
 
         --_invincibilityCountdown;
         tmp.a -= Offset;
         invincibleStatus.color = tmp;
-        print("countdown " + _invincibilityCountdown.ToString() + " alpha " + tmp.a.ToString() + " invincibility: " +
-              _isInvincible.ToString());
         Invoke(nameof(ReduceInvincibilityDuration), 1f);
     }
 
@@ -307,7 +312,6 @@ public class PlayerScript : MonoBehaviour
             return;
 
         var tmp = bar.GetCurrentValue() + expValue;
-        // print(tmp.ToString());
         if (tmp >= bar.GetCurrentMaxValue())
         {
             tmp -= nextLevelExpReq;
@@ -323,7 +327,6 @@ public class PlayerScript : MonoBehaviour
 
             if (currentBarLevel >= MaxLevel)
             {
-                print("entered max:" + currentBarLevel);
                 bar.SetValue(bar.GetCurrentMaxValue());
                 SetBarTextValue(ref textMeshProUGUI, MaxExpText, MaxExpText);
                 return;
@@ -351,7 +354,6 @@ public class PlayerScript : MonoBehaviour
     private void ModifyExtraLife(bool isAddLife, float alphaValue)
     {
         var index = isAddLife ? _extraPlayerLives : _extraPlayerLives - 1;
-        print(index.ToString());
         var tmp = playerLives[index].color;
         tmp.a = alphaValue;
         playerLives[index].color = tmp;
@@ -375,8 +377,7 @@ public class PlayerScript : MonoBehaviour
         textMeshProUGUI.text = barValues;
     }
 
-    //TODO : Callback
-    public void ResetJump()
+    private void ResetJump()
     {
         _jumpCounter = 0;
     }
