@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
@@ -67,6 +68,7 @@ public class GameManager : MonoBehaviour
         _playingClipIndex = 0;
         // QueueSong(listWelcomeBgm);
         PlayMusic(listWelcomeBgm);
+        DontDestroyOnLoad(this);
     }
 
     void Update()
@@ -78,7 +80,6 @@ public class GameManager : MonoBehaviour
     {
         _listAudioSources[IndexAudioSourceLevelBgm].Stop();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        DontDestroyOnLoad(this);
         SceneManager.sceneLoaded += GetPlayer;
         ++_currentLevel;
 
@@ -97,13 +98,14 @@ public class GameManager : MonoBehaviour
         var source = _listAudioSources[IndexAudioSourceLevelBgm];
         if (musicList == null)
             return;
-        
+
         var index = Random.Range(0, musicList.Count);
         if (_currentLevel > _playingClipIndex + 1 && !_isMusicPaused)
         {
             index = _currentLevel - 1;
             ++_playingClipIndex;
-        }else if (_currentLevel == _playingClipIndex + 1)
+        }
+        else if (_currentLevel == _playingClipIndex + 1)
             index = _currentLevel - 1;
 
         source.clip = musicList[index];
@@ -179,7 +181,7 @@ public class GameManager : MonoBehaviour
         if (!_isMusicPaused)
             PlayMusic(listLevelBgm);
     }
-    
+
     private void GetPlayer(Scene scene, LoadSceneMode mode)
     {
         if (SceneManager.GetActiveScene().buildIndex > FinalLevelScene ||
@@ -211,7 +213,6 @@ public class GameManager : MonoBehaviour
         _listAudioSources[IndexAudioSourceLevelBgm].clip = bossMusic;
         _listAudioSources[IndexAudioSourceLevelBgm].loop = true;
         _listAudioSources[IndexAudioSourceLevelBgm].Play();
-        
     }
 
     public void GameOver(bool isDead)

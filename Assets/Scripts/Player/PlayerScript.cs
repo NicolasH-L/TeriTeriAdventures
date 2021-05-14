@@ -66,6 +66,7 @@ public class PlayerScript : MonoBehaviour
     private const string InvincibilityAnimatorBool = "isInvincible";
     private const string PlayerExpUiTag = "PlayerExpUI";
     private const string WepExpUiTag = "WepExpUI";
+    private const string LaserTrapTag = "LaserTrap";
     private const int FinalLevelScene = 3;
 
     private Animator _animatorPlayer;
@@ -280,6 +281,9 @@ public class PlayerScript : MonoBehaviour
                 break;
             case TeriTicket:
                 GainSpeed();
+                break;
+            case LaserTrapTag:
+                TakeDamage(LaserTrapDamage);
                 break;
             case NextLevel:
                 var manager = GameManager.GameManagerInstance;

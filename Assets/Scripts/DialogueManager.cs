@@ -39,7 +39,6 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        Debug.Log("number of sentence : " + _sentences.Count);
         if (_sentences.Count == 0)
         {
             Debug.Log("Im outtsiede");
@@ -48,8 +47,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         var sentence = _sentences.Dequeue();
-        Debug.Log(sentence.Length);
-        // StopAllCoroutines();
+        StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
     }
 
