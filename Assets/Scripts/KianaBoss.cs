@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -13,8 +11,9 @@ public class KianaBoss : MonoBehaviour
     private Random _random;
     private int _healthPoint;
     private bool _isAlive;
-    
+
     public delegate void GameFinished(bool isDead);
+
     public event GameFinished OnGameEnded;
 
     private void Awake()
@@ -48,7 +47,7 @@ public class KianaBoss : MonoBehaviour
         Debug.Log(other.gameObject.tag);
         TakeDamage(GameManager.GameManagerInstance.GetPlayerDamage());
     }
-    
+
     private void TakeDamage(int damage)
     {
         if (_healthPoint - damage <= 0)
@@ -57,15 +56,16 @@ public class KianaBoss : MonoBehaviour
             Destroy(GetComponent<Rigidbody2D>());
             Destroy(GetComponent<Collider2D>());
             Destroy(GetComponent<PolygonCollider2D>());
-            Invoke(nameof(LoadGameOver), 2f);
+            OnGameEnded?.Invoke(false);
+            Invoke(nameof(DelayDeath), 2f);
             return;
         }
+
         _healthPoint -= damage;
     }
 
-    private void LoadGameOver()
+    private void DelayDeath()
     {
-        OnGameEnded?.Invoke(false);
         Destroy(gameObject);
     }
 }

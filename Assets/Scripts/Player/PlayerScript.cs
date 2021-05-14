@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -34,6 +33,8 @@ public class PlayerScript : MonoBehaviour
     private const int PlayerHitAudioSourceIndex = 3;
     private const int MaxHealth = 100;
     private const int WeaponBaseDamage = 5000;
+    private const int WoodTrapDamage = 5;
+    private const int LaserTrapDamage = 10;
     private const int ContactDamage = 25;
     private const int InvincibilityDuration = 8;
     private const float BasePlayerSpeed = 4f;
@@ -44,7 +45,6 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] private Rigidbody2D playerRigidBody2D;
 
-    // [SerializeField] private GameObject judahCross;
     [SerializeField] private SliderScript healthBar;
     [SerializeField] private SliderScript expBar;
     [SerializeField] private SliderScript wepExpBar;
@@ -190,14 +190,7 @@ public class PlayerScript : MonoBehaviour
     private void ChangeDirection()
     {
         transform.Rotate(0, 180, 0);
-        if (_isMovingRight)
-        {
-            _isMovingRight = false;
-        }
-        else
-        {
-            _isMovingRight = true;
-        }
+        _isMovingRight = !_isMovingRight;
     }
 
 
@@ -249,9 +242,14 @@ public class PlayerScript : MonoBehaviour
             case "Obstacle":
                 ResetJump();
                 break;
-            case "Enemy":
+            case "WoodTrap":
+                TakeDamage(WoodTrapDamage);
+                break;
+            case "LaserTrap":
+                TakeDamage(LaserTrapDamage);
+                break;
             case "Cookie":
-                // TakeDamage(ContactDamage);
+                TakeDamage(ContactDamage);
                 break;
         }
     }

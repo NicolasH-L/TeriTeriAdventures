@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,8 +36,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _audioSource = GetComponents<AudioSource>();
         _audioClipIndex = 0;
@@ -46,11 +44,9 @@ public class PlayerAttack : MonoBehaviour
         _liste = new List<Animator>();
         _liste.AddRange(GetComponentsInChildren<Animator>());
         _animatorPlayer = _liste[1];
-        // Debug.Log(_animatorPlayer.name + " " + _liste.Count.ToString());
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         //TODO : Fix attacking
 

@@ -458,6 +458,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stake03 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_TagString
+      value: WoodTrap
+      objectReference: {fileID: 0}
     - target: {fileID: 6839249540597138271, guid: c3cd9fd954efcfc46afbde65348a2612,
         type: 3}
       propertyPath: m_Color.b
@@ -563,6 +568,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stake03 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_TagString
+      value: WoodTrap
       objectReference: {fileID: 0}
     - target: {fileID: 6839249540597138271, guid: c3cd9fd954efcfc46afbde65348a2612,
         type: 3}
@@ -670,6 +680,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stake03
       objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_TagString
+      value: WoodTrap
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3cd9fd954efcfc46afbde65348a2612, type: 3}
 --- !u!1 &7100094612992840913 stripped
@@ -760,6 +775,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stake03 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_TagString
+      value: WoodTrap
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3cd9fd954efcfc46afbde65348a2612, type: 3}
@@ -852,6 +872,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stake03 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_TagString
+      value: WoodTrap
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3cd9fd954efcfc46afbde65348a2612, type: 3}
 --- !u!1 &7100094612451050283 stripped
@@ -943,6 +968,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stake03 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_TagString
+      value: WoodTrap
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3cd9fd954efcfc46afbde65348a2612, type: 3}
 --- !u!4 &8408171651819601689 stripped
@@ -1033,6 +1063,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stake03 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_TagString
+      value: WoodTrap
       objectReference: {fileID: 0}
     - target: {fileID: 6839249540597138271, guid: c3cd9fd954efcfc46afbde65348a2612,
         type: 3}
@@ -1139,6 +1174,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stake03 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_TagString
+      value: WoodTrap
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3cd9fd954efcfc46afbde65348a2612, type: 3}
@@ -1316,6 +1356,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stake03 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_TagString
+      value: WoodTrap
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3cd9fd954efcfc46afbde65348a2612, type: 3}
 --- !u!4 &8408171652469012636 stripped
@@ -1406,6 +1451,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stake03 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_TagString
+      value: WoodTrap
       objectReference: {fileID: 0}
     - target: {fileID: 6839249540597138271, guid: c3cd9fd954efcfc46afbde65348a2612,
         type: 3}

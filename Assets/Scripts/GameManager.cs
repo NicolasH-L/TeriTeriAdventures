@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     private PlayerScript _player;
     private GameObject _playerSpawnLocation;
     private bool _isEndReached;
-    private bool _isInvincible;
+    private bool _isDead;
 
     public delegate void LoadNextLevel();
 
@@ -167,7 +167,6 @@ public class GameManager : MonoBehaviour
         switch (option)
         {
             case 1:
-                _isInvincible = true;
                 if (_listAudioSources[IndexAudioSourceLevelBgm].isPlaying &&
                     !_listAudioSources[IndexAudioSourceSpecialBgm].isPlaying)
                 {
@@ -222,6 +221,7 @@ public class GameManager : MonoBehaviour
     public void GameOver(bool isDead)
     {
         var index = GameEndSceneIndex;
+        _isDead = isDead;
         if (isDead)
         {
             index = GameOverSceneIndex;
@@ -229,17 +229,9 @@ public class GameManager : MonoBehaviour
 
         _listAudioSources[IndexAudioSourceLevelBgm].Stop();
         _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
-        Destroy(_player.gameObject);
-        Destroy(_playerCamera.GetComponent<CinemachineBrain>());
-        Destroy(_playerCamera.GetComponentInChildren<GameObject>());
-        Destroy(_playerCamera.GetComponent<GameObject>());
-        // Debug.Log(_playerCamera.GetType());
-        // Destroy(_playerCamera.GetComponent<Camera>());
-        Destroy(GameObject.FindGameObjectWithTag(PlayerUiTag));
-        Destroy(_playerSpawnLocation);
-        Destroy(_dialogueManager);
         SceneManager.LoadScene(index);
     }
+
 
     private void OnEnable()
     {
@@ -254,6 +246,9 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
         if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene) return;
+        Destroy(_playerCamera.GetComponentInChildren<GameObject>().GetComponent<CinemachineVirtualCamera>());
+        Destroy(_playerCamera.GetComponent<CinemachineBrain>());
+        Destroy(_playerCamera);
         Destroy(GameObject.FindGameObjectWithTag(PlayerUiTag));
         Destroy(_playerSpawnLocation);
         Destroy(_dialogueManager);

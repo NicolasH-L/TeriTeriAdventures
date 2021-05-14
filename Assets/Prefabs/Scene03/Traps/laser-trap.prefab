@@ -207,7 +207,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: -0.09}
-  m_ConnectedAnchor: {x: 55.71, y: -15.860001}
+  m_ConnectedAnchor: {x: -13.743111, y: 0.5150205}
   m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 75
@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 8770181417222449908}
   m_Layer: 0
   m_Name: laser-small (1)
-  m_TagString: Untagged
+  m_TagString: LaserTrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 8770181417889981803}
   m_Layer: 0
   m_Name: laser-small
-  m_TagString: Untagged
+  m_TagString: LaserTrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

@@ -118,7 +118,7 @@ public class EnemyScript : MonoBehaviour
             Destroy(GetComponent<Rigidbody2D>());
             Destroy(GetComponent<Collider2D>());
             Destroy(GetComponent<PolygonCollider2D>());
-            Destroy(transform.gameObject);
+            Destroy(gameObject);
             return;
         }
 
@@ -130,8 +130,6 @@ public class EnemyScript : MonoBehaviour
         _movementSpeed = WalkSpeed;
         if (other.gameObject.CompareTag(EnemyTag))
             ChangeDirection();
-        else if (other.gameObject.CompareTag(PlayerTag))
-            OnPlayerHit?.Invoke(damagePoint);
     }
 
 
