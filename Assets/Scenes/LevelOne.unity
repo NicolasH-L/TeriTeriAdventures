@@ -12859,6 +12859,11 @@ PrefabInstance:
       propertyPath: _listAttackClips.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: 68de09a4827127845b7328c16e6aa161, type: 3}
+    - target: {fileID: 5657802358050217776, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5657802358050217778, guid: 605864e53ed497b45840bb44b23dd2aa,
         type: 3}
       propertyPath: m_TagString
