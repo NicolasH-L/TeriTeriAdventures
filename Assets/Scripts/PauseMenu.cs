@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    private const string DestroyGameManager = "Game Manager";
     [SerializeField] private GameObject pauseMenuUI;
     private const int FinalLevelScene = 3;
     private bool _gameIsPaused;
@@ -14,6 +15,7 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         _gameIsPaused = false;
+        Time.timeScale = 1f;
         pauseMenuUI.SetActive(false);
     }
 
@@ -45,6 +47,7 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         SceneManager.LoadScene(0);
+        Destroy(GameObject.Find(DestroyGameManager));
     }
 
     public void QuitGame()

@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += GetPlayer;
         ++_currentLevel;
         QueueSong(listLevelBgm);
+        print("You clickled me");
     }
 
     public void QuitGame()
@@ -91,17 +92,7 @@ public class GameManager : MonoBehaviour
         _listAudioSources[IndexAudioSourceLevelBgm].Stop();
         Application.Quit();
     }
-
-    public void ReplayGame()
-    {
-        SceneManager.LoadScene(1);
-    }
-
-    public void ReturnMainMenu()
-    {
-        SceneManager.LoadScene(0);
-    }
-
+    
     private void QueueSong(List<AudioClip> musicList)
     {
         if (musicList == null)
