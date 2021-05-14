@@ -101,114 +101,45 @@ public class PlayerScript : MonoBehaviour
         _playerLevelUpReq = BaseLevelRequirement;
         _weaponLevelUpReq = BaseLevelRequirement;
 
-        // SetIdleAnimationBooleans(BooleanDirectionRight, true);
     }
 
     void Update()
     {
-        // var movementPlayerX = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedPlayer;
-        // if (movementPlayerX != 0)
-        // {
-        //     print("entered");
-        //     transform.Translate(movementPlayerX, 0f, 0f);
-        //     if (Input.GetKey(KeyMoveRight))
-        //     {
-        //         SetMovingAnimationBooleans(true, false);
-        //     }
-        //     else if (Input.GetKey(KeyMoveLeft))
-        //     {
-        //         SetMovingAnimationBooleans(false, true);
-        //     }
-        // }
-        //
-        // if (Input.GetKeyUp(KeyMoveRight))
-        // {
-        //     SetIdleAnimationBooleans(BooleanDirectionRight, true);
-        // }
-        // else if (Input.GetKeyUp(KeyMoveLeft))
-        // {
-        //     SetIdleAnimationBooleans(BooleanDirectionLeft, false);
-        // }
-        //
-        // if (Input.GetKeyDown(KeyJump) && _jumpCounter < MaxJump)
-        // {
-        //     playerRigidBody2D.velocity = new Vector2(0f, JumpHeight);
-        //     _jumpCounter++;
-        //     _audioSource[SoundEffect1].Play();
-        // }
 
         if (Input.GetKeyUp(KeyMoveRight) || Input.GetKeyUp(KeyMoveLeft) || !Input.GetKey(KeyMoveRight) &&
             !Input.GetKey(KeyMoveLeft))
         {
             SetIdle(true);
-            // SetIdleAnimationBooleans(BooleanDirectionLeft, false);
+      
         }
 
-        if (Input.GetKeyDown(KeyJump) && _jumpCounter < MaxJump)
-        {
-            playerRigidBody2D.velocity = new Vector2(0f, JumpHeight);
-            _jumpCounter++;
-            _audioSource[SoundEffect1].Play();
-        }
+        if (!Input.GetKeyDown(KeyJump) || _jumpCounter >= MaxJump) return;
+        playerRigidBody2D.velocity = new Vector2(0f, JumpHeight);
+        _jumpCounter++;
+        _audioSource[SoundEffect1].Play();
     }
 
     private void FixedUpdate()
     {
         var movementPlayerX = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedPlayer;
-        if (movementPlayerX != 0)
+        if (movementPlayerX == 0) return;
+        SetIdle(false);
+        if (Input.GetKey(KeyMoveRight) && !_isMovingRight && !Input.GetKey(KeyMoveLeft))
         {
-            var rotation = _judahBack.transform.localRotation;
-            // Debug.Log((rotation.z / 1).ToString());
-            SetIdle(false);
-            if (Input.GetKey(KeyMoveRight) && !_isMovingRight)
-            {
-                // SetMovingAnimationBooleans(true, false);
-                // if (!_judahBack.enabled || rotation.z / 1 < 0)
-                //     return;
-                // RotateJudah(rotation);
-                ChangeDirection();
-            }
-            else if (Input.GetKey(KeyMoveLeft) && _isMovingRight)
-            {
-                // SetMovingAnimationBooleans(false, true);
-                // // if (_judahBack.enabled)
-                // //     return;
-                // if (!_judahBack.enabled || rotation.z / 1 > 0)
-                //     return;
-                // RotateJudah(rotation);
-                Debug.Log("before" + movementPlayerX);
+            ChangeDirection();
+        }
+        else if (Input.GetKey(KeyMoveLeft) && _isMovingRight && !Input.GetKey(KeyMoveRight))
+        {
+            ChangeDirection();
+        }
 
-                ChangeDirection();
-            }
-
-            if (Input.GetKey(KeyMoveRight) && _isMovingRight)
-                transform.Translate(movementPlayerX, 0f, 0f);
-            else if (Input.GetKey(KeyMoveLeft) && !_isMovingRight)
-            {
-                transform.Translate(-movementPlayerX, 0f, 0f);
-            }
+        if (Input.GetKey(KeyMoveRight) && _isMovingRight)
+            transform.Translate(movementPlayerX, 0f, 0f);
+        else if (Input.GetKey(KeyMoveLeft) && !_isMovingRight)
+        {
+            transform.Translate(-movementPlayerX, 0f, 0f);
         }
     }
-
-    private void RotateJudah(Quaternion rotation)
-    {
-        rotation.z *= -1;
-        _judahBack.transform.rotation = rotation;
-    }
-
-    // private void SetMovingAnimationBooleans(bool isMoveRight, bool isMoveLeft)
-    // {
-    //     _animatorPlayer.SetBool("isMovingToTheRight", isMoveRight);
-    //     _animatorPlayer.SetBool("isMovingToTheLeft", isMoveLeft);
-    //     _animatorPlayer.SetBool("isIdle", false);
-    // }
-    //
-    // private void SetIdleAnimationBooleans(string booleanDirection, bool isIdleRight)
-    // {
-    //     _animatorPlayer.SetBool(booleanDirection, false);
-    //     _animatorPlayer.SetBool("isIdleRight", isIdleRight);
-    //     _animatorPlayer.SetBool("isIdle", true);
-    // }
 
     private void SetIdle(bool isIdle)
     {
@@ -297,8 +228,6 @@ public class PlayerScript : MonoBehaviour
                 }
 
                 _judahBack.enabled = true;
-                // _judahRightRotationZ = _judahBack.transform.position.z;
-                // _judahLeftRotationZ = -_judahRightRotationZ;
                 break;
             case "InvincibleGourd":
                 SetInvincibility();
@@ -334,7 +263,6 @@ public class PlayerScript : MonoBehaviour
         invincibleStatus.color = tmp;
         _invincibilityAnimator.SetBool("isInvincible", true);
         Invoke(nameof(ReduceInvincibilityDuration), 1f);
-        // StartCoroutine(ExpireInvincibility());
     }
 
     private void ReduceInvincibilityDuration()
@@ -403,7 +331,6 @@ public class PlayerScript : MonoBehaviour
             return;
         }
 
-        // print(_extraPlayerLives.ToString());
         ModifyExtraLife(true, 1f);
     }
 
