@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     private const int BaseInvincibilityDuration = 8;
     private const int IndexAudioSourceLevelBgm = 0;
     private const int IndexAudioSourceSpecialBgm = 1;
+    private const int GameEndSceneIndex = 4;
+    private const int GameOverSceneIndex = 5;
     [SerializeField] private List<AudioClip> listWelcomeBgm;
     [SerializeField] private List<AudioClip> listLevelBgm;
     [SerializeField] private AudioClip invincibleBgm;
@@ -217,11 +219,12 @@ public class GameManager : MonoBehaviour
 
     public void GameOver(bool isDead)
     {
+        var index = GameEndSceneIndex;
         if (isDead)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            return;
+            index = GameOverSceneIndex;
+
         }
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(index);
     }
 }
