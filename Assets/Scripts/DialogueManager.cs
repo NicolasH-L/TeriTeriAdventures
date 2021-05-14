@@ -19,25 +19,28 @@ public class DialogueManager : MonoBehaviour
     private const string FuHuaTag = "FuHua";
     private const string TransitionTag = "Transition";
     private TextMeshProUGUI _dialogueBox;
-    private GameObject _fuHua;
+    private Image _fuHua;
     private Image _transition;
 
     private void Awake()
     {
-        _dialogueBox = GameObject.FindGameObjectWithTag(DialogueBoxTag).GetComponent<TextMeshProUGUI>();
-        _fuHua = GameObject.FindGameObjectWithTag(FuHuaTag).GetComponent<GameObject>();
-        _transition = GameObject.FindGameObjectWithTag(TransitionTag).GetComponent<Image>();
     }
 
     // Start is called before the first frame update
     private void Start()
     {
+        
+        // _dialogueBox = GameObject.FindGameObjectWithTag(DialogueBoxTag).GetComponent<TextMeshProUGUI>();
+        _fuHua = GameObject.FindGameObjectWithTag(FuHuaTag).GetComponent<Image>();
+        Debug.Log(GameObject.FindGameObjectWithTag(FuHuaTag));
+        if (GameObject.FindGameObjectWithTag(TransitionTag) != null)
+            _transition = GameObject.FindGameObjectWithTag(TransitionTag).GetComponent<Image>();
         _playerUI = GameObject.FindGameObjectWithTag(PlayerUiTag).GetComponent<Canvas>();
         _nameText = GameObject.FindGameObjectWithTag(NameTag).GetComponent<TextMeshProUGUI>();
         _dialogueText = GameObject.FindGameObjectWithTag(DialogTag).GetComponent<TextMeshProUGUI>();
         _canvasDialogue = GameObject.FindGameObjectWithTag(CanvasDialogTag).GetComponent<Canvas>();
-        _dialogueBox.enabled = false;
-        _fuHua.SetActive(false);
+        // _dialogueBox.enabled = false;
+        _fuHua.enabled = false;
     }
 
     public void StartDialogue(Dialogue dialogue)
@@ -59,10 +62,11 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayGame()
     {
-        Destroy(_transition);
+        if (_transition != null)
+            Destroy(_transition);
         Destroy(gameObject);
         _dialogueBox.enabled = true;
-        _fuHua.SetActive(true);
+        // _fuHua.SetActive(true);
     }
 
     public void DisplayNextSentence()
