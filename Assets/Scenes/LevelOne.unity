@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlockOfWood (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7504259670741354126, guid: 15eb53290d1e9fd42abda553dbd0cc55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 7504259670741354163, guid: 15eb53290d1e9fd42abda553dbd0cc55,
         type: 3}
       propertyPath: m_RootOrder
@@ -216,7 +221,7 @@ GameObject:
   m_TagString: PlayerExpValue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &54185398
 RectTransform:
@@ -410,6 +415,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeriTicket (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 893055358069795627, guid: 119121e1c500b69429a30e461e77f8bf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 119121e1c500b69429a30e461e77f8bf, type: 3}
 --- !u!4 &128125517 stripped
@@ -508,7 +518,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!212 &133320783
 SpriteRenderer:
@@ -596,7 +606,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &170389353
 RectTransform:
@@ -668,6 +678,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlockOfWood (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504259670741354126, guid: 15eb53290d1e9fd42abda553dbd0cc55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7504259670741354160, guid: 15eb53290d1e9fd42abda553dbd0cc55,
         type: 3}
@@ -758,7 +773,7 @@ GameObject:
   m_TagString: WepExpUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &179837546
 RectTransform:
@@ -913,6 +928,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: chest-common (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2261299075839043662, guid: 16ebcd976b38dae4f9ee832f8260859e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16ebcd976b38dae4f9ee832f8260859e, type: 3}
 --- !u!1001 &237476580
@@ -982,6 +1002,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: chest-common (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2261299075839043662, guid: 16ebcd976b38dae4f9ee832f8260859e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16ebcd976b38dae4f9ee832f8260859e, type: 3}
 --- !u!4 &237476581 stripped
@@ -1012,7 +1037,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &243830261
 RectTransform:
@@ -1081,6 +1106,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlockOfWood (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504259670741354126, guid: 15eb53290d1e9fd42abda553dbd0cc55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7504259670741354163, guid: 15eb53290d1e9fd42abda553dbd0cc55,
         type: 3}
@@ -1159,7 +1189,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &263414566
 Transform:
@@ -1209,6 +1239,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlockOfWood (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504259670741354126, guid: 15eb53290d1e9fd42abda553dbd0cc55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7504259670741354160, guid: 15eb53290d1e9fd42abda553dbd0cc55,
         type: 3}
@@ -1298,7 +1333,7 @@ GameObject:
   m_TagString: DialogueManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &286225952
 Transform:
@@ -1343,7 +1378,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &290664455
 RectTransform:
@@ -1468,6 +1503,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlockOfWood (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 7504259670741354126, guid: 15eb53290d1e9fd42abda553dbd0cc55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 7504259670741354160, guid: 15eb53290d1e9fd42abda553dbd0cc55,
         type: 3}
       propertyPath: m_SortingOrder
@@ -1560,7 +1600,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &336382532
 Transform:
@@ -1680,6 +1720,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodPillar (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 581907655120167846, guid: 57625c49935d98e4f9a32408cc70bb83,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57625c49935d98e4f9a32408cc70bb83, type: 3}
 --- !u!4 &350186570 stripped
@@ -1764,6 +1809,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PinkGourd
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607526443653402715, guid: 4e0ae725626ad2242804485deeb89214,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e0ae725626ad2242804485deeb89214, type: 3}
@@ -1855,6 +1905,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodPillar (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 581907655120167846, guid: 57625c49935d98e4f9a32408cc70bb83,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57625c49935d98e4f9a32408cc70bb83, type: 3}
 --- !u!4 &357280055 stripped
@@ -1878,7 +1933,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &364898512
 Transform:
@@ -1961,6 +2016,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlockOfWood (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504259670741354126, guid: 15eb53290d1e9fd42abda553dbd0cc55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7504259670741354160, guid: 15eb53290d1e9fd42abda553dbd0cc55,
         type: 3}
@@ -2054,7 +2114,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &387657033
 Transform:
@@ -2085,6 +2145,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlockOfWood (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504259670741354126, guid: 15eb53290d1e9fd42abda553dbd0cc55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7504259670741354163, guid: 15eb53290d1e9fd42abda553dbd0cc55,
         type: 3}
@@ -2170,7 +2235,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &419188051
 RectTransform:
@@ -2310,6 +2375,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodPillar (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 581907655120167846, guid: 57625c49935d98e4f9a32408cc70bb83,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57625c49935d98e4f9a32408cc70bb83, type: 3}
 --- !u!4 &438952628 stripped
@@ -2329,6 +2399,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlockOfWood (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504259670741354126, guid: 15eb53290d1e9fd42abda553dbd0cc55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7504259670741354160, guid: 15eb53290d1e9fd42abda553dbd0cc55,
         type: 3}
@@ -2538,7 +2613,7 @@ GameObject:
   m_TagString: WepExpValue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &558621503
 RectTransform:
@@ -2804,6 +2879,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodPillar
       objectReference: {fileID: 0}
+    - target: {fileID: 581907655120167846, guid: 57625c49935d98e4f9a32408cc70bb83,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57625c49935d98e4f9a32408cc70bb83, type: 3}
 --- !u!4 &633001188 stripped
@@ -2908,7 +2988,7 @@ GameObject:
   m_TagString: PlayerHpUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &663854004
 RectTransform:
@@ -3011,6 +3091,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlockOfWood (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504259670741354126, guid: 15eb53290d1e9fd42abda553dbd0cc55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7504259670741354160, guid: 15eb53290d1e9fd42abda553dbd0cc55,
         type: 3}
@@ -3172,6 +3257,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeriTicket (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 893055358069795627, guid: 119121e1c500b69429a30e461e77f8bf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 119121e1c500b69429a30e461e77f8bf, type: 3}
 --- !u!4 &688508608 stripped
@@ -3206,7 +3296,7 @@ PrefabInstance:
     - target: {fileID: 7792149869518211268, guid: ddc977d361637fc4dabd9af8d7328db1,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7792149869518211270, guid: ddc977d361637fc4dabd9af8d7328db1,
         type: 3}
@@ -3351,7 +3441,7 @@ GameObject:
   m_TagString: NextLevel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &712268103
 MonoBehaviour:
@@ -3467,6 +3557,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlockOfWood (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 7504259670741354126, guid: 15eb53290d1e9fd42abda553dbd0cc55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 7504259670741354163, guid: 15eb53290d1e9fd42abda553dbd0cc55,
         type: 3}
       propertyPath: m_RootOrder
@@ -3556,7 +3651,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &738477966
 RectTransform:
@@ -3706,7 +3801,7 @@ GameObject:
   m_TagString: FuHua
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &781039314
 RectTransform:
@@ -3805,7 +3900,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &792388497
 RectTransform:
@@ -3938,7 +4033,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &802322865
 RectTransform:
@@ -4134,6 +4229,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodPillar (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 581907655120167846, guid: 57625c49935d98e4f9a32408cc70bb83,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57625c49935d98e4f9a32408cc70bb83, type: 3}
 --- !u!4 &831611901 stripped
@@ -4158,7 +4258,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &848680425
 RectTransform:
@@ -4291,7 +4391,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &849465541
 RectTransform:
@@ -4485,6 +4585,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Potion (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3830288519275501973, guid: 64ec665c4ecb70749be04c9f9dd66b2a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64ec665c4ecb70749be04c9f9dd66b2a, type: 3}
 --- !u!4 &855254293 stripped
@@ -4577,7 +4682,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &873225051
 Transform:
@@ -4660,7 +4765,7 @@ GameObject:
   m_TagString: InvincibleStatus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &876282604
 RectTransform:
@@ -4796,7 +4901,7 @@ GameObject:
   m_TagString: Judah
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &921475040
 MonoBehaviour:
@@ -5085,7 +5190,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &928915137
 RectTransform:
@@ -5272,6 +5377,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: InvincibleGourd (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5375854096897063736, guid: f4658344f61409f419d118e221a16ba5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 5375854096897063742, guid: f4658344f61409f419d118e221a16ba5,
         type: 3}
       propertyPath: m_RootOrder
@@ -5428,6 +5538,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bandaid (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5156622020741146499, guid: 81535e73e85b66a49a3c757c8bf04f88,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81535e73e85b66a49a3c757c8bf04f88, type: 3}
 --- !u!4 &994126130 stripped
@@ -5526,7 +5641,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1022194438
 Transform:
@@ -5698,7 +5813,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1041246094
 RectTransform:
@@ -5832,7 +5947,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1065207708
 RectTransform:
@@ -5989,6 +6104,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GreenGourd (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1759919213685272300, guid: 145a684e4bd5e9142985f50f9e864f50,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 1759919213685272301, guid: 145a684e4bd5e9142985f50f9e864f50,
         type: 3}
       propertyPath: m_RootOrder
@@ -6079,7 +6199,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1102421152
 RectTransform:
@@ -6372,7 +6492,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1177514874
 Transform:
@@ -6537,6 +6657,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlockOfWood (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 7504259670741354126, guid: 15eb53290d1e9fd42abda553dbd0cc55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 7504259670741354163, guid: 15eb53290d1e9fd42abda553dbd0cc55,
         type: 3}
       propertyPath: m_RootOrder
@@ -6624,7 +6749,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1297921249
 Transform:
@@ -6660,7 +6785,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1311943099
 RectTransform:
@@ -6733,7 +6858,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!212 &1323660871
 SpriteRenderer:
@@ -6958,6 +7083,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bandaid (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5156622020741146499, guid: 81535e73e85b66a49a3c757c8bf04f88,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81535e73e85b66a49a3c757c8bf04f88, type: 3}
 --- !u!4 &1351947637 stripped
@@ -6982,7 +7112,7 @@ GameObject:
   m_TagString: NpcName
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1358389887
 RectTransform:
@@ -7117,7 +7247,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1363515056
 RectTransform:
@@ -7252,6 +7382,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeriTicket (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 893055358069795627, guid: 119121e1c500b69429a30e461e77f8bf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 119121e1c500b69429a30e461e77f8bf, type: 3}
 --- !u!4 &1365156237 stripped
@@ -7276,7 +7411,7 @@ GameObject:
   m_TagString: HpValue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1395481844
 RectTransform:
@@ -7470,6 +7605,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Potion
       objectReference: {fileID: 0}
+    - target: {fileID: 3830288519275501973, guid: 64ec665c4ecb70749be04c9f9dd66b2a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64ec665c4ecb70749be04c9f9dd66b2a, type: 3}
 --- !u!4 &1396108962 stripped
@@ -7555,6 +7695,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeriTicket (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 893055358069795627, guid: 119121e1c500b69429a30e461e77f8bf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 119121e1c500b69429a30e461e77f8bf, type: 3}
 --- !u!4 &1396116463 stripped
@@ -7579,7 +7724,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1431585729
 RectTransform:
@@ -7719,6 +7864,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodPillar (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 581907655120167846, guid: 57625c49935d98e4f9a32408cc70bb83,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57625c49935d98e4f9a32408cc70bb83, type: 3}
 --- !u!4 &1454327259 stripped
@@ -7818,6 +7968,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GreenGourd (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759919213685272300, guid: 145a684e4bd5e9142985f50f9e864f50,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1759919213685272301, guid: 145a684e4bd5e9142985f50f9e864f50,
         type: 3}
@@ -7940,7 +8095,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1479868714
 RectTransform:
@@ -8013,7 +8168,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1484913352
 Transform:
@@ -8090,6 +8245,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlockOfWood (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504259670741354126, guid: 15eb53290d1e9fd42abda553dbd0cc55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7504259670741354160, guid: 15eb53290d1e9fd42abda553dbd0cc55,
         type: 3}
@@ -8260,7 +8420,7 @@ GameObject:
   m_TagString: Dialogue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1562334058
 RectTransform:
@@ -8516,7 +8676,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1590995412
 RectTransform:
@@ -8656,6 +8816,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodPillar (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 581907655120167846, guid: 57625c49935d98e4f9a32408cc70bb83,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57625c49935d98e4f9a32408cc70bb83, type: 3}
 --- !u!4 &1595577793 stripped
@@ -8766,7 +8931,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1643796628
 RectTransform:
@@ -8897,6 +9062,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GreenGourd (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1759919213685272300, guid: 145a684e4bd5e9142985f50f9e864f50,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 1759919213685272301, guid: 145a684e4bd5e9142985f50f9e864f50,
         type: 3}
       propertyPath: m_RootOrder
@@ -8984,7 +9154,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1653598116
 Transform:
@@ -9020,7 +9190,7 @@ GameObject:
   m_TagString: PauseMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &1660230902
 MonoBehaviour:
@@ -9132,7 +9302,7 @@ GameObject:
   m_TagString: PlayerUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &1660542934
 MonoBehaviour:
@@ -9233,7 +9403,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1665831017
 RectTransform:
@@ -9313,7 +9483,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1683541348
 RectTransform:
@@ -9463,7 +9633,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1713632644
 RectTransform:
@@ -9592,7 +9762,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1737909727
 RectTransform:
@@ -9673,7 +9843,7 @@ GameObject:
   m_TagString: CanvasDialogue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &1743952764
 MonoBehaviour:
@@ -9774,6 +9944,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlockOfWood (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7504259670741354126, guid: 15eb53290d1e9fd42abda553dbd0cc55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 7504259670741354163, guid: 15eb53290d1e9fd42abda553dbd0cc55,
         type: 3}
       propertyPath: m_RootOrder
@@ -9858,6 +10033,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GreenGourd (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759919213685272300, guid: 145a684e4bd5e9142985f50f9e864f50,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1759919213685272301, guid: 145a684e4bd5e9142985f50f9e864f50,
         type: 3}
@@ -9946,7 +10126,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1798130980
 Transform:
@@ -9983,7 +10163,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1801266202
 RectTransform:
@@ -10138,6 +10318,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GreenGourd (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759919213685272300, guid: 145a684e4bd5e9142985f50f9e864f50,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1759919213685272301, guid: 145a684e4bd5e9142985f50f9e864f50,
         type: 3}
@@ -10305,6 +10490,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlockOfWood (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7504259670741354126, guid: 15eb53290d1e9fd42abda553dbd0cc55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 7504259670741354163, guid: 15eb53290d1e9fd42abda553dbd0cc55,
         type: 3}
       propertyPath: m_RootOrder
@@ -10389,7 +10579,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1882188576
 RectTransform:
@@ -10473,7 +10663,7 @@ PrefabInstance:
     - target: {fileID: 7792149869518211268, guid: ddc977d361637fc4dabd9af8d7328db1,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7792149869518211270, guid: ddc977d361637fc4dabd9af8d7328db1,
         type: 3}
@@ -10651,6 +10841,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodPillar (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 581907655120167846, guid: 57625c49935d98e4f9a32408cc70bb83,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57625c49935d98e4f9a32408cc70bb83, type: 3}
 --- !u!4 &1904143592 stripped
@@ -10736,6 +10931,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PinkGourd
       objectReference: {fileID: 0}
+    - target: {fileID: 7607526443653402715, guid: 4e0ae725626ad2242804485deeb89214,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e0ae725626ad2242804485deeb89214, type: 3}
 --- !u!1001 &1910968262
@@ -10820,6 +11020,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodPillar (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 581907655120167846, guid: 57625c49935d98e4f9a32408cc70bb83,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57625c49935d98e4f9a32408cc70bb83, type: 3}
 --- !u!4 &1910968263 stripped
@@ -10845,6 +11050,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlockOfWood (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504259670741354126, guid: 15eb53290d1e9fd42abda553dbd0cc55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7504259670741354163, guid: 15eb53290d1e9fd42abda553dbd0cc55,
         type: 3}
@@ -11010,7 +11220,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &2004380552
 RectTransform:
@@ -11079,6 +11289,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlockOfWood (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504259670741354126, guid: 15eb53290d1e9fd42abda553dbd0cc55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7504259670741354163, guid: 15eb53290d1e9fd42abda553dbd0cc55,
         type: 3}
@@ -11158,6 +11373,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlockOfWood (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504259670741354126, guid: 15eb53290d1e9fd42abda553dbd0cc55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7504259670741354160, guid: 15eb53290d1e9fd42abda553dbd0cc55,
         type: 3}
@@ -11253,7 +11473,7 @@ GameObject:
   m_TagString: PlayerExpUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &2074011335
 RectTransform:
@@ -11359,7 +11579,7 @@ GameObject:
   m_TagString: DialogueBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &2076100509
 RectTransform:
@@ -11563,6 +11783,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Potion (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3830288519275501973, guid: 64ec665c4ecb70749be04c9f9dd66b2a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64ec665c4ecb70749be04c9f9dd66b2a, type: 3}
 --- !u!4 &2083967415 stripped
@@ -11662,7 +11887,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &2104271801
 RectTransform:
@@ -11731,6 +11956,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GreenGourd (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759919213685272300, guid: 145a684e4bd5e9142985f50f9e864f50,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1759919213685272301, guid: 145a684e4bd5e9142985f50f9e864f50,
         type: 3}
@@ -11892,6 +12122,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: chest-rare
       objectReference: {fileID: 0}
+    - target: {fileID: 58481876937543809, guid: 9cf90780c32337849b6f790b94c99955,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 58481876937543811, guid: 9cf90780c32337849b6f790b94c99955,
         type: 3}
       propertyPath: m_RootOrder
@@ -12026,6 +12261,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeriTicket
       objectReference: {fileID: 0}
+    - target: {fileID: 893055358069795627, guid: 119121e1c500b69429a30e461e77f8bf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 119121e1c500b69429a30e461e77f8bf, type: 3}
 --- !u!1001 &1759919213004917152
@@ -12039,6 +12279,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GreenGourd
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759919213685272300, guid: 145a684e4bd5e9142985f50f9e864f50,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1759919213685272301, guid: 145a684e4bd5e9142985f50f9e864f50,
         type: 3}
@@ -12173,6 +12418,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: chest-common
+      objectReference: {fileID: 0}
+    - target: {fileID: 2261299075839043662, guid: 16ebcd976b38dae4f9ee832f8260859e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16ebcd976b38dae4f9ee832f8260859e, type: 3}
@@ -12327,6 +12577,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Potion
+      objectReference: {fileID: 0}
+    - target: {fileID: 3830288519275501973, guid: 64ec665c4ecb70749be04c9f9dd66b2a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64ec665c4ecb70749be04c9f9dd66b2a, type: 3}
@@ -12499,6 +12754,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bandaid
       objectReference: {fileID: 0}
+    - target: {fileID: 5156622020741146499, guid: 81535e73e85b66a49a3c757c8bf04f88,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81535e73e85b66a49a3c757c8bf04f88, type: 3}
 --- !u!1001 &5301496854523218951
@@ -12572,6 +12832,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpawnLocation
+      objectReference: {fileID: 0}
+    - target: {fileID: 2760106505136218981, guid: 2bbd8347cc328f64ead06659cf883580,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bbd8347cc328f64ead06659cf883580, type: 3}
@@ -13001,6 +13266,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PinkGourd
       objectReference: {fileID: 0}
+    - target: {fileID: 7607526443653402715, guid: 4e0ae725626ad2242804485deeb89214,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e0ae725626ad2242804485deeb89214, type: 3}
 --- !u!1001 &7504259669799576273
@@ -13014,6 +13284,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlockOfWood
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504259670741354126, guid: 15eb53290d1e9fd42abda553dbd0cc55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7504259670741354163, guid: 15eb53290d1e9fd42abda553dbd0cc55,
         type: 3}
