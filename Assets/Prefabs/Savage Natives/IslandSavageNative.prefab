@@ -290,6 +290,7 @@ MonoBehaviour:
   obstacleDetection02: {fileID: 3378212580155536655}
   groundDetection: {fileID: 7787368004931511336}
   _hasRangedAttack: 1
+  _healthPoint: 250
 --- !u!61 &6088870825241054262
 BoxCollider2D:
   m_ObjectHideFlags: 0

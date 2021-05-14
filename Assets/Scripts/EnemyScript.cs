@@ -15,20 +15,19 @@ public class EnemyScript : MonoBehaviour
     private const float ChargeAttackSpeed = 5f;
     private const float MeleeAttackDelay = 5f;
     private const float RangeAttackDelay = 1f;
-    private const int MaxHealthPoint = 150;
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform obstacleDetection;
     [SerializeField] private Transform obstacleDetection02;
     [SerializeField] private Transform groundDetection;
     [SerializeField] private bool _hasRangedAttack;
+    [SerializeField]private int _healthPoint;
     private Rigidbody2D _rigidbody2D;
     private const string DefaultLayerMask = "Default";
     private Vector2 _npcMovement;
     private Vector2 _npcDirection;
     private bool _hasAttacked;
     private bool _isMovingLeft;
-    private int _healthPoint;
     private float _movementSpeed;
 
     void Start()
@@ -36,7 +35,6 @@ public class EnemyScript : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _npcDirection = Vector2.left;
         _movementSpeed = WalkSpeed;
-        _healthPoint = MaxHealthPoint;
         _isMovingLeft = true;
     }
 
