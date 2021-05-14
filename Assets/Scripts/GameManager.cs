@@ -246,6 +246,9 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
         if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene) return;
+        Destroy(GameObject.FindGameObjectWithTag(PlayerUiTag));
+        Destroy(_playerSpawnLocation);
+        Destroy(_dialogueManager);
         Destroy(gameObject);
         Destroy(this);
     }

@@ -26,6 +26,7 @@ public class KianaBoss : MonoBehaviour
 
     private void Start()
     {
+        _isAlive = true;
         _healthPoint = StartingHealthPoint;
         Invoke(nameof(SpawnBullets), 0f);
     }
@@ -44,6 +45,7 @@ public class KianaBoss : MonoBehaviour
     {
         if (!other.gameObject.CompareTag(JudahWeapon) || GameManager.GameManagerInstance == null)
             return;
+        Debug.Log(other.gameObject.tag);
         TakeDamage(GameManager.GameManagerInstance.GetPlayerDamage());
     }
     

@@ -251,7 +251,7 @@ public class PlayerScript : MonoBehaviour
                 break;
             case "Enemy":
             case "Cookie":
-                TakeDamage(ContactDamage);
+                // TakeDamage(ContactDamage);
                 break;
         }
     }
