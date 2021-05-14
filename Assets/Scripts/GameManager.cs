@@ -238,6 +238,7 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene) return;
         _listAudioSources[IndexAudioSourceLevelBgm].Stop();
         _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
+        Destroy(GameObject.FindGameObjectWithTag(PlayerUiTag));
         Destroy(_playerCamera);
         Destroy(_playerSpawnLocation);
         Destroy(_player);
