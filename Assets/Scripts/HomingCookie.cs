@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class HomingCookie : MonoBehaviour
 {
+    private const string PlayerTag = "Player";
+    private const string JudahWeaponTag = "JudahWeapon";
     private const float Speed = 15f;
     private const float RotateSpeed = 200f;
+    private const float CookieDestructionDelay = 2f;
     private GameObject _target;
     private Rigidbody2D _rigidbody2D;
 
@@ -28,15 +31,25 @@ public class HomingCookie : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Cookie"))
+        if (other.gameObject.CompareTag(PlayerTag) || other.gameObject.CompareTag(JudahWeaponTag))
+        {
+            DestroyCookie();
             return;
-        Destroy(gameObject);
+        }
+
+        Invoke(nameof(DestroyCookie), CookieDestructionDelay);
     }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Cookie") || other.gameObject.CompareTag("Boss"))
             return;
+        Destroy(gameObject);
+    }
+
+    private void DestroyCookie()
+    {
         Destroy(gameObject);
     }
 }

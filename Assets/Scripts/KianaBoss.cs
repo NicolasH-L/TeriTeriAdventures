@@ -12,7 +12,7 @@ public class KianaBoss : MonoBehaviour
     void Start()
     {
         _kianaBoss = GetComponent<Transform>();
-        InvokeRepeating("SpawnBullets", 2f, 3f);
+        InvokeRepeating("SpawnBullets", 2f, 1.5f);
     }
 
     private void SpawnBullets()
