@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     private PlayerScript _player;
     private GameObject _playerSpawnLocation;
     private bool _isEndReached;
-    private bool _isDead;
+    private int _playingClipIndex;
 
     public delegate void LoadNextLevel();
 
@@ -104,10 +104,13 @@ public class GameManager : MonoBehaviour
     {
         if (musicList == null)
             return;
+
         AudioClip clip;
         if (!_isBossFight)
         {
-            clip = _currentLevel > 0 ? musicList[_currentLevel - 1] : musicList[Random.Range(0, musicList.Count)];
+            var tmpIndex = Random.Range(0, musicList.Count);
+            _playingClipIndex = _currentLevel > 0 ? _currentLevel - 1 : tmpIndex;
+            clip = _currentLevel > 0 ? musicList[_currentLevel - 1] : musicList[tmpIndex];
         }
         else
         {
@@ -115,8 +118,9 @@ public class GameManager : MonoBehaviour
         }
 
         _listAudioSources[IndexAudioSourceLevelBgm].clip = clip;
-        if (!_listAudioSources[IndexAudioSourceSpecialBgm].isPlaying)
-            _listAudioSources[IndexAudioSourceLevelBgm].Play();
+
+
+        _listAudioSources[IndexAudioSourceLevelBgm].Play();
         StartCoroutine(PlayAnotherAudioClip(musicList));
     }
 
@@ -125,6 +129,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(_listAudioSources[IndexAudioSourceLevelBgm].clip.length);
         QueueSong(musicList);
     }
+
 
     public void NextLevel()
     {
@@ -142,7 +147,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         _player.transform.position = _playerSpawnLocation.transform.position;
         StartCoroutine(DelayEndReachedReset());
-        RequeueMusic();
     }
 
     private void GetPlayer(Scene scene, LoadSceneMode mode)
@@ -199,7 +203,18 @@ public class GameManager : MonoBehaviour
         if (_invincibilityDuration <= 0)
         {
             _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
-            _listAudioSources[IndexAudioSourceLevelBgm].UnPause();
+            if (_currentLevel - 1 != _playingClipIndex)
+            {
+                _playingClipIndex = _currentLevel - 1;
+                _listAudioSources[IndexAudioSourceLevelBgm].clip = listLevelBgm[_playingClipIndex];
+                _listAudioSources[IndexAudioSourceLevelBgm].Stop();
+                _listAudioSources[IndexAudioSourceLevelBgm].Play();
+            }
+            else
+            {
+                _listAudioSources[IndexAudioSourceLevelBgm].UnPause();
+            }
+
             return;
         }
 
@@ -221,7 +236,6 @@ public class GameManager : MonoBehaviour
     public void GameOver(bool isDead)
     {
         var index = GameEndSceneIndex;
-        _isDead = isDead;
         if (isDead)
         {
             index = GameOverSceneIndex;
@@ -246,13 +260,11 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
         if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene) return;
-        Destroy(_playerCamera.GetComponentInChildren<GameObject>().GetComponent<CinemachineVirtualCamera>());
-        Destroy(_playerCamera.GetComponent<CinemachineBrain>());
-        Destroy(_playerCamera);
-        Destroy(GameObject.FindGameObjectWithTag(PlayerUiTag));
-        Destroy(_playerSpawnLocation);
-        Destroy(_dialogueManager);
+        // Destroy(GameObject.FindGameObjectWithTag(PlayerUiTag));
+        // Destroy(GameObject.FindGameObjectWithTag(PauseMenuTag));
+        // Destroy(_playerSpawnLocation);
+        // Destroy(_dialogueManager);
         Destroy(gameObject);
-        Destroy(this);
+        // Destroy(this);
     }
 }
