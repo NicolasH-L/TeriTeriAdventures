@@ -10,11 +10,17 @@ public class Bullet : MonoBehaviour
     private const string JudahWeaponTag = "JudahWeapon";
     private const float BulletSpeed = 5f;
     private const float BulletDestructionDelay = 2f;
-    [SerializeField] private float bulletDamage;
+    [SerializeField] private int bulletDamage;
     private Rigidbody2D _rigidbody2D;
+
+    public delegate void DamagePlayer(int damage);
+
+    public event DamagePlayer OnPlayerHit;
 
     void Start()
     {
+        if (PlayerScript.GetPlayerInstance != null)
+            OnPlayerHit += PlayerScript.GetPlayerInstance.TakeDamage;
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
@@ -23,13 +29,13 @@ public class Bullet : MonoBehaviour
         _rigidbody2D.velocity = -transform.right * BulletSpeed;
     }
 
-  
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(PlayerTag) || other.gameObject.CompareTag(JudahWeaponTag))
         {
-            
+            if (other.gameObject.CompareTag(PlayerTag))
+                OnPlayerHit?.Invoke(bulletDamage);
             DestroyBullet();
             return;
         }

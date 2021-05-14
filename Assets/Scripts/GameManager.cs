@@ -128,6 +128,7 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
+        OnLevelEndReached -= NextLevel;
         if (_isEndReached)
             return;
         _isEndReached = true;
@@ -141,7 +142,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         _player.transform.position = _playerSpawnLocation.transform.position;
         StartCoroutine(DelayEndReachedReset());
-        OnLevelEndReached -= NextLevel;
         RequeueMusic();
     }
 
@@ -209,7 +209,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator DelayEndReachedReset()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(5f);
         _isEndReached = false;
     }
 
@@ -231,8 +231,10 @@ public class GameManager : MonoBehaviour
         _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
         Destroy(_player.gameObject);
         Destroy(_playerCamera.GetComponent<CinemachineBrain>());
-        Debug.Log(_playerCamera.GetType());
-        Destroy(_playerCamera.GetComponent<Camera>());
+        Destroy(_playerCamera.GetComponentInChildren<GameObject>());
+        Destroy(_playerCamera.GetComponent<GameObject>());
+        // Debug.Log(_playerCamera.GetType());
+        // Destroy(_playerCamera.GetComponent<Camera>());
         Destroy(GameObject.FindGameObjectWithTag(PlayerUiTag));
         Destroy(_playerSpawnLocation);
         Destroy(_dialogueManager);

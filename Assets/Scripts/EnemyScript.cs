@@ -61,17 +61,17 @@ public class EnemyScript : MonoBehaviour
 
 
         if (groundInfo.collider != false && obstacleInfo.collider == false
-                                         && obstacleInfo02.collider == false ||
-            IsRaycastCollidedWithSameTag(obstacleInfo) ||
-            IsRaycastCollidedWithSameTag(obstacleInfo02)) return;
+                                         && obstacleInfo02.collider == false 
+                                         // || 
+            // IsRaycastCollidedWithSameTag(obstacleInfo) ||
+            // IsRaycastCollidedWithSameTag(obstacleInfo02)
+            ) return;
         ChangeDirection();
     }
 
     private bool IsRaycastCollidedWithSameTag(RaycastHit2D raycastHit2D)
     {
-        if (!raycastHit2D.collider)
-            return false;
-        return raycastHit2D.collider.CompareTag(EnemyTag);
+        return raycastHit2D.collider && raycastHit2D.collider.CompareTag(EnemyTag);
     }
 
     private void ChangeDirection()

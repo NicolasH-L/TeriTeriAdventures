@@ -349,22 +349,21 @@ public class PlayerScript : MonoBehaviour
             nextLevelExpReq += NextLevelExpReqOffset;
             bar.SetMaxValue(nextLevelExpReq);
             ++currentBarLevel;
-            // tmp = 0;
             if (bar.CompareTag(PlayerExpUiTag))
             {
                 playerLevel.text = currentBarLevel.ToString();
             }
-            else if(bar.CompareTag(WepExpUiTag))
+            else if (bar.CompareTag(WepExpUiTag))
             {
                 _weaponDamage += WeaponBaseDamage;
             }
 
-            // if (currentBarLevel >= MaxLevel)
-            // {
-            bar.SetValue(bar.GetCurrentMaxValue());
-            SetBarTextValue(ref textMeshProUGUI, MaxExpText, MaxExpText);
-            return;
-            // }
+            if (currentBarLevel >= MaxLevel)
+            {
+                bar.SetValue(bar.GetCurrentMaxValue());
+                SetBarTextValue(ref textMeshProUGUI, MaxExpText, MaxExpText);
+                return;
+            }
         }
         else
         {
