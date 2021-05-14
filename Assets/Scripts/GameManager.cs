@@ -100,8 +100,11 @@ public class GameManager : MonoBehaviour
             source.Stop();
 
         var index = Random.Range(0, musicList.Count);
-        if (_currentLevel > 0)
+        if (_currentLevel > _playingClipIndex)
+        {
             index = _currentLevel - 1;
+            ++_playingClipIndex;
+        }
         source.clip = musicList[index];
         source.Play();
         StartCoroutine(PlayAnotherAudioClip(musicList));
