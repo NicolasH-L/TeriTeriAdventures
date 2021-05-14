@@ -13,14 +13,13 @@ public class CameraScript : MonoBehaviour
 
     private void Start()
     {
-        _child = gameObject.GetComponentInChildren<CinemachineVirtualCamera>();
-        
+        // _child = gameObject.GetComponentInChildren<CinemachineVirtualCamera>();
+        // if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene) return;
         // Debug.Log(gameObject.GetComponentInChildren<CinemachineVirtualCamera>().name);
     }
 
     private void OnEnable()
     {
-        Debug.Log("hel;lo");
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -31,10 +30,24 @@ public class CameraScript : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene) return;
+        if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene &&
+            SceneManager.GetActiveScene().buildIndex > 0) return;
+        Debug.Log("hel;lo");
+        Destroy(GameObject.Find("MainCamera"));
         
-        Destroy(_child);
-        Destroy(gameObject.GetComponent<CinemachineBrain>());
-        // Destroy(gameObject);
+        // Destroy(GetComponentInChildren<CinemachineVirtualCamera>());
+        // Destroy(GetComponent<CinemachineBrain>());
+        // StartCoroutine(Delay());
+        
     }
+
+    // private IEnumerator Delay()
+    // {
+    //     Debug.Log("waiting");
+    //     yield return new WaitForSeconds(0.5f);
+    //     Debug.Log("done");
+    //     
+    //     
+    // }
+    
 }

@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     private GameObject _playerSpawnLocation;
     private bool _isEndReached;
     private int _playingClipIndex;
-
+    private const string MainCamera = "MainCamera";
     public delegate void LoadNextLevel();
 
     public event LoadNextLevel OnLevelEndReached;
@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
         {
             _gameManager = this;
         }
+        
+       
     }
 
     void Start()
@@ -243,9 +245,19 @@ public class GameManager : MonoBehaviour
 
         _listAudioSources[IndexAudioSourceLevelBgm].Stop();
         _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
-        SceneManager.LoadScene(index);
+        Destroy(_playerCamera.GetComponentInChildren<CinemachineVirtualCamera>());
+        Destroy(_playerCamera.GetComponent<CinemachineBrain>());
+        Destroy(GameObject.FindGameObjectWithTag(MainCamera));
+        Destroy(GameObject.FindGameObjectWithTag(PlayerUiTag));
+        Destroy(GameObject.FindGameObjectWithTag(PauseMenuTag));
+        StartCoroutine(LoadSc(index));
     }
 
+    private IEnumerator LoadSc(int index)
+    {
+        yield return new WaitForSeconds(0.6f);
+        SceneManager.LoadScene(index);
+    }
 
     private void OnEnable()
     {
@@ -260,11 +272,14 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
         if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene) return;
+        // Destroy(_playerCamera.GetComponentInChildren<CinemachineVirtualCamera>());
+        // Destroy(_playerCamera.GetComponent<CinemachineBrain>());
+        // Destroy(GameObject.FindGameObjectWithTag(MainCamera));
         // Destroy(GameObject.FindGameObjectWithTag(PlayerUiTag));
         // Destroy(GameObject.FindGameObjectWithTag(PauseMenuTag));
-        // Destroy(_playerSpawnLocation);
-        // Destroy(_dialogueManager);
+        Destroy(_playerSpawnLocation);
+        Destroy(_dialogueManager);
         Destroy(gameObject);
-        // Destroy(this);
+        Destroy(this);
     }
 }
