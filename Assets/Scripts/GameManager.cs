@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
     {
         _listAudioSources[IndexAudioSourceLevelBgm].Stop();
         // StopCoroutine(PlayAnotherAudioClip(listWelcomeBgm));
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         DontDestroyOnLoad(this);
         SceneManager.sceneLoaded += GetPlayer;
         ++_currentLevel;
@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviour
     public void ReturnMainMenu()
     {
         SceneManager.LoadScene(0);
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void QueueSong(List<AudioClip> musicList)
