@@ -15,19 +15,34 @@ public class DialogueManager : MonoBehaviour
     private Canvas _canvasDialogue;
     private Canvas _playerUI;
     private Queue<string> sentences = new Queue<string>();
+    private const string DialogueBoxTag = "DialogueBox";
+    private const string FuHuaTag = "FuHua";
+    private const string TransitionTag = "Transition";
+    private TextMeshProUGUI _dialogueBox;
+    private GameObject _fuHua;
+    private Image _transition;
+
+    private void Awake()
+    {
+        _dialogueBox = GameObject.FindGameObjectWithTag(DialogueBoxTag).GetComponent<TextMeshProUGUI>();
+        _fuHua = GameObject.FindGameObjectWithTag(FuHuaTag).GetComponent<GameObject>();
+        _transition = GameObject.FindGameObjectWithTag(TransitionTag).GetComponent<Image>();
+    }
 
     // Start is called before the first frame update
     private void Start()
     {
-        // playerUI = GameObject.FindGameObjectWithTag(PlayerUiTag).GetComponent<Canvas>();
+        _playerUI = GameObject.FindGameObjectWithTag(PlayerUiTag).GetComponent<Canvas>();
         _nameText = GameObject.FindGameObjectWithTag(NameTag).GetComponent<TextMeshProUGUI>();
         _dialogueText = GameObject.FindGameObjectWithTag(DialogTag).GetComponent<TextMeshProUGUI>();
         _canvasDialogue = GameObject.FindGameObjectWithTag(CanvasDialogTag).GetComponent<Canvas>();
+        _dialogueBox.enabled = false;
+        _fuHua.SetActive(false);
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
-        // playerUI.enabled = false;
+        _playerUI.enabled = false;
         _nameText.text = dialogue.name;
         Debug.Log(_nameText);
 
@@ -40,6 +55,14 @@ public class DialogueManager : MonoBehaviour
             sentences.Enqueue(sentence);
 
         DisplayNextSentence();
+    }
+
+    public void DisplayGame()
+    {
+        Destroy(_transition);
+        Destroy(gameObject);
+        _dialogueBox.enabled = true;
+        _fuHua.SetActive(true);
     }
 
     public void DisplayNextSentence()
@@ -58,7 +81,7 @@ public class DialogueManager : MonoBehaviour
     private void EndDialogue()
     {
         _canvasDialogue.enabled = false;
-        // playerUI.enabled = true;
+        _playerUI.enabled = true;
     }
 
     private IEnumerator TypeSentence(string sentence)
