@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Diagnostics;
-using UnityEditor.UIElements;
+﻿using System.Collections;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -56,26 +52,7 @@ public class EnemyScript : MonoBehaviour
         var obstacleInfo02 = Physics2D.Raycast(obstacleDetection02.position, _npcDirection, 1f,
             1 << LayerMask.NameToLayer(DefaultLayerMask));
 
-        Debug.DrawRay(groundDetection.position, Vector2.down, Color.magenta);
-        Debug.DrawRay(obstacleDetection02.position, _npcDirection, Color.magenta);
-        Debug.DrawRay(obstacleDetection.position, _npcDirection, Color.magenta);
 
-        // if (obstacleInfo.collider)
-        // {
-        //     Debug.Log(gameObject.name);
-        // Debug.Log("01 " + obstacleInfo.collider.name);
-        // Debug.Log("01 " + obstacleInfo.collider.tag);
-        // }
-
-        // if (obstacleInfo02.collider)
-        // {
-        // Debug.Log("02" + obstacleInfo02.collider.name);
-        // Debug.Log("02 " + obstacleInfo02.collider.tag);
-        // }
-        // if(obstacleInfo02.collider)
-        //     Debug.Log("02 " + obstacleInfo02.collider.name);
-        // Debug.Log(!obstacleInfo.collider.CompareTag(null) && obstacleInfo.collider.CompareTag(EnemyTag)
-        //     !obstacleInfo02.collider.CompareTag(null) && obstacleInfo02.collider.tag.Equals(EnemyTag));
         if (groundInfo.collider != false && obstacleInfo.collider == false
                                          && obstacleInfo02.collider == false ||
             IsRaycastCollidedWithSameTag(obstacleInfo) ||

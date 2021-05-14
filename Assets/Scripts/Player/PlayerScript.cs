@@ -35,15 +35,16 @@ public class PlayerScript : MonoBehaviour
     private const int SoundEffect1 = 0;
     private const int PlayerHitAudioSourceIndex = 3;
     private const int MaxHealth = 100;
-    private const int WeaponBaseDamage = 50;
+    private const int WeaponBaseDamage = 5000;
     private const int ContactDamage = 25;
     private const int InvincibilityDuration = 8;
-    private const float SpeedPlayer = 7f;
+    private const float BasePlayerSpeed = 4f;
+    private const float TeriTicketPlayerSpeedBoost = 4f;
     private const float JumpHeight = 8f;
     private const float DelayTime = 0.5f;
     private const float Offset = 1f / InvincibilityDuration;
     [SerializeField] private Rigidbody2D playerRigidBody2D;
-    [SerializeField] private GameObject judahCross;
+    // [SerializeField] private GameObject judahCross;
     [SerializeField] private SliderScript healthBar;
     [SerializeField] private SliderScript expBar;
     [SerializeField] private SliderScript wepExpBar;
@@ -71,7 +72,7 @@ public class PlayerScript : MonoBehaviour
     private int _jumpCounter;
     private int _currentHealth;
     private const int HpGainValue = 10;
-    private const int ExpValue = 60;
+    private const int ExpValue = 20;
     private const int MaxLevel = 3;
     private const int BaseLevelRequirement = 100;
     private const int NextLevelExpReqOffset = 50;
@@ -79,6 +80,7 @@ public class PlayerScript : MonoBehaviour
     private int _extraPlayerLives;
     private float _judahRightRotationZ;
     private float _judahLeftRotationZ;
+    private float _playerSpeed;
     private bool _hasAttacked;
     private bool _isMovingRight;
     private bool _isHurtSoundPlayed;
@@ -119,6 +121,7 @@ public class PlayerScript : MonoBehaviour
         _weaponDamage = WeaponBaseDamage;
         _isMovingRight = true;
         _extraPlayerLives = 0;
+        _playerSpeed = BasePlayerSpeed;
         _playerLevel = 1;
         _weaponLevel = 1;
         _playerLevelUpReq = BaseLevelRequirement;
@@ -155,7 +158,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (!Input.GetKey(KeyMoveLeft) && !Input.GetKey(KeyMoveRight))
             return;
-        var movementPlayerX = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedPlayer;
+        var movementPlayerX = Input.GetAxis("Horizontal") * Time.deltaTime * _playerSpeed;
         if (movementPlayerX == 0) return;
         SetIdle(false);
         if (Input.GetKey(KeyMoveRight) && !_isMovingRight && !Input.GetKey(KeyMoveLeft))
@@ -243,9 +246,12 @@ public class PlayerScript : MonoBehaviour
             case "Obstacle":
                 ResetJump();
                 break;
+            case "Enemy":
             case "Cookie":
                 TakeDamage(ContactDamage);
                 break;
+            
+            
         }
     }
 
@@ -272,12 +278,22 @@ public class PlayerScript : MonoBehaviour
             case Bandaid:
                 GainHp(HpGainValue);
                 break;
+            case TeriTicket:
+                GainSpeed();
+                break;
             case NextLevel:
                 var manager = GameManager.GameManagerInstance;
                 if (GameManager.GameManagerInstance != null)
                     manager.OnLevelEndReached += manager.NextLevel;
                 break;
         }
+    }
+
+    private string TeriTicket = "TeriTicket";
+
+    private void GainSpeed()
+    {
+        _playerSpeed += TicketPlayerSpeedBoost;
     }
 
     private void SetInvincibility()
@@ -405,7 +421,7 @@ public class PlayerScript : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene) return;
-        Destroy(invincibleStatus);    
+        Destroy(invincibleStatus);
         Destroy(gameObject);
     }
 }

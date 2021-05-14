@@ -46,6 +46,7 @@ TagManager:
   - DialogueBox
   - Transition
   - PauseMenu
+  - Vcam
   layers:
   - Default
   - TransparentFX

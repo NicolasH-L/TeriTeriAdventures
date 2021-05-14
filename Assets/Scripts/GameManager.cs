@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
 
     private const string PlayerSpawnLocationTag = "PlayerSpawn";
     private const string PlayerUiTag = "PlayerUI";
-    private const string DialogueManage = "DialogueManager";
+    private const string DialogManagerTag = "DialogueManager";
+    private const string PauseMenuTag = "PauseMenu";
     private const int BaseInvincibilityDuration = 8;
     private const int IndexAudioSourceLevelBgm = 0;
     private const int IndexAudioSourceSpecialBgm = 1;
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
     public delegate void LoadNextLevel();
 
     public event LoadNextLevel OnLevelEndReached;
-    
+
     private void Awake()
     {
         if (_gameManager != null && _gameManager != this)
@@ -111,6 +112,7 @@ public class GameManager : MonoBehaviour
         {
             clip = bossMusic;
         }
+
         _listAudioSources[IndexAudioSourceLevelBgm].clip = clip;
         _listAudioSources[IndexAudioSourceLevelBgm].Play();
         StartCoroutine(PlayAnotherAudioClip(musicList));
@@ -143,12 +145,14 @@ public class GameManager : MonoBehaviour
 
     private void GetPlayer(Scene scene, LoadSceneMode mode)
     {
+        if (SceneManager.GetActiveScene().buildIndex > FinalLevelScene ||
+            SceneManager.GetActiveScene().buildIndex == 0) return;
         _player = PlayerScript.GetPlayerInstance();
         _playerSpawnLocation = GameObject.FindGameObjectWithTag(PlayerSpawnLocationTag);
         _playerCamera = Camera.main;
         _canvas = GameObject.FindGameObjectWithTag(PlayerUiTag).GetComponent<Canvas>();
-        _dialogueManager = GameObject.FindGameObjectWithTag(DialogueManage);
-        // print(_player.tag);
+        _pauseMenu = GameObject.FindGameObjectWithTag(PauseMenuTag).GetComponent<Canvas>();
+        _dialogueManager = GameObject.FindGameObjectWithTag(DialogManagerTag);
     }
 
     public int GetPlayerDamage()
@@ -219,10 +223,14 @@ public class GameManager : MonoBehaviour
         if (isDead)
         {
             index = GameOverSceneIndex;
-
         }
+
+        _listAudioSources[IndexAudioSourceLevelBgm].Stop();
+        _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
+        Destroy(GameObject.FindGameObjectWithTag(PlayerUiTag));
+        Destroy(_playerSpawnLocation);
+        Destroy(_dialogueManager);
         SceneManager.LoadScene(index);
-        // Destroy(gameObject);
     }
 
     private void OnEnable()
@@ -238,11 +246,6 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
         if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene) return;
-        _listAudioSources[IndexAudioSourceLevelBgm].Stop();
-        _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
-        Destroy(GameObject.FindGameObjectWithTag(PlayerUiTag));
-        Destroy(_playerSpawnLocation);
-        Destroy(_dialogueManager);
         Destroy(gameObject);
         Destroy(this);
     }

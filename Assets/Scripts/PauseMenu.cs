@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    private const string MenuTag = "PauseMenu";
     [SerializeField] private GameObject pauseMenuUI;
+    private const int FinalLevelScene = 3;
     private bool _gameIsPaused;
     private Canvas _pauseMenu;
 
@@ -15,7 +15,6 @@ public class PauseMenu : MonoBehaviour
     {
         _gameIsPaused = false;
         pauseMenuUI.SetActive(false);
-
     }
 
     void Update()
@@ -51,5 +50,23 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene) return;
+        Destroy(gameObject);
+        Destroy(this);
     }
 }
