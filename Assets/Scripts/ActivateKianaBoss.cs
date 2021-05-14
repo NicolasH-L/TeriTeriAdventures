@@ -22,7 +22,7 @@ public class ActivateKianaBoss : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.gameObject.CompareTag("Player") && OnPlayerReachedBossLevel == null) return;
+        if (!other.gameObject.CompareTag("Player") || OnPlayerReachedBossLevel == null) return;
         OnPlayerReachedBossLevel?.Invoke();
         kianaBoss.enabled = true;
         blockingWall.SetActive(true);
