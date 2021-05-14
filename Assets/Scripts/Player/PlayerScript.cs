@@ -43,7 +43,9 @@ public class PlayerScript : MonoBehaviour
     private const float JumpHeight = 8f;
     private const float DelayTime = 0.5f;
     private const float Offset = 1f / InvincibilityDuration;
+
     [SerializeField] private Rigidbody2D playerRigidBody2D;
+
     // [SerializeField] private GameObject judahCross;
     [SerializeField] private SliderScript healthBar;
     [SerializeField] private SliderScript expBar;
@@ -54,6 +56,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI wepExpUiValue;
     [SerializeField] private List<Image> playerLives;
     [SerializeField] private SpriteRenderer _judahBack;
+    private const string TeriTicket = "TeriTicket";
     private const string Judah = "Judah";
     private const string PinkGourd = "PinkGourd";
     private const string GreenGourd = "GreenGourd";
@@ -250,8 +253,6 @@ public class PlayerScript : MonoBehaviour
             case "Cookie":
                 TakeDamage(ContactDamage);
                 break;
-            
-            
         }
     }
 
@@ -289,11 +290,19 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    private string TeriTicket = "TeriTicket";
 
     private void GainSpeed()
     {
-        _playerSpeed += TicketPlayerSpeedBoost;
+        _playerSpeed += TeriTicketPlayerSpeedBoost;
+        Invoke(nameof(DecreaseSpeed), 1f);
+    }
+
+    private void DecreaseSpeed()
+    {
+        if (_playerSpeed.Equals(BasePlayerSpeed))
+            return;
+        --_playerSpeed;
+        Invoke(nameof(DecreaseSpeed), 1f);
     }
 
     private void SetInvincibility()
@@ -407,17 +416,17 @@ public class PlayerScript : MonoBehaviour
     {
         return _weaponDamage;
     }
-    
+
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
- 
+
     void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
- 
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene) return;
