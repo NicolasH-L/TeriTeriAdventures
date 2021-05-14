@@ -129,9 +129,8 @@ MonoBehaviour:
   - {fileID: 5156622020741146499, guid: 81535e73e85b66a49a3c757c8bf04f88, type: 3}
   - {fileID: 893055358069795627, guid: 119121e1c500b69429a30e461e77f8bf, type: 3}
   - {fileID: 3830288519275501973, guid: 64ec665c4ecb70749be04c9f9dd66b2a, type: 3}
-  pinkGourdDropRate: 65
-  greenGourdDropRate: 20
-  invincibleGourdDropRate: 60
-  bandAidDropRate: 50
-  teriTicketDropRate: 50
-  potionDropRate: 80
+  pinkGourdDropRate: 80
+  greenGourdDropRate: 0
+  invincibleGourdDropRate: 70
+  teriTicketDropRate: 25
+  potionDropRate: 60
