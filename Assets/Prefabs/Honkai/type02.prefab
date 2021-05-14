@@ -367,8 +367,8 @@ MonoBehaviour:
   obstacleDetection: {fileID: 4559073879138252110}
   obstacleDetection02: {fileID: 1636646678661911335}
   groundDetection: {fileID: 5662476552202414526}
-  _hasRangedAttack: 0
-  _healthPoint: 650
+  hasRangedAttack: 0
+  healthPoint: 600
 --- !u!95 &1667775562220132057
 Animator:
   serializedVersion: 3

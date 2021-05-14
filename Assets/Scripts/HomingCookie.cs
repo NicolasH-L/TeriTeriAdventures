@@ -13,20 +13,20 @@ public class HomingCookie : MonoBehaviour
     private GameObject _target;
     private Rigidbody2D _rigidbody2D;
 
-    void Start()
+    private void Start()
     {
         _target = GameObject.FindGameObjectWithTag(PlayerTag);
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (!GameObject.FindGameObjectWithTag(PlayerTag))
             return;
-        Vector2 direction = (Vector2) _target.transform.position - _rigidbody2D.position;
+        var direction = (Vector2) _target.transform.position - _rigidbody2D.position;
         direction.Normalize();
 
-        float rotateAmount = Vector3.Cross(direction, transform.right).z;
+        var rotateAmount = Vector3.Cross(direction, transform.right).z;
         _rigidbody2D.angularVelocity = rotateAmount * RotateSpeed;
         _rigidbody2D.velocity = -transform.right * Speed;
     }

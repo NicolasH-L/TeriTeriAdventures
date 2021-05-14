@@ -115,7 +115,8 @@ public class GameManager : MonoBehaviour
         }
 
         _listAudioSources[IndexAudioSourceLevelBgm].clip = clip;
-        _listAudioSources[IndexAudioSourceLevelBgm].Play();
+        if (!_listAudioSources[IndexAudioSourceSpecialBgm].isPlaying)
+            _listAudioSources[IndexAudioSourceLevelBgm].Play();
         StartCoroutine(PlayAnotherAudioClip(musicList));
     }
 
@@ -230,7 +231,8 @@ public class GameManager : MonoBehaviour
         _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
         Destroy(_player.gameObject);
         Destroy(_playerCamera.GetComponent<CinemachineBrain>());
-        Destroy(_playerCamera);
+        Debug.Log(_playerCamera.GetType());
+        Destroy(_playerCamera.GetComponent<Camera>());
         Destroy(GameObject.FindGameObjectWithTag(PlayerUiTag));
         Destroy(_playerSpawnLocation);
         Destroy(_dialogueManager);
