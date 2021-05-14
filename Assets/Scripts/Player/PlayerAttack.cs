@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
 
     private bool _hasAttacked;
     private const int SoundEffect2 = 1;
-    private const int AttackAudioSourceIndex = 3;
+    private const int AttackAudioSourceIndex = 2;
     private PolygonCollider2D _judahCollider;
     private AudioSource[] _audioSource;
 
@@ -72,6 +72,7 @@ public class PlayerAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(DelayTime);
         _hasAttacked = false;
+        ChangeAttackAudioClip();
     }
 
     private void AppearBack()
@@ -87,7 +88,7 @@ public class PlayerAttack : MonoBehaviour
         _animatorPlayer.SetTrigger("Attack");
         _audioSource[SoundEffect2].Play();
         _audioSource[AttackAudioSourceIndex].Play();
-        ChangeAttackAudioClip();
+
         _judahWeapons[0].SetActive(true);
         _judahBack.enabled = false;
         _hasAttacked = true;
@@ -96,12 +97,13 @@ public class PlayerAttack : MonoBehaviour
 
     private void ChangeAttackAudioClip()
     {
-        if (_audioClipIndex + 1 >= _listAttackClips.Count)
+        ++_audioClipIndex;
+        if (_audioClipIndex + 1 > _listAttackClips.Count)
         {
             _audioClipIndex = 0;
-            return;
         }
-        ++_audioClipIndex;
+
+        _audioSource[AttackAudioSourceIndex].clip = _listAttackClips[_audioClipIndex];
     }
 
     public void ObtainWeapon()

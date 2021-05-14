@@ -20,20 +20,20 @@ public class PlayerScript : MonoBehaviour
     {
         return _player;
     }
-    
+
     private const string MaxExpText = "MAX";
     private const string KeyMoveRight = "d";
     private const string KeyMoveLeft = "a";
     private const string KeyJump = "space";
     private const int MaxJump = 2;
     private const int SoundEffect1 = 0;
-    private const int PlayerHitAudioSourceIndex = 2;
+    private const int PlayerHitAudioSourceIndex = 3;
     private const int MaxHealth = 100;
     private const int Damage = 10;
     private const int InvincibilityDuration = 8;
     private const float SpeedPlayer = 7f;
     private const float JumpHeight = 8f;
-    private const float DelayTime = 0.4f;
+    private const float DelayTime = 0.5f;
     private const float Offset = 1f / InvincibilityDuration;
     [SerializeField] private Rigidbody2D playerRigidBody2D;
     [SerializeField] private GameObject judahCross;
@@ -65,7 +65,7 @@ public class PlayerScript : MonoBehaviour
     private float _judahLeftRotationZ;
     private bool _hasAttacked;
     private bool _isMovingRight;
-
+    private bool _isHurtSoundPlayed;
 
     // private int _playerLives;
     private int _playerLevel;
@@ -113,17 +113,14 @@ public class PlayerScript : MonoBehaviour
         wepExpBar.SetValue(0);
         _playerLevelUpReq = BaseLevelRequirement;
         _weaponLevelUpReq = BaseLevelRequirement;
-
     }
 
     private void Update()
     {
-
         if (Input.GetKeyUp(KeyMoveRight) || Input.GetKeyUp(KeyMoveLeft) || !Input.GetKey(KeyMoveRight) &&
             !Input.GetKey(KeyMoveLeft))
         {
             SetIdle(true);
-      
         }
 
         if (!Input.GetKeyDown(KeyJump) || _jumpCounter >= MaxJump) return;
@@ -178,7 +175,11 @@ public class PlayerScript : MonoBehaviour
     {
         if (_isInvincible || _currentHealth <= 0 && _extraPlayerLives == 0)
             return;
-        _audioSource[PlayerHitAudioSourceIndex].Play();
+        if (!_isHurtSoundPlayed)
+        {
+            _audioSource[PlayerHitAudioSourceIndex].Play();
+            StartCoroutine(DelayNextHurtSound());
+        }
         _currentHealth -= damage;
         if (_currentHealth <= 0)
         {
@@ -204,11 +205,10 @@ public class PlayerScript : MonoBehaviour
     }
 
     //TODO : Fix the coroutine when the player is attacking
-    private IEnumerator Delay()
+    private IEnumerator DelayNextHurtSound()
     {
         yield return new WaitForSeconds(DelayTime);
-        // _judahCollider.enabled = false;
-        // _hasAttacked = false;
+        _isHurtSoundPlayed = false;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
