@@ -10,11 +10,13 @@ public class PauseMenu : MonoBehaviour
     private const int FinalLevelScene = 3;
     private bool _gameIsPaused;
     private Canvas _pauseMenu;
+    private GameObject _game;
 
     private void Start()
     {
         _gameIsPaused = false;
         pauseMenuUI.SetActive(false);
+        _game = FindObjectOfType(typeof(GameManager));
     }
 
     void Update()
@@ -45,6 +47,7 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         SceneManager.LoadScene(0);
+        SceneManager.MoveGameObjectToScene(GameManager, 2);
     }
 
     public void QuitGame()
