@@ -113,7 +113,6 @@ public class EnemyScript : MonoBehaviour
             Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         else
         {
-            // Debug.Log((_npcDirection * ChargeAttackSpeed).ToString());
             _rigidbody2D.velocity = _npcDirection * ChargeAttackSpeed;
         }
 
@@ -123,7 +122,7 @@ public class EnemyScript : MonoBehaviour
 
     private IEnumerator DelayAttack()
     {
-        float waitSecond = _hasRangedAttack ? RangeAttackDelay : MeleeAttackDelay;
+        var waitSecond = _hasRangedAttack ? RangeAttackDelay : MeleeAttackDelay;
         yield return new WaitForSeconds(waitSecond);
         _hasAttacked = false;
     }

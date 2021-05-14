@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     private static GameManager _gameManager;
     public static GameManager GameManagerInstance => _gameManager;
 
-    private const string PlayerTag = "Player";
     private const string PlayerSpawnLocationTag = "PlayerSpawn";
     private const string PlayerUiTag = "PlayerUI";
     private const string DialogueManage = "DialogueManager";
@@ -26,13 +25,12 @@ public class GameManager : MonoBehaviour
     private Camera _playerCamera;
     private GameObject _dialogueManager;
     private int _invincibilityDuration;
-    private int _playerDamage;
     private int _currentLevel;
     private bool _isBossFight;
     private List<AudioSource> _listAudioSources;
 
     // private AudioSource _audioSource;
-    private GameObject _player;
+    private PlayerScript _player;
     private GameObject _playerSpawnLocation;
     private bool _isEndReached;
     private bool _isInvincible;
@@ -141,7 +139,7 @@ public class GameManager : MonoBehaviour
 
     private void GetPlayer(Scene scene, LoadSceneMode mode)
     {
-        _player = GameObject.FindGameObjectWithTag(PlayerTag);
+        _player = PlayerScript.GetPlayerInstance();
         _playerSpawnLocation = GameObject.FindGameObjectWithTag(PlayerSpawnLocationTag);
         _playerCamera = Camera.main;
         _canvas = GameObject.FindGameObjectWithTag(PlayerUiTag).GetComponent<Canvas>();
@@ -151,7 +149,7 @@ public class GameManager : MonoBehaviour
 
     public int GetPlayerDamage()
     {
-        return _playerDamage;
+        return _player.GetWeaponDamage();
     }
 
     public void ChangeToSpecialBgm(int option)
@@ -191,7 +189,6 @@ public class GameManager : MonoBehaviour
         --_invincibilityDuration;
         if (_invincibilityDuration <= 0)
         {
-            //TODO 
             _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
             _listAudioSources[IndexAudioSourceLevelBgm].UnPause();
             return;
@@ -221,5 +218,11 @@ public class GameManager : MonoBehaviour
 
         }
         SceneManager.LoadScene(index);
+        // Destroy(gameObject);
+    }
+
+    private void OnSceneLoaded()
+    {
+        
     }
 }

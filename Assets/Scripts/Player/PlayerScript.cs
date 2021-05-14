@@ -34,7 +34,8 @@ public class PlayerScript : MonoBehaviour
     private const int SoundEffect1 = 0;
     private const int PlayerHitAudioSourceIndex = 3;
     private const int MaxHealth = 100;
-    private const int ContactDamage = 10;
+    private const int WeaponBaseDamage = 50;
+    private const int ContactDamage = 25;
     private const int InvincibilityDuration = 8;
     private const float SpeedPlayer = 7f;
     private const float JumpHeight = 8f;
@@ -78,7 +79,7 @@ public class PlayerScript : MonoBehaviour
     private bool _hasAttacked;
     private bool _isMovingRight;
     private bool _isHurtSoundPlayed;
-
+    private int _weaponDamage;
     private int _playerLevel;
     private int _playerLevelUpReq;
     private int _weaponLevel;
@@ -112,6 +113,7 @@ public class PlayerScript : MonoBehaviour
         if (PlayerAttack.PlayerAttackInstance != null)
             OnWeaponCollected += PlayerAttack.PlayerAttackInstance.ObtainWeapon;
         _invincibilityAnimator = GameObject.FindGameObjectWithTag("InvincibleStatus").GetComponent<Animator>();
+        _weaponDamage = WeaponBaseDamage;
         _isMovingRight = true;
         _extraPlayerLives = 0;
         _playerLevel = 1;
@@ -380,5 +382,10 @@ public class PlayerScript : MonoBehaviour
     private void ResetJump()
     {
         _jumpCounter = 0;
+    }
+
+    public int GetWeaponDamage()
+    {
+        return _weaponDamage;
     }
 }
