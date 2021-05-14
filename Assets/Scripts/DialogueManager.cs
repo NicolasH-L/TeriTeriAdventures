@@ -48,8 +48,8 @@ public class DialogueManager : MonoBehaviour
         }
 
         var sentence = _sentences.Dequeue();
-        Debug.Log(sentence.Count());
-        StopAllCoroutines();
+        Debug.Log(sentence.Length);
+        // StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
     }
 
