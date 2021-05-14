@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     private bool _isEndReached;
     private int _playingClipIndex;
     private const string MainCamera = "MainCamera";
+
     public delegate void LoadNextLevel();
 
     public event LoadNextLevel OnLevelEndReached;
@@ -54,25 +55,21 @@ public class GameManager : MonoBehaviour
         {
             _gameManager = this;
         }
-        
-       
     }
 
     void Start()
     {
-        // _audioSource = GetComponent<AudioSource>();
         _listAudioSources = new List<AudioSource>();
         _listAudioSources.AddRange(GetComponents<AudioSource>());
         _invincibilityDuration = 0;
-        QueueSong(listWelcomeBgm);
+        _playingClipIndex = 0;
+        // QueueSong(listWelcomeBgm);
+        PlayMusic(listWelcomeBgm);
     }
 
     void Update()
     {
-        if (OnLevelEndReached != null)
-        {
-            OnLevelEndReached();
-        }
+        OnLevelEndReached?.Invoke();
     }
 
     public void StartGame()
@@ -82,8 +79,8 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
         SceneManager.sceneLoaded += GetPlayer;
         ++_currentLevel;
-        QueueSong(listLevelBgm);
-        print("You clickled me");
+        // QueueSong(listLevelBgm);
+        PlayMusic(listLevelBgm);
     }
 
     public void QuitGame()
@@ -92,11 +89,29 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    private void PlayMusic()
+    private void PlayMusic(List<AudioClip> musicList)
     {
-        
+        var source = _listAudioSources[IndexAudioSourceLevelBgm];
+        if (musicList == null)
+            return;
+        if (source.isPlaying)
+            source.Stop();
+
+        var index = Random.Range(0, musicList.Count);
+        if (_currentLevel > 0)
+            index = _currentLevel - 1;
+        source.clip = musicList[index];
+        source.Play();
+        StartCoroutine(PlayAnotherAudioClip(musicList));
     }
-    
+
+    private IEnumerator PlayAnotherAudioClip(List<AudioClip> musicList)
+    {
+        yield return new WaitForSeconds(_listAudioSources[IndexAudioSourceLevelBgm].clip.length);
+        // QueueSong(musicList);
+        PlayMusic(musicList);
+    }
+
     private void QueueSong(List<AudioClip> musicList)
     {
         if (musicList == null || _listAudioSources[IndexAudioSourceSpecialBgm].isPlaying)
@@ -108,7 +123,7 @@ public class GameManager : MonoBehaviour
             _listAudioSources[IndexAudioSourceLevelBgm].clip = listLevelBgm[_playingClipIndex];
             _listAudioSources[IndexAudioSourceLevelBgm].Play();
         }
-        
+
         AudioClip clip;
         if (!_isBossFight && _currentLevel - 1 != _playingClipIndex)
         {
@@ -129,12 +144,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(PlayAnotherAudioClip(musicList));
     }
 
-    private IEnumerator PlayAnotherAudioClip(List<AudioClip> musicList)
-    {
-        yield return new WaitForSeconds(_listAudioSources[IndexAudioSourceLevelBgm].clip.length);
-        QueueSong(musicList);
-    }
-
 
     public void NextLevel()
     {
@@ -152,7 +161,13 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         _player.transform.position = _playerSpawnLocation.transform.position;
         StartCoroutine(DelayEndReachedReset());
-        RequeueMusic();
+        // RequeueMusic();
+    }
+
+    private void RequeueMusic()
+    {
+        _listAudioSources[IndexAudioSourceLevelBgm].Stop();
+        QueueSong(listLevelBgm);
     }
 
     private void GetPlayer(Scene scene, LoadSceneMode mode)
@@ -197,11 +212,6 @@ public class GameManager : MonoBehaviour
         Invoke(nameof(CountdownChangeMusic), 1f);
     }
 
-    private void RequeueMusic()
-    {
-        _listAudioSources[IndexAudioSourceLevelBgm].Stop();
-        QueueSong(listLevelBgm);
-    }
 
     private void CountdownChangeMusic()
     {
