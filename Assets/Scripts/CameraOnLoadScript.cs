@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
@@ -7,6 +8,13 @@ using UnityEngine.SceneManagement;
 public class CameraOnLoadScript : MonoBehaviour
 {
     private const int FinalLevelScene = 3;
+
+    private void Start()
+    {
+        // Debug.Log(GetComponent<CinemachineBrain>().cam);
+        
+    }
+
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
