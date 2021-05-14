@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
@@ -60,6 +61,8 @@ public class PlayerScript : MonoBehaviour
     private const string Bandaid = "Bandaid";
     private const string NextLevel = "NextLevel";
     private const string InvincibilityAnimatorBool = "isInvincible";
+    private const int FinalLevelScene = 3;
+
     private Animator _animatorPlayer;
     [SerializeField] private Image invincibleStatus;
     private Animator _invincibilityAnimator;
@@ -387,5 +390,22 @@ public class PlayerScript : MonoBehaviour
     public int GetWeaponDamage()
     {
         return _weaponDamage;
+    }
+    
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+ 
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+ 
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene) return;
+        Destroy(invincibleStatus);    
+        Destroy(gameObject);
     }
 }
