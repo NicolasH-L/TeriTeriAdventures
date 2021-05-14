@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     private Camera _playerCamera;
     private GameObject _dialogueManager;
     private int _invincibilityDuration;
+    private int _playerDamage;
 
     private List<AudioSource> _listAudioSources;
 
@@ -132,6 +133,11 @@ public class GameManager : MonoBehaviour
         // print(_player.tag);
     }
 
+    public int GetPlayerDamage()
+    {
+        return _playerDamage;
+    }
+    
     public void ChangeToSpecialBgm(int option)
     {
         switch (option)

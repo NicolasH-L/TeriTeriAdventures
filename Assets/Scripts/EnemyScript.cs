@@ -7,6 +7,10 @@ using Debug = UnityEngine.Debug;
 
 public class EnemyScript : MonoBehaviour
 {
+    public delegate int GetPlayerDamage();
+
+    public event GetPlayerDamage OnPlayerWeaponDamageLoaded;
+
     private const string PlayerTag = "Player";
     private const string JudahWeaponTag = "JudahWeapon";
     private const string EnemyTag = "Enemy";
@@ -21,7 +25,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private Transform obstacleDetection02;
     [SerializeField] private Transform groundDetection;
     [SerializeField] private bool _hasRangedAttack;
-    [SerializeField]private int _healthPoint;
+    [SerializeField] private int _healthPoint;
     private Rigidbody2D _rigidbody2D;
     private const string DefaultLayerMask = "Default";
     private Vector2 _npcMovement;
@@ -32,6 +36,9 @@ public class EnemyScript : MonoBehaviour
 
     void Start()
     {
+        if (GameManager.GameManagerInstance != null)
+            OnPlayerWeaponDamageLoaded += GameManager.GameManagerInstance.GetPlayerDamage;
+
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _npcDirection = Vector2.left;
         _movementSpeed = WalkSpeed;
@@ -56,21 +63,22 @@ public class EnemyScript : MonoBehaviour
         // if (obstacleInfo.collider)
         // {
         //     Debug.Log(gameObject.name);
-            // Debug.Log("01 " + obstacleInfo.collider.name);
-            // Debug.Log("01 " + obstacleInfo.collider.tag);
+        // Debug.Log("01 " + obstacleInfo.collider.name);
+        // Debug.Log("01 " + obstacleInfo.collider.tag);
         // }
 
         // if (obstacleInfo02.collider)
         // {
-            // Debug.Log("02" + obstacleInfo02.collider.name);
-            // Debug.Log("02 " + obstacleInfo02.collider.tag);
-            // }
+        // Debug.Log("02" + obstacleInfo02.collider.name);
+        // Debug.Log("02 " + obstacleInfo02.collider.tag);
+        // }
         // if(obstacleInfo02.collider)
         //     Debug.Log("02 " + obstacleInfo02.collider.name);
         // Debug.Log(!obstacleInfo.collider.CompareTag(null) && obstacleInfo.collider.CompareTag(EnemyTag)
         //     !obstacleInfo02.collider.CompareTag(null) && obstacleInfo02.collider.tag.Equals(EnemyTag));
         if (groundInfo.collider != false && obstacleInfo.collider == false
-                                         && obstacleInfo02.collider == false || IsRaycastCollidedWithSameTag(obstacleInfo) ||
+                                         && obstacleInfo02.collider == false ||
+            IsRaycastCollidedWithSameTag(obstacleInfo) ||
             IsRaycastCollidedWithSameTag(obstacleInfo02)) return;
         ChangeDirection();
     }
@@ -120,10 +128,20 @@ public class EnemyScript : MonoBehaviour
         _hasAttacked = false;
     }
 
-    public void TakeDamage()
+    private void TakeDamage(int damage)
     {
-        
+        if (_healthPoint - damage <= 0)
+        {
+            Destroy(GetComponent<Rigidbody2D>());
+            Destroy(GetComponent<Collider2D>());
+            Destroy(GetComponent<PolygonCollider2D>());
+            Destroy(transform.gameObject);
+            return;
+        }
+
+        _healthPoint -= damage;
     }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         _movementSpeed = WalkSpeed;
@@ -134,11 +152,10 @@ public class EnemyScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //todo taking damage
-        // if()
-
-        if (_healthPoint <= 0)
-            Destroy(transform.gameObject);
+        if (other.gameObject.CompareTag(JudahWeaponTag) && OnPlayerWeaponDamageLoaded != null)
+        {
+            TakeDamage(OnPlayerWeaponDamageLoaded());
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
