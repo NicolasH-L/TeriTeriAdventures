@@ -8,15 +8,7 @@ using UnityEngine.SceneManagement;
 public class CameraScript : MonoBehaviour
 {
     private const int FinalLevelScene = 3;
-    // Start is called before the first frame update
     private CinemachineVirtualCamera _child;
-
-    private void Start()
-    {
-        // _child = gameObject.GetComponentInChildren<CinemachineVirtualCamera>();
-        // if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene) return;
-        // Debug.Log(gameObject.GetComponentInChildren<CinemachineVirtualCamera>().name);
-    }
 
     private void OnEnable()
     {
@@ -32,22 +24,6 @@ public class CameraScript : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene &&
             SceneManager.GetActiveScene().buildIndex > 0) return;
-        Debug.Log("hel;lo");
         Destroy(GameObject.Find("MainCamera"));
-        
-        // Destroy(GetComponentInChildren<CinemachineVirtualCamera>());
-        // Destroy(GetComponent<CinemachineBrain>());
-        // StartCoroutine(Delay());
-        
     }
-
-    // private IEnumerator Delay()
-    // {
-    //     Debug.Log("waiting");
-    //     yield return new WaitForSeconds(0.5f);
-    //     Debug.Log("done");
-    //     
-    //     
-    // }
-    
 }
