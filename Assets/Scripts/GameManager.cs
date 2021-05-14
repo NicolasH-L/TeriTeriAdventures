@@ -97,17 +97,18 @@ public class GameManager : MonoBehaviour
         var source = _listAudioSources[IndexAudioSourceLevelBgm];
         if (musicList == null)
             return;
-        if (source.isPlaying)
-            source.Stop();
+
 
         var index = Random.Range(0, musicList.Count);
-        if (_currentLevel > _playingClipIndex)
+        if (_currentLevel > _playingClipIndex && !_isMusicPaused)
         {
+            Debug.Log("i changed index");
             index = _currentLevel - 1;
             ++_playingClipIndex;
         }
 
         source.clip = musicList[index];
+        source.Stop();
         source.Play();
         StartCoroutine(PlayAnotherAudioClip(musicList));
     }
@@ -135,7 +136,7 @@ public class GameManager : MonoBehaviour
         _invincibilityDuration = BaseInvincibilityDuration;
         Invoke(nameof(CountdownChangeMusic), 1f);
     }
-    
+
     private void CountdownChangeMusic()
     {
         var sourceSpecialBgm = _listAudioSources[IndexAudioSourceSpecialBgm];
@@ -143,13 +144,18 @@ public class GameManager : MonoBehaviour
         --_invincibilityDuration;
         if (_invincibilityDuration <= 0)
         {
-            
             sourceSpecialBgm.Stop();
-            PlayMusic(listLevelBgm);
+            _isMusicPaused = false;
+            if (_currentLevel - 1 > _playingClipIndex)
+                PlayMusic(listLevelBgm);
+            else
+                _listAudioSources[IndexAudioSourceLevelBgm].UnPause();
             return;
         }
+
         Invoke(nameof(CountdownChangeMusic), 1f);
     }
+
     private void QueueSong(List<AudioClip> musicList)
     {
         if (musicList == null || _listAudioSources[IndexAudioSourceSpecialBgm].isPlaying)
@@ -190,6 +196,7 @@ public class GameManager : MonoBehaviour
             return;
         _isEndReached = true;
         ++_currentLevel;
+        Debug.Log(_currentLevel.ToString() + " playing index " + _playingClipIndex.ToString());
         DontDestroyOnLoad(_player);
         DontDestroyOnLoad(_playerSpawnLocation);
         DontDestroyOnLoad(_playerCamera);
@@ -199,7 +206,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         _player.transform.position = _playerSpawnLocation.transform.position;
         StartCoroutine(DelayEndReachedReset());
-        // RequeueMusic();
         if (!_isMusicPaused)
             PlayMusic(listLevelBgm);
     }
@@ -227,8 +233,6 @@ public class GameManager : MonoBehaviour
         return _player.GetWeaponDamage();
     }
 
-
-  
 
     private IEnumerator DelayEndReachedReset()
     {
