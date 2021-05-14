@@ -18,7 +18,7 @@ public class DialogueManager : MonoBehaviour
     private const string DialogueBoxTag = "DialogueBox";
     private const string FuHuaTag = "FuHua";
     private const string TransitionTag = "Transition";
-    private TextMeshProUGUI _dialogueBox;
+    private GameObject _dialogueBox;
     private Image _fuHua;
     private Image _transition;
 
@@ -29,17 +29,17 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        
-        // _dialogueBox = GameObject.FindGameObjectWithTag(DialogueBoxTag).GetComponent<TextMeshProUGUI>();
+        Debug.Log(GameObject.FindGameObjectWithTag(DialogueBoxTag).GetComponent<TextMeshProUGUI>());
+        _dialogueBox = GameObject.FindGameObjectWithTag(DialogueBoxTag);
         _fuHua = GameObject.FindGameObjectWithTag(FuHuaTag).GetComponent<Image>();
-        Debug.Log(GameObject.FindGameObjectWithTag(FuHuaTag));
+        
         if (GameObject.FindGameObjectWithTag(TransitionTag) != null)
             _transition = GameObject.FindGameObjectWithTag(TransitionTag).GetComponent<Image>();
         _playerUI = GameObject.FindGameObjectWithTag(PlayerUiTag).GetComponent<Canvas>();
         _nameText = GameObject.FindGameObjectWithTag(NameTag).GetComponent<TextMeshProUGUI>();
         _dialogueText = GameObject.FindGameObjectWithTag(DialogTag).GetComponent<TextMeshProUGUI>();
         _canvasDialogue = GameObject.FindGameObjectWithTag(CanvasDialogTag).GetComponent<Canvas>();
-        // _dialogueBox.enabled = false;
+        _dialogueBox.SetActive(false);
         _fuHua.enabled = false;
     }
 
@@ -65,8 +65,8 @@ public class DialogueManager : MonoBehaviour
         if (_transition != null)
             Destroy(_transition);
         Destroy(gameObject);
-        _dialogueBox.enabled = true;
-        // _fuHua.SetActive(true);
+        _dialogueBox.SetActive(true);
+        _fuHua.enabled = true;
     }
 
     public void DisplayNextSentence()
