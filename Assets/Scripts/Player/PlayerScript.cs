@@ -31,6 +31,7 @@ public class PlayerScript : MonoBehaviour
     private const int MaxJump = 2;
     private const int SoundEffect1 = 0;
     private const int PlayerHitAudioSourceIndex = 3;
+    private const int PickUpItemAudioSourceIndex = 4;
     private const int MaxHealth = 100;
     private const int WeaponBaseDamage = 5000;
     private const int WoodTrapDamage = 5;
@@ -291,6 +292,7 @@ public class PlayerScript : MonoBehaviour
 
     private void GainSpeed()
     {
+        _audioSource[PickUpItemAudioSourceIndex].Play();
         _playerSpeed += TeriTicketPlayerSpeedBoost;
         Invoke(nameof(DecreaseSpeed), 1f);
     }
@@ -338,6 +340,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (currentBarLevel >= MaxLevel)
             return;
+        _audioSource[PickUpItemAudioSourceIndex].Play();
 
         var tmp = bar.GetCurrentValue() + expValue;
         if (tmp >= bar.GetCurrentMaxValue())
@@ -379,6 +382,7 @@ public class PlayerScript : MonoBehaviour
             return;
         }
 
+        _audioSource[PickUpItemAudioSourceIndex].Play();
         ModifyExtraLife(true, 1f);
     }
 
@@ -395,6 +399,7 @@ public class PlayerScript : MonoBehaviour
 
     private void GainHp(int value)
     {
+        _audioSource[PickUpItemAudioSourceIndex].Play();
         _currentHealth = healthBar.GetCurrentValue() + value >= healthBar.GetCurrentMaxValue()
             ? healthBar.GetCurrentMaxValue()
             : healthBar.GetCurrentValue() + value;
