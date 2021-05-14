@@ -71,7 +71,6 @@
      <Compile Include="Assets\Scripts\HonkaiBeasts.cs" />
      <Compile Include="Assets\Scripts\ItemScript.cs" />
      <Compile Include="Assets\Scripts\KianaBoss.cs" />
-     <Compile Include="Assets\Scripts\ParallaxBackground.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerScript.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerUiScript.cs" />
