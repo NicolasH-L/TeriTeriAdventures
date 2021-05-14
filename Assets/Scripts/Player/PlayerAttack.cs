@@ -10,15 +10,20 @@ public class PlayerAttack : MonoBehaviour
 
     private bool _hasAttacked;
     private const int SoundEffect2 = 1;
-    private AudioSource[] _audioSource;
+    private const int AttackAudioSourceIndex = 3;
     private PolygonCollider2D _judahCollider;
-    [SerializeField] private SpriteRenderer _judahBack;
-    private const float DelayTime = 0.4f;
+    private AudioSource[] _audioSource;
+
+    [SerializeField] private List<AudioClip> _listAttackClips;
     [SerializeField] private List<GameObject> _judahWeapons;
+    [SerializeField] private SpriteRenderer _judahBack;
+    private const string AttackInpuKey = "j";
+    private const float DelayTime = 0.4f;
     private Animator _animatorPlayer;
     private List<Animator> _liste;
     private float _appearTime;
     private bool _hasWeapon;
+    private int _audioClipIndex;
 
     private void Awake()
     {
@@ -36,6 +41,8 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         _audioSource = GetComponents<AudioSource>();
+        _audioClipIndex = 0;
+        _audioSource[AttackAudioSourceIndex].clip = _listAttackClips[_audioClipIndex];
         _liste = new List<Animator>();
         _liste.AddRange(GetComponentsInChildren<Animator>());
         _animatorPlayer = _liste[1];
@@ -47,13 +54,13 @@ public class PlayerAttack : MonoBehaviour
     {
         //TODO : Fix attacking
 
-        if (Input.GetKey("j") && !_hasAttacked)
+        if (Input.GetKey(AttackInpuKey) && !_hasAttacked)
         {
             Attack();
         }
-        else if (Input.GetKeyUp("j") && _hasWeapon)
+        else if (Input.GetKeyUp(AttackInpuKey) && _hasWeapon ||
+                 !Input.GetKey(AttackInpuKey) && _hasWeapon)
         {
-            
             Invoke(nameof(AppearBack), _appearTime);
             _judahWeapons[0].SetActive(false);
             // _animatorPlayer.SetTrigger("");
@@ -79,10 +86,22 @@ public class PlayerAttack : MonoBehaviour
         _appearTime = _animatorPlayer.runtimeAnimatorController.animationClips.Length;
         _animatorPlayer.SetTrigger("Attack");
         _audioSource[SoundEffect2].Play();
+        _audioSource[AttackAudioSourceIndex].Play();
+        ChangeAttackAudioClip();
         _judahWeapons[0].SetActive(true);
         _judahBack.enabled = false;
         _hasAttacked = true;
         StartCoroutine(Delay());
+    }
+
+    private void ChangeAttackAudioClip()
+    {
+        if (_audioClipIndex + 1 >= _listAttackClips.Count)
+        {
+            _audioClipIndex = 0;
+            return;
+        }
+        ++_audioClipIndex;
     }
 
     public void ObtainWeapon()

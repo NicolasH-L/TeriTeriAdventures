@@ -27,7 +27,7 @@ public class PlayerScript : MonoBehaviour
     private const string KeyJump = "space";
     private const int MaxJump = 2;
     private const int SoundEffect1 = 0;
-    private const int SoundEffect3 = 2;
+    private const int PlayerHitAudioSourceIndex = 2;
     private const int MaxHealth = 100;
     private const int Damage = 10;
     private const int InvincibilityDuration = 8;
@@ -50,7 +50,6 @@ public class PlayerScript : MonoBehaviour
     private Animator _animatorPlayer;
     [SerializeField] private Image invincibleStatus;
     private Animator _invincibilityAnimator;
-    private PolygonCollider2D _polygonCollider2D;
     private AudioSource[] _audioSource;
     private bool _isInvincible;
     private int _jumpCounter;
@@ -60,7 +59,6 @@ public class PlayerScript : MonoBehaviour
     private const int MaxLevel = 3;
     private const int BaseLevelRequirement = 100;
     private const int NextLevelExpReqOffset = 50;
-    private const int MaxLevelExpReq = BaseLevelRequirement + (MaxLevel - 1) * NextLevelExpReqOffset;
     private int _invincibilityCountdown;
     private int _extraPlayerLives;
     private float _judahRightRotationZ;
@@ -87,7 +85,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
         // _playerLives = StartingPlayerLives;
         _judahBack.enabled = false;
@@ -105,7 +103,6 @@ public class PlayerScript : MonoBehaviour
         _weaponLevelUpReq = BaseLevelRequirement;
         _animatorPlayer = GetComponent<Animator>();
         _audioSource = GetComponents<AudioSource>();
-        _polygonCollider2D = GetComponent<PolygonCollider2D>();
         _jumpCounter = 0;
         _currentHealth = MaxHealth;
         healthBar.SetMaxValue(_currentHealth);
@@ -119,7 +116,7 @@ public class PlayerScript : MonoBehaviour
 
     }
 
-    void Update()
+    private void Update()
     {
 
         if (Input.GetKeyUp(KeyMoveRight) || Input.GetKeyUp(KeyMoveLeft) || !Input.GetKey(KeyMoveRight) &&
@@ -181,7 +178,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (_isInvincible || _currentHealth <= 0 && _extraPlayerLives == 0)
             return;
-        // print("ive taken damage");
+        _audioSource[PlayerHitAudioSourceIndex].Play();
         _currentHealth -= damage;
         if (_currentHealth <= 0)
         {
