@@ -196,8 +196,8 @@ public class PlayerScript : MonoBehaviour
                 var manager = GameManager.GameManagerInstance;
                 if (manager == null)
                     return;
-                OnChangeSpecialBgm -= manager.ChangeToSpecialBgm;
-                OnWeaponCollected -= PlayerAttack.PlayerAttackInstance.ObtainWeapon;
+                // OnChangeSpecialBgm -= manager.ChangeToSpecialBgm;
+                // OnWeaponCollected -= PlayerAttack.PlayerAttackInstance.ObtainWeapon;
                 print("Game Over");
             }
         }
