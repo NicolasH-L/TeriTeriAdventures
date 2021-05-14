@@ -40,7 +40,10 @@ public class GameManager : MonoBehaviour
 
     public event LoadNextLevel OnLevelEndReached;
 
+    public delegate void GameFinished();
 
+    public event GameFinished OnGameEnded;
+    
     private void Awake()
     {
         if (_gameManager != null && _gameManager != this)
@@ -210,5 +213,15 @@ public class GameManager : MonoBehaviour
     {
         _isBossFight = true;
         RequeueMusic();
+    }
+
+    public void GameOver(bool isDead)
+    {
+        if (isDead)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            return;
+        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

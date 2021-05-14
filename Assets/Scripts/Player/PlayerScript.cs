@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour
     public delegate void WeaponEvent();
 
     public event WeaponEvent OnWeaponCollected;
+
     private static PlayerScript _player;
 
     public static PlayerScript GetPlayerInstance()
@@ -73,7 +74,6 @@ public class PlayerScript : MonoBehaviour
     private bool _isMovingRight;
     private bool _isHurtSoundPlayed;
 
-    // private int _playerLives;
     private int _playerLevel;
     private int _playerLevelUpReq;
     private int _weaponLevel;
@@ -201,8 +201,8 @@ public class PlayerScript : MonoBehaviour
                 var manager = GameManager.GameManagerInstance;
                 if (manager == null)
                     return;
-                // OnChangeSpecialBgm -= manager.ChangeToSpecialBgm;
-                // OnWeaponCollected -= PlayerAttack.PlayerAttackInstance.ObtainWeapon;
+                OnChangeSpecialBgm -= manager.ChangeToSpecialBgm;
+                OnWeaponCollected -= PlayerAttack.PlayerAttackInstance.ObtainWeapon;
                 print("Game Over");
             }
         }
@@ -211,7 +211,6 @@ public class PlayerScript : MonoBehaviour
         SetBarTextValue(ref playerHpUiValue, _currentHealth.ToString(), healthBar.GetCurrentMaxValue().ToString());
     }
 
-    //TODO : Fix the coroutine when the player is attacking
     private IEnumerator DelayNextHurtSound()
     {
         yield return new WaitForSeconds(DelayTime);
@@ -242,6 +241,7 @@ public class PlayerScript : MonoBehaviour
                 {
                     OnWeaponCollected();
                 }
+
                 _judahBack.enabled = true;
                 break;
             case InvincibleGourd:
@@ -267,7 +267,6 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    //TODO fix asap
     private void SetInvincibility()
     {
         OnChangeSpecialBgm?.Invoke(1);

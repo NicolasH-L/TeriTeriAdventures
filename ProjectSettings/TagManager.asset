@@ -45,6 +45,8 @@ TagManager:
   - FuHua
   - DialogueBox
   - Transition
+  - Menu
+  - Replay
   layers:
   - Default
   - TransparentFX

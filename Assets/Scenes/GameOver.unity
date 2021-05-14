@@ -607,7 +607,7 @@ GameObject:
   - component: {fileID: 718475044}
   m_Layer: 5
   m_Name: ReplayButton
-  m_TagString: Untagged
+  m_TagString: Replay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -737,7 +737,7 @@ GameObject:
   - component: {fileID: 1077907101}
   m_Layer: 5
   m_Name: MainMenuButton
-  m_TagString: Untagged
+  m_TagString: Menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
