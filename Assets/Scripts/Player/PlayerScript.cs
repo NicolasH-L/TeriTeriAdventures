@@ -29,7 +29,7 @@ public class PlayerScript : MonoBehaviour
     private const int SoundEffect1 = 0;
     private const int PlayerHitAudioSourceIndex = 3;
     private const int MaxHealth = 100;
-    private const int Damage = 10;
+    private const int ContactDamage = 10;
     private const int InvincibilityDuration = 8;
     private const float SpeedPlayer = 7f;
     private const float JumpHeight = 8f;
@@ -46,7 +46,13 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI wepExpUiValue;
     [SerializeField] private List<Image> playerLives;
     [SerializeField] private SpriteRenderer _judahBack;
-    private bool _isJudahAquired;
+    private const string Judah = "Judah";
+    private const string PinkGourd = "PinkGourd";
+    private const string GreenGourd = "GreenGourd";
+    private const string InvincibleGourd = "InvincibleGourd";
+    private const string Potion = "Potion";
+    private const string Bandaid = "Bandaid";
+    private const string NextLevel = "NextLevel";
     private Animator _animatorPlayer;
     [SerializeField] private Image invincibleStatus;
     private Animator _invincibilityAnimator;
@@ -171,7 +177,7 @@ public class PlayerScript : MonoBehaviour
     }
 
 
-    private void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         if (_isInvincible || _currentHealth <= 0 && _extraPlayerLives == 0)
             return;
@@ -180,6 +186,7 @@ public class PlayerScript : MonoBehaviour
             _audioSource[PlayerHitAudioSourceIndex].Play();
             StartCoroutine(DelayNextHurtSound());
         }
+
         _currentHealth -= damage;
         if (_currentHealth <= 0)
         {
@@ -218,13 +225,10 @@ public class PlayerScript : MonoBehaviour
             case "Plateform":
             case "Ground":
             case "Obstacle":
-                _jumpCounter = 0;
+                ResetJump();
                 break;
-
             case "Cookie":
-            case "Enemy":
-                // _audioSource[SoundEffect3].Play();
-                TakeDamage(Damage);
+                TakeDamage(ContactDamage);
                 break;
         }
     }
@@ -233,33 +237,29 @@ public class PlayerScript : MonoBehaviour
     {
         switch (other.gameObject.tag)
         {
-            case "Judah":
-                _isJudahAquired = true;
-                // Debug.Log("collected");
+            case Judah:
                 if (OnWeaponCollected != null)
                 {
-                    // Debug.Log("entering method");
                     OnWeaponCollected();
                 }
-
                 _judahBack.enabled = true;
                 break;
-            case "InvincibleGourd":
+            case InvincibleGourd:
                 SetInvincibility();
                 break;
-            case "GreenGourd":
+            case GreenGourd:
                 GainExp(expBar, ExpValue, ref _playerLevelUpReq, ref _playerLevel, ref playerExpUiValue);
                 break;
-            case "Potion":
+            case Potion:
                 GainExp(wepExpBar, ExpValue, ref _weaponLevelUpReq, ref _weaponLevel, ref wepExpUiValue);
                 break;
-            case "PinkGourd":
+            case PinkGourd:
                 GainExtraLife();
                 break;
-            case "Bandaid":
+            case Bandaid:
                 GainHp(HpGainValue);
                 break;
-            case "NextLevel":
+            case NextLevel:
                 var manager = GameManager.GameManagerInstance;
                 if (GameManager.GameManagerInstance != null)
                     manager.OnLevelEndReached += manager.NextLevel;
@@ -361,7 +361,6 @@ public class PlayerScript : MonoBehaviour
         _extraPlayerLives = isAddLife ? ++_extraPlayerLives : --_extraPlayerLives;
     }
 
-    //TODO in class/ meeting
     private void GainHp(int value)
     {
         _currentHealth = healthBar.GetCurrentValue() + value >= healthBar.GetCurrentMaxValue()
