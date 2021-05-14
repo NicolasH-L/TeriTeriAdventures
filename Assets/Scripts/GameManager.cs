@@ -79,8 +79,10 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
         SceneManager.sceneLoaded += GetPlayer;
         ++_currentLevel;
+
         // QueueSong(listLevelBgm);
         PlayMusic(listLevelBgm);
+
     }
 
     public void QuitGame()
