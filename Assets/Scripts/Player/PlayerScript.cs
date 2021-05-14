@@ -62,6 +62,8 @@ public class PlayerScript : MonoBehaviour
     private float _judahRightRotationZ;
     private float _judahLeftRotationZ;
     private bool _hasAttacked;
+    private bool _isMovingRight;
+
 
     // private int _playerLives;
     private int _playerLevel;
@@ -79,6 +81,7 @@ public class PlayerScript : MonoBehaviour
         if (PlayerAttack.PlayerAttackInstance != null)
             OnWeaponCollected += PlayerAttack.PlayerAttackInstance.ObtainWeapon;
         _invincibilityAnimator = GameObject.FindGameObjectWithTag("InvincibleStatus").GetComponent<Animator>();
+        _isMovingRight = true;
         _extraPlayerLives = 0;
         _playerLevel = 1;
         _weaponLevel = 1;
@@ -97,7 +100,8 @@ public class PlayerScript : MonoBehaviour
         wepExpBar.SetValue(0);
         _playerLevelUpReq = BaseLevelRequirement;
         _weaponLevelUpReq = BaseLevelRequirement;
-        SetIdleAnimationBooleans(BooleanDirectionRight, true);
+
+        // SetIdleAnimationBooleans(BooleanDirectionRight, true);
     }
 
     void Update()
@@ -132,13 +136,12 @@ public class PlayerScript : MonoBehaviour
         //     _jumpCounter++;
         //     _audioSource[SoundEffect1].Play();
         // }
-        if (Input.GetKeyUp(KeyMoveRight))
+
+        if (Input.GetKeyUp(KeyMoveRight) || Input.GetKeyUp(KeyMoveLeft) || !Input.GetKey(KeyMoveRight) &&
+            !Input.GetKey(KeyMoveLeft))
         {
-            SetIdleAnimationBooleans(BooleanDirectionRight, true);
-        }
-        else if (Input.GetKeyUp(KeyMoveLeft))
-        {
-            SetIdleAnimationBooleans(BooleanDirectionLeft, false);
+            SetIdle(true);
+            // SetIdleAnimationBooleans(BooleanDirectionLeft, false);
         }
 
         if (Input.GetKeyDown(KeyJump) && _jumpCounter < MaxJump)
@@ -155,23 +158,34 @@ public class PlayerScript : MonoBehaviour
         if (movementPlayerX != 0)
         {
             var rotation = _judahBack.transform.localRotation;
-            transform.Translate(movementPlayerX, 0f, 0f);
             // Debug.Log((rotation.z / 1).ToString());
-            if (Input.GetKey(KeyMoveRight))
+            SetIdle(false);
+            if (Input.GetKey(KeyMoveRight) && !_isMovingRight)
             {
-                SetMovingAnimationBooleans(true, false);
-                if (!_judahBack.enabled || rotation.z / 1 < 0)
-                    return;
-                RotateJudah(rotation);
-            }
-            else if (Input.GetKey(KeyMoveLeft))
-            {
-                SetMovingAnimationBooleans(false, true);
-                // if (_judahBack.enabled)
+                // SetMovingAnimationBooleans(true, false);
+                // if (!_judahBack.enabled || rotation.z / 1 < 0)
                 //     return;
-                if (!_judahBack.enabled || rotation.z / 1 > 0)
-                    return;
-                RotateJudah(rotation);
+                // RotateJudah(rotation);
+                ChangeDirection();
+            }
+            else if (Input.GetKey(KeyMoveLeft) && _isMovingRight)
+            {
+                // SetMovingAnimationBooleans(false, true);
+                // // if (_judahBack.enabled)
+                // //     return;
+                // if (!_judahBack.enabled || rotation.z / 1 > 0)
+                //     return;
+                // RotateJudah(rotation);
+                Debug.Log("before" + movementPlayerX);
+
+                ChangeDirection();
+            }
+
+            if (Input.GetKey(KeyMoveRight) && _isMovingRight)
+                transform.Translate(movementPlayerX, 0f, 0f);
+            else if (Input.GetKey(KeyMoveLeft) && !_isMovingRight)
+            {
+                transform.Translate(-movementPlayerX, 0f, 0f);
             }
         }
     }
@@ -182,19 +196,39 @@ public class PlayerScript : MonoBehaviour
         _judahBack.transform.rotation = rotation;
     }
 
-    private void SetMovingAnimationBooleans(bool isMoveRight, bool isMoveLeft)
+    // private void SetMovingAnimationBooleans(bool isMoveRight, bool isMoveLeft)
+    // {
+    //     _animatorPlayer.SetBool("isMovingToTheRight", isMoveRight);
+    //     _animatorPlayer.SetBool("isMovingToTheLeft", isMoveLeft);
+    //     _animatorPlayer.SetBool("isIdle", false);
+    // }
+    //
+    // private void SetIdleAnimationBooleans(string booleanDirection, bool isIdleRight)
+    // {
+    //     _animatorPlayer.SetBool(booleanDirection, false);
+    //     _animatorPlayer.SetBool("isIdleRight", isIdleRight);
+    //     _animatorPlayer.SetBool("isIdle", true);
+    // }
+
+    private void SetIdle(bool isIdle)
     {
-        _animatorPlayer.SetBool("isMovingToTheRight", isMoveRight);
-        _animatorPlayer.SetBool("isMovingToTheLeft", isMoveLeft);
-        _animatorPlayer.SetBool("isIdle", false);
+        _animatorPlayer.SetBool("isIdle", isIdle);
     }
 
-    private void SetIdleAnimationBooleans(string booleanDirection, bool isIdleRight)
+
+    private void ChangeDirection()
     {
-        _animatorPlayer.SetBool(booleanDirection, false);
-        _animatorPlayer.SetBool("isIdleRight", isIdleRight);
-        _animatorPlayer.SetBool("isIdle", true);
+        transform.Rotate(0, 180, 0);
+        if (_isMovingRight)
+        {
+            _isMovingRight = false;
+        }
+        else
+        {
+            _isMovingRight = true;
+        }
     }
+
 
     private void TakeDamage(int damage)
     {
@@ -255,10 +289,10 @@ public class PlayerScript : MonoBehaviour
         {
             case "Judah":
                 _isJudahAquired = true;
-                Debug.Log("collected");
+                // Debug.Log("collected");
                 if (OnWeaponCollected != null)
                 {
-                    Debug.Log("entering method");
+                    // Debug.Log("entering method");
                     OnWeaponCollected();
                 }
 

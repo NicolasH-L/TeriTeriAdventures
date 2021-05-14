@@ -121,6 +121,10 @@ public class EnemyScript : MonoBehaviour
         _hasAttacked = false;
     }
 
+    public void TakeDamage()
+    {
+        
+    }
     private void OnCollisionEnter2D(Collision2D other)
     {
         _movementSpeed = WalkSpeed;
@@ -132,7 +136,7 @@ public class EnemyScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         //todo taking damage
-
+        // if()
 
         if (_healthPoint <= 0)
             Destroy(transform.gameObject);
