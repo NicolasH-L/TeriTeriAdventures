@@ -14,13 +14,17 @@ public class PlayerScript : MonoBehaviour
     public delegate void WeaponEvent();
 
     public event WeaponEvent OnWeaponCollected;
+    private static PlayerScript _player;
 
+    public static PlayerScript GetPlayerInstance()
+    {
+        return _player;
+    }
+    
     private const string MaxExpText = "MAX";
     private const string KeyMoveRight = "d";
     private const string KeyMoveLeft = "a";
     private const string KeyJump = "space";
-    private const string BooleanDirectionRight = "isMovingToTheRight";
-    private const string BooleanDirectionLeft = "isMovingToTheLeft";
     private const int MaxJump = 2;
     private const int SoundEffect1 = 0;
     private const int SoundEffect3 = 2;
@@ -70,6 +74,18 @@ public class PlayerScript : MonoBehaviour
     private int _playerLevelUpReq;
     private int _weaponLevel;
     private int _weaponLevelUpReq;
+
+    private void Awake()
+    {
+        if (_player != null && _player != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _player = this;
+        }
+    }
 
     void Start()
     {

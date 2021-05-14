@@ -7,6 +7,10 @@ using Debug = UnityEngine.Debug;
 
 public class EnemyScript : MonoBehaviour
 {
+    public delegate int GetPlayerDamage();
+
+    public event GetPlayerDamage OnPlayerWeaponDamageLoaded;
+
     private const string PlayerTag = "Player";
     private const string JudahWeaponTag = "JudahWeapon";
     private const string EnemyTag = "Enemy";
@@ -32,6 +36,9 @@ public class EnemyScript : MonoBehaviour
 
     void Start()
     {
+        if (GameManager.GameManagerInstance != null)
+            OnPlayerWeaponDamageLoaded += GameManager.GameManagerInstance.GetPlayerDamage;
+
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _npcDirection = Vector2.left;
         _movementSpeed = WalkSpeed;
@@ -121,11 +128,17 @@ public class EnemyScript : MonoBehaviour
         _hasAttacked = false;
     }
 
-    public void TakeDamage(int damage)
+    private void TakeDamage(int damage)
     {
         if (_healthPoint - damage <= 0)
+        {
+            Destroy(GetComponent<Rigidbody2D>());
+            Destroy(GetComponent<Collider2D>());
+            Destroy(GetComponent<PolygonCollider2D>());
             Destroy(transform.gameObject);
-        
+            return;
+        }
+
         _healthPoint -= damage;
     }
 
@@ -139,8 +152,10 @@ public class EnemyScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //todo taking damage
-        // if()
+        if (other.gameObject.CompareTag(JudahWeaponTag) && OnPlayerWeaponDamageLoaded != null)
+        {
+            TakeDamage(OnPlayerWeaponDamageLoaded());
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
