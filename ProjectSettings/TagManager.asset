@@ -38,6 +38,13 @@ TagManager:
   - JudahWeapon
   - GroundDetection
   - LaserTrap
+  - DialogueManager
+  - NpcName
+  - Dialogue
+  - CanvasDialogue
+  - FuHua
+  - DialogueBox
+  - Transition
   layers:
   - Default
   - TransparentFX
