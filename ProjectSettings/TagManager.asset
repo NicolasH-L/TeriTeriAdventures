@@ -45,6 +45,7 @@ TagManager:
   - FuHua
   - DialogueBox
   - Transition
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

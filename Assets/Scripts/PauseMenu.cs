@@ -1,12 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    private bool _gameIsPaused;
+    private const string MenuTag = "PauseMenu";
     [SerializeField] private GameObject pauseMenuUI;
+    private bool _gameIsPaused;
+    private Canvas _pauseMenu;
+
+    private void Start()
+    {
+        _gameIsPaused = false;
+        pauseMenuUI.SetActive(false);
+
+    }
 
     void Update()
     {

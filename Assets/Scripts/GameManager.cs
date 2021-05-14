@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     private int _currentLevel;
     private bool _isBossFight;
     private List<AudioSource> _listAudioSources;
+    private Canvas _pauseMenu;
 
     // private AudioSource _audioSource;
     private PlayerScript _player;
@@ -132,6 +133,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(_playerCamera);
         DontDestroyOnLoad(_canvas);
         DontDestroyOnLoad(_dialogueManager);
+        DontDestroyOnLoad(_pauseMenu);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         _player.transform.position = _playerSpawnLocation.transform.position;
         StartCoroutine(DelayEndReachedReset());
