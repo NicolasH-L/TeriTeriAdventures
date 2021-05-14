@@ -83,7 +83,6 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += GetPlayer;
         ++_currentLevel;
         QueueSong(listLevelBgm);
-        print("You clickled me");
     }
 
     public void QuitGame()
