@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
-    public delegate void ChangeSpecialBgm(int bgmOption);
+    public delegate void ChangeSpecialBgm();
 
     public event ChangeSpecialBgm OnChangeSpecialBgm;
 
@@ -305,7 +305,7 @@ public class PlayerScript : MonoBehaviour
 
     private void SetInvincibility()
     {
-        OnChangeSpecialBgm?.Invoke(1);
+        OnChangeSpecialBgm?.Invoke();
         _isInvincible = true;
         _invincibilityCountdown = InvincibilityDuration;
         var tmp = invincibleStatus.color;

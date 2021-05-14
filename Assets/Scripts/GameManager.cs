@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
     private int _playingClipIndex;
     private const string MainCamera = "MainCamera";
 
+    private bool _isMusicPaused;
+
     public delegate void LoadNextLevel();
 
     public event LoadNextLevel OnLevelEndReached;
@@ -82,7 +84,6 @@ public class GameManager : MonoBehaviour
 
         // QueueSong(listLevelBgm);
         PlayMusic(listLevelBgm);
-
     }
 
     public void QuitGame()
@@ -105,6 +106,7 @@ public class GameManager : MonoBehaviour
             index = _currentLevel - 1;
             ++_playingClipIndex;
         }
+
         source.clip = musicList[index];
         source.Play();
         StartCoroutine(PlayAnotherAudioClip(musicList));
@@ -117,6 +119,37 @@ public class GameManager : MonoBehaviour
         PlayMusic(musicList);
     }
 
+    public void ChangeToSpecialBgm()
+    {
+        var sourceSpecialBgm = _listAudioSources[IndexAudioSourceSpecialBgm];
+
+        if (_listAudioSources[IndexAudioSourceLevelBgm].isPlaying &&
+            !sourceSpecialBgm.isPlaying)
+        {
+            _listAudioSources[IndexAudioSourceLevelBgm].Pause();
+            sourceSpecialBgm.clip = invincibleBgm;
+        }
+
+        _isMusicPaused = true;
+        sourceSpecialBgm.Play();
+        _invincibilityDuration = BaseInvincibilityDuration;
+        Invoke(nameof(CountdownChangeMusic), 1f);
+    }
+    
+    private void CountdownChangeMusic()
+    {
+        var sourceSpecialBgm = _listAudioSources[IndexAudioSourceSpecialBgm];
+
+        --_invincibilityDuration;
+        if (_invincibilityDuration <= 0)
+        {
+            
+            sourceSpecialBgm.Stop();
+            PlayMusic(listLevelBgm);
+            return;
+        }
+        Invoke(nameof(CountdownChangeMusic), 1f);
+    }
     private void QueueSong(List<AudioClip> musicList)
     {
         if (musicList == null || _listAudioSources[IndexAudioSourceSpecialBgm].isPlaying)
@@ -167,7 +200,8 @@ public class GameManager : MonoBehaviour
         _player.transform.position = _playerSpawnLocation.transform.position;
         StartCoroutine(DelayEndReachedReset());
         // RequeueMusic();
-        PlayMusic(listLevelBgm);
+        if (!_isMusicPaused)
+            PlayMusic(listLevelBgm);
     }
 
     private void RequeueMusic()
@@ -193,52 +227,8 @@ public class GameManager : MonoBehaviour
         return _player.GetWeaponDamage();
     }
 
-    public void ChangeToSpecialBgm(int option)
-    {
-        switch (option)
-        {
-            case 1:
-                if (_listAudioSources[IndexAudioSourceLevelBgm].isPlaying &&
-                    !_listAudioSources[IndexAudioSourceSpecialBgm].isPlaying)
-                {
-                    _listAudioSources[IndexAudioSourceLevelBgm].Pause();
-                    _listAudioSources[IndexAudioSourceSpecialBgm].clip = invincibleBgm;
-                }
 
-                _invincibilityDuration = BaseInvincibilityDuration;
-                break;
-
-            default:
-                Debug.Log("Erreur cette option de chanson n'existe pas! " + option.ToString());
-                break;
-        }
-
-        if (!_listAudioSources[IndexAudioSourceSpecialBgm].isPlaying)
-            _listAudioSources[IndexAudioSourceSpecialBgm].Play();
-        Invoke(nameof(CountdownChangeMusic), 1f);
-    }
-
-
-    private void CountdownChangeMusic()
-    {
-        --_invincibilityDuration;
-        if (_invincibilityDuration <= 0)
-        {
-            _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
-            if (_currentLevel - 1 != _playingClipIndex)
-            {
-                QueueSong(listLevelBgm);
-            }
-            else
-            {
-                _listAudioSources[IndexAudioSourceLevelBgm].UnPause();
-            }
-
-            return;
-        }
-
-        Invoke(nameof(CountdownChangeMusic), 1f);
-    }
+  
 
     private IEnumerator DelayEndReachedReset()
     {
