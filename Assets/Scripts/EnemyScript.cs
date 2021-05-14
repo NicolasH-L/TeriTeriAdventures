@@ -20,8 +20,8 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private Transform obstacleDetection;
     [SerializeField] private Transform obstacleDetection02;
     [SerializeField] private Transform groundDetection;
-    [SerializeField] private bool _hasRangedAttack;
-    [SerializeField] private int _healthPoint;
+    [SerializeField] private bool hasRangedAttack;
+    [SerializeField] private int healthPoint;
     private Rigidbody2D _rigidbody2D;
     private const string DefaultLayerMask = "Default";
     private Vector2 _npcMovement;
@@ -30,7 +30,7 @@ public class EnemyScript : MonoBehaviour
     private bool _isMovingLeft;
     private float _movementSpeed;
 
-    void Start()
+    private void Start()
     {
         if (GameManager.GameManagerInstance != null)
             OnPlayerWeaponDamageLoaded += GameManager.GameManagerInstance.GetPlayerDamage;
@@ -41,7 +41,7 @@ public class EnemyScript : MonoBehaviour
         _isMovingLeft = true;
     }
 
-    void Update()
+    private void Update()
     {
         _npcMovement = Vector2.left * _movementSpeed;
         transform.Translate(_npcMovement * Time.deltaTime);
@@ -86,7 +86,7 @@ public class EnemyScript : MonoBehaviour
     {
         if (_hasAttacked)
             return;
-        if (_hasRangedAttack)
+        if (hasRangedAttack)
             Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         else
         {
@@ -99,14 +99,14 @@ public class EnemyScript : MonoBehaviour
 
     private IEnumerator DelayAttack()
     {
-        var waitSecond = _hasRangedAttack ? RangeAttackDelay : MeleeAttackDelay;
+        var waitSecond = hasRangedAttack ? RangeAttackDelay : MeleeAttackDelay;
         yield return new WaitForSeconds(waitSecond);
         _hasAttacked = false;
     }
 
     private void TakeDamage(int damage)
     {
-        if (_healthPoint - damage <= 0)
+        if (healthPoint - damage <= 0)
         {
             Destroy(GetComponent<Rigidbody2D>());
             Destroy(GetComponent<Collider2D>());
@@ -115,7 +115,7 @@ public class EnemyScript : MonoBehaviour
             return;
         }
 
-        _healthPoint -= damage;
+        healthPoint -= damage;
     }
 
     private void OnCollisionEnter2D(Collision2D other)

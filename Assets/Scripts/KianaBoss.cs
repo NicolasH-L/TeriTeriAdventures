@@ -57,10 +57,15 @@ public class KianaBoss : MonoBehaviour
             Destroy(GetComponent<Rigidbody2D>());
             Destroy(GetComponent<Collider2D>());
             Destroy(GetComponent<PolygonCollider2D>());
-            Destroy(gameObject);
-            OnGameEnded?.Invoke(false);
+            Invoke(nameof(LoadGameOver), 2f);
             return;
         }
         _healthPoint -= damage;
+    }
+
+    private void LoadGameOver()
+    {
+        OnGameEnded?.Invoke(false);
+        Destroy(gameObject);
     }
 }

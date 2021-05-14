@@ -15,12 +15,14 @@ public class HomingCookie : MonoBehaviour
 
     void Start()
     {
-        _target = GameObject.FindGameObjectWithTag("Player");
+        _target = GameObject.FindGameObjectWithTag(PlayerTag);
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
     {
+        if (!GameObject.FindGameObjectWithTag(PlayerTag))
+            return;
         Vector2 direction = (Vector2) _target.transform.position - _rigidbody2D.position;
         direction.Normalize();
 

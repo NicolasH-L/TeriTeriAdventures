@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -227,6 +228,9 @@ public class GameManager : MonoBehaviour
 
         _listAudioSources[IndexAudioSourceLevelBgm].Stop();
         _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
+        Destroy(_player.gameObject);
+        Destroy(_playerCamera.GetComponent<CinemachineBrain>());
+        Destroy(_playerCamera);
         Destroy(GameObject.FindGameObjectWithTag(PlayerUiTag));
         Destroy(_playerSpawnLocation);
         Destroy(_dialogueManager);
