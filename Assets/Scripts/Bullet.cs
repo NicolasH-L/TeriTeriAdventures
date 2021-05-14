@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
 {
     private const string EnemyTag = "Enemy";
     private const string PlayerTag = "Player";
+    private const string JudahWeaponTag = "JudahWeapon";
+
     private Rigidbody2D _rigidbody2D;
     private bool _isDirectionLeft;
     private const float BulletSpeed = 5f;
@@ -28,9 +30,8 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag(PlayerTag))
+        if (other.gameObject.CompareTag(PlayerTag) || other.gameObject.CompareTag(JudahWeaponTag))
         {
-            // Debug.Log(other.gameObject.name);
             DestroyBullet();
             return;
         }

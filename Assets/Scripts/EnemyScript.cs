@@ -8,6 +8,7 @@ using Debug = UnityEngine.Debug;
 public class EnemyScript : MonoBehaviour
 {
     private const string PlayerTag = "Player";
+    private const string JudahWeaponTag = "JudahWeapon";
     private const string EnemyTag = "Enemy";
     private const float WalkSpeed = 1f;
     private const float RunSpeed = 2.5f;
