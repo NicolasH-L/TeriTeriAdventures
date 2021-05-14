@@ -91,6 +91,11 @@ public class GameManager : MonoBehaviour
         _listAudioSources[IndexAudioSourceLevelBgm].Stop();
         Application.Quit();
     }
+
+    private void PlayMusic()
+    {
+        
+    }
     
     private void QueueSong(List<AudioClip> musicList)
     {
@@ -206,10 +211,7 @@ public class GameManager : MonoBehaviour
             _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
             if (_currentLevel - 1 != _playingClipIndex)
             {
-                _playingClipIndex = _currentLevel - 1;
-                _listAudioSources[IndexAudioSourceLevelBgm].clip = listLevelBgm[_playingClipIndex];
-                _listAudioSources[IndexAudioSourceLevelBgm].Stop();
-                _listAudioSources[IndexAudioSourceLevelBgm].Play();
+                QueueSong(listLevelBgm);
             }
             else
             {
