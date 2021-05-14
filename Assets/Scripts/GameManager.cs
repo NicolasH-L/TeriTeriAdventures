@@ -239,10 +239,7 @@ public class GameManager : MonoBehaviour
         _listAudioSources[IndexAudioSourceLevelBgm].Stop();
         _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
         Destroy(GameObject.FindGameObjectWithTag(PlayerUiTag));
-        Destroy(_playerCamera);
         Destroy(_playerSpawnLocation);
-        Destroy(_player);
-        Destroy(_canvas);
         Destroy(_dialogueManager);
         Destroy(gameObject);
         Destroy(this);
