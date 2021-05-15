@@ -29,6 +29,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private bool hasRangedAttack;
     [SerializeField] private int healthPoint;
     [SerializeField] private int damagePoint;
+    private AudioSource _audioSource;
     private Rigidbody2D _rigidbody2D;
     private const string DefaultLayerMask = "Default";
     private const string PlayerLayerMask = "Player";
@@ -109,7 +110,7 @@ public class EnemyScript : MonoBehaviour
         {
             _rigidbody2D.velocity = _npcDirection * ChargeAttackSpeed;
         }
-
+        _audioSource.Play();
         _hasAttacked = true;
         StartCoroutine(DelayAttack());
     }
