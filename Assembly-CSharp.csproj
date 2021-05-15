@@ -60,9 +60,6 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\ActivateKianaBoss.cs" />
      <Compile Include="Assets\Scripts\Chests.cs" />
-     <Compile Include="Assets\Scripts\Dialog\Dialog.cs" />
-     <Compile Include="Assets\Scripts\Dialog\DialogManager.cs" />
-     <Compile Include="Assets\Scripts\Dialog\DialogTrigger.cs" />
      <Compile Include="Assets\Scripts\Enemy\Bullet.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyScript.cs" />
      <Compile Include="Assets\Scripts\GameEndScript.cs" />
@@ -70,6 +67,9 @@
      <Compile Include="Assets\Scripts\HomingCookie.cs" />
      <Compile Include="Assets\Scripts\ItemScript.cs" />
      <Compile Include="Assets\Scripts\KianaBoss.cs" />
+     <Compile Include="Assets\Scripts\NpcDialog\Dialog.cs" />
+     <Compile Include="Assets\Scripts\NpcDialog\DialogManager.cs" />
+     <Compile Include="Assets\Scripts\NpcDialog\DialogTrigger.cs" />
      <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\PlateScript.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
