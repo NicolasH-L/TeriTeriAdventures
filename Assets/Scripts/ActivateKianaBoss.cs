@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class ActivateKianaBoss : MonoBehaviour
 {
     [SerializeField] private KianaBoss kianaBoss;
+    [SerializeField] private SpawnChests spawnChests;
     [SerializeField] private GameObject blockingWall;
     private const float SelfDestructDelay = 1f;
+
     public delegate void BossFight();
 
     public event BossFight OnPlayerReachedBossLevel;
@@ -18,6 +18,7 @@ public class ActivateKianaBoss : MonoBehaviour
             OnPlayerReachedBossLevel += GameManager.GameManagerInstance.EnableBossFight;
         blockingWall.SetActive(false);
         kianaBoss.enabled = false;
+        spawnChests.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -25,6 +26,7 @@ public class ActivateKianaBoss : MonoBehaviour
         if (!other.gameObject.CompareTag("Player") || OnPlayerReachedBossLevel == null) return;
         OnPlayerReachedBossLevel?.Invoke();
         kianaBoss.enabled = true;
+        spawnChests.enabled = true;
         blockingWall.SetActive(true);
         StartCoroutine(DelaySelfDestruction());
     }
