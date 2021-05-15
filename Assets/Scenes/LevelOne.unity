@@ -3909,13 +3909,29 @@ MonoBehaviour:
     - 'Hey Teri!
 
       You barely survived the crash!'
-    - "I'm here to help you navigate this island filled with mysterious being.\t"
-    - First, you must pass through the beach that has a lot of native savage people
-      roaming around!
-    - Then you must navigate in the forest to find the bunker that will help you
-      escape this island
-    - But! Beware of whats behind the bunker. It resides powerfull beasts that guard
-      the underground and the gate keeper.
+    - Are you Okay? Try to move your body with "A" and "D" on your keyboard to see
+      if you're fine.
+    - Awesome!, looks like your fine!. My name is FuHua and I'm here to guide you.
+    - 'See that sign over there? that''s your weapon, you can pick it  up by walking
+      nearby.
+
+      After getting the weapon, try to attack by pressing "J" on your
+      keyboard.'
+    - 'Nice!, you''re good to go! But first, let me tell you something....
+
+      You
+      need to escape this island as soon as possible. you must pass through the beach
+      that has a lot of native savage people roaming around.
+
+'
+    - 'Then you must navigate in the forest to find the bunker that will help you
+      escape this island.
+
+      But! Beware of whats behind the bunker. It resides
+      powerful beasts that guard the underground and the gate keeper.
+
+      Good
+      luck and have faith in yourself!!'
 --- !u!114 &781039316
 MonoBehaviour:
   m_ObjectHideFlags: 0
