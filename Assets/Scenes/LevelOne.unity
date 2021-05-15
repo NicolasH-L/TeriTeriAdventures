@@ -1557,8 +1557,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f720240a6a6548a44a9f5721ebc09cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialogueBox: {fileID: 2076100512}
-  _npc: {fileID: 781039318}
+  dialogBox: {fileID: 0}
+  npc: {fileID: 0}
 --- !u!1 &290664454
 GameObject:
   m_ObjectHideFlags: 0
@@ -11353,7 +11353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1743952764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14561,6 +14561,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1884611368, guid: 605864e53ed497b45840bb44b23dd2aa, type: 3}
+      propertyPath: judahBack
+      value: 
+      objectReference: {fileID: 5657802357315323192}
+    - target: {fileID: 1884611368, guid: 605864e53ed497b45840bb44b23dd2aa, type: 3}
+      propertyPath: judahWeapon
+      value: 
+      objectReference: {fileID: 5657802357315323193}
+    - target: {fileID: 1884611368, guid: 605864e53ed497b45840bb44b23dd2aa, type: 3}
+      propertyPath: listAttackClips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884611368, guid: 605864e53ed497b45840bb44b23dd2aa, type: 3}
+      propertyPath: listAttackClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1feabe81ed6b69147b33b2b13c153413, type: 3}
+    - target: {fileID: 1884611368, guid: 605864e53ed497b45840bb44b23dd2aa, type: 3}
+      propertyPath: listAttackClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 68de09a4827127845b7328c16e6aa161, type: 3}
     - target: {fileID: 5657802358292049840, guid: 605864e53ed497b45840bb44b23dd2aa,
         type: 3}
       propertyPath: m_Name
@@ -14678,9 +14698,24 @@ PrefabInstance:
       objectReference: {fileID: 1737909728}
     - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
         type: 3}
+      propertyPath: playerSpecialSfx.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
       propertyPath: _playerSpecialSfx.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
+      propertyPath: playerSpecialSfx.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 437de4a320f274e4dad299c1069b33dc, type: 3}
+    - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
+        type: 3}
+      propertyPath: playerSpecialSfx.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: b06c3468a90a66f4bab553cf656e61a2, type: 3}
     - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
         type: 3}
       propertyPath: _playerSpecialSfx.Array.data[0]
@@ -14693,6 +14728,18 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: b06c3468a90a66f4bab553cf656e61a2, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 605864e53ed497b45840bb44b23dd2aa, type: 3}
+--- !u!212 &5657802357315323192 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2819699367836534587, guid: 605864e53ed497b45840bb44b23dd2aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 5657802357315323191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5657802357315323193 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5657802358050217778, guid: 605864e53ed497b45840bb44b23dd2aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 5657802357315323191}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6123069813409949073
 PrefabInstance:
   m_ObjectHideFlags: 0
