@@ -31,11 +31,9 @@ public class GameManager : MonoBehaviour
     private GameObject _dialogueManager;
     private int _invincibilityDuration;
     private int _currentLevel;
-    private bool _isBossFight;
     private List<AudioSource> _listAudioSources;
     private Canvas _pauseMenu;
 
-    // private AudioSource _audioSource;
     private PlayerScript _player;
     private GameObject _playerSpawnLocation;
     private bool _isEndReached;
@@ -83,7 +81,6 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += GetPlayer;
         ++_currentLevel;
 
-        // QueueSong(listLevelBgm);
         PlayMusic(listLevelBgm);
     }
 
@@ -208,7 +205,6 @@ public class GameManager : MonoBehaviour
 
     public void EnableBossFight()
     {
-        _isBossFight = true;
         _listAudioSources[IndexAudioSourceLevelBgm].Stop();
         _listAudioSources[IndexAudioSourceLevelBgm].clip = bossMusic;
         _listAudioSources[IndexAudioSourceLevelBgm].loop = true;
@@ -217,13 +213,13 @@ public class GameManager : MonoBehaviour
 
     public void GameOver(bool isDead)
     {
+        _listAudioSources[IndexAudioSourceLevelBgm].Stop();
         var index = GameEndSceneIndex;
         if (isDead)
         {
             index = GameOverSceneIndex;
         }
 
-        _listAudioSources[IndexAudioSourceLevelBgm].Stop();
         _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
         Destroy(_playerCamera.GetComponentInChildren<CinemachineVirtualCamera>());
         Destroy(_playerCamera.GetComponent<CinemachineBrain>());
