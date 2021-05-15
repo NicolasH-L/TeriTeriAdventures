@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class KianaBoss : MonoBehaviour
 {
-    [SerializeField] private Transform cookieBullets;
-    [SerializeField] private List<GameObject> cookiePortals;
     private const string JudahWeapon = "JudahWeapon";
     private const int StartingHealthPoint = 1500;
+    private const float timeDamage = 2f;
+    private const float timeBullet = 1.5f;
+    [SerializeField] private Transform cookieBullets;
+    [SerializeField] private List<GameObject> cookiePortals;
+    private static readonly int IsBald = Animator.StringToHash("IsBald");
     private Animator _animator;
     private Random _random;
     private int _healthPoint;
     private bool _isAlive;
-    private static readonly int IsBald = Animator.StringToHash("IsBald");
 
     public delegate void GameFinished(bool isDead);
 
@@ -41,7 +41,7 @@ public class KianaBoss : MonoBehaviour
         var index = Random.Range(0, cookiePortals.Count);
         var pos = new Vector2(cookiePortals[index].transform.position.x, cookiePortals[index].transform.position.y);
         Instantiate(cookieBullets, pos, new Quaternion());
-        Invoke(nameof(SpawnBullets), 1.5f);
+        Invoke(nameof(SpawnBullets), timeBullet);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -63,7 +63,7 @@ public class KianaBoss : MonoBehaviour
             Destroy(GetComponent<Rigidbody2D>());
             Destroy(GetComponent<Collider2D>());
             Destroy(GetComponent<PolygonCollider2D>());
-            Invoke(nameof(DelayDeath), 2f);
+            Invoke(nameof(DelayDeath), timeDamage);
             return;
         }
 
