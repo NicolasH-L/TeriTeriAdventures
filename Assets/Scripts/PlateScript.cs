@@ -5,11 +5,11 @@ using UnityEngine.SocialPlatforms;
 
 public class PlateScript : MonoBehaviour
 {
-    private const string GroundTag = "Ground";
     private const string PlayerTag = "Player";
     private const int GravityScale = 5;
     private Rigidbody2D _rigidbody2D;
     private AudioSource _audioSource;
+    private bool _isTouched;
     [SerializeField] private List<AudioClip> listAudioClip;
 
     private void Start()
@@ -20,10 +20,10 @@ public class PlateScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (gameObject == null)
+        if (gameObject == null || !other.gameObject.CompareTag(PlayerTag) || _isTouched)
             return;
-        
         var index = Random.Range(0, listAudioClip.Count);
+        _isTouched = true;
         _audioSource.clip = listAudioClip[index];
         _audioSource.Play();
         StartCoroutine(DelaySelfDestruct());
@@ -31,7 +31,8 @@ public class PlateScript : MonoBehaviour
 
     private IEnumerator DelaySelfDestruct()
     {
-        yield return new WaitForSeconds(_audioSource.clip.length);
         _rigidbody2D.gravityScale = GravityScale;
+        yield return new WaitForSeconds(_audioSource.clip.length);
+        Destroy(gameObject);
     }
 }
