@@ -2,10 +2,11 @@
 Repo for TeriTeri Adventures
 <br>
 
-## Vous devez télécharger manuellement le package de base TextMeshPro dans Unity, car il y a eu beaucoup de bug avec Git.
+## Si vous avez un problème avec le package TextMeshPro, vous devez le réimporter manuellement dans Unity, car il y a eu beaucoup de bug avec Git.
 ## Le jeu commence par la scène "WelcomeScreenMenu"
+
 ### English :
-## You'll need to manually download the TextMeshPro package in Unity. There was a lot of bug with Git during the development phase
+## If you have problem with TextMeshPro package in Unity, you'll need to manually reimport it again because there was a lot of bug with Git during the development phase.
 ## The game starts with the "WelcomeScreenMenu" scene
 
 <br>
