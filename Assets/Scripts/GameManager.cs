@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
@@ -33,7 +31,8 @@ public class GameManager : MonoBehaviour
     private int _currentLevel;
     private List<AudioSource> _listAudioSources;
     private Canvas _pauseMenu;
-
+    private AudioSource _levelAudioSource;
+    private AudioSource _specialAudioSource;
     private PlayerScript _player;
     private GameObject _playerSpawnLocation;
     private bool _isEndReached;
@@ -58,20 +57,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
         _listAudioSources = new List<AudioSource>();
         _listAudioSources.AddRange(GetComponents<AudioSource>());
+        _levelAudioSource = _listAudioSources[IndexAudioSourceLevelBgm];
+        _specialAudioSource = _listAudioSources[IndexAudioSourceSpecialBgm];
         _invincibilityDuration = 0;
         _playingClipIndex = 0;
 
         // QueueSong(listWelcomeBgm);
-        if (_currentLevel == 0)
-            PlayMusic(listWelcomeBgm);
+        QueueWelcomeSong();
+
         DontDestroyOnLoad(this);
     }
 
-    void Update()
+    private void Update()
     {
         OnLevelEndReached?.Invoke();
     }
@@ -82,7 +83,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         SceneManager.sceneLoaded += GetPlayer;
         ++_currentLevel;
-
         PlayMusic(listLevelBgm);
     }
 
@@ -92,9 +92,19 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    private void QueueWelcomeSong()
+    {
+        if (_currentLevel != 0 || _levelAudioSource.isPlaying)
+            return;
+        var index = Random.Range(0, listWelcomeBgm.Count);
+        _levelAudioSource.Stop();
+        _levelAudioSource.clip = listWelcomeBgm[index];
+        _levelAudioSource.Play();
+        Invoke(nameof(QueueWelcomeSong), _levelAudioSource.clip.length);
+    }
+
     private void PlayMusic(List<AudioClip> musicList)
     {
-        var source = _listAudioSources[IndexAudioSourceLevelBgm];
         if (musicList == null)
             return;
 
@@ -107,42 +117,35 @@ public class GameManager : MonoBehaviour
         else if (_currentLevel == _playingClipIndex + 1)
             index = _currentLevel - 1;
 
-        source.clip = musicList[index];
-        Debug.Log(source.clip.name);
-        Debug.Log(musicList);
-        source.loop = true;
-        source.Play();
+        _levelAudioSource.clip = musicList[index];
+        _levelAudioSource.loop = true;
+        _levelAudioSource.Play();
     }
 
     public void ChangeToSpecialBgm()
     {
-        var sourceSpecialBgm = _listAudioSources[IndexAudioSourceSpecialBgm];
-
         if (_listAudioSources[IndexAudioSourceLevelBgm].isPlaying &&
-            !sourceSpecialBgm.isPlaying)
+            !_specialAudioSource.isPlaying)
         {
             _listAudioSources[IndexAudioSourceLevelBgm].Pause();
-            sourceSpecialBgm.clip = invincibleBgm;
+            _specialAudioSource.clip = invincibleBgm;
         }
 
         _isMusicPaused = true;
-        sourceSpecialBgm.Play();
+        _specialAudioSource.Play();
         _invincibilityDuration = BaseInvincibilityDuration;
         Invoke(nameof(CountdownChangeMusic), 1f);
     }
 
     private void CountdownChangeMusic()
     {
-        var sourceSpecialBgm = _listAudioSources[IndexAudioSourceSpecialBgm];
-
         --_invincibilityDuration;
         if (_invincibilityDuration <= 0)
         {
-            sourceSpecialBgm.Stop();
+            _specialAudioSource.Stop();
             _isMusicPaused = false;
             if (_currentLevel - 1 > _playingClipIndex)
             {
-                Debug.Log("not unpause");
                 PlayMusic(listLevelBgm);
             }
             else
@@ -161,12 +164,10 @@ public class GameManager : MonoBehaviour
             return;
         _isEndReached = true;
         ++_currentLevel;
-        Debug.Log(_currentLevel.ToString() + " playing index " + _playingClipIndex.ToString());
         DontDestroyOnLoad(_player);
         DontDestroyOnLoad(_playerSpawnLocation);
         DontDestroyOnLoad(_playerCamera);
         DontDestroyOnLoad(_canvas);
-        // DontDestroyOnLoad(_dialogueManager);
         DontDestroyOnLoad(_pauseMenu);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         _player.transform.position = _playerSpawnLocation.transform.position;
