@@ -32,7 +32,7 @@ public class PlayerScript : MonoBehaviour
     private const int SoundEffect1 = 0;
     private const int PlayerHitAudioSourceIndex = 3;
     private const int PickUpItemAudioSourceIndex = 4;
-    private const int MaxHealth = 100;
+    private const int MaxHealth = 10000;
     private const int WeaponBaseDamage = 400;
     private const int WoodTrapDamage = 5;
     private const int LaserTrapDamage = 10;
@@ -68,7 +68,6 @@ public class PlayerScript : MonoBehaviour
     private const string WepExpUiTag = "WepExpUI";
     private const string LaserTrapTag = "LaserTrap";
     private const int FinalLevelScene = 3;
-
     private Animator _animatorPlayer;
     [SerializeField] private Image invincibleStatus;
     private Animator _invincibilityAnimator;
@@ -77,7 +76,7 @@ public class PlayerScript : MonoBehaviour
     private int _jumpCounter;
     private int _currentHealth;
     private const int HpGainValue = 10;
-    private const int ExpValue = 20;
+    private const int ExpValue = 60;
     private const int MaxLevel = 3;
     private const int BaseLevelRequirement = 100;
     private const int NextLevelExpReqOffset = 50;
@@ -94,6 +93,7 @@ public class PlayerScript : MonoBehaviour
     private int _playerLevelUpReq;
     private int _weaponLevel;
     private int _weaponLevelUpReq;
+    private int _currentMaxHealth;
     private static readonly int IsInvincible = Animator.StringToHash(InvincibilityAnimatorBool);
     private static readonly int IsIdle = Animator.StringToHash("isIdle");
 
@@ -134,6 +134,7 @@ public class PlayerScript : MonoBehaviour
         _animatorPlayer = GetComponent<Animator>();
         _audioSource = GetComponents<AudioSource>();
         _jumpCounter = 0;
+        _currentMaxHealth = MaxHealth;
         _currentHealth = MaxHealth;
         healthBar.SetMaxValue(_currentHealth);
         healthBar.SetValue(_currentHealth);
@@ -141,6 +142,7 @@ public class PlayerScript : MonoBehaviour
         expBar.SetValue(0);
         wepExpBar.SetMaxValue(BaseLevelRequirement);
         wepExpBar.SetValue(0);
+        SetBarTextValue(ref playerHpUiValue, _currentHealth.ToString(), healthBar.GetCurrentMaxValue().ToString());
         _playerLevelUpReq = BaseLevelRequirement;
         _weaponLevelUpReq = BaseLevelRequirement;
     }
@@ -354,15 +356,19 @@ public class PlayerScript : MonoBehaviour
             nextLevelExpReq += NextLevelExpReqOffset;
             bar.SetMaxValue(nextLevelExpReq);
             ++currentBarLevel;
-            if (bar.CompareTag(PlayerExpUiTag))
+            switch (bar.tag)
             {
-                playerLevel.text = currentBarLevel.ToString();
+                case PlayerExpUiTag:
+                    playerLevel.text = currentBarLevel.ToString();
+                    _currentMaxHealth += MaxHealth;
+                    healthBar.SetMaxValue(_currentMaxHealth);
+                    SetBarTextValue(ref playerHpUiValue, _currentHealth.ToString(), _currentHealth.ToString());
+                    break;
+                case WepExpUiTag:
+                    _weaponDamage += WeaponBaseDamage;
+                    break;
             }
-            else if (bar.CompareTag(WepExpUiTag))
-            {
-                _weaponDamage += WeaponBaseDamage;
-            }
-
+            
             if (currentBarLevel >= MaxLevel)
             {
                 bar.SetValue(bar.GetCurrentMaxValue());
