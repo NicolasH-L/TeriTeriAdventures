@@ -33,7 +33,7 @@ public class PlayerScript : MonoBehaviour
     private const int PlayerHitAudioSourceIndex = 3;
     private const int PickUpItemAudioSourceIndex = 4;
     private const int MaxHealth = 100;
-    private const int WeaponBaseDamage = 5000;
+    private const int WeaponBaseDamage = 400;
     private const int WoodTrapDamage = 5;
     private const int LaserTrapDamage = 10;
     private const int ContactDamage = 25;
