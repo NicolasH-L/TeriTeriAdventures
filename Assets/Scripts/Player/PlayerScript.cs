@@ -362,7 +362,7 @@ public class PlayerScript : MonoBehaviour
                     playerLevel.text = currentBarLevel.ToString();
                     _currentMaxHealth += MaxHealth;
                     healthBar.SetMaxValue(_currentMaxHealth);
-                    SetBarTextValue(ref playerHpUiValue, _currentHealth.ToString(), _currentHealth.ToString());
+                    SetBarTextValue(ref playerHpUiValue, _currentHealth.ToString(), _currentMaxHealth.ToString());
                     break;
                 case WepExpUiTag:
                     _weaponDamage += WeaponBaseDamage;
