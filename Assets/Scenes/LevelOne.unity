@@ -3908,9 +3908,12 @@ MonoBehaviour:
     sentences:
     - 'Hey Teri!
 
-      You barely survived the crash!'
-    - Are you Okay? Try to move your body with "A" and "D" on your keyboard to see
-      if you're fine.
+      You barely survived the plane crash!'
+    - 'Are you okay? Try to move your body with "A" and "D" on your keyboard to see
+      if you''re fine.
+
+      Alternatively, you can try pressing on your spacebar
+      to jump.'
     - Awesome!, looks like your fine!. My name is FuHua and I'm here to guide you.
     - 'See that sign over there? that''s your weapon, you can pick it  up by walking
       nearby.

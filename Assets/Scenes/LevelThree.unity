@@ -8071,19 +8071,19 @@ MonoBehaviour:
     sentences:
     - 'Hey little one!
 
-      I''m glad you made this far'
-    - Promise me you will stay alive in one piece! There's an individual i need you
-      to terminated.
-    - It's currently holding hostage my box of cookies! I can't go on much further
-      without them
-    - 'Why them cookies are such importance to me you may ask? '
-    - Well it has the power to make you spawn portals and cookies that will follow
-      the player and turned them into either a monster
-    - The mysterious being you beaten are the aftermath of those who are consumed
-      by the cookies!
-    - The mysterious being you beaten are the aftermath of those who are consumed
-      by the cookies!
-    - Please, eliminated the mastermind behind this! I beg you
+      I''m glad you made this far.'
+    - 'You''re very close to reach the end of this adventure, dont lose hope yet!
+
+      These
+      undergrounds are filled with a lot of Honkai beasts roaming around. Try to
+      be careful!'
+    - These Honkai beasts are the result of a powerful being that used its power
+      to transform any living creatures to those monsters!
+    - Who's the powerful being you ask? Well, it's Kiana, she's using her power to
+      prevent anyone from leaving this island!
+    - Defeat her by avoiding her abilities and dont forget to use your weapon to
+      attack!
+    - If you succeed, we'll be freed from this island!!!
 --- !u!114 &1682635913
 MonoBehaviour:
   m_ObjectHideFlags: 0
