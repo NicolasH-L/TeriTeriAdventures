@@ -47,6 +47,7 @@ public class EnemyScript : MonoBehaviour
             OnPlayerHit += PlayerScript.GetPlayerInstance.TakeDamage;
         }
 
+        _colliders = new List<Collider2D>();
         _colliders.AddRange(GetComponents<Collider2D>());
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _npcDirection = Vector2.left;

@@ -106,6 +106,8 @@ public class GameManager : MonoBehaviour
             index = _currentLevel - 1;
 
         source.clip = musicList[index];
+        Debug.Log(source.clip.name);
+        Debug.Log(musicList);
         source.Stop();
         source.Play();
         StartCoroutine(PlayAnotherAudioClip(musicList));
@@ -248,11 +250,6 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
         if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene) return;
-        // Destroy(_playerCamera.GetComponentInChildren<CinemachineVirtualCamera>());
-        // Destroy(_playerCamera.GetComponent<CinemachineBrain>());
-        // Destroy(GameObject.FindGameObjectWithTag(MainCamera));
-        // Destroy(GameObject.FindGameObjectWithTag(PlayerUiTag));
-        // Destroy(GameObject.FindGameObjectWithTag(PauseMenuTag));
         Destroy(_playerSpawnLocation);
         Destroy(_dialogueManager);
         Destroy(gameObject);
