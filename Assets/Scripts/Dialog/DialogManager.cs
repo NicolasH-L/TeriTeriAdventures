@@ -9,13 +9,15 @@ public class DialogManager : MonoBehaviour
     private const string CanvasDialogTag = "CanvasDialogue";
     private const string NameTag = "NpcName";
     private const string DialogTag = "Dialogue";
-    [SerializeField] private Animator _dialogueBox;
-    [SerializeField] private Animator _npc;
+    [SerializeField] private Animator dialogBox;
+    [SerializeField] private Animator npc;
     private TextMeshProUGUI _nameText;
     private TextMeshProUGUI _dialogueText;
     private Canvas _canvasDialogue;
     private Canvas _playerUI;
     private Queue<string> _sentences;
+    
+    //Suggestions made by Rider.
     private static readonly int IsOpen = Animator.StringToHash("IsOpen");
     private static readonly int IsEnter = Animator.StringToHash("IsEnter");
 
@@ -31,8 +33,8 @@ public class DialogManager : MonoBehaviour
 
     public void StartDialog(Dialog dialog)
     {
-        _dialogueBox.SetBool(IsOpen, true);
-        _npc.SetBool(IsEnter, true);
+        dialogBox.SetBool(IsOpen, true);
+        npc.SetBool(IsEnter, true);
         // Enable Line for Testing only.
         // if (_playerUI != null)
         _playerUI.enabled = false;
@@ -60,8 +62,8 @@ public class DialogManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        _dialogueBox.SetBool(IsOpen, false);
-        _npc.SetBool(IsEnter, false);
+        dialogBox.SetBool(IsOpen, false);
+        npc.SetBool(IsEnter, false);
         _canvasDialogue.enabled = false;
         // Enable Line for Testing only.
         // if (_playerUI != null)
