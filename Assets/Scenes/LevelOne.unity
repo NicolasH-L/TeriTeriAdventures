@@ -14710,7 +14710,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerSpecialSfx.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 437de4a320f274e4dad299c1069b33dc, type: 3}
+      objectReference: {fileID: 8300000, guid: 1202ba6a21081144ba5c2557b61ae955, type: 3}
     - target: {fileID: 5657802358292049853, guid: 605864e53ed497b45840bb44b23dd2aa,
         type: 3}
       propertyPath: playerSpecialSfx.Array.data[1]
