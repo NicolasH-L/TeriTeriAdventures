@@ -532,7 +532,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7fe0ad6cbd31f6a49b3dd4d155c47d05, type: 3}
   listLevelBgm:
   - {fileID: 8300000, guid: 8b4b45233903b584b8fa8a420e9affae, type: 3}
-  - {fileID: 8300000, guid: d1d56fc66f0a51e4f827b618f26c0957, type: 3}
+  - {fileID: 8300000, guid: f09a401b2e1cb894587cf9af65ba0700, type: 3}
   - {fileID: 8300000, guid: 5967c7bf4bf599943a85c819ac13d47c, type: 3}
   invincibleBgm: {fileID: 8300000, guid: cf48291381d7d6a4ca499cccd3cdd50d, type: 3}
   bossMusic: {fileID: 8300000, guid: 8c64516532e620c42b15167c57777a42, type: 3}

@@ -39,6 +39,7 @@ public class EnemyScript : MonoBehaviour
     private bool _isMovingLeft;
     private float _movementSpeed;
     private bool _isCollidedWithPlayer;
+    private bool _isHit;
     private List<Collider2D> _colliders;
 
     private void Start()
@@ -121,21 +122,30 @@ public class EnemyScript : MonoBehaviour
 
     private void TakeDamage(int damage)
     {
+        if (gameObject == null || _isHit)
+            return;
+        _isHit = true;
         if (healthPoint - damage <= 0)
         {
             foreach (var enemyCollider in _colliders)
             {
                 Destroy(enemyCollider);
             }
-
+            
             Destroy(GetComponent<Rigidbody2D>());
             Destroy(gameObject);
             return;
         }
 
         healthPoint -= damage;
+        StartCoroutine(ResetIsHit());
     }
 
+    private IEnumerator ResetIsHit()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _isHit = false;
+    }
     private void OnCollisionStay2D(Collision2D other)
     {
         _movementSpeed = WalkSpeed;
