@@ -9,12 +9,10 @@ public class ItemScript : MonoBehaviour
         itemTag = gameObject.tag;
     }
 
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
-        {
             Destroy(gameObject);
-        }
     }
 }
