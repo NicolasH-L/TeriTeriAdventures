@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
@@ -24,16 +25,19 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private Transform obstacleDetection;
     [SerializeField] private Transform obstacleDetection02;
     [SerializeField] private Transform groundDetection;
+    [SerializeField] private Transform playerDetection;
     [SerializeField] private bool hasRangedAttack;
     [SerializeField] private int healthPoint;
     [SerializeField] private int damagePoint;
     private Rigidbody2D _rigidbody2D;
     private const string DefaultLayerMask = "Default";
+    private const string PlayerLayerMask = "Player";
     private Vector2 _npcMovement;
     private Vector2 _npcDirection;
     private bool _hasAttacked;
     private bool _isMovingLeft;
     private float _movementSpeed;
+    private List<Collider2D> _colliders;
 
     private void Start()
     {
@@ -43,6 +47,7 @@ public class EnemyScript : MonoBehaviour
             OnPlayerHit += PlayerScript.GetPlayerInstance.TakeDamage;
         }
 
+        _colliders.AddRange(GetComponents<Collider2D>());
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _npcDirection = Vector2.left;
         _movementSpeed = WalkSpeed;
@@ -59,14 +64,13 @@ public class EnemyScript : MonoBehaviour
             1 << LayerMask.NameToLayer(DefaultLayerMask));
         var obstacleInfo02 = Physics2D.Raycast(obstacleDetection02.position, _npcDirection, 1f,
             1 << LayerMask.NameToLayer(DefaultLayerMask));
+        var playerInfo = Physics2D.Raycast(playerDetection.position, _npcDirection, 4f,
+            1 << LayerMask.NameToLayer(PlayerLayerMask));
 
-
-        if (groundInfo.collider != false && obstacleInfo.collider == false
-                                         && obstacleInfo02.collider == false
-            // || 
-            // IsRaycastCollidedWithSameTag(obstacleInfo) ||
-            // IsRaycastCollidedWithSameTag(obstacleInfo02)
-        ) return;
+        if (groundInfo.collider != false && obstacleInfo.collider == false && obstacleInfo02.collider == false
+            && playerInfo.collider == false) return;
+        if(playerInfo)
+            Attack();
         ChangeDirection();
     }
 
@@ -116,9 +120,12 @@ public class EnemyScript : MonoBehaviour
     {
         if (healthPoint - damage <= 0)
         {
+            foreach (var enemyCollider in _colliders)
+            {
+                Destroy(enemyCollider);
+            }
+
             Destroy(GetComponent<Rigidbody2D>());
-            Destroy(GetComponent<Collider2D>());
-            Destroy(GetComponent<PolygonCollider2D>());
             Destroy(gameObject);
             return;
         }
@@ -132,7 +139,7 @@ public class EnemyScript : MonoBehaviour
         if (other.gameObject.CompareTag(EnemyTag))
             ChangeDirection();
         if (other.gameObject.CompareTag(PlayerTag) && !_hasAttacked)
-            
+
             OnPlayerHit?.Invoke(damagePoint);
     }
 

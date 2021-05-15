@@ -188,6 +188,7 @@ MonoBehaviour:
   obstacleDetection: {fileID: 8523195615782924780}
   obstacleDetection02: {fileID: 5079180668934467907}
   groundDetection: {fileID: 103442140641093728}
+  playerDetection: {fileID: 8112259759255433792}
   hasRangedAttack: 0
   healthPoint: 150
   damagePoint: 5
