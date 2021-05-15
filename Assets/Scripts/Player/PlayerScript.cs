@@ -76,7 +76,7 @@ public class PlayerScript : MonoBehaviour
     private int _jumpCounter;
     private int _currentHealth;
     private const int HpGainValue = 10;
-    private const int ExpValue = 60;
+    private const int ExpValue = 20;
     private const int MaxLevel = 3;
     private const int BaseLevelRequirement = 100;
     private const int NextLevelExpReqOffset = 50;
