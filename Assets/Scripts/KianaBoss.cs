@@ -11,7 +11,7 @@ public class KianaBoss : MonoBehaviour
     private const int StartingHealthPoint = 1000;
     private Animator _animator;
     private Random _random;
-    private const float HoverDelay = 1f;
+    private const float HoverDelay = 0.5f;
     private const int MaxCounterValue = 5;
     private int _counter;
     private int _healthPoint;
@@ -44,7 +44,7 @@ public class KianaBoss : MonoBehaviour
         if (gameObject == null)
             return;
         
-        var value = _counter >= MaxCounterValue ? 2f : -2f;
+        var value = _counter >= MaxCounterValue ? 4f : -4f;
         var axeY = transform.position;
         axeY.y += value;
         transform.Translate(0f, axeY.y * Time.deltaTime, 0f);
