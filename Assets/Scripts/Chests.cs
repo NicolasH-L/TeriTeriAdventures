@@ -5,6 +5,7 @@ public class Chests : MonoBehaviour
 {
     private const float OffSetY = 1.5f;
     private const float OffSetX = 0.1f;
+    private const string PlayerTag = "Player";
     [SerializeField] private Sprite chests;
     [SerializeField] private List<GameObject> _listItems;
     private SpriteRenderer _chestsRenderer;
@@ -17,7 +18,7 @@ public class Chests : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.gameObject.CompareTag("Player")) return;
+        if (!other.gameObject.CompareTag(PlayerTag)) return;
         _chestsRenderer.sprite = chests;
         var spawnItemPosition = transform.position;
         spawnItemPosition.y += OffSetY;
