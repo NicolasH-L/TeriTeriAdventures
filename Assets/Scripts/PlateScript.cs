@@ -1,7 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PlateScript : MonoBehaviour
 {
+    private const string GroundTag = "Ground";
+    private const string PlayerTag = "Player";
+    private const float Delay = 0.5f;
+    private const int GravityScale = 5;
     private Rigidbody2D _rigidbody2D;
 
     private void Start()
@@ -11,14 +16,16 @@ public class PlateScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            _rigidbody2D.gravityScale = 1;
-        }
+        if (other.gameObject.CompareTag(PlayerTag))
+            StartCoroutine(DelaySelfDestruct(Delay));
 
-        if (other.gameObject.CompareTag("Ground"))
-        {
+        if (other.gameObject.CompareTag(GroundTag))
             Destroy(gameObject);
-        }
+    }
+
+    public IEnumerator DelaySelfDestruct(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        _rigidbody2D.gravityScale = GravityScale;
     }
 }
