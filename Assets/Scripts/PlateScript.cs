@@ -1,31 +1,37 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class PlateScript : MonoBehaviour
 {
     private const string GroundTag = "Ground";
     private const string PlayerTag = "Player";
-    private const float Delay = 1f;
     private const int GravityScale = 5;
     private Rigidbody2D _rigidbody2D;
+    private AudioSource _audioSource;
+    [SerializeField] private List<AudioClip> listAudioClip;
 
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag(PlayerTag))
-            StartCoroutine(DelaySelfDestruct(Delay));
-
-        if (other.gameObject.CompareTag(GroundTag))
-            Destroy(gameObject);
+        if (gameObject == null)
+            return;
+        
+        var index = Random.Range(0, listAudioClip.Count);
+        _audioSource.clip = listAudioClip[index];
+        _audioSource.Play();
+        StartCoroutine(DelaySelfDestruct());
     }
 
-    private IEnumerator DelaySelfDestruct(float waitTime)
+    private IEnumerator DelaySelfDestruct()
     {
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(_audioSource.clip.length);
         _rigidbody2D.gravityScale = GravityScale;
     }
 }
