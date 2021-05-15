@@ -16,7 +16,7 @@ public class DialogManager : MonoBehaviour
     private Canvas _canvasDialog;
     private Canvas _playerUI;
     private Queue<string> _sentences;
-    
+
     //Suggestions made by Rider.
     private static readonly int IsOpen = Animator.StringToHash("IsOpen");
     private static readonly int IsEnter = Animator.StringToHash("IsEnter");
@@ -24,8 +24,9 @@ public class DialogManager : MonoBehaviour
     private void Start()
     {
         _sentences = new Queue<string>();
-        if (GameObject.FindGameObjectWithTag(PlayerUiTag) != null)
-            _playerUI = GameObject.FindGameObjectWithTag(PlayerUiTag).GetComponent<Canvas>();
+        // Enable Line for Testing only.
+        // if (GameObject.FindGameObjectWithTag(PlayerUiTag) != null)
+        _playerUI = GameObject.FindGameObjectWithTag(PlayerUiTag).GetComponent<Canvas>();
         _nameText = GameObject.FindGameObjectWithTag(NameTag).GetComponent<TextMeshProUGUI>();
         _dialogText = GameObject.FindGameObjectWithTag(DialogTag).GetComponent<TextMeshProUGUI>();
         _canvasDialog = GameObject.FindGameObjectWithTag(CanvasDialogTag).GetComponent<Canvas>();
@@ -40,10 +41,8 @@ public class DialogManager : MonoBehaviour
         _playerUI.enabled = false;
         _nameText.text = dialog.name;
         _sentences.Clear();
-
         foreach (var sentence in dialog.sentences)
             _sentences.Enqueue(sentence);
-
         DisplayNextSentence();
     }
 
@@ -54,7 +53,6 @@ public class DialogManager : MonoBehaviour
             EndDialog();
             return;
         }
-
         var sentence = _sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
