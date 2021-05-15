@@ -23,7 +23,7 @@ public class PlateScript : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public IEnumerator DelaySelfDestruct(float waitTime)
+    private IEnumerator DelaySelfDestruct(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         _rigidbody2D.gravityScale = GravityScale;
