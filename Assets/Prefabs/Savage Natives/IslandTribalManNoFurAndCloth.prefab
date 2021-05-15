@@ -192,7 +192,7 @@ MonoBehaviour:
   playerDetection: {fileID: 8112259759255433792}
   hasRangedAttack: 0
   healthPoint: 150
-  damagePoint: 5
+  damagePoint: 20
 --- !u!61 &40613731450260034
 BoxCollider2D:
   m_ObjectHideFlags: 0
