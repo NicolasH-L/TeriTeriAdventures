@@ -12,7 +12,7 @@ namespace Player
         private const int SoundEffect2 = 1;
         private const int AttackAudioSourceIndex = 2;
         private const string AttackInpuKey = "j";
-        private const float DelayTime = 0.4f;
+        private const float DelayTime = 0.6f;
         [SerializeField] private List<AudioClip> listAttackClips;
         [SerializeField] private GameObject judahWeapon;
         [SerializeField] private SpriteRenderer judahBack;
