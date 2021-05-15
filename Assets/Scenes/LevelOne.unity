@@ -1361,6 +1361,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f720240a6a6548a44a9f5721ebc09cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dialogueBox: {fileID: 2076100512}
+  _npc: {fileID: 781039318}
 --- !u!1 &290664454
 GameObject:
   m_ObjectHideFlags: 0
@@ -3862,6 +3864,7 @@ GameObject:
   - component: {fileID: 781039317}
   - component: {fileID: 781039316}
   - component: {fileID: 781039315}
+  - component: {fileID: 781039318}
   m_Layer: 5
   m_Name: FuHua
   m_TagString: FuHua
@@ -3950,6 +3953,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781039313}
   m_CullTransparentMesh: 0
+--- !u!95 &781039318
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781039313}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a03f03c85b55b1c46881f7eeaf5a1dd5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &792388496
 GameObject:
   m_ObjectHideFlags: 0
@@ -11640,6 +11662,7 @@ GameObject:
   - component: {fileID: 2076100509}
   - component: {fileID: 2076100511}
   - component: {fileID: 2076100510}
+  - component: {fileID: 2076100512}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: DialogueBox
@@ -11706,6 +11729,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076100508}
   m_CullTransparentMesh: 0
+--- !u!95 &2076100512
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076100508}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2bfe4faca39866a419fac98358f2ec58, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2083967414
 PrefabInstance:
   m_ObjectHideFlags: 0
