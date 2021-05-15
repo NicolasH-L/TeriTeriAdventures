@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -10,6 +10,8 @@ public class DialogueManager : MonoBehaviour
     private const string CanvasDialogTag = "CanvasDialogue";
     private const string NameTag = "NpcName";
     private const string DialogTag = "Dialogue";
+    [SerializeField] private Animator _dialogueBox;
+    [SerializeField] private Animator _npc;
     private TextMeshProUGUI _nameText;
     private TextMeshProUGUI _dialogueText;
     private Canvas _canvasDialogue;
@@ -27,6 +29,8 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        _dialogueBox.SetBool("IsOpen", true);
+        _npc.SetBool("IsEnter", true);
         _playerUI.enabled = false;
         _nameText.text = dialogue.name;
         _sentences.Clear();
@@ -53,6 +57,8 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
+        _dialogueBox.SetBool("IsOpen", false);
+        _npc.SetBool("IsEnter", false);
         _canvasDialogue.enabled = false;
         _playerUI.enabled = true;
     }
