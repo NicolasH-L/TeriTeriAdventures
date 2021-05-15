@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,9 +9,14 @@ public class KianaBoss : MonoBehaviour
     [SerializeField] private List<GameObject> cookiePortals;
     private const string JudahWeapon = "JudahWeapon";
     private const int StartingHealthPoint = 1000;
+    private Animator _animator;
     private Random _random;
+    private const float HoverDelay = 1f;
+    private const int MaxCounterValue = 5;
+    private int _counter;
     private int _healthPoint;
     private bool _isAlive;
+    private static readonly int IsBald = Animator.StringToHash("IsBald");
 
     public delegate void GameFinished(bool isDead);
 
@@ -25,9 +31,30 @@ public class KianaBoss : MonoBehaviour
 
     private void Start()
     {
+        _animator = GetComponent<Animator>();
         _isAlive = true;
         _healthPoint = StartingHealthPoint;
         Invoke(nameof(SpawnBullets), 0f);
+        Hover();
+    }
+
+
+    private void Hover()
+    {
+        if (gameObject == null)
+            return;
+        
+        var value = _counter >= MaxCounterValue ? 2f : -2f;
+        var axeY = transform.position;
+        axeY.y += value;
+        transform.Translate(0f, axeY.y * Time.deltaTime, 0f);
+        if (_counter >= MaxCounterValue)
+            --_counter;
+        else
+        {
+            ++_counter;
+        }
+        Invoke(nameof(Hover), HoverDelay);
     }
 
     private void SpawnBullets()
@@ -51,8 +78,8 @@ public class KianaBoss : MonoBehaviour
     private void TakeDamage(int damage)
     {
         if (_healthPoint - damage <= _healthPoint / 2)
-            print("");
-        
+            _animator.SetBool(IsBald, true);
+            
         if (_healthPoint - damage <= 0)
         {
             _isAlive = false;
@@ -62,7 +89,6 @@ public class KianaBoss : MonoBehaviour
             Invoke(nameof(DelayDeath), 2f);
             return;
         }
-
         _healthPoint -= damage;
     }
 
