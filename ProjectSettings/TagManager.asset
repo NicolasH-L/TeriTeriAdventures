@@ -50,6 +50,7 @@ TagManager:
   - CanvasDialog
   - DialogBox
   - DialogManager
+  - Dialog
   layers:
   - Default
   - TransparentFX

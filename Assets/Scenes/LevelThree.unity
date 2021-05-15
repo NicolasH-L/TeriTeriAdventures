@@ -9613,8 +9613,8 @@ GameObject:
   - component: {fileID: 1743077244}
   - component: {fileID: 1743077243}
   m_Layer: 5
-  m_Name: Dialogue
-  m_TagString: Dialogue
+  m_Name: Dialog
+  m_TagString: Dialog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
