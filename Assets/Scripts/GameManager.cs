@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     private const string PlayerSpawnLocationTag = "PlayerSpawn";
     private const string PlayerUiTag = "PlayerUI";
-    private const string DialogManagerTag = "DialogueManager";
+    private const string DialogManagerTag = "DialogManager";
     private const string PauseMenuTag = "PauseMenu";
     private const string MainCamera = "MainCamera";
     private const int BaseInvincibilityDuration = 8;
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     private AudioSource _levelAudioSource;
     private AudioSource _specialAudioSource;
     private GameObject _playerSpawnLocation;
-    private GameObject _dialogueManager;
+    private GameObject _dialogManager;
     private Camera _playerCamera;
     private List<AudioSource> _listAudioSources;
     private PlayerScript _player;
@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour
         _playerCamera = Camera.main;
         _canvas = GameObject.FindGameObjectWithTag(PlayerUiTag).GetComponent<Canvas>();
         _pauseMenu = GameObject.FindGameObjectWithTag(PauseMenuTag).GetComponent<Canvas>();
-        _dialogueManager = GameObject.FindGameObjectWithTag(DialogManagerTag);
+        _dialogManager = GameObject.FindGameObjectWithTag(DialogManagerTag);
     }
 
     public int GetPlayerDamage()
@@ -238,7 +238,7 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene) return;
         Destroy(_playerSpawnLocation);
-        Destroy(_dialogueManager);
+        Destroy(_dialogManager);
         Destroy(gameObject);
         Destroy(this);
     }

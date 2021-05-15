@@ -3992,8 +3992,8 @@ GameObject:
   - component: {fileID: 431796907}
   - component: {fileID: 431796906}
   m_Layer: 0
-  m_Name: DialogueManager
-  m_TagString: DialogueManager
+  m_Name: DialogManager
+  m_TagString: DialogManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4010,8 +4010,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f720240a6a6548a44a9f5721ebc09cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialogueBox: {fileID: 1173465166}
-  _npc: {fileID: 1405068558}
+  dialogBox: {fileID: 1173465166}
+  npc: {fileID: 1405068558}
 --- !u!4 &431796907
 Transform:
   m_ObjectHideFlags: 0
@@ -11932,8 +11932,8 @@ GameObject:
   - component: {fileID: 1173465167}
   - component: {fileID: 1173465166}
   m_Layer: 5
-  m_Name: DialogueBox
-  m_TagString: DialogueBox
+  m_Name: DialogBox
+  m_TagString: DialogBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -14151,8 +14151,8 @@ GameObject:
   - component: {fileID: 1435518434}
   - component: {fileID: 1435518433}
   m_Layer: 5
-  m_Name: CanvasDialogue
-  m_TagString: CanvasDialogue
+  m_Name: CanvasDialog
+  m_TagString: CanvasDialog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
