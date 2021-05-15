@@ -14,7 +14,7 @@ namespace Player
         private const string AttackInpuKey = "j";
         private const float DelayTime = 0.4f;
         [SerializeField] private List<AudioClip> listAttackClips;
-        [SerializeField] private GameObject judahWeapons;
+        [SerializeField] private GameObject judahWeapon;
         [SerializeField] private SpriteRenderer judahBack;
         private PolygonCollider2D _judahCollider;
         private AudioSource[] _audioSource;
@@ -52,7 +52,7 @@ namespace Player
                      !Input.GetKey(AttackInpuKey) && _hasWeapon)
             {
                 Invoke(nameof(AppearBack), _appearTime);
-                judahWeapons.SetActive(false);
+                judahWeapon.SetActive(false);
                 _appearTime = 0;
             }
         }
@@ -78,7 +78,7 @@ namespace Player
             _audioSource[SoundEffect2].Play();
             _audioSource[AttackAudioSourceIndex].Play();
 
-            judahWeapons.SetActive(true);
+            judahWeapon.SetActive(true);
             judahBack.enabled = false;
             _hasAttacked = true;
             StartCoroutine(Delay());
