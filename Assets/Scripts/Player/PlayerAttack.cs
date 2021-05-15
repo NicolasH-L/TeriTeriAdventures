@@ -24,6 +24,7 @@ namespace Player
         private bool _hasAttacked;
         private bool _hasWeapon;
         private int _audioClipIndex;
+        private static readonly int AttackTrigger = Animator.StringToHash("Attack");
 
         private void Awake()
         {
@@ -73,7 +74,7 @@ namespace Player
             if (_hasAttacked || !_hasWeapon)
                 return;
             _appearTime = _animatorPlayer.runtimeAnimatorController.animationClips.Length;
-            _animatorPlayer.SetTrigger("Attack");
+            _animatorPlayer.SetTrigger(AttackTrigger);
             _audioSource[SoundEffect2].Play();
             _audioSource[AttackAudioSourceIndex].Play();
 
