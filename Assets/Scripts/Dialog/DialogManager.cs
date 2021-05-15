@@ -51,7 +51,7 @@ public class DialogManager : MonoBehaviour
     {
         if (_sentences.Count == 0)
         {
-            EndDialogue();
+            EndDialog();
             return;
         }
 
@@ -60,7 +60,7 @@ public class DialogManager : MonoBehaviour
         StartCoroutine(TypeSentence(sentence));
     }
 
-    private void EndDialogue()
+    private void EndDialog()
     {
         dialogBox.SetBool(IsOpen, false);
         npc.SetBool(IsEnter, false);
