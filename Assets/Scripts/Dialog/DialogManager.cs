@@ -6,14 +6,14 @@ using UnityEngine;
 public class DialogManager : MonoBehaviour
 {
     private const string PlayerUiTag = "PlayerUI";
-    private const string CanvasDialogTag = "CanvasDialogue";
+    private const string CanvasDialogTag = "CanvasDialog";
     private const string NameTag = "NpcName";
-    private const string DialogTag = "Dialogue";
+    private const string DialogTag = "Dialog";
     [SerializeField] private Animator dialogBox;
     [SerializeField] private Animator npc;
     private TextMeshProUGUI _nameText;
-    private TextMeshProUGUI _dialogueText;
-    private Canvas _canvasDialogue;
+    private TextMeshProUGUI _dialogText;
+    private Canvas _canvasDialog;
     private Canvas _playerUI;
     private Queue<string> _sentences;
     
@@ -27,8 +27,8 @@ public class DialogManager : MonoBehaviour
         if (GameObject.FindGameObjectWithTag(PlayerUiTag) != null)
             _playerUI = GameObject.FindGameObjectWithTag(PlayerUiTag).GetComponent<Canvas>();
         _nameText = GameObject.FindGameObjectWithTag(NameTag).GetComponent<TextMeshProUGUI>();
-        _dialogueText = GameObject.FindGameObjectWithTag(DialogTag).GetComponent<TextMeshProUGUI>();
-        _canvasDialogue = GameObject.FindGameObjectWithTag(CanvasDialogTag).GetComponent<Canvas>();
+        _dialogText = GameObject.FindGameObjectWithTag(DialogTag).GetComponent<TextMeshProUGUI>();
+        _canvasDialog = GameObject.FindGameObjectWithTag(CanvasDialogTag).GetComponent<Canvas>();
     }
 
     public void StartDialog(Dialog dialog)
@@ -64,7 +64,7 @@ public class DialogManager : MonoBehaviour
     {
         dialogBox.SetBool(IsOpen, false);
         npc.SetBool(IsEnter, false);
-        _canvasDialogue.enabled = false;
+        _canvasDialog.enabled = false;
         // Enable Line for Testing only.
         // if (_playerUI != null)
         _playerUI.enabled = true;
@@ -72,10 +72,10 @@ public class DialogManager : MonoBehaviour
 
     private IEnumerator TypeSentence(string sentence)
     {
-        _dialogueText.text = "";
+        _dialogText.text = "";
         foreach (var letter in sentence)
         {
-            _dialogueText.text += letter.ToString();
+            _dialogText.text += letter.ToString();
             yield return null;
         }
     }
