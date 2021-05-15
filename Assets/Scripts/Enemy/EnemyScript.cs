@@ -65,14 +65,12 @@ public class EnemyScript : MonoBehaviour
         var obstacleInfo02 = Physics2D.Raycast(obstacleDetection02.position, _npcDirection, 1f,
             1 << LayerMask.NameToLayer(DefaultLayerMask));
         var playerInfo = Physics2D.Raycast(playerDetection.position, _npcDirection, 4f,
-            1<<LayerMask.NameToLayer(PlayerLayerMask));
+            1 << LayerMask.NameToLayer(PlayerLayerMask));
 
-        if (groundInfo.collider != false && obstacleInfo.collider == false
-                                         && obstacleInfo02.collider == false
-            // || 
-            // IsRaycastCollidedWithSameTag(obstacleInfo) ||
-            // IsRaycastCollidedWithSameTag(obstacleInfo02)
-        ) return;
+        if (groundInfo.collider != false && obstacleInfo.collider == false && obstacleInfo02.collider == false
+            && playerInfo.collider == false) return;
+        if(playerInfo)
+            Attack();
         ChangeDirection();
     }
 
