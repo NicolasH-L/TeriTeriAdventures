@@ -7,9 +7,9 @@ public class KianaBoss : MonoBehaviour
     private const int StartingHealthPoint = 1500;
     private const float timeDamage = 2f;
     private const float timeBullet = 1.5f;
+    private static readonly int IsBald = Animator.StringToHash("IsBald");
     [SerializeField] private Transform cookieBullets;
     [SerializeField] private List<GameObject> cookiePortals;
-    private static readonly int IsBald = Animator.StringToHash("IsBald");
     private Animator _animator;
     private Random _random;
     private int _healthPoint;

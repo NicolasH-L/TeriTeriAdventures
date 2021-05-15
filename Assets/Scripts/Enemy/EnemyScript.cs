@@ -15,11 +15,17 @@ public class EnemyScript : MonoBehaviour
     private const string PlayerTag = "Player";
     private const string JudahWeaponTag = "JudahWeapon";
     private const string EnemyTag = "Enemy";
+    private const string DefaultLayerMask = "Default";
+    private const string PlayerLayerMask = "Player";
     private const float WalkSpeed = 1f;
     private const float RunSpeed = 2.5f;
     private const float ChargeAttackSpeed = 5f;
     private const float MeleeAttackDelay = 5f;
     private const float RangeAttackDelay = 1f;
+    private const float GroundDetectionDistance = 0.6f;
+    private const float ObstacleDetectionDistance = 0f;
+    private const float ObstacleDetectionDistance2 = 1f;
+    private const float PlayerDetectionDistance = 4f;
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform obstacleDetection;
@@ -29,21 +35,21 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private bool hasRangedAttack;
     [SerializeField] private int healthPoint;
     [SerializeField] private int damagePoint;
-    private AudioSource _audioSource;
-    private Rigidbody2D _rigidbody2D;
-    private const string DefaultLayerMask = "Default";
-    private const string PlayerLayerMask = "Player";
     private Vector2 _npcMovement;
     private Vector2 _npcDirection;
     private bool _hasAttacked;
     private bool _isMovingLeft;
-    private float _movementSpeed;
     private bool _isCollidedWithPlayer;
     private bool _isHit;
+    private AudioSource _audioSource;
+    private Rigidbody2D _rigidbody2D;
     private List<Collider2D> _colliders;
+    private float _movementSpeed;
+    private bool _isgameObjectNull;
 
     private void Start()
     {
+        _isgameObjectNull = gameObject == null;
         if (GameManager.GameManagerInstance != null && PlayerScript.GetPlayerInstance != null)
         {
             OnPlayerWeaponDamageLoaded += GameManager.GameManagerInstance.GetPlayerDamage;
@@ -64,12 +70,12 @@ public class EnemyScript : MonoBehaviour
         _npcMovement = Vector2.left * _movementSpeed;
         transform.Translate(_npcMovement * Time.deltaTime);
         var groundInfo = Physics2D.Raycast(groundDetection.position,
-            Vector2.down, 0.6f, 1 << LayerMask.NameToLayer(DefaultLayerMask));
-        var obstacleInfo = Physics2D.Raycast(obstacleDetection.position, _npcDirection, 0f,
+            Vector2.down, GroundDetectionDistance, 1 << LayerMask.NameToLayer(DefaultLayerMask));
+        var obstacleInfo = Physics2D.Raycast(obstacleDetection.position, _npcDirection, ObstacleDetectionDistance,
             1 << LayerMask.NameToLayer(DefaultLayerMask));
-        var obstacleInfo02 = Physics2D.Raycast(obstacleDetection02.position, _npcDirection, 1f,
+        var obstacleInfo02 = Physics2D.Raycast(obstacleDetection02.position, _npcDirection, ObstacleDetectionDistance2,
             1 << LayerMask.NameToLayer(DefaultLayerMask));
-        var playerInfo = Physics2D.Raycast(playerDetection.position, _npcDirection, 4f,
+        var playerInfo = Physics2D.Raycast(playerDetection.position, _npcDirection, PlayerDetectionDistance,
             1 << LayerMask.NameToLayer(PlayerLayerMask));
 
         if (groundInfo.collider != false && obstacleInfo.collider == false && obstacleInfo02.collider == false
@@ -79,9 +85,10 @@ public class EnemyScript : MonoBehaviour
             Attack();
             return;
         }
+
         ChangeDirection();
     }
-    
+
     private void ChangeDirection()
     {
         transform.Rotate(0, 180, 0);
@@ -99,15 +106,14 @@ public class EnemyScript : MonoBehaviour
 
     private void Attack()
     {
-        if (_hasAttacked || gameObject == null)
+        if (_hasAttacked || _isgameObjectNull)
             return;
         _hasAttacked = true;
         if (hasRangedAttack)
             Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         else
-        {
             _rigidbody2D.velocity = _npcDirection * ChargeAttackSpeed;
-        }
+
         _audioSource.Play();
         StartCoroutine(DelayAttack());
     }
@@ -118,7 +124,6 @@ public class EnemyScript : MonoBehaviour
         yield return new WaitForSeconds(waitSecond);
         _hasAttacked = false;
     }
-
 
     private void TakeDamage(int damage)
     {
@@ -131,7 +136,7 @@ public class EnemyScript : MonoBehaviour
             {
                 Destroy(enemyCollider);
             }
-            
+
             Destroy(GetComponent<Rigidbody2D>());
             Destroy(gameObject);
             return;
@@ -146,6 +151,7 @@ public class EnemyScript : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         _isHit = false;
     }
+
     private void OnCollisionStay2D(Collision2D other)
     {
         _movementSpeed = WalkSpeed;
@@ -168,9 +174,7 @@ public class EnemyScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(JudahWeaponTag) && OnPlayerWeaponDamageLoaded != null)
-        {
             TakeDamage(OnPlayerWeaponDamageLoaded());
-        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
