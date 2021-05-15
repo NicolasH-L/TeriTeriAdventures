@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2673136616805720483}
   - component: {fileID: 6839249540597138271}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Stake03
   m_TagString: WoodStake
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2673136616805720483
 Transform:

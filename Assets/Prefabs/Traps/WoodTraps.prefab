@@ -14,7 +14,7 @@ GameObject:
   m_TagString: WoodTrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5888227843960683000
 Transform:
@@ -463,6 +463,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: WoodTrap
       objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6839249540597138271, guid: c3cd9fd954efcfc46afbde65348a2612,
         type: 3}
       propertyPath: m_Color.b
@@ -573,6 +578,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: WoodTrap
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6839249540597138271, guid: c3cd9fd954efcfc46afbde65348a2612,
         type: 3}
@@ -685,6 +695,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: WoodTrap
       objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3cd9fd954efcfc46afbde65348a2612, type: 3}
 --- !u!1 &7100094612992840913 stripped
@@ -780,6 +795,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: WoodTrap
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3cd9fd954efcfc46afbde65348a2612, type: 3}
@@ -877,6 +897,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: WoodTrap
       objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3cd9fd954efcfc46afbde65348a2612, type: 3}
 --- !u!1 &7100094612451050283 stripped
@@ -973,6 +998,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: WoodTrap
       objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3cd9fd954efcfc46afbde65348a2612, type: 3}
 --- !u!4 &8408171651819601689 stripped
@@ -1068,6 +1098,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: WoodTrap
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6839249540597138271, guid: c3cd9fd954efcfc46afbde65348a2612,
         type: 3}
@@ -1180,6 +1215,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: WoodTrap
       objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3cd9fd954efcfc46afbde65348a2612, type: 3}
 --- !u!1 &7100094613826612919 stripped
@@ -1205,6 +1245,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlockOfWood
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504259670741354126, guid: 15eb53290d1e9fd42abda553dbd0cc55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7504259670741354163, guid: 15eb53290d1e9fd42abda553dbd0cc55,
         type: 3}
@@ -1361,6 +1406,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: WoodTrap
       objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3cd9fd954efcfc46afbde65348a2612, type: 3}
 --- !u!4 &8408171652469012636 stripped
@@ -1456,6 +1506,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: WoodTrap
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692857584021783566, guid: c3cd9fd954efcfc46afbde65348a2612,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6839249540597138271, guid: c3cd9fd954efcfc46afbde65348a2612,
         type: 3}
