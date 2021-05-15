@@ -64,8 +64,10 @@ public class GameManager : MonoBehaviour
         _listAudioSources.AddRange(GetComponents<AudioSource>());
         _invincibilityDuration = 0;
         _playingClipIndex = 0;
+
         // QueueSong(listWelcomeBgm);
-        PlayMusic(listWelcomeBgm);
+        if (_currentLevel == 0)
+            PlayMusic(listWelcomeBgm);
         DontDestroyOnLoad(this);
     }
 

@@ -37,6 +37,7 @@ public class EnemyScript : MonoBehaviour
     private bool _hasAttacked;
     private bool _isMovingLeft;
     private float _movementSpeed;
+    private bool _isCollidedWithPlayer;
     private List<Collider2D> _colliders;
 
     private void Start()
@@ -70,7 +71,7 @@ public class EnemyScript : MonoBehaviour
 
         if (groundInfo.collider != false && obstacleInfo.collider == false && obstacleInfo02.collider == false
             && playerInfo.collider == false) return;
-        if(playerInfo)
+        if (playerInfo)
             Attack();
         ChangeDirection();
     }
@@ -117,6 +118,7 @@ public class EnemyScript : MonoBehaviour
         _hasAttacked = false;
     }
 
+
     private void TakeDamage(int damage)
     {
         if (healthPoint - damage <= 0)
@@ -139,11 +141,18 @@ public class EnemyScript : MonoBehaviour
         _movementSpeed = WalkSpeed;
         if (other.gameObject.CompareTag(EnemyTag))
             ChangeDirection();
-        if (other.gameObject.CompareTag(PlayerTag) && !_hasAttacked)
-
+        if (other.gameObject.CompareTag(PlayerTag) && !_isCollidedWithPlayer)
+        {
+            _isCollidedWithPlayer = true;
             OnPlayerHit?.Invoke(damagePoint);
+            StartCoroutine(DelayCollisionDamage());
+        }
     }
 
+    private IEnumerator DelayCollisionDamage()
+    {
+        yield return new WaitForSeconds(1f);
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
