@@ -1,10 +1,14 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HomingCookie : MonoBehaviour
 {
     private const string PlayerTag = "Player";
+    private const string ChestCommon = "ChestCommon";
+    private const string ChestRare = "ChestRare";
+    private const string ChestSuperRare = "ChestSuperRare";
     private const string JudahWeaponTag = "JudahWeapon";
+    private const string Cookie = "Cookie";
+    private const string Boss = "Boss";
     private const float Speed = 15f;
     private const float RotateSpeed = 200f;
     private const float CookieDestructionDelay = 2f;
@@ -43,7 +47,9 @@ public class HomingCookie : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Cookie") || other.gameObject.CompareTag("Boss"))
+        if (other.gameObject.CompareTag(Cookie) || other.gameObject.CompareTag(Boss) ||
+            other.gameObject.CompareTag(ChestCommon) || other.gameObject.CompareTag(ChestRare) ||
+            other.gameObject.CompareTag(ChestSuperRare))
             return;
         Destroy(gameObject);
     }
