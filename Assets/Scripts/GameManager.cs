@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     private const int GameEndSceneIndex = 4;
     private const int GameOverSceneIndex = 5;
     private const int FinalLevelScene = 3;
+    private const string MainCamera = "MainCamera";
     [SerializeField] private List<AudioClip> listWelcomeBgm;
     [SerializeField] private List<AudioClip> listLevelBgm;
     [SerializeField] private AudioClip invincibleBgm;
@@ -37,8 +38,6 @@ public class GameManager : MonoBehaviour
     private GameObject _playerSpawnLocation;
     private bool _isEndReached;
     private int _playingClipIndex;
-    private const string MainCamera = "MainCamera";
-
     private bool _isMusicPaused;
 
     public delegate void LoadNextLevel();
@@ -48,13 +47,9 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         if (_gameManager != null && _gameManager != this)
-        {
             Destroy(gameObject);
-        }
         else
-        {
             _gameManager = this;
-        }
     }
 
     private void Start()
@@ -145,9 +140,7 @@ public class GameManager : MonoBehaviour
             _specialAudioSource.Stop();
             _isMusicPaused = false;
             if (_currentLevel - 1 > _playingClipIndex)
-            {
                 PlayMusic(listLevelBgm);
-            }
             else
                 _listAudioSources[IndexAudioSourceLevelBgm].UnPause();
 
@@ -213,9 +206,7 @@ public class GameManager : MonoBehaviour
         _listAudioSources[IndexAudioSourceLevelBgm].Stop();
         var index = GameEndSceneIndex;
         if (isDead)
-        {
             index = GameOverSceneIndex;
-        }
 
         _listAudioSources[IndexAudioSourceSpecialBgm].Stop();
         Destroy(_playerCamera.GetComponentInChildren<CinemachineVirtualCamera>());

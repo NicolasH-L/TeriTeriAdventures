@@ -44,7 +44,6 @@ public class DialogueManager : MonoBehaviour
     {
         if (_sentences.Count == 0)
         {
-            Debug.Log("Im outtsiede");
             EndDialogue();
             return;
         }

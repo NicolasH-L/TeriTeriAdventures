@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class ActivateKianaBoss : MonoBehaviour
 {
+    private const float SelfDestructDelay = 1f;
+    private const string PlayerTag = "Player";
     [SerializeField] private KianaBoss kianaBoss;
     [SerializeField] private SpawnChests spawnChests;
     [SerializeField] private GameObject blockingWall;
-    private const float SelfDestructDelay = 1f;
 
     public delegate void BossFight();
 
@@ -23,7 +24,7 @@ public class ActivateKianaBoss : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.gameObject.CompareTag("Player") || OnPlayerReachedBossLevel == null) return;
+        if (!other.gameObject.CompareTag(PlayerTag) || OnPlayerReachedBossLevel == null) return;
         OnPlayerReachedBossLevel?.Invoke();
         kianaBoss.enabled = true;
         spawnChests.enabled = true;

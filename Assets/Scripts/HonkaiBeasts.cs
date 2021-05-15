@@ -7,6 +7,8 @@ public class HonkaiBeasts : MonoBehaviour
     private const float WalkSpeed = 1f;
     private const float RunSpeed = 3f;
     private const int MaxHealthPoint = 200;
+    private const string PlayerTag = "Player";
+    private const float Distance = 0.2f;
     [SerializeField] private Transform _groundDetection;
     private Vector2 _npcMovement;
     private Vector2 _npcDirection;
@@ -27,7 +29,7 @@ public class HonkaiBeasts : MonoBehaviour
         _npcMovement = Vector2.left * _movementSpeed;
         transform.Translate(_npcMovement * Time.deltaTime);
         var groundInfo = Physics2D.Raycast(_groundDetection.position,
-            Vector2.down, 0.2f);
+            Vector2.down, Distance);
         if (groundInfo.collider != false) return;
         ChangeDirection();
     }
@@ -73,13 +75,13 @@ public class HonkaiBeasts : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag(PlayerTag))
             _movementSpeed = WalkSpeed;
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag(PlayerTag))
             _movementSpeed = RunSpeed;
     }
 }
