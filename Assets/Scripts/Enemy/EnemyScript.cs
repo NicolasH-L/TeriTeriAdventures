@@ -49,6 +49,7 @@ public class EnemyScript : MonoBehaviour
             OnPlayerHit += PlayerScript.GetPlayerInstance.TakeDamage;
         }
 
+        _audioSource = GetComponent<AudioSource>();
         _colliders = new List<Collider2D>();
         _colliders.AddRange(GetComponents<Collider2D>());
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -79,12 +80,7 @@ public class EnemyScript : MonoBehaviour
         }
         ChangeDirection();
     }
-
-    private bool IsRaycastCollidedWithSameTag(RaycastHit2D raycastHit2D)
-    {
-        return raycastHit2D.collider && raycastHit2D.collider.CompareTag(EnemyTag);
-    }
-
+    
     private void ChangeDirection()
     {
         transform.Rotate(0, 180, 0);
@@ -102,8 +98,9 @@ public class EnemyScript : MonoBehaviour
 
     private void Attack()
     {
-        if (_hasAttacked)
+        if (_hasAttacked || gameObject == null)
             return;
+        _hasAttacked = true;
         if (hasRangedAttack)
             Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         else
@@ -111,7 +108,6 @@ public class EnemyScript : MonoBehaviour
             _rigidbody2D.velocity = _npcDirection * ChargeAttackSpeed;
         }
         _audioSource.Play();
-        _hasAttacked = true;
         StartCoroutine(DelayAttack());
     }
 
