@@ -110,16 +110,8 @@ public class GameManager : MonoBehaviour
         source.clip = musicList[index];
         Debug.Log(source.clip.name);
         Debug.Log(musicList);
-        source.Stop();
+        source.loop = true;
         source.Play();
-        StartCoroutine(PlayAnotherAudioClip(musicList));
-    }
-
-    private IEnumerator PlayAnotherAudioClip(List<AudioClip> musicList)
-    {
-        yield return new WaitForSeconds(_listAudioSources[IndexAudioSourceLevelBgm].clip.length);
-        // QueueSong(musicList);
-        PlayMusic(musicList);
     }
 
     public void ChangeToSpecialBgm()

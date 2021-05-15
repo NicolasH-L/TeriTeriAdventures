@@ -50,13 +50,15 @@ public class KianaBoss : MonoBehaviour
 
     private void TakeDamage(int damage)
     {
+        if (_healthPoint - damage <= _healthPoint / 2)
+            print("");
+        
         if (_healthPoint - damage <= 0)
         {
             _isAlive = false;
             Destroy(GetComponent<Rigidbody2D>());
             Destroy(GetComponent<Collider2D>());
             Destroy(GetComponent<PolygonCollider2D>());
-            OnGameEnded?.Invoke(false);
             Invoke(nameof(DelayDeath), 2f);
             return;
         }
@@ -66,6 +68,7 @@ public class KianaBoss : MonoBehaviour
 
     private void DelayDeath()
     {
+        OnGameEnded?.Invoke(false);
         Destroy(gameObject);
     }
 }

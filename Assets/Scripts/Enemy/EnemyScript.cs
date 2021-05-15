@@ -72,7 +72,10 @@ public class EnemyScript : MonoBehaviour
         if (groundInfo.collider != false && obstacleInfo.collider == false && obstacleInfo02.collider == false
             && playerInfo.collider == false) return;
         if (playerInfo)
+        {
             Attack();
+            return;
+        }
         ChangeDirection();
     }
 
@@ -152,6 +155,7 @@ public class EnemyScript : MonoBehaviour
     private IEnumerator DelayCollisionDamage()
     {
         yield return new WaitForSeconds(1f);
+        _isCollidedWithPlayer = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
