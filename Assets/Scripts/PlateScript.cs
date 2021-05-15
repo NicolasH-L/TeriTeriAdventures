@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class plateScript : MonoBehaviour
+public class PlateScript : MonoBehaviour
 {
-
     private Rigidbody2D _rigidbody2D;
 
     private void Start()
