@@ -7,23 +7,8 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
-    public delegate void ChangeSpecialBgm();
-
-    public event ChangeSpecialBgm OnChangeSpecialBgm;
-
-    public delegate void WeaponEvent();
-
-    public event WeaponEvent OnWeaponCollected;
-
-    public delegate void GameFinished(bool isDead);
-
-    public event GameFinished OnGameEnded;
-
     private static PlayerScript _player;
-
     public static PlayerScript GetPlayerInstance => _player;
-
-
     private const string MaxExpText = "MAX";
     private const string KeyMoveRight = "d";
     private const string KeyMoveLeft = "a";
@@ -44,7 +29,9 @@ public class PlayerScript : MonoBehaviour
     private const int MaxJump = 2;
     private const int SoundEffect1 = 0;
     private const int PlayerHitAudioSourceIndex = 3;
-    private const int PickUpItemAudioSourceIndex = 4;
+    private const int PlayerSpecialSfxAudioSourceIndex = 4;
+    private const int PickupItemAudioClip = 0;
+    private const int NextLevelAudioClip = 1;
     private const int MaxHealth = 100;
     private const int WeaponBaseDamage = 50;
     private const int WoodTrapDamage = 5;
@@ -71,14 +58,15 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI playerExpUiValue;
     [SerializeField] private TextMeshProUGUI wepExpUiValue;
     [SerializeField] private List<Image> playerLives;
-
-    //TODO change the name of the variable ---V
-    [SerializeField] private SpriteRenderer _judahBack;
-
+    [SerializeField] private SpriteRenderer judahBack;
     [SerializeField] private Image invincibleStatus;
+    [SerializeField] private List<AudioClip> _playerSpecialSfx;
     private Animator _animatorPlayer;
     private Animator _invincibilityAnimator;
     private AudioSource[] _audioSource;
+    private float _judahRightRotationZ;
+    private float _judahLeftRotationZ;
+    private float _playerSpeed;
     private int _jumpCounter;
     private int _currentHealth;
     private int _invincibilityCountdown;
@@ -89,17 +77,26 @@ public class PlayerScript : MonoBehaviour
     private int _weaponLevel;
     private int _weaponLevelUpReq;
     private int _currentMaxHealth;
-    private float _judahRightRotationZ;
-    private float _judahLeftRotationZ;
-    private float _playerSpeed;
     private bool _hasAttacked;
     private bool _isMovingRight;
     private bool _isHurtSoundPlayed;
     private bool _isInvincible;
 
-    //Suggestion de Rider
+    //Suggestions faites par Rider
     private static readonly int IsInvincible = Animator.StringToHash(InvincibilityAnimatorBool);
     private static readonly int IsIdle = Animator.StringToHash("isIdle");
+
+    public delegate void ChangeSpecialBgm();
+
+    public event ChangeSpecialBgm OnChangeSpecialBgm;
+
+    public delegate void WeaponEvent();
+
+    public event WeaponEvent OnWeaponCollected;
+
+    public delegate void GameFinished(bool isDead);
+
+    public event GameFinished OnGameEnded;
 
     private void Awake()
     {
@@ -111,7 +108,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Start()
     {
-        _judahBack.enabled = false;
+        judahBack.enabled = false;
 
         if (GameManager.GameManagerInstance != null)
         {
@@ -254,7 +251,8 @@ public class PlayerScript : MonoBehaviour
         {
             case Judah:
                 OnWeaponCollected?.Invoke();
-                _judahBack.enabled = true;
+                PlaySpecialSfx(PickupItemAudioClip);
+                judahBack.enabled = true;
                 break;
             case InvincibleGourd:
                 SetInvincibility();
@@ -279,15 +277,17 @@ public class PlayerScript : MonoBehaviour
                 break;
             case NextLevel:
                 var manager = GameManager.GameManagerInstance;
-                if (GameManager.GameManagerInstance != null)
-                    manager.OnLevelEndReached += manager.NextLevel;
+                if (GameManager.GameManagerInstance == null)
+                    return;
+                PlaySpecialSfx(NextLevelAudioClip);
+                manager.OnLevelEndReached += manager.NextLevel;
                 break;
         }
     }
 
     private void GainSpeed()
     {
-        _audioSource[PickUpItemAudioSourceIndex].Play();
+        PlaySpecialSfx(PickupItemAudioClip);
         _playerSpeed += TeriTicketPlayerSpeedBoost;
         Invoke(nameof(DecreaseSpeed), 1f);
     }
@@ -310,6 +310,13 @@ public class PlayerScript : MonoBehaviour
         invincibleStatus.color = tmp;
         _invincibilityAnimator.SetBool(IsInvincible, true);
         Invoke(nameof(ReduceInvincibilityDuration), 1f);
+    }
+
+    private void PlaySpecialSfx(int specialSfxClipIndex)
+    {
+        _audioSource[PlayerSpecialSfxAudioSourceIndex].Stop();
+        _audioSource[PlayerSpecialSfxAudioSourceIndex].clip = _playerSpecialSfx[specialSfxClipIndex];
+        _audioSource[PlayerSpecialSfxAudioSourceIndex].Play();
     }
 
     private void ReduceInvincibilityDuration()
@@ -336,7 +343,7 @@ public class PlayerScript : MonoBehaviour
         if (currentBarLevel >= MaxLevel)
             return;
 
-        _audioSource[PickUpItemAudioSourceIndex].Play();
+        PlaySpecialSfx(PickupItemAudioClip);
 
         var tmp = bar.GetCurrentValue() + expValue;
         if (tmp >= bar.GetCurrentMaxValue())
@@ -380,7 +387,7 @@ public class PlayerScript : MonoBehaviour
             return;
         }
 
-        _audioSource[PickUpItemAudioSourceIndex].Play();
+        PlaySpecialSfx(PickupItemAudioClip);
         ModifyExtraLife(true, 1f);
     }
 
@@ -397,7 +404,7 @@ public class PlayerScript : MonoBehaviour
 
     private void GainHp(int value)
     {
-        _audioSource[PickUpItemAudioSourceIndex].Play();
+        PlaySpecialSfx(PickupItemAudioClip);
         _currentHealth = healthBar.GetCurrentValue() + value >= healthBar.GetCurrentMaxValue()
             ? healthBar.GetCurrentMaxValue()
             : healthBar.GetCurrentValue() + value;
@@ -421,12 +428,12 @@ public class PlayerScript : MonoBehaviour
         return _weaponDamage;
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
