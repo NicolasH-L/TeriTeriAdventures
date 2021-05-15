@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Serializable]
-public class Dialogue
+public class Dialog
 {
     private const int MinLines = 3;
     private const int MaxLines = 10;

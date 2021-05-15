@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DialogueManager : MonoBehaviour
+public class DialogManager : MonoBehaviour
 {
     private const string PlayerUiTag = "PlayerUI";
     private const string CanvasDialogTag = "CanvasDialogue";
@@ -26,15 +26,15 @@ public class DialogueManager : MonoBehaviour
         _canvasDialogue = GameObject.FindGameObjectWithTag(CanvasDialogTag).GetComponent<Canvas>();
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialog(Dialog dialog)
     {
         _dialogueBox.SetBool("IsOpen", true);
         _npc.SetBool("IsEnter", true);
         _playerUI.enabled = false;
-        _nameText.text = dialogue.name;
+        _nameText.text = dialog.name;
         _sentences.Clear();
 
-        foreach (var sentence in dialogue.sentences)
+        foreach (var sentence in dialog.sentences)
             _sentences.Enqueue(sentence);
 
         DisplayNextSentence();

@@ -9426,7 +9426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e7e5a0c90c8ec4eb83cdf819505aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
+  dialog:
     name: Otto
     sentences:
     - 'Howdy!, My name is Otto, I''ve been waiting patiently for someone like you
@@ -9434,13 +9434,13 @@ MonoBehaviour:
 
       Try not to venture too much into the paths of these
       savage native people, they put traps at random places.'
-    - 'You see, they are not human like us. They are some form of life not discovered
-      by Humans yet.
-
-      I''ve just stumbled upon them by coincidence. I''m a
-      scientist and I dont think they''re friendly with us....yet'
-    - Anyway! If you can, try not to anger them. They're not very fond of Humans
+    - "You see, they are not human like us. They are some form of life not discovered
+      by Humans yet.\r\nI've just stumbled upon them by coincidence. I'm a scientist
+      and by my research, I dont think they're friendly with us....yet\r"
+    - 'Anyway! If you can, try not to anger them. They''re not very fond of Humans
       by the looks of it.
+
+'
 --- !u!114 &1405068560
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -60,9 +60,9 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\ActivateKianaBoss.cs" />
      <Compile Include="Assets\Scripts\Chests.cs" />
-     <Compile Include="Assets\Scripts\Dialogue.cs" />
-     <Compile Include="Assets\Scripts\DialogueManager.cs" />
-     <Compile Include="Assets\Scripts\DialogueTrigger.cs" />
+     <Compile Include="Assets\Scripts\Dialog\Dialog.cs" />
+     <Compile Include="Assets\Scripts\Dialog\DialogManager.cs" />
+     <Compile Include="Assets\Scripts\Dialog\DialogTrigger.cs" />
      <Compile Include="Assets\Scripts\Enemy\Bullet.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyScript.cs" />
      <Compile Include="Assets\Scripts\GameEndScript.cs" />

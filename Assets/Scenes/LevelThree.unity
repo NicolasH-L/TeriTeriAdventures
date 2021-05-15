@@ -8509,7 +8509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e7e5a0c90c8ec4eb83cdf819505aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
+  dialog:
     name: Otto
     sentences:
     - 'Hey little one!
@@ -8520,13 +8520,19 @@ MonoBehaviour:
       These
       undergrounds are filled with a lot of Honkai beasts roaming around. Try to
       be careful!'
-    - These Honkai beasts are the result of a powerful being that used its power
+    - 'These Honkai beasts are the result of a powerful being that used its power
       to transform any living creatures to those monsters!
+
+'
     - Who's the powerful being you ask? Well, it's Kiana, she's using her power to
       prevent anyone from leaving this island!
-    - Defeat her by avoiding her abilities and dont forget to use your weapon to
+    - 'Defeat her by avoiding her abilities and dont forget to use your weapon to
       attack!
-    - If you succeed, we'll be freed from this island!!!
+
+'
+    - 'If you succeed, we''ll be freed from this island!!!
+
+'
 --- !u!114 &1682635913
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3903,8 +3903,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e7e5a0c90c8ec4eb83cdf819505aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    name: Fuhua
+  dialog:
+    name: FuHua
     sentences:
     - 'Hey Teri!
 
@@ -3914,19 +3914,21 @@ MonoBehaviour:
 
       Alternatively, you can try pressing on your spacebar
       to jump.'
-    - Awesome!, looks like your fine!. My name is FuHua and I'm here to guide you.
+    - 'Awesome!, looks like your fine!. My name is FuHua and I''m here to guide you.
+
+'
     - 'See that sign over there? that''s your weapon, you can pick it  up by walking
       nearby.
 
-      After getting the weapon, try to attack by pressing "J" on your
-      keyboard.'
+      After getting the weapon, try to attack by pressing "J" on
+      your keyboard.
+
+'
     - 'Nice!, you''re good to go! But first, let me tell you something....
 
       You
       need to escape this island as soon as possible. you must pass through the beach
-      that has a lot of native savage people roaming around.
-
-'
+      that has a lot of native savage people roaming around.'
     - 'Then you must navigate in the forest to find the bunker that will help you
       escape this island.
 
