@@ -28,33 +28,6 @@ public class PlayerScript : MonoBehaviour
     private const string KeyMoveRight = "d";
     private const string KeyMoveLeft = "a";
     private const string KeyJump = "space";
-    private const int MaxJump = 2;
-    private const int SoundEffect1 = 0;
-    private const int PlayerHitAudioSourceIndex = 3;
-    private const int PickUpItemAudioSourceIndex = 4;
-    private const int MaxHealth = 100;
-    private const int WeaponBaseDamage = 50;
-    private const int WoodTrapDamage = 5;
-    private const int LaserTrapDamage = 10;
-    private const int ContactDamage = 25;
-    private const int InvincibilityDuration = 8;
-    private const float BasePlayerSpeed = 4f;
-    private const float TeriTicketPlayerSpeedBoost = 4f;
-    private const float JumpHeight = 8f;
-    private const float DelayTime = 0.5f;
-    private const float Offset = 1f / InvincibilityDuration;
-
-    [SerializeField] private Rigidbody2D playerRigidBody2D;
-
-    [SerializeField] private SliderScript healthBar;
-    [SerializeField] private SliderScript expBar;
-    [SerializeField] private SliderScript wepExpBar;
-    [SerializeField] private TextMeshProUGUI playerLevel;
-    [SerializeField] private TextMeshProUGUI playerHpUiValue;
-    [SerializeField] private TextMeshProUGUI playerExpUiValue;
-    [SerializeField] private TextMeshProUGUI wepExpUiValue;
-    [SerializeField] private List<Image> playerLives;
-    [SerializeField] private SpriteRenderer _judahBack;
     private const string TeriTicket = "TeriTicket";
     private const string Judah = "Judah";
     private const string PinkGourd = "PinkGourd";
@@ -68,45 +41,72 @@ public class PlayerScript : MonoBehaviour
     private const string WepExpUiTag = "WepExpUI";
     private const string LaserTrapTag = "LaserTrap";
     private const int FinalLevelScene = 3;
-    private Animator _animatorPlayer;
-    [SerializeField] private Image invincibleStatus;
-    private Animator _invincibilityAnimator;
-    private AudioSource[] _audioSource;
-    private bool _isInvincible;
-    private int _jumpCounter;
-    private int _currentHealth;
+    private const int MaxJump = 2;
+    private const int SoundEffect1 = 0;
+    private const int PlayerHitAudioSourceIndex = 3;
+    private const int PickUpItemAudioSourceIndex = 4;
+    private const int MaxHealth = 100;
+    private const int WeaponBaseDamage = 50;
+    private const int WoodTrapDamage = 5;
+    private const int LaserTrapDamage = 10;
+    private const int ContactDamage = 25;
+    private const int InvincibilityDuration = 8;
     private const int HpGainValue = 10;
     private const int ExpValue = 20;
     private const int MaxLevel = 3;
     private const int BaseLevelRequirement = 100;
     private const int NextLevelExpReqOffset = 50;
+    private const float BasePlayerSpeed = 4f;
+    private const float TeriTicketPlayerSpeedBoost = 4f;
+    private const float JumpHeight = 8f;
+    private const float DelayTime = 0.5f;
+    private const float Offset = 1f / InvincibilityDuration;
+
+    [SerializeField] private Rigidbody2D playerRigidBody2D;
+    [SerializeField] private SliderScript healthBar;
+    [SerializeField] private SliderScript expBar;
+    [SerializeField] private SliderScript wepExpBar;
+    [SerializeField] private TextMeshProUGUI playerLevel;
+    [SerializeField] private TextMeshProUGUI playerHpUiValue;
+    [SerializeField] private TextMeshProUGUI playerExpUiValue;
+    [SerializeField] private TextMeshProUGUI wepExpUiValue;
+    [SerializeField] private List<Image> playerLives;
+
+    //TODO change the name of the variable ---V
+    [SerializeField] private SpriteRenderer _judahBack;
+
+    [SerializeField] private Image invincibleStatus;
+    private Animator _animatorPlayer;
+    private Animator _invincibilityAnimator;
+    private AudioSource[] _audioSource;
+    private int _jumpCounter;
+    private int _currentHealth;
     private int _invincibilityCountdown;
     private int _extraPlayerLives;
-    private float _judahRightRotationZ;
-    private float _judahLeftRotationZ;
-    private float _playerSpeed;
-    private bool _hasAttacked;
-    private bool _isMovingRight;
-    private bool _isHurtSoundPlayed;
     private int _weaponDamage;
     private int _playerLevel;
     private int _playerLevelUpReq;
     private int _weaponLevel;
     private int _weaponLevelUpReq;
     private int _currentMaxHealth;
+    private float _judahRightRotationZ;
+    private float _judahLeftRotationZ;
+    private float _playerSpeed;
+    private bool _hasAttacked;
+    private bool _isMovingRight;
+    private bool _isHurtSoundPlayed;
+    private bool _isInvincible;
+
+    //Suggestion de Rider
     private static readonly int IsInvincible = Animator.StringToHash(InvincibilityAnimatorBool);
     private static readonly int IsIdle = Animator.StringToHash("isIdle");
 
     private void Awake()
     {
         if (_player != null && _player != this)
-        {
             Destroy(gameObject);
-        }
         else
-        {
             _player = this;
-        }
     }
 
     private void Start()
@@ -150,9 +150,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyMoveRight) || Input.GetKeyUp(KeyMoveLeft) || !Input.GetKey(KeyMoveRight) &&
             !Input.GetKey(KeyMoveLeft))
-        {
             SetIdle(true);
-        }
 
         if (!Input.GetKeyDown(KeyJump) || _jumpCounter >= MaxJump) return;
         playerRigidBody2D.velocity = new Vector2(0f, JumpHeight);
@@ -168,20 +166,14 @@ public class PlayerScript : MonoBehaviour
         if (movementPlayerX == 0) return;
         SetIdle(false);
         if (Input.GetKey(KeyMoveRight) && !_isMovingRight && !Input.GetKey(KeyMoveLeft))
-        {
             ChangeDirection();
-        }
         else if (Input.GetKey(KeyMoveLeft) && _isMovingRight && !Input.GetKey(KeyMoveRight))
-        {
             ChangeDirection();
-        }
 
         if (Input.GetKey(KeyMoveRight) && _isMovingRight)
             transform.Translate(movementPlayerX, 0f, 0f);
         else if (Input.GetKey(KeyMoveLeft) && !_isMovingRight)
-        {
             transform.Translate(-movementPlayerX, 0f, 0f);
-        }
     }
 
     private void SetIdle(bool isIdle)
@@ -189,18 +181,17 @@ public class PlayerScript : MonoBehaviour
         _animatorPlayer.SetBool(IsIdle, isIdle);
     }
 
-
     private void ChangeDirection()
     {
         transform.Rotate(0, 180, 0);
         _isMovingRight = !_isMovingRight;
     }
 
-
     public void TakeDamage(int damage)
     {
         if (_isInvincible || _currentHealth <= 0 && _extraPlayerLives == 0)
             return;
+
         if (!_isHurtSoundPlayed)
         {
             _audioSource[PlayerHitAudioSourceIndex].Play();
@@ -294,7 +285,6 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-
     private void GainSpeed()
     {
         _audioSource[PickUpItemAudioSourceIndex].Play();
@@ -345,6 +335,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (currentBarLevel >= MaxLevel)
             return;
+
         _audioSource[PickUpItemAudioSourceIndex].Play();
 
         var tmp = bar.GetCurrentValue() + expValue;
@@ -367,7 +358,7 @@ public class PlayerScript : MonoBehaviour
                     _weaponDamage += WeaponBaseDamage;
                     break;
             }
-            
+
             if (currentBarLevel >= MaxLevel)
             {
                 bar.SetValue(bar.GetCurrentMaxValue());
@@ -376,9 +367,7 @@ public class PlayerScript : MonoBehaviour
             }
         }
         else
-        {
             bar.SetValue(tmp);
-        }
 
         SetBarTextValue(ref textMeshProUGUI, tmp.ToString(), bar.GetCurrentMaxValue().ToString());
     }
