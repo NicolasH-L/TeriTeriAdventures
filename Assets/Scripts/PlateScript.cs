@@ -5,7 +5,7 @@ public class PlateScript : MonoBehaviour
 {
     private const string GroundTag = "Ground";
     private const string PlayerTag = "Player";
-    private const float Delay = 0.5f;
+    private const float Delay = 1f;
     private const int GravityScale = 5;
     private Rigidbody2D _rigidbody2D;
 
