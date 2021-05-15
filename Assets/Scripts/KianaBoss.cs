@@ -8,7 +8,7 @@ public class KianaBoss : MonoBehaviour
     [SerializeField] private Transform cookieBullets;
     [SerializeField] private List<GameObject> cookiePortals;
     private const string JudahWeapon = "JudahWeapon";
-    private const int StartingHealthPoint = 1000;
+    private const int StartingHealthPoint = 1500;
     private Animator _animator;
     private Random _random;
     private const float HoverDelay = 0.5f;

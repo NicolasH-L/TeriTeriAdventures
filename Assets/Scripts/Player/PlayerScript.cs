@@ -32,8 +32,8 @@ public class PlayerScript : MonoBehaviour
     private const int SoundEffect1 = 0;
     private const int PlayerHitAudioSourceIndex = 3;
     private const int PickUpItemAudioSourceIndex = 4;
-    private const int MaxHealth = 10000;
-    private const int WeaponBaseDamage = 400;
+    private const int MaxHealth = 100;
+    private const int WeaponBaseDamage = 50;
     private const int WoodTrapDamage = 5;
     private const int LaserTrapDamage = 10;
     private const int ContactDamage = 25;
@@ -111,7 +111,6 @@ public class PlayerScript : MonoBehaviour
 
     private void Start()
     {
-        // _playerLives = StartingPlayerLives;
         _judahBack.enabled = false;
 
         if (GameManager.GameManagerInstance != null)
