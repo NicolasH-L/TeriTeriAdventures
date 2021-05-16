@@ -16,15 +16,14 @@ namespace Player
         [SerializeField] private List<AudioClip> listAttackClips;
         [SerializeField] private GameObject judahWeapon;
         [SerializeField] private SpriteRenderer judahBack;
-        private PolygonCollider2D _judahCollider;
         private List<AudioSource> _audioSource;
-        private Animator _animatorPlayer;
         private List<Animator> _liste;
+        private Animator _animatorPlayer;
+        private PolygonCollider2D _judahCollider;
         private float _appearTime;
+        private int _audioClipIndex;
         private bool _hasAttacked;
         private bool _hasWeapon;
-
-        private int _audioClipIndex;
 
         //Suggestion made by Rider
         private static readonly int AttackTrigger = Animator.StringToHash("Attack");
@@ -39,8 +38,9 @@ namespace Player
 
         private void Start()
         {
-            _audioSource.AddRange(GetComponents<AudioSource>());
             _audioClipIndex = 0;
+            _audioSource = new List<AudioSource>();
+            _audioSource.AddRange(GetComponents<AudioSource>());
             _audioSource[AttackAudioSourceIndex].clip = listAttackClips[_audioClipIndex];
             _liste = new List<Animator>();
             _liste.AddRange(GetComponentsInChildren<Animator>());
@@ -60,13 +60,6 @@ namespace Player
             }
         }
 
-        private IEnumerator Delay()
-        {
-            yield return new WaitForSeconds(DelayTime);
-            _hasAttacked = false;
-            ChangeAttackAudioClip();
-        }
-
         private void AppearBack()
         {
             judahBack.enabled = true;
@@ -84,7 +77,14 @@ namespace Player
             judahWeapon.SetActive(true);
             judahBack.enabled = false;
             _hasAttacked = true;
-            StartCoroutine(Delay());
+            StartCoroutine(ResetDelayNextAttack());
+        }
+
+        private IEnumerator ResetDelayNextAttack()
+        {
+            yield return new WaitForSeconds(DelayTime);
+            _hasAttacked = false;
+            ChangeAttackAudioClip();
         }
 
         private void ChangeAttackAudioClip()

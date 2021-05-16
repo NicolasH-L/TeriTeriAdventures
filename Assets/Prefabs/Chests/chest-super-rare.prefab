@@ -122,6 +122,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chests: {fileID: 21300000, guid: d9bded44557247a4fb0e1a849d971678, type: 3}
-  _listItems:
+  listItems:
   - {fileID: 5375854096897063736, guid: f4658344f61409f419d118e221a16ba5, type: 3}
   - {fileID: 7607526443653402715, guid: 4e0ae725626ad2242804485deeb89214, type: 3}

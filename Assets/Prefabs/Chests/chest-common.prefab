@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chests: {fileID: 21300000, guid: 7c82848e445cbd34dbd69cce2e6d52a6, type: 3}
-  _listItems:
+  listItems:
   - {fileID: 893055358069795627, guid: 119121e1c500b69429a30e461e77f8bf, type: 3}
   - {fileID: 1759919213685272300, guid: 145a684e4bd5e9142985f50f9e864f50, type: 3}
   - {fileID: 3830288519275501973, guid: 64ec665c4ecb70749be04c9f9dd66b2a, type: 3}
