@@ -59,7 +59,7 @@ public class KianaBoss : MonoBehaviour
     private void TakeDamage(int damage)
     {
         _isHit = true;
-        if (_healthPoint - damage <= _healthPoint / 2)
+        if (_healthPoint - damage <= StartingHealthPoint / 2)
             _animator.SetBool(IsBald, true);
 
         if (_healthPoint - damage <= 0)
