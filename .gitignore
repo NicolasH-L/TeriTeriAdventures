@@ -2,7 +2,6 @@
 # Unity folders and files
 ###
 [Aa]ssets/AssetStoreTools*
-[Aa]ssets/TextMesh*Pro/
 [Bb]uild/
 [Ll]ibrary/
 [Ll]ocal[Cc]ache/
@@ -13,7 +12,7 @@
 sysinfo.txt
 # Unity3D generated meta files
 *.pidb.meta
-*Pro.meta
+
 
 # Unity3D Generated 
 *.idea/
