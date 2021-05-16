@@ -307,9 +307,9 @@ namespace Player
             OnChangeSpecialBgm?.Invoke();
             _isInvincible = true;
             _invincibilityCountdown = InvincibilityDuration;
-            var tmp = invincibleStatus.color;
-            tmp.a = 1f;
-            invincibleStatus.color = tmp;
+            var invincibleStatusColor = invincibleStatus.color;
+            invincibleStatusColor.a = 1f;
+            invincibleStatus.color = invincibleStatusColor;
             _invincibilityAnimator.SetBool(IsInvincible, true);
             Invoke(nameof(ReduceInvincibilityDuration), 1f);
         }
@@ -323,19 +323,19 @@ namespace Player
 
         private void ReduceInvincibilityDuration()
         {
-            var tmp = invincibleStatus.color;
+            var invincibleStatusColor = invincibleStatus.color;
             if (_invincibilityCountdown.Equals(0))
             {
                 _invincibilityAnimator.SetBool(IsInvincible, false);
-                tmp.a = 0f;
-                invincibleStatus.color = tmp;
+                invincibleStatusColor.a = 0f;
+                invincibleStatus.color = invincibleStatusColor;
                 _isInvincible = false;
                 return;
             }
 
             --_invincibilityCountdown;
-            tmp.a -= Offset;
-            invincibleStatus.color = tmp;
+            invincibleStatusColor.a -= Offset;
+            invincibleStatus.color = invincibleStatusColor;
             Invoke(nameof(ReduceInvincibilityDuration), 1f);
         }
 
@@ -347,11 +347,11 @@ namespace Player
 
             PlaySpecialSfx(PickupItemAudioClip);
 
-            var tmp = bar.GetCurrentValue() + expValue;
-            if (tmp >= bar.GetCurrentMaxValue())
+            var barCurrentValue = bar.GetCurrentValue() + expValue;
+            if (barCurrentValue >= bar.GetCurrentMaxValue())
             {
-                tmp -= nextLevelExpReq;
-                bar.SetValue(tmp);
+                barCurrentValue -= nextLevelExpReq;
+                bar.SetValue(barCurrentValue);
                 nextLevelExpReq += NextLevelExpReqOffset;
                 bar.SetMaxValue(nextLevelExpReq);
                 ++currentBarLevel;
@@ -376,9 +376,9 @@ namespace Player
                 }
             }
             else
-                bar.SetValue(tmp);
+                bar.SetValue(barCurrentValue);
 
-            SetBarTextValue(ref textMeshProUGUI, tmp.ToString(), bar.GetCurrentMaxValue().ToString());
+            SetBarTextValue(ref textMeshProUGUI, barCurrentValue.ToString(), bar.GetCurrentMaxValue().ToString());
         }
 
         private void GainExtraLife()
@@ -396,9 +396,9 @@ namespace Player
         private void ModifyExtraLife(bool isAddLife, float alphaValue)
         {
             var index = isAddLife ? _extraPlayerLives : _extraPlayerLives - 1;
-            var tmp = playerLives[index].color;
-            tmp.a = alphaValue;
-            playerLives[index].color = tmp;
+            var playerExtraLifeIconColor = playerLives[index].color;
+            playerExtraLifeIconColor.a = alphaValue;
+            playerLives[index].color = playerExtraLifeIconColor;
             if (_extraPlayerLives > playerLives.Count)
                 return;
             _extraPlayerLives = isAddLife ? ++_extraPlayerLives : --_extraPlayerLives;
