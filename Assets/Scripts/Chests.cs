@@ -11,12 +11,12 @@ public class Chests : MonoBehaviour
     private SpriteRenderer _chestsRenderer;
     private GameObject _itemToSpawn;
 
-    void Start()
+    private void Start()
     {
         _chestsRenderer = GetComponent<SpriteRenderer>();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.gameObject.CompareTag(PlayerTag)) return;
         _chestsRenderer.sprite = chests;

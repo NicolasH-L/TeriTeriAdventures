@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     private const string DialogManagerTag = "DialogManager";
     private const string PauseMenuTag = "PauseMenu";
     private const string MainCamera = "MainCamera";
-    private const int BaseInvincibilityDuration = 8;
+    private const int BaseInvincibilityDurationInSeconds = 8;
     private const int IndexAudioSourceLevelBgm = 0;
     private const int IndexAudioSourceSpecialBgm = 1;
     private const int GameEndSceneIndex = 4;
@@ -26,15 +26,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<AudioClip> listLevelBgm;
     [SerializeField] private AudioClip invincibleBgm;
     [SerializeField] private AudioClip bossMusic;
-    private Canvas _canvas;
-    private Canvas _pauseMenu;
+    private List<AudioSource> _listAudioSources;
     private AudioSource _levelAudioSource;
     private AudioSource _specialAudioSource;
     private GameObject _playerSpawnLocation;
     private GameObject _dialogManager;
-    private Camera _playerCamera;
-    private List<AudioSource> _listAudioSources;
     private PlayerScript _player;
+    private Camera _playerCamera;
+    private Canvas _canvas;
+    private Canvas _pauseMenu;
     private int _invincibilityDuration;
     private int _currentLevel;
     private int _playingClipIndex;
@@ -62,9 +62,7 @@ public class GameManager : MonoBehaviour
         _invincibilityDuration = 0;
         _playingClipIndex = 0;
 
-        // QueueSong(listWelcomeBgm);
         QueueWelcomeSong();
-
         DontDestroyOnLoad(this);
     }
 
@@ -129,7 +127,7 @@ public class GameManager : MonoBehaviour
 
         _isMusicPaused = true;
         _specialAudioSource.Play();
-        _invincibilityDuration = BaseInvincibilityDuration;
+        _invincibilityDuration = BaseInvincibilityDurationInSeconds;
         Invoke(nameof(CountdownChangeMusic), 1f);
     }
 
@@ -144,7 +142,6 @@ public class GameManager : MonoBehaviour
                 PlayMusic(listLevelBgm);
             else
                 _listAudioSources[IndexAudioSourceLevelBgm].UnPause();
-
             return;
         }
 
@@ -170,13 +167,19 @@ public class GameManager : MonoBehaviour
             PlayMusic(listLevelBgm);
     }
 
+    private IEnumerator DelayEndReachedReset()
+    {
+        yield return new WaitForSeconds(5f);
+        _isEndReached = false;
+    }
+
     private void GetPlayer(Scene scene, LoadSceneMode mode)
     {
         if (SceneManager.GetActiveScene().buildIndex > FinalLevelScene ||
             SceneManager.GetActiveScene().buildIndex == 0) return;
         _player = PlayerScript.GetPlayerInstance;
-        _playerSpawnLocation = GameObject.FindGameObjectWithTag(PlayerSpawnLocationTag);
         _playerCamera = Camera.main;
+        _playerSpawnLocation = GameObject.FindGameObjectWithTag(PlayerSpawnLocationTag);
         _canvas = GameObject.FindGameObjectWithTag(PlayerUiTag).GetComponent<Canvas>();
         _pauseMenu = GameObject.FindGameObjectWithTag(PauseMenuTag).GetComponent<Canvas>();
         _dialogManager = GameObject.FindGameObjectWithTag(DialogManagerTag);
@@ -186,14 +189,7 @@ public class GameManager : MonoBehaviour
     {
         return _player.GetWeaponDamage();
     }
-
-
-    private IEnumerator DelayEndReachedReset()
-    {
-        yield return new WaitForSeconds(5f);
-        _isEndReached = false;
-    }
-
+    
     public void EnableBossFight()
     {
         _listAudioSources[IndexAudioSourceLevelBgm].Stop();

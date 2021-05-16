@@ -6,6 +6,7 @@ public class GameEndScript : MonoBehaviour
     private const int MainMenuSceneIndex = 0;
     [SerializeField] private AudioClip music;
     private AudioSource _audioSource;
+
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -21,7 +22,6 @@ public class GameEndScript : MonoBehaviour
         _audioSource.Stop();
         SceneManager.LoadScene(MainMenuSceneIndex);
     }
-
 
     public void QuitGame()
     {
