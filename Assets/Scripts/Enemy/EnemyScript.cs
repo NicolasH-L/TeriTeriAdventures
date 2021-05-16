@@ -25,6 +25,7 @@ namespace Enemy
         private const float ChargeAttackSpeed = 5f;
         private const float MeleeAttackDelay = 5f;
         private const float RangeAttackDelay = 1f;
+        private const float CollisionAttackDelay = 1f;
         private const float GroundDetectionDistance = 0.6f;
         private const float ObstacleDetectionDistance = 0f;
         private const float ObstacleDetectionDistance2 = 1f;
@@ -38,17 +39,17 @@ namespace Enemy
         [SerializeField] private bool hasRangedAttack;
         [SerializeField] private int healthPoint;
         [SerializeField] private int damagePoint;
+        private AudioSource _audioSource;
+        private Rigidbody2D _rigidbody2D;
+        private List<Collider2D> _colliders;
         private Vector2 _npcMovement;
         private Vector2 _npcDirection;
         private bool _hasAttacked;
         private bool _isMovingLeft;
         private bool _isCollidedWithPlayer;
         private bool _isHit;
-        private AudioSource _audioSource;
-        private Rigidbody2D _rigidbody2D;
-        private List<Collider2D> _colliders;
-        private float _movementSpeed;
         private bool _isgameObjectNull;
+        private float _movementSpeed;
 
         private void Start()
         {
@@ -73,10 +74,13 @@ namespace Enemy
             transform.Translate(_npcMovement * Time.deltaTime);
             var groundInfo = Physics2D.Raycast(groundDetection.position,
                 Vector2.down, GroundDetectionDistance, 1 << LayerMask.NameToLayer(DefaultLayerMask));
+            
             var obstacleInfo = Physics2D.Raycast(obstacleDetection.position, _npcDirection, ObstacleDetectionDistance,
                 1 << LayerMask.NameToLayer(DefaultLayerMask));
+            
             var obstacleInfo02 = Physics2D.Raycast(obstacleDetection02.position, _npcDirection, ObstacleDetectionDistance2,
                 1 << LayerMask.NameToLayer(DefaultLayerMask));
+            
             var playerInfo = Physics2D.Raycast(playerDetection.position, _npcDirection, PlayerDetectionDistance,
                 1 << LayerMask.NameToLayer(PlayerLayerMask));
 
@@ -87,7 +91,6 @@ namespace Enemy
                 Attack();
                 return;
             }
-
             ChangeDirection();
         }
 
@@ -143,7 +146,6 @@ namespace Enemy
                 Destroy(gameObject);
                 return;
             }
-
             healthPoint -= damage;
             StartCoroutine(ResetIsHit());
         }
@@ -169,27 +171,28 @@ namespace Enemy
 
         private IEnumerator DelayCollisionDamage()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(CollisionAttackDelay);
             _isCollidedWithPlayer = false;
         }
-
+        
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.CompareTag(JudahWeaponTag) && OnPlayerWeaponDamageLoaded != null)
                 TakeDamage(OnPlayerWeaponDamageLoaded());
         }
 
-        private void OnTriggerExit2D(Collider2D other)
-        {
-            if (other.gameObject.CompareTag(PlayerTag))
-                _movementSpeed = WalkSpeed;
-        }
 
         private void OnTriggerStay2D(Collider2D other)
         {
             if (!other.gameObject.CompareTag(PlayerTag) || _hasAttacked) return;
             _movementSpeed = RunSpeed;
             Attack();
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.gameObject.CompareTag(PlayerTag))
+                _movementSpeed = WalkSpeed;
         }
     }
 }
