@@ -27,9 +27,9 @@ namespace Player
         private const string PlayerExpUiTag = "PlayerExpUI";
         private const string WepExpUiTag = "WepExpUI";
         private const string LaserTrapTag = "LaserTrap";
+        private const int SoundEffect1 = 0;
         private const int FinalLevelScene = 3;
         private const int MaxJump = 2;
-        private const int SoundEffect1 = 0;
         private const int PlayerHitAudioSourceIndex = 3;
         private const int PlayerSpecialSfxAudioSourceIndex = 4;
         private const int PickupItemAudioClip = 0;

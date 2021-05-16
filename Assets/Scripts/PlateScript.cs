@@ -6,10 +6,10 @@ public class PlateScript : MonoBehaviour
 {
     private const string PlayerTag = "Player";
     private const int GravityScale = 5;
+    [SerializeField] private List<AudioClip> listAudioClip;
     private Rigidbody2D _rigidbody2D;
     private AudioSource _audioSource;
     private bool _isTouched;
-    [SerializeField] private List<AudioClip> listAudioClip;
 
     private void Start()
     {

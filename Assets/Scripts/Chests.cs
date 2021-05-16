@@ -6,8 +6,8 @@ public class Chests : MonoBehaviour
     private const string PlayerTag = "Player";
     private const float OffSetY = 1.5f;
     private const float OffSetX = 0.1f;
-    [SerializeField] private Sprite chests;
     [SerializeField] private List<GameObject> listItems;
+    [SerializeField] private Sprite chests;
     private SpriteRenderer _chestsRenderer;
     private GameObject _itemToSpawn;
 

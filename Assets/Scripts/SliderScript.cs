@@ -4,11 +4,11 @@ using UnityEngine.UI;
 
 public class SliderScript : MonoBehaviour
 {
+    private const int FinalLevelScene = 3;
     private Slider _slider;
     private int _currentMaxValue;
     private int _currentValue;
-    private const int FinalLevelScene = 3;
-    
+
     private void Awake()
     {
         _slider = GetComponent<Slider>();
@@ -35,7 +35,7 @@ public class SliderScript : MonoBehaviour
     {
         return _currentValue;
     }
-    
+
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -49,9 +49,7 @@ public class SliderScript : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
         if (SceneManager.GetActiveScene().buildIndex <= FinalLevelScene) return;
-        
         Destroy(gameObject);
         Destroy(this);
     }
-
 }
