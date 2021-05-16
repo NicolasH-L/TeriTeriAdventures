@@ -11,7 +11,7 @@ namespace NpcDialog
             TriggerDialog();
         }
 
-        public void TriggerDialog()
+        private void TriggerDialog()
         {
             FindObjectOfType<DialogManager>().StartDialog(dialog);
         }

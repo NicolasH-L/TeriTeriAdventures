@@ -26,7 +26,7 @@ namespace NpcDialog
         private void Start()
         {
             _sentences = new Queue<string>();
-            // Enable Line for Testing only.
+            // Enable Line under for Testing only .
             // if (GameObject.FindGameObjectWithTag(PlayerUiTag) != null)
             _playerUI = GameObject.FindGameObjectWithTag(PlayerUiTag).GetComponent<Canvas>();
             _nameText = GameObject.FindGameObjectWithTag(NameTag).GetComponent<TextMeshProUGUI>();
@@ -38,7 +38,7 @@ namespace NpcDialog
         {
             dialogBox.SetBool(IsOpen, true);
             npc.SetBool(IsEnter, true);
-            // Enable Line for Testing only.
+            // Enable Line under for Testing only.
             // if (_playerUI != null)
             _playerUI.enabled = false;
             _nameText.text = dialog.name;
@@ -68,7 +68,7 @@ namespace NpcDialog
             dialogBox.SetBool(IsOpen, false);
             npc.SetBool(IsEnter, false);
             _canvasDialog.enabled = false;
-            // Enable Line for Testing only.
+            // Enable Line under for Testing only.
             // if (_playerUI != null)
             _playerUI.enabled = true;
         }

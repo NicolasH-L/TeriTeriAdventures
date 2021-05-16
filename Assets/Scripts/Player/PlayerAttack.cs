@@ -9,21 +9,24 @@ namespace Player
         private static PlayerAttack _playerAttack;
         public static PlayerAttack PlayerAttackInstance => _playerAttack;
 
-        private const int SoundEffect2 = 1;
-        private const int AttackAudioSourceIndex = 2;
         private const string AttackInpuKey = "j";
         private const float DelayTime = 0.6f;
+        private const int SoundEffect2 = 1;
+        private const int AttackAudioSourceIndex = 2;
         [SerializeField] private List<AudioClip> listAttackClips;
         [SerializeField] private GameObject judahWeapon;
         [SerializeField] private SpriteRenderer judahBack;
         private PolygonCollider2D _judahCollider;
-        private AudioSource[] _audioSource;
+        private List<AudioSource> _audioSource;
         private Animator _animatorPlayer;
         private List<Animator> _liste;
         private float _appearTime;
         private bool _hasAttacked;
         private bool _hasWeapon;
+
         private int _audioClipIndex;
+
+        //Suggestion made by Rider
         private static readonly int AttackTrigger = Animator.StringToHash("Attack");
 
         private void Awake()
@@ -36,7 +39,7 @@ namespace Player
 
         private void Start()
         {
-            _audioSource = GetComponents<AudioSource>();
+            _audioSource.AddRange(GetComponents<AudioSource>());
             _audioClipIndex = 0;
             _audioSource[AttackAudioSourceIndex].clip = listAttackClips[_audioClipIndex];
             _liste = new List<Animator>();
