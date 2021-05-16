@@ -4675,10 +4675,11 @@ MonoBehaviour:
 
       Alternatively, you can try pressing on your spacebar
       to jump.'
-    - 'Awesome!, looks like your fine!. My name is FuHua and I''m here to guide you.
+    - 'Awesome!, looks like you''re fine!. My name is FuHua and I''m here to guide
+      you.
 
 '
-    - 'See that sign over there? that''s your weapon, you can pick it  up by walking
+    - 'See that sign over there? That''s your weapon, you can pick it  up by walking
       nearby.
 
       After getting the weapon, try to attack by pressing "J" on your
@@ -4688,7 +4689,7 @@ MonoBehaviour:
     - 'Nice!, you''re good to go! But first, let me tell you something....
 
       You
-      need to escape this island as soon as possible. you must pass through this
+      need to escape this island as soon as possible. You must pass through this
       beach that has a lot of native savage people roaming around.'
     - 'Then you must navigate in the forest to find the bunker that will help you
       escape this island.
