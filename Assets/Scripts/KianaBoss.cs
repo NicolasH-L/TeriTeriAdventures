@@ -12,6 +12,7 @@ public class KianaBoss : MonoBehaviour
     private static readonly int IsBald = Animator.StringToHash("IsBald");
     [SerializeField] private Transform cookieBullets;
     [SerializeField] private List<GameObject> cookiePortals;
+    private AudioSource _audioSource;
     private Animator _animator;
     private Random _random;
     private int _healthPoint;
@@ -31,6 +32,7 @@ public class KianaBoss : MonoBehaviour
 
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _animator = GetComponent<Animator>();
         _isAlive = true;
         _healthPoint = StartingHealthPoint;
@@ -71,6 +73,7 @@ public class KianaBoss : MonoBehaviour
             StartCoroutine(DelayDeath());
             return;
         }
+        _audioSource.Play();
         _healthPoint -= damage;
         StartCoroutine(ResetIsHit());
     }
