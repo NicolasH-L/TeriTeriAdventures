@@ -35,9 +35,9 @@ namespace Player
         private const int PickupItemAudioClip = 0;
         private const int NextLevelAudioClip = 1;
         private const int MaxHealth = 100;
-        private const int WeaponBaseDamage = 50;
+        private const int WeaponBaseDamage = 70;
         private const int WoodTrapDamage = 15;
-        private const int LaserTrapDamage = 40;
+        private const int LaserTrapDamage = 25;
         private const int ContactDamage = 30;
         private const int InvincibilityDuration = 8;
         private const int HpGainValue = 10;

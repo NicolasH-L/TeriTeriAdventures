@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3461230531743316265}
   - component: {fileID: 466434462559738258}
   m_Layer: 2
-  m_Name: honkaiProjectile
+  m_Name: HonkaiBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3618146d7e1f7364aa13d9bde5756bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 45
+  bulletDamage: 25
 --- !u!50 &3461230531743316265
 Rigidbody2D:
   serializedVersion: 4
