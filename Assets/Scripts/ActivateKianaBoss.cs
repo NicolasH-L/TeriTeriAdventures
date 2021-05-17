@@ -13,12 +13,12 @@ public class ActivateKianaBoss : MonoBehaviour
     public delegate void BossFight();
 
     public event BossFight OnPlayerReachedBossLevel;
+    
 
     private void Start()
     {
         if (GameManager.GameManagerInstance == null) return;
         OnPlayerReachedBossLevel += GameManager.GameManagerInstance.EnableBossFight;
-        blockingWall.SetActive(false);
         kianaBoss.enabled = false;
         spawnChests.enabled = false;
     }

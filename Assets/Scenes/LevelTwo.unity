@@ -15769,20 +15769,23 @@ MonoBehaviour:
     - 'Hey!... Yeah you!
 
       My name is Otto, and I''ve been stuck on this island
-      for a long time now... You don''t look weak and I could use your help
+      for a long time now... '
+    - You don't look weak and I could use your help to get us out of this Island.
+    - If you don't mind lending your help, I'll share some information I gathered
+      from my research.
+    - 'I''m just a scientist that was sent here to do some research on the local
+      wildlife and I''ve encountered them by coincidence.
 
-      to
-      get us out of this Island. If you don''t mind lending your help, I''ll share
-      some information I gathered from my research.'
-    - "I'm just a scientist that was sent here to do some research on the local wildlife
-      and I've encountered them by coincidence.\r\nYou see... They are not human
-      like us, they can shoot weird green energy orbs and speak in a foreign language.
-      \r\nThese people or... should I say these Island Savage Natives have been living
-      inside this longhouse-like structure.\r\nThey love to set TRAPS inside their
-      house to catch preys, so... "
-    - Anyways! You should be careful while looking for a way out... Oh! and try to
-      stay alive and get us of both out of here safely please. Oh! and ugh these
-      "people", don't look like they are very fond of Humans so be extra careful.
+      You see... They
+      are not human like us, they can shoot weird green energy orbs and speak in
+      a foreign language.'
+    - These people or... should I say these Island Savage Natives have been living
+      inside this longhouse-like structure.
+    - They love to set TRAPS inside their house to catch preys, so...
+    - Anyways! You should be careful while looking for a way out...
+    - Oh! and try to stay alive and get us of both out of here safely please. Oh!
+      and ugh these "people", don't look like they are very fond of Humans so be
+      extra careful.
 --- !u!114 &1405068560
 MonoBehaviour:
   m_ObjectHideFlags: 0

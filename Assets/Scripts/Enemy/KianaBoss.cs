@@ -19,7 +19,6 @@ namespace Enemy
         private int _healthPoint;
         private bool _isAlive;
         private bool _isBald;
-
         private bool _isHit;
 
         //Suggestion made by Rider
@@ -38,9 +37,11 @@ namespace Enemy
 
         private void Start()
         {
+            if (GameManager.GameManagerInstance == null)
+                return;
+            _isAlive = true;
             _audioSource = GetComponent<AudioSource>();
             _animator = GetComponent<Animator>();
-            _isAlive = true;
             _healthPoint = StartingHealthPoint;
             SpawnBullets();
         }
@@ -101,5 +102,6 @@ namespace Enemy
             OnGameEnded?.Invoke(false);
             Destroy(gameObject);
         }
+        
     }
 }

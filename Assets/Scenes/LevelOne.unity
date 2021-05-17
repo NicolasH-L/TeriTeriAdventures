@@ -969,7 +969,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -520.6352, y: 169.75003}
+  m_AnchoredPosition: {x: -520.6352, y: 170.5}
   m_SizeDelta: {x: 62.099308, y: 6.975554}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &179837547
@@ -2039,7 +2039,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -520.2, y: 144.77}
+  m_AnchoredPosition: {x: -520.2, y: 144.2}
   m_SizeDelta: {x: 164.87624, y: 36.787254}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &350186569
@@ -4673,35 +4673,24 @@ MonoBehaviour:
     - 'Are you okay? Try to move your body with "A" and "D" on your keyboard to see
       if you''re fine.
 
-      Alternatively, you can try pressing on your spacebar
-      to jump.'
-    - 'Awesome!, looks like you''re fine!. My name is FuHua and I''m here to guide
-      you.
-
 '
-    - 'See that sign over there? That''s your weapon, you can pick it  up by walking
-      nearby.
-
-      After getting the weapon, try to attack by pressing "J" on your
-      keyboard.
-
-'
-    - 'Nice!, you''re good to go! But first, let me tell you something....
-
-      You
-      need to escape this island as soon as possible. You must pass through this
-      beach first.'
+    - Alternatively, you can try pressing on your spacebar to jump.
+    - Awesome!, looks like you're fine!. My name is FuHua and I'm here to guide you.
+    - See that sign over there? That's your weapon, you can pick it up by walking
+      up to the sign.
+    - After getting the weapon, try to attack by pressing "J" on your keyboard.
+    - Nice!, you're good to go! But first, let me tell you something....
+    - You need to escape this island as soon as possible. You must pass through this
+      beach first.
     - 'Then you must navigate through the forest and find the bunker
 
       But!
       Beware of whats behind the bunker. Powerful creates lurk in there and at the
-      of the bunker you will find the Gatekeeper.
+      of the bunker you will find the Gatekeeper.'
+    - 'Once you defeat the Gatekeeper you will be fre from this island.
 
-      Once you defeat the Gatekeeper
-      you will be fre from this island.
-
-      I wish you good luck and have faith
-      in yourself!!'
+      I
+      wish you good luck and have faith in yourself!!'
 --- !u!114 &781039316
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8730,13 +8730,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8764166212247419591, guid: c4f7111915ab198418a610b4e1aa0994,
         type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 8764166212247419591, guid: c4f7111915ab198418a610b4e1aa0994,
+        type: 3}
       propertyPath: m_Name
       value: BlockingWall
       objectReference: {fileID: 0}
     - target: {fileID: 8764166212247419591, guid: c4f7111915ab198418a610b4e1aa0994,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8764166212247419591, guid: c4f7111915ab198418a610b4e1aa0994,
         type: 3}
@@ -9621,8 +9627,9 @@ MonoBehaviour:
     - 'Great... Great! Don''t give up! We''re about to get out of this island!
 
       Here
-      you''ll find many Honkai beasts roaming around. They are very agressive and
-      deal a lot of damage, so don''t stick around them for too long.'
+      you''ll find many Honkai beasts roaming around. '
+    - They are very agressive and deal a lot of damage, so don't stick around them
+      for too long.
     - Also, I spotted some scary looking Honkai Laser Traps, I wouldn't try to get
       too close to them if I were you.
     - 'Oh you don''t know what Honkai beasts are!?
@@ -9630,22 +9637,16 @@ MonoBehaviour:
       They are the result of
       a powerful being that used its power to transform any living creatures into
       those monsters!'
-    - 'Who''s this powerful being you ask? Well, it''s the Gatekeeper Kiana, she''s
-      is the one responsible for this island mess and the reason why
-
-      we are
-      unable to leave.
-
-      Oh and ugh... Apparently she can create portals that
-      shoots homing cookies, so that''s pretty interesting... Anyways, don''t get
-      hit by the
+    - "Who's this powerful being you ask? \r\nWell, it's the Gatekeeper Kiana, she's
+      is the one responsible for this island mess and the reason why we are unable
+      to leave."
+    - 'Oh and ugh... Apparently she can create portals that shoots homing cookies,
+      so that''s pretty interesting... Anyways, don''t get hit by the
 
       cookies.'
-    - 'What should you do, you ask? Well, just make sure to avoid her cookies and
+    - What should you do, you ask? Well, just make sure to avoid her cookies and
       defeat her with your weapon.
-
-      I wish you good luck in your endeavors.
-      And please get us out of her safely.'
+    - I wish you good luck in your endeavors. And please get us out of her safely.
 --- !u!114 &1682635913
 MonoBehaviour:
   m_ObjectHideFlags: 0
