@@ -4690,15 +4690,18 @@ MonoBehaviour:
 
       You
       need to escape this island as soon as possible. You must pass through this
-      beach that has a lot of native savage people roaming around.'
-    - 'Then you must navigate in the forest to find the bunker that will help you
-      escape this island.
+      beach first.'
+    - 'Then you must navigate through the forest and find the bunker
 
-      But! Beware of whats behind the bunker. It resides
-      powerful beasts that guard the underground and the gate keeper.
+      But!
+      Beware of whats behind the bunker. Powerful creates lurk in there and at the
+      of the bunker you will find the Gatekeeper.
 
-      Good
-      luck and have faith in yourself!!'
+      Once you defeat the Gatekeeper
+      you will be fre from this island.
+
+      I wish you good luck and have faith
+      in yourself!!'
 --- !u!114 &781039316
 MonoBehaviour:
   m_ObjectHideFlags: 0

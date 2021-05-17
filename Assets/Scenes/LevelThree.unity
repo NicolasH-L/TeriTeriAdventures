@@ -7318,8 +7318,8 @@ Transform:
   - {fileID: 286646217}
   - {fileID: 121638726}
   - {fileID: 133320784}
-  - {fileID: 1262437361}
   - {fileID: 430233403731063419}
+  - {fileID: 1262437361}
   - {fileID: 1423949820166211614}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -7405,7 +7405,8 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 29060326fd255f842b910a57e06d2ab1, type: 3}
 --- !u!4 &1262437361 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 430233404009240306, guid: 29060326fd255f842b910a57e06d2ab1,
+    type: 3}
   m_PrefabInstance: {fileID: 1262437360}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1272430169
@@ -9614,27 +9615,37 @@ MonoBehaviour:
   dialog:
     name: Otto
     sentences:
-    - 'Hey little one!
+    - 'Hey!
 
-      I''m glad you made this far.'
-    - 'You''re very close to reach the end of this adventure, dont lose hope yet!
+      I''m glad you made it this far.'
+    - 'Great... Great! Don''t give up! We''re about to get out of this island!
 
-      These
-      undergrounds are filled with a lot of Honkai beasts roaming around. Try to
-      be careful!'
-    - 'These Honkai beasts are the result of a powerful being that used its power
-      to transform any living creatures to those monsters!
+      Here
+      you''ll find many Honkai beasts roaming around. They are very agressive and
+      deal a lot of damage, so don''t stick around them for too long.'
+    - Also, I spotted some scary looking Honkai Laser Traps, I wouldn't try to get
+      too close to them if I were you.
+    - 'Oh you don''t know what Honkai beasts are!?
 
-'
-    - Who's the powerful being you ask? Well, it's Kiana, she's using her power to
-      prevent anyone from leaving this island!
-    - 'Defeat her by avoiding her abilities and dont forget to use your weapon to
-      attack!
+      They are the result of
+      a powerful being that used its power to transform any living creatures into
+      those monsters!'
+    - 'Who''s this powerful being you ask? Well, it''s the Gatekeeper Kiana, she''s
+      is the one responsible for this island mess and the reason why
 
-'
-    - 'If you succeed, we''ll be freed from this island!!!
+      we are
+      unable to leave.
 
-'
+      Oh and ugh... Apparently she can create portals that
+      shoots homing cookies, so that''s pretty interesting... Anyways, don''t get
+      hit by the
+
+      cookies.'
+    - 'What should you do, you ask? Well, just make sure to avoid her cookies and
+      defeat her with your weapon.
+
+      I wish you good luck in your endeavors.
+      And please get us out of her safely.'
 --- !u!114 &1682635913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11139,7 +11150,8 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 29060326fd255f842b910a57e06d2ab1, type: 3}
 --- !u!4 &430233403731063419 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 430233404009240306, guid: 29060326fd255f842b910a57e06d2ab1,
+    type: 3}
   m_PrefabInstance: {fileID: 430233403731063418}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1423949820166211613
@@ -11223,7 +11235,8 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: b998f9ad05184254691cc844f6f031d2, type: 3}
 --- !u!4 &1423949820166211614 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6532328292000955418, guid: b998f9ad05184254691cc844f6f031d2,
+    type: 3}
   m_PrefabInstance: {fileID: 1423949820166211613}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1759919213004917152

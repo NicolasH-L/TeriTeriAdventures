@@ -28,7 +28,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HonkaiType02Controller
+  m_Name: Honkai-Type02-Controller
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:

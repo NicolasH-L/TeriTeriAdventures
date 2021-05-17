@@ -15766,19 +15766,23 @@ MonoBehaviour:
   dialog:
     name: Otto
     sentences:
-    - "Howdy!, My name is Otto. \r\nI've been stuck here on this island for a long
-      time and I need someone like you to help me out.\r\nIf you can, try to clear
-      a path for me but beware of their traps they made."
-    - "You see, they are not human like us, they have some weird superpower and speak
-      in another form of language. \r\nThese people have been living inside this
-      longhouse and I do believe they are some form of life not discovered by Humans
-      yet."
-    - 'I''m just a scientist that got sent here to do some research on the local
-      wildlife and I''ve encountered them by coincidence.
+    - 'Hey!... Yeah you!
 
-      Anyways! Try not
-      to venture too much into the paths of these savage native people, they''re
-      not very fond of Humans by the looks of it.'
+      My name is Otto, and I''ve been stuck on this island
+      for a long time now... You don''t look weak and I could use your help
+
+      to
+      get us out of this Island. If you don''t mind lending your help, I''ll share
+      some information I gathered from my research.'
+    - "I'm just a scientist that was sent here to do some research on the local wildlife
+      and I've encountered them by coincidence.\r\nYou see... They are not human
+      like us, they can shoot weird green energy orbs and speak in a foreign language.
+      \r\nThese people or... should I say these Island Savage Natives have been living
+      inside this longhouse-like structure.\r\nThey love to set TRAPS inside their
+      house to catch preys, so... "
+    - Anyways! You should be careful while looking for a way out... Oh! and try to
+      stay alive and get us of both out of here safely please. Oh! and ugh these
+      "people", don't look like they are very fond of Humans so be extra careful.
 --- !u!114 &1405068560
 MonoBehaviour:
   m_ObjectHideFlags: 0
