@@ -2,7 +2,7 @@
 Repo for TeriTeri Adventures
 <br>
 
-Allez à l'onglet wiki pour voir le guide sur comment jouer TeriTeri Adventures.
+Allez à l'onglet wiki pour voir comment jouer à TeriTeri Adventures.
 
 Go to the wiki tab to learn how to play TeriTeri Adventures.
 
