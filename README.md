@@ -2,7 +2,7 @@
 Repo for TeriTeri Adventures
 <br>
 
-Aller à l'onglet wiki pour voir le guide sur comment jouer TeriTeri Adventures.
+Allez à l'onglet wiki pour voir le guide sur comment jouer TeriTeri Adventures.
 
 <br>
 <img src="https://tenor.com/view/teriteri-anime-crazy-gif-14132400.gif" alt="teri crazy" width="250" height="250">
