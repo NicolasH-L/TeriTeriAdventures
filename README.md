@@ -3,8 +3,12 @@ Repo for TeriTeri Adventures
 <br>
 
 Allez à l'onglet wiki pour voir comment jouer à TeriTeri Adventures.
+<br>
+Pour télécharger le jeu, cliquer sur <b>Releases</b> à droite de la page.
 
 Go to the wiki tab to learn how to play TeriTeri Adventures.
+<br>
+To download the game, click on <b>Releases<b> on the right side of the page.
 
 <br>
 <img src="https://tenor.com/view/teriteri-anime-crazy-gif-14132400.gif" alt="teri crazy" width="250" height="250">
